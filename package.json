@@ -1,0 +1,39 @@
+{
+  "name": "@dword-design/eslint-config",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/dword-design/eslint-config",
+  "author": "Sebastian Landwehr <info@dword-design.de>",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "dw-config-files && babel --out-dir dist src && mos",
+    "pretest": "npm run prepare && install-self",
+    "test": "nyc --reporter lcov --reporter text mocha-per-file --require @babel/register && mos test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/register": "^7.6.2",
+    "@dword-design/config-files": "^1.1.1",
+    "eslint": "^6.6.0",
+    "expect": "^24.9.0",
+    "husky": "^3.0.9",
+    "install-self": "dword-design/install-self#fork",
+    "mocha-per-file": "^1.1.2",
+    "mos": "dword-design/mos#fork/mos",
+    "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "@dword-design/aliases": "^0.1.2",
+    "@dword-design/babel-config": "^0.2.0",
+    "babel-eslint": "^10.0.3",
+    "eslint-import-resolver-babel-module": "^5.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prefer-arrow": "^1.1.6"
+  }
+}
