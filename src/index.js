@@ -41,6 +41,7 @@ export default {
     'prefer-const': 'error',
     'import/no-extraneous-dependencies': 'error',
     'import/no-commonjs': 'error',
+    'no-regex-spaces': 'off',
   },
   overrides: [
     {
