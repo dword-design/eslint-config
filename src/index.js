@@ -42,4 +42,12 @@ export default {
     'import/no-extraneous-dependencies': 'error',
     'import/no-commonjs': 'error',
   },
+  overrides: [
+    {
+      files: ['*.test.js'],
+      rules: {
+        'import/no-unresolved': ['error', { ignore: [require(resolve('package.json')).name] }],
+      }
+    }
+  ]
 }

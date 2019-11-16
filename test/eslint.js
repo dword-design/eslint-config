@@ -1,4 +1,9 @@
 import { CLIEngine } from 'eslint'
-import config from '@dword-design/eslint-config'
+import importFresh from 'import-fresh'
 
-export default code => (new CLIEngine({ baseConfig: config })).executeOnText(code).errorCount === 0
+export default (code, filename) => {
+  const config = importFresh('@dword-design/eslint-config')
+  const eslint = new CLIEngine({ baseConfig: config })
+  const result = eslint.executeOnText(code, filename)
+  return result.errorCount === 0
+}

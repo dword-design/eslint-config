@@ -20,13 +20,17 @@
     "@babel/core": "^7.6.4",
     "@babel/register": "^7.6.2",
     "@dword-design/config-files": "^1.1.1",
+    "endent": "^1.3.0",
     "eslint": "^6.6.0",
     "expect": "^24.9.0",
+    "fs-extra": "^8.1.0",
     "husky": "^3.0.9",
+    "import-fresh": "^3.2.1",
     "install-self": "dword-design/install-self#fork",
     "mocha-per-file": "^1.1.2",
     "mos": "dword-design/mos#fork/mos",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "with-local-tmp-dir": "^2.1.2"
   },
   "dependencies": {
     "@dword-design/aliases": "^0.1.2",
