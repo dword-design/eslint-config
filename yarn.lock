@@ -3736,9 +3736,10 @@ mos-plugin-example@^1.1.2:
     codemo "^0.2.1"
     independent "^0.2.0"
 
-mos-plugin-installation@dword-design/mos-plugin-installation#fork:
-  version "0.0.0-placeholder"
-  resolved "https://codeload.github.com/dword-design/mos-plugin-installation/tar.gz/f01cfa5af762524c205771bcbe6a0ca0fd9e317c"
+mos-plugin-installation@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/mos-plugin-installation/-/mos-plugin-installation-1.2.2.tgz#af6160841c87fb39869d0107c0659a2936b23c7f"
+  integrity sha1-r2FghByH+zmGnQEHwGWaKTayPH8=
   dependencies:
     babel-runtime "^6.9.0"
     markdownscript "^1.3.0"
@@ -5006,6 +5007,11 @@ safe-regex@^1.1.0:
   integrity sha1-QKNmnzsHfR6UPURinhV91IAjvy4=
   dependencies:
     ret "~0.1.10"
+
+safe-require@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/safe-require/-/safe-require-1.0.3.tgz#6ec319ed10209b1d12c7a1449b79d46d7f4f914b"
+  integrity sha1-bsMZ7RAgmx0Sx6FEm3nUbX9PkUs=
 
 "safer-buffer@>= 2.1.2 < 3":
   version "2.1.2"

@@ -1,5 +1,8 @@
-import { resolve } from 'path'
+import { join } from 'path'
 import aliases from '@dword-design/aliases'
+import safeRequire from 'safe-require'
+
+const packageName = (safeRequire(join(process.cwd(), 'package.json')) || {}).name
 
 export default {
   env: {
@@ -43,12 +46,16 @@ export default {
     'import/no-commonjs': 'error',
     'no-regex-spaces': 'off',
   },
-  overrides: [
-    {
-      files: ['*.test.js'],
-      rules: {
-        'import/no-unresolved': ['error', { ignore: [require(resolve('package.json')).name] }],
-      }
+  ...packageName !== undefined
+    ? {
+      overrides: [
+        {
+          files: ['*.test.js'],
+          rules: {
+            'import/no-unresolved': ['error', { ignore: [packageName] }],
+          }
+        }
+      ]
     }
-  ]
+    : {},
 }
