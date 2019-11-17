@@ -5,6 +5,9 @@
   "repository": "https://github.com/dword-design/eslint-config",
   "author": "Sebastian Landwehr <info@dword-design.de>",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "base-node prepare",
     "test": "base-node test"
