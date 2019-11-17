@@ -52,9 +52,7 @@ export default {
       overrides: [
         {
           files: ['*.test.js'],
-          rules: {
-            'import/no-unresolved': ['error', { ignore: [packageName] }],
-          },
+          settings: { 'import/core-modules': [packageName] },
         },
       ],
     }

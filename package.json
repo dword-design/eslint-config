@@ -1,6 +1,6 @@
 {
   "name": "@dword-design/eslint-config",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "dist/index.js",
   "repository": "https://github.com/dword-design/eslint-config",
   "author": "Sebastian Landwehr <info@dword-design.de>",
@@ -19,6 +19,7 @@
     "expect": "^24.9.0",
     "fs-extra": "^8.1.0",
     "import-fresh": "^3.2.1",
+    "output-files": "^1.1.7",
     "with-local-tmp-dir": "^2.1.2"
   },
   "dependencies": {
