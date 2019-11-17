@@ -755,9 +755,9 @@
     "@dword-design/base" "^1.0.0"
 
 "@dword-design/base@^1.0.0":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-1.1.5.tgz#0b6a994b32e5fcae0f59199bb3b8b834dc96307b"
-  integrity sha512-JjIErG/7X2oKTtracAoB16AipHhDYA1P1B7Sovh2Thv4qi24J3WHqdel5xCvVudh70Jh6N7JxNrey+2RccQzVQ==
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-1.1.6.tgz#388b0426ead10cc94d1c6656697dbdca7ccb5bcd"
+  integrity sha512-iEhz3OxLXzZVkmT6qeq2ypoTFf5o8CYsUUmN8ChWBA2GR6GHcO4r9tjkS7j3FfapyCGzBaa66BmITBUE2igQLw==
   dependencies:
     "@babel/cli" "^7.6.4"
     "@babel/core" "^7.6.4"
@@ -773,7 +773,7 @@
     glob-promise "^3.4.0"
     install-self dword-design/install-self#fork
     make-cli "^1.0.9"
-    mocha-per-file "^1.1.4"
+    mocha-per-file "^1.2.2"
     mos dword-design/mos#fork/mos
     nyc "^14.1.1"
     pre-commit "^1.2.2"
@@ -781,9 +781,9 @@
     safe-require "^1.0.3"
 
 "@dword-design/eslint-config@^0.3.0":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-0.3.1.tgz#768e9564af42e4c236c6a556e6aa4807ec624fd5"
-  integrity sha512-NfP3vkfRySmxl8hkcWtlZADxQ9QweYoyPmqANVI2kFdAU11mfEY4lnbmKcAqO6HB8jD4xoP2C/w2a1adzQjRWA==
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-0.3.2.tgz#45a9a912b8d4411aa3f3e594c851496ec8c51f11"
+  integrity sha512-9k1FW+nMNe8t1DbtkaxRU/5fSxd3cm+AE93efm2XUeYfp7QPS79VTESIFS5mbjz9PnuU4iM2d6ZUmcBqdD6vnA==
   dependencies:
     "@dword-design/aliases" "^0.1.2"
     "@dword-design/babel-config" "^0.2.0"
@@ -791,6 +791,7 @@
     eslint-import-resolver-babel-module "^5.1.0"
     eslint-plugin-import "^2.18.2"
     eslint-plugin-prefer-arrow "^1.1.6"
+    get-package-name "^1.0.0"
     safe-require "^1.0.3"
 
 "@dword-design/functions@^0.7.13":
@@ -1154,6 +1155,15 @@ babel-eslint@^10.0.3:
     "@babel/types" "^7.0.0"
     eslint-visitor-keys "^1.0.0"
     resolve "^1.12.0"
+
+babel-eslint@^11.0.0-beta.0:
+  version "11.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-11.0.0-beta.0.tgz#3645b9b84d848e070e0afadc95d0c8ff96f4c63a"
+  integrity sha512-GJTX0XL22be/A5sFp1/4qQIOnZJ/KJ8YrA0aW07SZoDXTMLB1KQT0rYl4a9Y5DfJGPuVDVf0bMYyvLLXmXPpHw==
+  dependencies:
+    eslint-scope "3.7.1"
+    eslint-visitor-keys "^1.0.0"
+    semver "^5.6.0"
 
 babel-generator@^6.26.0:
   version "6.26.1"
@@ -2200,6 +2210,14 @@ eslint-plugin-prefer-arrow@^1.1.6:
   resolved "https://registry.yarnpkg.com/eslint-plugin-prefer-arrow/-/eslint-plugin-prefer-arrow-1.1.6.tgz#1fbf92b441ece684da9a849f980c67125d886c43"
   integrity sha512-CT7a5pT6SG9hvhCjyHKFA1+lClB4WA+gvBt04E7/buUTELgatneCrublqTzi++tZuCefUhJXrTm3W1wpK14sqg==
 
+eslint-scope@3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-3.7.1.tgz#3d63c3edfda02e06e01a452ad88caacc7cdcb6e8"
+  integrity sha1-PWPD7f2gLgbgGkUq2IyqzHzctug=
+  dependencies:
+    esrecurse "^4.1.0"
+    estraverse "^4.1.1"
+
 eslint-scope@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-5.0.0.tgz#e87c8887c73e8d1ec84f1ca591645c358bfc8fb9"
@@ -2676,7 +2694,7 @@ glob@7.1.3:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.0, glob@^7.1.2, glob@^7.1.3, glob@^7.1.5, glob@~7.1.4:
+glob@^7.0.0, glob@^7.1.2, glob@^7.1.3, glob@^7.1.6, glob@~7.1.4:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
   integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
@@ -3717,14 +3735,13 @@ mkdirp@0.5.1, mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mocha-per-file@^1.1.4:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/mocha-per-file/-/mocha-per-file-1.2.0.tgz#d5f4f1ed61ca86a6e4e4842f180b56edbc8f112a"
-  integrity sha512-uEiH3q8TZTyqifY1mS1YkN9ONLoODGeHK4hdlYgrszSELV23dGRR9bwAxoiQVNeEaW+8WSVJiEVMh54JXD7+ig==
+mocha-per-file@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/mocha-per-file/-/mocha-per-file-1.2.2.tgz#0d4dd08187d6a8fe78efe5532e877c6b75f44c6e"
+  integrity sha512-RFdvnRntVI4T98Q09I09kg8U1kWN4uy9LM6MZguBzC8s8y7qESluP4npJYPfbm1D9Cn7pJf4fGL4N/0M8MEhnA==
   dependencies:
     chdir dword-design/node-chdir#fork
-    child-process-promise "^2.2.1"
-    glob "^7.1.5"
+    glob "^7.1.6"
     mocha "^6.2.2"
 
 mocha@^6.2.2:
@@ -5956,9 +5973,9 @@ widest-line@^1.0.0:
     string-width "^1.0.1"
 
 with-local-tmp-dir@^2.1.2:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/with-local-tmp-dir/-/with-local-tmp-dir-2.2.0.tgz#5a9f76a45d4fca3d24fd84496738ae7d09759c51"
-  integrity sha512-Tlthym0miaxTXld4GQZ6XglZZATZ/xO5+lFR16iEMEs7GjLyK2ktzBp8R8zO4lWbeUsszHxDn0xxV37UD+DOMg==
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/with-local-tmp-dir/-/with-local-tmp-dir-2.2.1.tgz#22a8982779db0db29d1ae3f1fe423df1d2874392"
+  integrity sha512-FU2FGFfXo8Ju9OAt0FisXOtk0Bwp+mXqV5cKekzqLefzKG9L4w2PDMzrAFkyw4YqC+7eVNEa7rXtvA4EXLAMCA==
   dependencies:
     chdir dword-design/node-chdir#fork
     tmp-promise "^2.0.2"

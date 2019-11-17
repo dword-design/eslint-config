@@ -1,6 +1,6 @@
 {
   "name": "@dword-design/eslint-config",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "dist/index.js",
   "repository": "https://github.com/dword-design/eslint-config",
   "author": "Sebastian Landwehr <info@dword-design.de>",
@@ -24,7 +24,7 @@
   "dependencies": {
     "@dword-design/aliases": "^0.1.2",
     "@dword-design/babel-config": "^0.2.0",
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^11.0.0-beta.0",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prefer-arrow": "^1.1.6",
