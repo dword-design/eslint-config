@@ -755,16 +755,16 @@
     "@dword-design/base" "^1.0.0"
 
 "@dword-design/base@^1.0.0":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-1.1.6.tgz#388b0426ead10cc94d1c6656697dbdca7ccb5bcd"
-  integrity sha512-iEhz3OxLXzZVkmT6qeq2ypoTFf5o8CYsUUmN8ChWBA2GR6GHcO4r9tjkS7j3FfapyCGzBaa66BmITBUE2igQLw==
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-1.1.8.tgz#73ea1b9d8374c5ff657989f5d39d9b82b81077c3"
+  integrity sha512-4zIpeWRdoQJoWeDMxQ6ovq8pgi7MYBg/cbqB6d497n94Cfsfp0OA9XNMjX2Z+zx/ItP3rQRAdpcQhLEf/kP4lA==
   dependencies:
     "@babel/cli" "^7.6.4"
     "@babel/core" "^7.6.4"
     "@babel/register" "^7.6.2"
     "@dword-design/aliases" "^0.1.3"
     "@dword-design/babel-config" "^0.2.1"
-    "@dword-design/eslint-config" "^0.3.0"
+    "@dword-design/eslint-config" "0.3.2"
     chokidar "^3.2.3"
     debounce "^1.2.0"
     depcheck dword-design/depcheck#fork
@@ -780,7 +780,7 @@
     resolve-bin "^0.4.0"
     safe-require "^1.0.3"
 
-"@dword-design/eslint-config@^0.3.0":
+"@dword-design/eslint-config@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-0.3.2.tgz#45a9a912b8d4411aa3f3e594c851496ec8c51f11"
   integrity sha512-9k1FW+nMNe8t1DbtkaxRU/5fSxd3cm+AE93efm2XUeYfp7QPS79VTESIFS5mbjz9PnuU4iM2d6ZUmcBqdD6vnA==
