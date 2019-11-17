@@ -1,5 +1,5 @@
 import eslint from '../eslint'
-import { endent } from '@functions'
+import { endent } from '@functions'
 import expect from 'expect'
 
 export default () => expect(

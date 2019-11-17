@@ -1,6 +1,7 @@
 import { join } from 'path'
 import aliases from '@dword-design/aliases'
 import safeRequire from 'safe-require'
+import getPackageName from 'get-package-name'
 
 const packageName = (safeRequire(join(process.cwd(), 'package.json')) || {}).name
 
@@ -10,7 +11,7 @@ export default {
     es6: true,
     node: true,
   },
-  parser: 'babel-eslint',
+  parser: require.resolve('babel-eslint'),
   parserOptions: {
     sourceType: 'module',
     babelOptions: {
@@ -23,12 +24,12 @@ export default {
     'plugin:import/warnings',
   ],
   plugins: [
-    'prefer-arrow',
-    'import',
+    getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
+    getPackageName(require.resolve('eslint-plugin-import')),
   ],
   settings: {
     'import/resolver': {
-      'babel-module': { alias: aliases },
+      [require.resolve('eslint-import-resolver-babel-module')]: { alias: aliases },
     },
   },
   rules: {
@@ -53,9 +54,9 @@ export default {
           files: ['*.test.js'],
           rules: {
             'import/no-unresolved': ['error', { ignore: [packageName] }],
-          }
-        }
-      ]
+          },
+        },
+      ],
     }
     : {},
 }
