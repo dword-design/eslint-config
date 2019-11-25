@@ -4352,9 +4352,9 @@ osenv@^0.1.0, osenv@^0.1.4:
     os-tmpdir "^1.0.0"
 
 output-files@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/output-files/-/output-files-1.1.7.tgz#f0bf5ad0dcf81bb0e1fcc4bd34e7bce0b99a4ec6"
-  integrity sha512-35mYYRgvsLPTTnFobFWgsSsGYUKcb/9iwn+nlU3IKCC01QjQ4FvLikCKvQMbQRJzT10HEpfrGDjcecaCaSel5g==
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/output-files/-/output-files-1.1.8.tgz#399af6fc6b034f647d29870984bb22312cef44a4"
+  integrity sha512-hgHPNU/ZCubuTVqtukxx7xFYLLBtQYURLujPxvNy52FyGzAuSuz/tzhg+kKUgw03/BBRpfhAXm9cRj1WWwBB0g==
 
 p-limit@^1.1.0:
   version "1.3.0"
