@@ -735,9 +735,9 @@
     get-package-name "^1.0.0"
 
 "@dword-design/babel-config@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-1.0.1.tgz#8391daeb775cb90f4e1d94f2ecc25b0c53ae1221"
-  integrity sha512-pyNTYd84TnjlRHGOuxIke/s8pjwu4JR5QLVxJk4IgpJ2NrHfETqoOVM+xmOh9Py/kPYTurolzgD33kCoJSNlwA==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-1.0.2.tgz#15e2b676e24dd481c61fe0eef95e94324f2e8c00"
+  integrity sha512-QVR6WTqjOg80EkYI6hzr/rPPr/kIsJjO4Ma+D8YU2uiEe2wYLYBJZLSCY89FwEJy6vXQt7nm54/Xq1MkbBgnEg==
   dependencies:
     "@babel/plugin-proposal-nullish-coalescing-operator" "^7.4.4"
     "@babel/plugin-proposal-optional-chaining" "^7.6.0"
