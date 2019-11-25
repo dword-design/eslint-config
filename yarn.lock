@@ -723,9 +723,9 @@
     to-fast-properties "^2.0.0"
 
 "@dword-design/aliases@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@dword-design/aliases/-/aliases-1.0.0.tgz#23af4e46d8ca39d8df5ed2b220382721418a777e"
-  integrity sha512-i6AeJ2qqNRB8OsQnmwdaJlvbBKH+tcIRnwYepRL1hASeCXh313yVDIGec+4GwuVtuOBIPWwxoq4EzsNYsgevbQ==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/aliases/-/aliases-1.0.1.tgz#263caf599e2e9f69b701e5eb945ceccc5f2a5ba8"
+  integrity sha512-39R2n60PbtNOlkcf5lN243ezNG6U5Q2cYiAy4byOIe0tOcjmhZdsVdfiZR9Kdg9Owkx+CArWpG/hsPs6jPwbyQ==
   dependencies:
     "@dword-design/functions" "^1.0.0"
     better-node-env "^1.0.3"
