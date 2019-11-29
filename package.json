@@ -1,6 +1,6 @@
 {
   "name": "@dword-design/eslint-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "repository": "dword-design/eslint-config",
   "author": "Sebastian Landwehr <info@dword-design.de>",
@@ -32,5 +32,10 @@
     "eslint-plugin-prefer-arrow": "^1.1.6",
     "get-package-name": "^1.0.0",
     "safe-require": "^1.0.3"
+  },
+  "maintainers": [],
+  "contributors": [],
+  "bugs": {
+    "url": "https://github.com/dword-design/eslint-config/issues"
   }
 }
