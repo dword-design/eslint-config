@@ -26,6 +26,7 @@ export default {
   plugins: [
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
     getPackageName(require.resolve('eslint-plugin-import')),
+    getPackageName(require.resolve('eslint-plugin-json-format')),
   ],
   settings: {
     'import/resolver': {

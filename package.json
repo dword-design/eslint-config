@@ -1,6 +1,6 @@
 {
   "name": "@dword-design/eslint-config",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "repository": "dword-design/eslint-config",
   "author": "Sebastian Landwehr <info@dword-design.de>",
@@ -21,7 +21,7 @@
     "fs-extra": "^8.1.0",
     "import-fresh": "^3.2.1",
     "output-files": "^1.1.7",
-    "with-local-tmp-dir": "^2.1.2"
+    "with-local-tmp-dir": "^2.2.2"
   },
   "dependencies": {
     "@dword-design/aliases": "^1.0.0",
@@ -29,12 +29,16 @@
     "babel-eslint": "^11.0.0-beta.0",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-prefer-arrow": "^1.1.6",
     "get-package-name": "^1.0.0",
     "safe-require": "^1.0.3"
   },
   "maintainers": [],
-  "contributors": [],
+  "contributors": [
+    "Renovate Bot (http://renovatebot.com)",
+    "dword-design (http://www.dword-design.de)"
+  ],
   "bugs": {
     "url": "https://github.com/dword-design/eslint-config/issues"
   }
