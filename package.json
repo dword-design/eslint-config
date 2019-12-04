@@ -1,6 +1,6 @@
 {
   "name": "@dword-design/eslint-config",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "dist/index.js",
   "repository": "dword-design/eslint-config",
   "author": "Sebastian Landwehr <info@dword-design.de>",
