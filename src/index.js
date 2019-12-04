@@ -52,7 +52,7 @@ export default {
     ? {
       overrides: [
         {
-          files: ['*.test.js'],
+          files: ['test/*.js'],
           settings: { 'import/core-modules': [packageName] },
         },
       ],

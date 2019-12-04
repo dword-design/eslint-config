@@ -10,5 +10,5 @@ export default () => withLocalTmpDir(__dirname, async () => {
     import foo from 'foo'
 
     console.log(foo)
-  `, 'foo.test.js')).toBeTruthy()
+  `, 'test/foo.test.js')).toBeTruthy()
 })
