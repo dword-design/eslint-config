@@ -1,14 +1,16 @@
 import eslint from '../eslint'
 import expect from 'expect'
-import withLocalTmpDir from 'with-local-tmp-dir'
-import { outputFile } from 'fs-extra'
 import endent from 'endent'
 
-export default () => withLocalTmpDir(__dirname, async () => {
-  await outputFile('package.json', JSON.stringify({ name: 'foo' }))
-  expect(eslint(endent`
-    import foo from 'foo'
+export const it = async () => expect(
+  await eslint({
+    'test/foo.js': endent`
+      import foo from 'foo'
 
-    console.log(foo)
-  `, 'test/foo.js')).toBeTruthy()
-})
+      console.log(foo)
+    `,
+    'package.json': JSON.stringify({ name: 'foo' }, undefined, 2),
+  })
+).toBeTruthy()
+
+export const timeout = 5000

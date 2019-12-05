@@ -1,7 +1,18 @@
-import { CLIEngine } from 'eslint'
+import withLocalTmpDir from 'with-local-tmp-dir'
+import outputFiles from 'output-files'
+import { spawn } from 'child_process'
 
-export default (code, filename) => {
-  const eslint = new CLIEngine()
-  const result = eslint.executeOnText(code, filename)
-  return result.errorCount === 0
-}
+export default files => withLocalTmpDir(__dirname, async () => {
+  await outputFiles({
+    ...files,
+    '.eslintrc.json': JSON.stringify({
+      extends: '@dword-design',
+    }),
+  })
+  try {
+    await spawn('eslint', ['--ext', '.js,.json', '.'])
+    return true
+  } catch (error) {
+    return false
+  }
+})

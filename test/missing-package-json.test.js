@@ -1,7 +1,5 @@
 import eslint from './eslint'
 import expect from 'expect'
-import withLocalTmpDir from 'with-local-tmp-dir'
 
-export default () => withLocalTmpDir(__dirname, async () => {
-  expect(eslint('export default 1', 'foo.test.js')).toBeTruthy()
-})
+export const it = async () => expect(await eslint({ 'foo.test.js': 'export default 1' })).toBeTruthy()
+export const timeout = 5000

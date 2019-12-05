@@ -37,7 +37,6 @@
     "endent": "^1.3.0",
     "eslint": "^6.6.0",
     "expect": "^24.9.0",
-    "fs-extra": "^8.1.0",
     "output-files": "^1.1.7",
     "with-local-tmp-dir": "^2.2.2"
   },
