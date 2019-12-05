@@ -1350,7 +1350,6 @@ chardet@^0.7.0:
 
 chdir@dword-design/node-chdir#fork:
   version "0.0.0"
-  uid "55004473579e2b8d293ced5410af5948793971b6"
   resolved "https://codeload.github.com/dword-design/node-chdir/tar.gz/55004473579e2b8d293ced5410af5948793971b6"
 
 child-process-promise@^2.2.1:
@@ -1714,7 +1713,6 @@ delegates@^1.0.0:
 
 depcheck@dword-design/depcheck#fork:
   version "0.0.1"
-  uid "9947160b51e73cadbd92716544f758ab07f215cd"
   resolved "https://codeload.github.com/dword-design/depcheck/tar.gz/9947160b51e73cadbd92716544f758ab07f215cd"
   dependencies:
     "@babel/parser" "^7.6.4"
@@ -2571,7 +2569,7 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-import-fresh@^3.0.0, import-fresh@^3.2.1:
+import-fresh@^3.0.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.2.1.tgz#633ff618506e793af5ac91bf48b72677e15cbe66"
   integrity sha512-6e1q1cnWP2RXD9/keSkxHScg508CdXqXWgWBaETNhyuBFz+kUZlKboh+ISK+bU++DmbHimVBrOz/zzPe0sZ3sQ==
@@ -2623,7 +2621,6 @@ inquirer@^7.0.0:
 
 install-self@dword-design/install-self#fork:
   version "1.0.0-beta.7"
-  uid "36616b93446a4606414fbab35adbd8989106d52b"
   resolved "https://codeload.github.com/dword-design/install-self/tar.gz/36616b93446a4606414fbab35adbd8989106d52b"
   dependencies:
     fs-extra "^8.1.0"
