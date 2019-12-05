@@ -2,36 +2,45 @@ import { endent } from '@functions'
 import expect from 'expect'
 import eslint from './eslint'
 
-export default () => {
+export const it = async () => {
 
-  expect(eslint(endent`
-    {
-      "foo": "bar",
-      "bar": {
-        "baz": [
-          "test",
-          "test2"
-        ]
+  expect(await eslint({
+    'test.json': endent`
+      {
+        "foo": "bar",
+        "bar": {
+          "baz": [
+            "test",
+            "test2"
+          ]
+        }
       }
-    }
-  `, 'test.json')).toBeTruthy()
+    `,
+  })).toBeTruthy()
 
-  expect(eslint(endent`
-    {
-      "foo":
-    }
-  `, 'test.json')).toBeFalsy()
+  expect(await eslint({
+    'test.json': endent`
+      {
+        "foo":
+      }
+    `,
+  })).toBeFalsy()
 
-  expect(eslint(endent`
-    {
-    "foo": "bar"
-    }
-  `, 'test.json')).toBeFalsy()
+  expect(await eslint({
+    'test.json': endent`
+      {
+      "foo": "bar"
+      }
+    `,
+  })).toBeFalsy()
 
-  expect(eslint(endent`
-    {
-        "foo": "bar"
-    }
-  `, 'test.json')).toBeFalsy()
+  expect(await eslint({
+    'test.json': endent`
+      {
+          "foo": "bar"
+      }
+    `,
+  })).toBeFalsy()
 }
 
+export const timeout = 10000

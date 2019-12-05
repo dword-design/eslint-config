@@ -1,4 +1,5 @@
 import eslint from '../eslint'
 import expect from 'expect'
 
-export default () => expect(eslint('console.log();')).toBeFalsy()
+export const it = async () => expect(await eslint({ 'test.js': 'console.log();' })).toBeFalsy()
+export const timeout = 5000
