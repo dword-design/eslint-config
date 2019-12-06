@@ -4,13 +4,14 @@ import endent from 'endent'
 
 export const it = async () => expect(
   await eslint({
-    'test/foo.test.js': endent`
-      import foo from 'foo'
-
-      console.log(foo)
-    `,
-    'node_modules/foo/index.js': 'module.exports = 1',
     'package.json': JSON.stringify({ name: 'foo' }, undefined, 2),
+    'src/index.js': 'export default [1, 2]',
+    'test/foo.js': endent`
+      import foo from 'foo'
+      import { map } from '@functions'
+
+      console.log(foo |> map(x => x * 2))
+    `,
   })
 ).toBeTruthy()
 
