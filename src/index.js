@@ -1,9 +1,5 @@
-import { join } from 'path'
-import aliases from '@dword-design/aliases'
-import safeRequire from 'safe-require'
+import { getStandard as getStandardAliases, getForTests as getAliasesForTests } from '@dword-design/aliases'
 import getPackageName from 'get-package-name'
-
-const packageName = (safeRequire(join(process.cwd(), 'package.json')) || {}).name
 
 export default {
   env: {
@@ -30,7 +26,7 @@ export default {
   ],
   settings: {
     'import/resolver': {
-      [require.resolve('eslint-import-resolver-babel-module')]: { alias: aliases },
+      [require.resolve('eslint-import-resolver-babel-module')]: { alias: getStandardAliases() },
     },
   },
   rules: {
@@ -48,14 +44,14 @@ export default {
     'import/no-commonjs': 'error',
     'no-regex-spaces': 'off',
   },
-  ...packageName !== undefined
-    ? {
-      overrides: [
-        {
-          files: ['test/**/*.js'],
-          settings: { 'import/core-modules': [packageName] },
+  overrides: [
+    {
+      files: ['test/**/*.js'],
+      settings: {
+        'import/resolver': {
+          [require.resolve('eslint-import-resolver-babel-module')]: { alias: getAliasesForTests() },
         },
-      ],
-    }
-    : {},
+      },
+    },
+  ],
 }

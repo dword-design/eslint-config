@@ -22,15 +22,14 @@
     "test": "base-node test"
   },
   "dependencies": {
-    "@dword-design/aliases": "^1.0.0",
+    "@dword-design/aliases": "^2.0.0",
     "@dword-design/babel-config": "^1.0.0",
     "babel-eslint": "^11.0.0-beta.0",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-prefer-arrow": "^1.1.6",
-    "get-package-name": "^1.0.0",
-    "safe-require": "^1.0.3"
+    "get-package-name": "^1.0.0"
   },
   "devDependencies": {
     "@dword-design/base-node": "^1.0.0",

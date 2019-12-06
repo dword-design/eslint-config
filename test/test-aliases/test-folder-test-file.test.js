@@ -4,7 +4,8 @@ import endent from 'endent'
 
 export const it = async () => expect(
   await eslint({
-    'test/foo.js': endent`
+    'src/index.js': 'export default 1',
+    'test/foo.test.js': endent`
       import foo from 'foo'
 
       console.log(foo)
