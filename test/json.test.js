@@ -1,4 +1,4 @@
-import { endent } from '@functions'
+import { endent } from '@dword-design/functions'
 import expect from 'expect'
 import eslint from './eslint'
 
