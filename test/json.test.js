@@ -16,7 +16,7 @@ export const it = async () => {
         }
       }
     `,
-  })).toBeTruthy()
+  })).toEqual('')
 
   expect(await eslint({
     'test.json': endent`
@@ -24,7 +24,7 @@ export const it = async () => {
         "foo":
       }
     `,
-  })).toBeFalsy()
+  })).toMatch('error  Unexpected token')
 
   expect(await eslint({
     'test.json': endent`
@@ -32,7 +32,7 @@ export const it = async () => {
       "foo": "bar"
       }
     `,
-  })).toBeFalsy()
+  })).toMatch('error  Format Error: expected "  "')
 
   expect(await eslint({
     'test.json': endent`
@@ -40,7 +40,7 @@ export const it = async () => {
           "foo": "bar"
       }
     `,
-  })).toBeFalsy()
+  })).toMatch('error  Format Error: unexpected "  "')
 }
 
-export const timeout = 10000
+export const timeout = 15000

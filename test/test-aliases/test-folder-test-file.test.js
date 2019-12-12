@@ -12,6 +12,6 @@ export const it = async () => expect(
     `,
     'package.json': JSON.stringify({ name: 'foo' }, undefined, 2),
   })
-).toBeTruthy()
+).toEqual('')
 
 export const timeout = 5000

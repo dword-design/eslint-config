@@ -10,7 +10,7 @@ export const it = async () => {
         console.log('foo')
       }
     `,
-  })).toBeTruthy()
+  })).toEqual('')
 
   expect(await eslint({
     'test.txt': endent`
@@ -18,7 +18,7 @@ export const it = async () => {
           console.log('foo')
       }
     `,
-  })).toBeFalsy()
+  })).toMatch('You are linting ".", but all of the files matching the glob pattern "." are ignored.')
 }
 
 export const timeout = 10000

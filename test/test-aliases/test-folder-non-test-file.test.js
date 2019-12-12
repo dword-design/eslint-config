@@ -18,6 +18,6 @@ export const it = async () => expect(
       console.log(foo |> map(x => x * 2))
     `,
   })
-).toBeTruthy()
+).toEqual('')
 
 export const timeout = 5000

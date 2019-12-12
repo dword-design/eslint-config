@@ -11,6 +11,6 @@ export const it = async () => expect(
     `,
     'package.json': JSON.stringify({ name: 'foo' }),
   })
-).toBeFalsy()
+).toMatch('Unable to resolve path to module \'foo\'')
 
 export const timeout = 5000

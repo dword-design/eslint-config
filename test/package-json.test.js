@@ -11,7 +11,7 @@ export const it = async () => {
         "version": "1.0.0"
       }
     `,
-  })).toBeTruthy()
+  })).toEqual('')
 
   expect(await eslint({
     'package.json': endent`
@@ -20,7 +20,7 @@ export const it = async () => {
         "name": "foo"
       }
     `,
-  })).toBeFalsy()
+  })).toMatch('error  JSON is not sorted')
 }
 
-export const timeout = 5000
+export const timeout = 15000

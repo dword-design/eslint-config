@@ -8,9 +8,9 @@ export default files => withLocalTmpDir(__dirname, async () => {
     '.eslintrc.json': JSON.stringify({ extends: '@dword-design' }),
   })
   try {
-    await spawn('eslint', ['--ext', '.js,.json', '.'])
-    return true
+    await spawn('eslint', ['--ext', '.js,.json', '.'], { capture: ['stderr', 'stdout'] })
+    return ''
   } catch (error) {
-    return false
+    return `${error.stderr}${error.stdout}`
   }
 })

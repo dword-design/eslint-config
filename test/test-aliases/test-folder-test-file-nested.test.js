@@ -12,6 +12,6 @@ export const it = async () => expect(
       console.log(foo)
     `,
   })
-).toBeTruthy()
+).toEqual('')
 
 export const timeout = 5000
