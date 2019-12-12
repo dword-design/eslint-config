@@ -729,18 +729,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@dword-design/aliases@^2.0.0":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@dword-design/aliases/-/aliases-2.0.1.tgz#a8621c70c435959bb92d32a9fd351e5215637b3f"
-  integrity sha512-LdQhQ7cWzpsuaWA0w3jz97okqQ1+cSyhHkaeP0fbsxTuTK+PdWHRTs4Qk7kP+zeMddhKOgT0nNNaxk/wG8kkcg==
-  dependencies:
-    "@dword-design/functions" "^2.0.0"
-    better-node-env "^1.0.3"
-    child-process-promise "^2.2.1"
-    fs-extra "^8.1.0"
-    get-package-name "^1.0.0"
-    read-all-up "^1.0.1"
-
 "@dword-design/babel-config@^1.0.0", "@dword-design/babel-config@^1.0.4":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-1.0.5.tgz#9bc3ac2a78c0c96e4aa694e45f677394565f8276"
@@ -755,34 +743,40 @@
     get-package-name "^1.0.0"
 
 "@dword-design/base-config-node@^1.0.0", "@dword-design/base-config-node@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@dword-design/base-config-node/-/base-config-node-1.3.2.tgz#215c822ce15145368939c693e9884d80a840d456"
-  integrity sha512-5LIk8ywzDfXjvGHwxvgWjyflCqU/QGw/TeguNLjFHILI3bQovZdDtR/GA9OV8kugoxe97DM8B1Ha0iZhqwi44w==
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@dword-design/base-config-node/-/base-config-node-1.3.3.tgz#feb3c9c334c2311ba411288d40c62c0ec580cdcd"
+  integrity sha512-R/peo+DmW9oONLpSYbdIz1Ga2ecxDbZIdQinsXNPm5+b1gsY+fpDInDjnBXiXAA4Pp4phWr5xppMW0cunF3lWA==
   dependencies:
     "@babel/cli" "^7.7.5"
     "@babel/core" "^7.7.5"
     "@dword-design/babel-config" "^1.0.4"
     "@dword-design/eslint-config" "^1.2.0"
+    "@dword-design/functions" "^2.2.2"
+    child-process-promise "^2.2.1"
     chokidar "^3.3.0"
     debounce "^1.2.0"
     depcheck dword-design/depcheck#fork
     eslint "^6.7.2"
+    fs-extra "^8.1.0"
     get-package-name "^1.0.0"
 
 "@dword-design/base@^3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-3.4.3.tgz#4ec53fccb79dd8ec93ae2e3e124c00c18f64c9c1"
-  integrity sha512-DuaiNvr1DsrzxjozbWkbq3TtHeMEoY+WFBhDO5AtZ5lTVZ2xOp1W4gcz/82DuJvfI5oF6Dm66LT/zu2HDICgjw==
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-3.4.4.tgz#ff88ceb46e37e98d1ca94a74ed07d4a83632e4f5"
+  integrity sha512-im1AGF/GKIpVSyS78Cf8pRDZFfcKaEtIL+t6O4pT50iZrZG3krrSVux8Hkw9sCS3qXweiv9ZLttft5dgJgab3g==
   dependencies:
     "@babel/cli" "^7.6.4"
     "@babel/core" "^7.6.4"
     "@babel/register" "^7.6.2"
-    "@dword-design/aliases" "^2.0.0"
     "@dword-design/babel-config" "^1.0.4"
     "@dword-design/base-config-node" "^1.0.0"
+    "@dword-design/functions" "^2.2.2"
     "@dword-design/json-schema-package" "^1.0.0"
+    "@dword-design/test-aliases" "^1.0.0"
     ajv-cli "^3.0.0"
+    child-process-promise "^2.2.1"
     depcheck dword-design/depcheck#fork
+    fs-extra "^8.1.0"
     get-projectz-readme-section-regex "^1.0.0"
     glob-promise "^3.4.0"
     import-from "^3.0.0"
@@ -796,20 +790,21 @@
     safe-readfile "^1.0.2"
 
 "@dword-design/eslint-config@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-1.2.0.tgz#742ea26975fe22f02dcc50946a535b07334ff186"
-  integrity sha512-64BiG/bs6TGxqYGVYNZqERuFiYNYXhQBRJ77/AXW98dtD33w3BLmy2eDSkrea60Q4iyS8EX29DSV4bgX3zXibw==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-1.2.1.tgz#e3abc2a954919d6afe4d2b6d2a8a07100825e6c9"
+  integrity sha512-/exkWMNZYWVADLFCDHmZcJxTawxvBoKRke5PGXzMI8LudKvx+2UNsc3qYIkjJesRjRWSUf25ejwiuFpq7ErMXw==
   dependencies:
-    "@dword-design/aliases" "^2.0.0"
     "@dword-design/babel-config" "^1.0.0"
+    "@dword-design/test-aliases" "^1.0.0"
     babel-eslint "^11.0.0-beta.0"
+    babel-plugin-module-resolver "^4.0.0"
     eslint-import-resolver-babel-module "^5.1.0"
     eslint-plugin-import "^2.18.2"
     eslint-plugin-json-format "^2.0.1"
     eslint-plugin-prefer-arrow "^1.1.6"
     get-package-name "^1.0.0"
 
-"@dword-design/functions@^2.0.0", "@dword-design/functions@^2.2.2":
+"@dword-design/functions@^2.2.2":
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/@dword-design/functions/-/functions-2.2.2.tgz#00204959eec6dbe79dfe1efe420cc313f6bfc903"
   integrity sha512-dI/FKp6T913CHealcQQofsfE+b7VUNxtFfbk5jr1qMiHVAVwUV39yTrUTaMdMjK2waAJC8DwV/VFAZsPDFNrsQ==
@@ -1218,11 +1213,6 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-better-node-env@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/better-node-env/-/better-node-env-1.0.3.tgz#232b689e1169a00b929f19e811fce9f9d2f59137"
-  integrity sha1-IytonhFpoAuSnxnoEfzp+dL1kTc=
-
 binary-extensions@^1.0.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.13.1.tgz#598afe54755b2868a5330d2aff9d4ebb53209b65"
@@ -1370,6 +1360,7 @@ chardet@^0.7.0:
 
 chdir@dword-design/node-chdir#fork:
   version "0.0.0"
+  uid "55004473579e2b8d293ced5410af5948793971b6"
   resolved "https://codeload.github.com/dword-design/node-chdir/tar.gz/55004473579e2b8d293ced5410af5948793971b6"
 
 child-process-promise@^2.2.1:
@@ -1733,6 +1724,7 @@ delegates@^1.0.0:
 
 depcheck@dword-design/depcheck#fork:
   version "0.0.1"
+  uid c26892d97de67e476566ece801a046dbd718f21b
   resolved "https://codeload.github.com/dword-design/depcheck/tar.gz/c26892d97de67e476566ece801a046dbd718f21b"
   dependencies:
     "@babel/parser" "^7.6.4"
@@ -1744,7 +1736,6 @@ depcheck@dword-design/depcheck#fork:
     minimatch "^3.0.2"
     node-sass-tilde-importer "^1.0.2"
     please-upgrade-node "^3.2.0"
-    require-from-string "^2.0.2"
     require-package-name "^2.0.1"
     resolve "^1.12.0"
     vue-template-compiler "^2.6.10"
@@ -4214,11 +4205,6 @@ require-from-string@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-1.2.1.tgz#529c9ccef27380adfec9a2f965b649bbee636418"
   integrity sha1-UpyczvJzgK3+yaL5ZbZJu+5jZBg=
-
-require-from-string@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
-  integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
 
 require-main-filename@^2.0.0:
   version "2.0.0"
