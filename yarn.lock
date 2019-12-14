@@ -3794,9 +3794,9 @@ package-hash@^3.0.0:
     release-zalgo "^1.0.0"
 
 package-name-regex@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/package-name-regex/-/package-name-regex-1.0.3.tgz#7e387fb33adf672de8469109fc70ec26bb66fdfa"
-  integrity sha512-wZJ8P38znPduhjcpkz2HBMHCKR3VUeEOV5dEHLEhL0KERVIp0mqu5mBhoMcaeDJv/WGtiPusdeemKGzTvupXLw==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/package-name-regex/-/package-name-regex-1.0.4.tgz#210e588025b47eb3a7f36398594922845d95206b"
+  integrity sha512-507P/jcjhErnVQPNVd9FvkdXPv1q+HJm/GiNppftS5P5teb5nH6s1bLo8jK9mJJ0D01IZXRe+7HlMDg6+OwqPQ==
 
 parent-dirs@^1.0.0:
   version "1.0.0"
@@ -4578,9 +4578,9 @@ sprintf-js@~1.0.2:
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
 stable-version-regex@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/stable-version-regex/-/stable-version-regex-1.0.1.tgz#bb7e66ca2030df82e0293d950f6b26571ddaafad"
-  integrity sha512-bqwGqMaDQlkT6c350qYCWGErNmCZpcJcgIwoxq/iQSdpjKk3r1JeCDsH7NsD2zOUWSkXFDJHhEZpO6cFUkomMQ==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/stable-version-regex/-/stable-version-regex-1.0.3.tgz#2077480373eb7572a08dfee8010f90a9e141832b"
+  integrity sha512-fT7kichBfggm+2azoxspKtXultvtM7/ynOCNRnJuDZz/3oV6TU4J739JDvdPRhYNxBjmYWFLZNML+XeFxcwqmQ==
 
 stack-trace@0.0.10:
   version "0.0.10"
