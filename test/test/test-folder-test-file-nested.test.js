@@ -2,9 +2,12 @@ import eslint from '../eslint'
 import expect from 'expect'
 import endent from 'endent'
 
-export const it = async () => expect(
+export default async () => expect(
   await eslint({
-    'package.json': JSON.stringify({ name: 'foo' }, undefined, 2),
+    'package.json': JSON.stringify({
+      name: 'foo',
+      main: 'dist/index.js',
+    }, undefined, 2),
     'src/index.js': 'export default 1',
     'test/foo/foo.test.js': endent`
       import foo from 'foo'
@@ -13,5 +16,3 @@ export const it = async () => expect(
     `,
   })
 ).toEqual('')
-
-export const timeout = 5000

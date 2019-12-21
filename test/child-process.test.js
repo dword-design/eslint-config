@@ -2,7 +2,7 @@ import eslint from './eslint'
 import { endent } from '@dword-design/functions'
 import expect from 'expect'
 
-export const it = async () => {
+export default async () => {
 
   expect(await eslint({
     'test.js': endent`
@@ -11,5 +11,3 @@ export const it = async () => {
     `,
   })).toMatch('\'child_process\' import is restricted from being used. Please use child-process-promise instead')
 }
-
-export const timeout = 10000

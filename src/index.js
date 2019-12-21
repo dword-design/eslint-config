@@ -1,4 +1,3 @@
-import testAliases from '@dword-design/test-aliases'
 import getPackageName from 'get-package-name'
 
 export default {
@@ -49,9 +48,7 @@ export default {
     {
       files: ['test/**/*.js'],
       settings: {
-        'import/resolver': {
-          [getPackageName(require.resolve('eslint-import-resolver-babel-module'))]: { alias: testAliases },
-        },
+        'import/resolver': require.resolve('./eslint-import-resolver-test'),
       },
     },
   ],

@@ -2,7 +2,7 @@ import eslint from './eslint'
 import { endent } from '@dword-design/functions'
 import expect from 'expect'
 
-export const it = async () => {
+export default async () => {
 
   expect(await eslint({
     'test.js': endent`
@@ -20,5 +20,3 @@ export const it = async () => {
     `,
   })).toMatch('You are linting ".", but all of the files matching the glob pattern "." are ignored.')
 }
-
-export const timeout = 10000

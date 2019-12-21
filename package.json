@@ -19,10 +19,9 @@
   },
   "dependencies": {
     "@dword-design/babel-config": "^1.0.0",
-    "@dword-design/test-aliases": "^1.0.0",
+    "@dword-design/resolver-test": "^1.0.0",
     "babel-eslint": "^11.0.0-beta.0",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "eslint-import-resolver-babel-module": "^5.1.0",
+    "eslint-import-resolver-node": "^0.3.2",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-prefer-arrow": "^1.1.6",

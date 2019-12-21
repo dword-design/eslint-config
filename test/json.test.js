@@ -2,7 +2,7 @@ import { endent } from '@dword-design/functions'
 import expect from 'expect'
 import eslint from './eslint'
 
-export const it = async () => {
+export default async () => {
 
   expect(await eslint({
     'test.json': endent`
@@ -42,5 +42,3 @@ export const it = async () => {
     `,
   })).toMatch('error  Format Error: unexpected "  "')
 }
-
-export const timeout = 15000

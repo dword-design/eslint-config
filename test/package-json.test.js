@@ -2,7 +2,7 @@ import { endent } from '@dword-design/functions'
 import expect from 'expect'
 import eslint from './eslint'
 
-export const it = async () => {
+export default async () => {
 
   expect(await eslint({
     'package.json': endent`
@@ -22,5 +22,3 @@ export const it = async () => {
     `,
   })).toMatch('error  JSON is not sorted')
 }
-
-export const timeout = 15000
