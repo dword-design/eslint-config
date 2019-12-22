@@ -34,7 +34,7 @@ export default {
     'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
     'no-var': 'error',
     'prefer-const': 'error',
-    'import/no-extraneous-dependencies': 'error',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
     'import/no-commonjs': 'error',
     'no-regex-spaces': 'off',
     'no-restricted-imports': ['error', {
@@ -49,6 +49,9 @@ export default {
       files: ['test/**/*.js'],
       settings: {
         'import/resolver': require.resolve('./eslint-import-resolver-test'),
+      },
+      rules: {
+        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
       },
     },
   ],
