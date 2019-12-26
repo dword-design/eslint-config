@@ -11,9 +11,9 @@ export default async () => {
         foo: '^1.0.0',
       },
     }, undefined, 2),
-    'src/test.js': endent`
+    'test.js': endent`
       import foo from 'foo'
       console.log(foo)
     `,
-  })).toMatch('error  \'foo\' should be listed in the project\'s dependencies, not devDependencies')
+  })).toEqual('')
 }
