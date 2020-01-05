@@ -39,8 +39,9 @@ export default {
     'no-regex-spaces': 'off',
     'no-restricted-imports': ['error', {
       paths: [
-        { name: 'child_process', message: 'Please use child-process-promise instead.' },
-        { name: 'fs', message: 'Please use fs-extra instead.' },
+        { name: 'child_process', message: 'Please use \'child-process-promise\' instead.' },
+        { name: 'fs', message: 'Please use \'fs-extra\' instead.' },
+        { name: 'resolve-dep', message: 'Please use \'matchdep\' instead.' },
       ],
     }],
   },

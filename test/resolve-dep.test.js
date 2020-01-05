@@ -6,8 +6,8 @@ export default async () => {
 
   expect(await eslint({
     'test.js': endent`
-      import fs from 'fs'
-      console.log(fs)
+      import resolveDep from 'resolve-dep'
+      console.log(resolveDep)
     `,
-  })).toMatch('\'fs\' import is restricted from being used. Please use \'fs-extra\' instead')
+  })).toMatch('\'resolve-dep\' import is restricted from being used. Please use \'matchdep\' instead')
 }
