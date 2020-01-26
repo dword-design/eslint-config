@@ -6,9 +6,9 @@ export default {
     es6: true,
     node: true,
   },
-  parser: getPackageName(require.resolve('babel-eslint')),
+  parser: getPackageName(require.resolve('vue-eslint-parser')),
   parserOptions: {
-    sourceType: 'module',
+    parser: getPackageName(require.resolve('babel-eslint')),
     babelOptions: {
       configFile: require.resolve('@dword-design/babel-config'),
     },
@@ -17,11 +17,13 @@ export default {
     'eslint:recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
+    'plugin:eslint-plugin-vue/recommended',
   ],
   plugins: [
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
     getPackageName(require.resolve('eslint-plugin-import')),
     getPackageName(require.resolve('eslint-plugin-json-format')),
+    getPackageName(require.resolve('eslint-plugin-vue')),
   ],
   rules: {
     indent: ['error', 2, { SwitchCase: 1 }],
@@ -44,6 +46,9 @@ export default {
         { name: 'resolve-dep', message: 'Please use \'matchdep\' instead.' },
       ],
     }],
+    'vue/jsx-uses-vars': 'error',
+    'vue/require-default-prop': 'off',
+    'vue/require-prop-types': 'off',
   },
   overrides: [
     {
