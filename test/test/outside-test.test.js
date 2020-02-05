@@ -10,5 +10,5 @@ export default async () => expect(
       console.log(foo)
     `,
     'package.json': JSON.stringify({ name: 'foo' }),
-  })
+  }),
 ).toMatch('ENOENT: no such file or directory')

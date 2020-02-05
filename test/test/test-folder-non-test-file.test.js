@@ -18,5 +18,5 @@ export default async () => expect(
 
       console.log(foo |> map(x => x * 2))
     `,
-  })
+  }),
 ).toEqual('')
