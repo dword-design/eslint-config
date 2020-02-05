@@ -14,5 +14,5 @@ export default async () => expect(
 
       console.log(foo)
     `,
-  })
+  }),
 ).toEqual('')
