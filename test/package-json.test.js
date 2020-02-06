@@ -1,5 +1,4 @@
 import { endent } from '@dword-design/functions'
-import expect from 'expect'
 import eslint from './eslint'
 
 export default async () => {
