@@ -1,5 +1,11 @@
 import getPackageName from 'get-package-name'
 
+const restrictedImports = [
+  { name: 'child_process', message: 'Please use \'child-process-promise\' instead.' },
+  { name: 'fs', message: 'Please use \'fs-extra\' instead.' },
+  { name: 'resolve-dep', message: 'Please use \'matchdep\' instead.' },
+]
+
 export default {
   env: {
     browser: true,
@@ -40,11 +46,7 @@ export default {
     'import/no-commonjs': 'error',
     'no-regex-spaces': 'off',
     'no-restricted-imports': ['error', {
-      paths: [
-        { name: 'child_process', message: 'Please use \'child-process-promise\' instead.' },
-        { name: 'fs', message: 'Please use \'fs-extra\' instead.' },
-        { name: 'resolve-dep', message: 'Please use \'matchdep\' instead.' },
-      ],
+      paths: restrictedImports,
     }],
     'vue/jsx-uses-vars': 'error',
     'vue/require-default-prop': 'off',
@@ -59,8 +61,19 @@ export default {
     },
     {
       files: ['test/**'],
+      globals: {
+        expect: 'readonly',
+      },
       settings: {
         'import/resolver': require.resolve('./eslint-import-resolver-test'),
+      },
+      rules: {
+        'no-restricted-imports': ['error', {
+          paths: [
+            ...restrictedImports,
+            { name: 'expect', message: 'Please use the global \'expect\' variable instead.' },
+          ],
+        }],
       },
     },
   ],
