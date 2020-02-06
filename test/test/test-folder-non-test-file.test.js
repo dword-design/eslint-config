@@ -1,5 +1,4 @@
 import eslint from '../eslint'
-import expect from 'expect'
 import endent from 'endent'
 
 export default async () => expect(
