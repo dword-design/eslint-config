@@ -1,9 +1,16 @@
 import getPackageName from 'get-package-name'
+import safeRequire from 'safe-require'
+import P from 'path'
+
+const packageName = safeRequire(P.join(process.cwd(), 'package.json'))?.name
 
 const restrictedImports = [
   { name: 'child_process', message: 'Please use \'child-process-promise\' instead.' },
   { name: 'fs', message: 'Please use \'fs-extra\' instead.' },
   { name: 'resolve-dep', message: 'Please use \'matchdep\' instead.' },
+  ...packageName !== '@dword-design/puppeteer'
+    ? [{ name: 'puppeteer', message: 'Please use \'@dword-design/puppeteer\' instead.' }]
+    : [],
 ]
 
 export default {
