@@ -11,7 +11,7 @@ export default async () =>
       }
 
     `,
-    'test/test.js': endent`
+    'src/index.spec.js': endent`
       import expect from 'expect'
 
       expect(1).toEqual(1)

@@ -4,7 +4,7 @@ import { endent } from '@dword-design/functions'
 export default async () => {
 
   expect(await eslint({
-    'test/test.js': endent`
+    'src/index.spec.js': endent`
       import fs from 'fs'
       console.log(fs)
     `,

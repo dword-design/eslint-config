@@ -10,7 +10,7 @@ export default async () => {
         foo: '^1.0.0',
       },
     }, undefined, 2),
-    'test.js': endent`
+    'src/index.js': endent`
       import foo from 'foo'
       console.log(foo)
     `,

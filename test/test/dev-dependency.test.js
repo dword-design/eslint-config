@@ -5,12 +5,14 @@ export default async () => {
 
   expect(await eslint({
     'node_modules/foo/index.js': 'export default 1',
-    'package.json': JSON.stringify({
-      devDependencies: {
-        foo: '^1.0.0',
-      },
-    }, undefined, 2),
-    'test/test.js': endent`
+    'package.json': endent`
+      {
+        "devDependencies": {
+          "foo": "^1.0.0"
+        }
+      }
+    `,
+    'src/index.spec.js': endent`
       import foo from 'foo'
       console.log(foo)
     `,

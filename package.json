@@ -32,7 +32,6 @@
     "@dword-design/base": "^5.0.0",
     "@dword-design/functions": "^2.2.2",
     "child-process-promise": "^2.2.1",
-    "endent": "^1.3.0",
     "eslint": "^6.6.0",
     "output-files": "^1.1.7",
     "with-local-tmp-dir": "^2.2.2"
