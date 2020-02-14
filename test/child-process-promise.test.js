@@ -1,0 +1,12 @@
+import eslint from './eslint'
+import { endent } from '@dword-design/functions'
+
+export default async () => {
+
+  expect(await eslint({
+    'test.js': endent`
+      import { spawn } from 'child-process-promise'
+      console.log(spawn)
+    `,
+  })).toMatch('\'child-process-promise\' import is restricted from being used. Please use \'execa\' instead')
+}

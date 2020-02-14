@@ -8,5 +8,5 @@ export default async () => {
       import childProcess from 'child_process'
       console.log(childProcess)
     `,
-  })).toMatch('\'child_process\' import is restricted from being used. Please use \'child-process-promise\' instead')
+  })).toMatch('\'child_process\' import is restricted from being used. Please use \'execa\' instead')
 }
