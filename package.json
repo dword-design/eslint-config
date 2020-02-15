@@ -25,7 +25,7 @@
     "eslint-plugin-prefer-arrow": "^1.1.6",
     "eslint-plugin-vue": "^6.1.2",
     "get-package-name": "^1.0.0",
-    "safe-require": "^1.0.3",
+    "safe-require": "dword-design/node-safe-require#fork",
     "vue-eslint-parser": "^7.0.0"
   },
   "devDependencies": {

@@ -6287,6 +6287,10 @@ safe-require@^1.0.3:
   resolved "https://registry.yarnpkg.com/safe-require/-/safe-require-1.0.3.tgz#6ec319ed10209b1d12c7a1449b79d46d7f4f914b"
   integrity sha1-bsMZ7RAgmx0Sx6FEm3nUbX9PkUs=
 
+safe-require@dword-design/node-safe-require#fork:
+  version "1.0.3"
+  resolved "https://codeload.github.com/dword-design/node-safe-require/tar.gz/655cbba967ba870868712745c8f7c23659a11d46"
+
 safefs@^5.4.0, safefs@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/safefs/-/safefs-5.5.0.tgz#17506b894542c592b33379578177bbab9f06c085"
