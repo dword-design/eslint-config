@@ -1,6 +1,7 @@
 import getPackageName from 'get-package-name'
 import safeRequire from 'safe-require'
 import P from 'path'
+import nodeEnv from 'better-node-env'
 
 const packageName = safeRequire(P.join(process.cwd(), 'package.json'))?.name
 
@@ -62,7 +63,7 @@ export default {
   },
   overrides: [
     {
-      files: ['**/*.spec.js'],
+      files: nodeEnv === 'test' ? ['**'] : ['**/*.spec.js'],
       env: {
         mocha: true,
       },

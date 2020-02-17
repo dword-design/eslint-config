@@ -1,9 +1,8 @@
 import eslint from './eslint'
 import { endent } from '@dword-design/functions'
 
-export default async () => {
-
-  expect(await eslint({
+export default async () => expect(
+  await eslint({
     'node_modules/foo/index.js': 'export default 1',
     'package.json': JSON.stringify({
       devDependencies: {
@@ -14,5 +13,6 @@ export default async () => {
       import foo from 'foo'
       console.log(foo)
     `,
-  })).toMatch('error  \'foo\' should be listed in the project\'s dependencies, not devDependencies')
-}
+  }),
+)
+  .toMatch('error  \'foo\' should be listed in the project\'s dependencies, not devDependencies')
