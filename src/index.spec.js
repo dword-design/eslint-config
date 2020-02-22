@@ -21,6 +21,7 @@ export default {
     await eslint({
       'test.js': endent`
         import { spawn } from 'child-process-promise'
+
         console.log(spawn)
       `,
     }),
@@ -30,6 +31,7 @@ export default {
     await eslint({
       'test.js': endent`
         import childProcess from 'child_process'
+
         console.log(childProcess)
       `,
     }),
@@ -45,12 +47,13 @@ export default {
       }, undefined, 2),
       'index.js': endent`
         import foo from 'foo'
+
         console.log(foo)
       `,
     }),
   )
     .toMatch('error  \'foo\' should be listed in the project\'s dependencies, not devDependencies'),
-  'dev dependency in src': async () => expect(
+  'dev dependency in source': async () => expect(
     await eslint({
       'node_modules/foo/index.js': 'export default 1',
       'package.json': endent`
@@ -62,6 +65,7 @@ export default {
       `,
       'src/index.js': endent`
         import foo from 'foo'
+
         console.log(foo)
       `,
     }),
@@ -71,6 +75,7 @@ export default {
     await eslint({
       'test.js': endent`
         import fs from 'fs'
+
         console.log(fs)
       `,
     }),
