@@ -1,3 +1,10 @@
+## [1.8.4](https://github.com/dword-design/eslint-config/compare/v1.8.3...v1.8.4) (2020-02-22)
+
+
+### Bug Fixes
+
+* remove mocha globals ([1e79a27](https://github.com/dword-design/eslint-config/commit/1e79a27fe9debd7a986c4acb4e32ac5ffa34372d))
+
 ## [1.8.3](https://github.com/dword-design/eslint-config/compare/v1.8.2...v1.8.3) (2020-02-22)
 
 
