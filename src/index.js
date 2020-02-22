@@ -2,18 +2,18 @@ import getPackageName from 'get-package-name'
 import safeRequire from 'safe-require'
 import P from 'path'
 import nodeEnv from 'better-node-env'
+import restrictedImports from './restricted-imports.config'
+import { omitBy, mapValues, values } from '@dword-design/functions'
 
 const packageName = safeRequire(P.join(process.cwd(), 'package.json'))?.name
 
-const restrictedImports = [
-  { name: 'child_process', message: 'Please use \'execa\' instead.' },
-  { name: 'child-process-promise', message: 'Please use \'execa\' instead.' },
-  { name: 'fs', message: 'Please use \'fs-extra\' instead.' },
-  { name: 'resolve-dep', message: 'Please use \'matchdep\' instead.' },
-  ...packageName !== '@dword-design/puppeteer'
-    ? [{ name: 'puppeteer', message: 'Please use \'@dword-design/puppeteer\' instead.' }]
-    : [],
-]
+const eslintRestrictedImports = restrictedImports
+  |> omitBy(newName => newName === packageName)
+  |> mapValues((newName, oldName) => ({
+    name: oldName,
+    message: `Please use '${newName}' instead.`,
+  }))
+  |> values
 
 export default {
   env: {
@@ -55,7 +55,7 @@ export default {
     'import/no-commonjs': 'error',
     'no-regex-spaces': 'off',
     'no-restricted-imports': ['error', {
-      paths: restrictedImports,
+      paths: eslintRestrictedImports,
     }],
     'vue/jsx-uses-vars': 'error',
     'vue/require-default-prop': 'off',
@@ -74,7 +74,7 @@ export default {
         'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
         'no-restricted-imports': ['error', {
           paths: [
-            ...restrictedImports,
+            ...eslintRestrictedImports,
             { name: 'expect', message: 'Please use the global \'expect\' variable instead.' },
           ],
         }],

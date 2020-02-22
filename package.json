@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@dword-design/babel-config": "^1.0.0",
+    "@dword-design/functions": "^2.2.2",
     "@dword-design/resolver-test": "^1.0.0",
     "babel-eslint": "^11.0.0-beta.0",
     "better-node-env": "^1.0.3",
@@ -33,7 +34,6 @@
   },
   "devDependencies": {
     "@dword-design/base": "^6.0.0",
-    "@dword-design/functions": "^2.2.2",
     "eslint": "^6.6.0",
     "execa": "^4.0.0",
     "output-files": "^1.1.7",

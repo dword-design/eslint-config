@@ -17,26 +17,6 @@ const eslint = (files, { nodeEnv } = {}) => withLocalTmpDir(async () => {
 })
 
 export default {
-  'child-process-promise': async () => expect(
-    await eslint({
-      'test.js': endent`
-        import { spawn } from 'child-process-promise'
-
-        console.log(spawn)
-      `,
-    }),
-  )
-    .toMatch('\'child-process-promise\' import is restricted from being used. Please use \'execa\' instead'),
-  'child_process': async () => expect(
-    await eslint({
-      'test.js': endent`
-        import childProcess from 'child_process'
-
-        console.log(childProcess)
-      `,
-    }),
-  )
-    .toMatch('\'child_process\' import is restricted from being used. Please use \'execa\' instead'),
   'dev dependency in root': async () => expect(
     await eslint({
       'node_modules/foo/index.js': 'export default 1',
@@ -71,16 +51,6 @@ export default {
     }),
   )
     .toMatch('error  \'foo\' should be listed in the project\'s dependencies, not devDependencies'),
-  fs: async () => expect(
-    await eslint({
-      'test.js': endent`
-        import fs from 'fs'
-
-        console.log(fs)
-      `,
-    }),
-  )
-    .toMatch('\'fs\' import is restricted from being used. Please use \'fs-extra\' instead'),
   'indent: valid': async () => expect(
     await eslint({
       'test.js': endent`
@@ -205,16 +175,7 @@ export default {
   )
     .toEqual(''),
   'regex-spaces': async () => expect(await eslint({ 'test.js': 'export default /  /' })).toEqual(''),
-  'resolve-dep': async () => expect(
-    await eslint({
-      'test.js': endent`
-        import resolveDep from 'resolve-dep'
-        console.log(resolveDep)
-      `,
-    }),
-  )
-    .toMatch('\'resolve-dep\' import is restricted from being used. Please use \'matchdep\' instead'),
-  'puppeteer: inside': async () => expect(
+  'restricted import: inside': async () => expect(
     await eslint({
       'node_modules/puppeteer/index.js': '',
       'package.json': endent`
@@ -232,7 +193,7 @@ export default {
     }),
   )
     .toEqual(''),
-  'puppeteer: outside': async () => expect(
+  'restricted import: outside': async () => expect(
     await eslint({
       'test.js': endent`
         import puppeteer from 'puppeteer'
@@ -262,15 +223,15 @@ export default {
     }),
   )
     .toEqual(''),
-  'test: fs': async () => expect(
+  'test: restricted import': async () => expect(
     await eslint({
       'src/index.spec.js': endent`
-        import fs from 'fs'
-        console.log(fs)
+        import puppeteer from 'puppeteer'
+        console.log(puppeteer)
       `,
     }),
   )
-    .toMatch('\'fs\' import is restricted from being used. Please use \'fs-extra\' instead'),
+    .toMatch('\'puppeteer\' import is restricted from being used. Please use \'@dword-design/puppeteer\' instead'),
   'test: imported expect': async () => expect(
     await eslint({
       'package.json': endent`
