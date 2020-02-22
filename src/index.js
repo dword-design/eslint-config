@@ -64,9 +64,6 @@ export default {
   overrides: [
     {
       files: nodeEnv === 'test' ? ['**'] : ['**/*.spec.js'],
-      env: {
-        mocha: true,
-      },
       globals: {
         expect: 'readonly',
       },
