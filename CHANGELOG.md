@@ -1,3 +1,10 @@
+## [1.8.5](https://github.com/dword-design/eslint-config/compare/v1.8.4...v1.8.5) (2020-02-22)
+
+
+### Bug Fixes
+
+* refactor commits and add tree-kill restricted import ([d5753ff](https://github.com/dword-design/eslint-config/commit/d5753ff85aa20545eecdfc50fea9461e088256dc))
+
 ## [1.8.4](https://github.com/dword-design/eslint-config/compare/v1.8.3...v1.8.4) (2020-02-22)
 
 
