@@ -1,8 +1,0 @@
-export default {
-  child_process: 'execa',
-  'child-process-promise': 'execa',
-  fs: 'fs-extra',
-  'resolve-dep': 'matchdep',
-  puppeteer: '@dword-design/puppeteer',
-  'tree-kill': 'tree-kill-promise',
-}

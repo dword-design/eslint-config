@@ -57,6 +57,7 @@ export default {
         export default () => {
           console.log('foo')
         }
+
       `,
     }),
   )
@@ -121,14 +122,22 @@ export default {
     await eslint({
       'test.js': endent`
       const Foo = <div>Hello world</div>
-      export default <div><Foo/></div>
+      export default (
+        <div>
+          <Foo />
+        </div>
+      )
+
     `,
     }),
   )
     .toEqual(''),
   'jsx: valid': async () => expect(
     await eslint({
-      'test.js': 'export default <div>Hello world</div>',
+      'test.js': endent`
+        export default <div>Hello world</div>
+        
+      `,
     }),
   )
     .toEqual(''),
@@ -155,13 +164,26 @@ export default {
   )
     .toMatch('error  JSON is not sorted'),
   'prefer-arrow': async () => {
-    expect(await eslint({ 'test.js': 'export default () => console.log(\'foo\')' })).toEqual('')
-    expect(await eslint({ 'test.js': 'export default function () { console.log(\'foo\') }' }))
+    expect(await eslint({
+      'test.js': endent`
+        export default () => console.log('foo')
+
+      `,
+    })).toEqual('')
+    expect(await eslint({
+      'test.js': endent`
+        export default function () { console.log('foo') }
+
+      `,
+    }))
       .toMatch('error  Prefer using arrow functions over plain functions')
   },
   'prod dependency in src': async () => expect(
     await eslint({
-      'node_modules/foo/index.js': 'export default 1',
+      'node_modules/foo/index.js': endent`
+        export default 1
+        
+      `,
       'package.json': JSON.stringify({
         dependencies: {
           foo: '^1.0.0',
@@ -169,12 +191,21 @@ export default {
       }, undefined, 2),
       'src/index.js': endent`
         import foo from 'foo'
+
         console.log(foo)
+
       `,
     }),
   )
     .toEqual(''),
-  'regex-spaces': async () => expect(await eslint({ 'test.js': 'export default /  /' })).toEqual(''),
+  'regex-spaces': async () => expect(
+    await eslint({
+      'test.js': endent`
+        export default /  /
+
+      `,
+    }),
+  ).toEqual(''),
   'restricted import: inside': async () => expect(
     await eslint({
       'node_modules/puppeteer/index.js': '',
@@ -188,7 +219,9 @@ export default {
       `,
       'test.js': endent`
         import puppeteer from 'puppeteer'
+
         console.log(puppeteer)
+
       `,
     }),
   )
@@ -198,17 +231,31 @@ export default {
       'test.js': endent`
         import puppeteer from 'puppeteer'
         console.log(puppeteer)
+
       `,
     }),
   )
     .toMatch('\'puppeteer\' import is restricted from being used. Please use \'@dword-design/puppeteer\' instead'),
   semicolon: async () => {
-    expect(await eslint({ 'test.js': 'console.log()' })).toEqual('')
-    expect(await eslint({ 'test.js': 'console.log();' })).toMatch('error  Extra semicolon')
+    expect(await eslint({
+      'test.js': endent`
+        console.log()
+      
+      `,
+    })).toEqual('')
+    expect(await eslint({
+      'test.js': endent`
+        console.log();
+
+      `,
+    })).toMatch('error  Delete `;`  prettier/prettier')
   },
   'test: dev dependency': async () => expect(
     await eslint({
-      'node_modules/foo/index.js': 'export default 1',
+      'node_modules/foo/index.js': endent`
+        export default 1
+
+      `,
       'package.json': endent`
         {
           "devDependencies": {
@@ -218,7 +265,9 @@ export default {
       `,
       'src/index.spec.js': endent`
         import foo from 'foo'
+
         console.log(foo)
+        
       `,
     }),
   )
@@ -228,6 +277,7 @@ export default {
       'src/index.spec.js': endent`
         import puppeteer from 'puppeteer'
         console.log(puppeteer)
+
       `,
     }),
   )
@@ -250,33 +300,18 @@ export default {
     }),
   )
     .toMatch('\'expect\' import is restricted from being used. Please use the global \'expect\' variable instead'),
-  'test: global expect': async () => expect(await eslint({ 'src/index.spec.js': 'expect(1).toEqual(1)' })).toEqual(''),
-  'test: non-test file inside test': async () => expect(
-    await eslint(
-      {
-        'package.json': endent`
-          {
-            "name": "foo",
-            "main": "dist/index.js"
-          }
-        `,
-        src: {
-          'foo.js': endent`
-            import foo from 'foo'
-
-            export default foo
-          `,
-          'index.js': 'export default 1',
-          'index.spec.js': 'expect(1).toEqual(1)',
-        },
-      },
-      { nodeEnv: 'test' },
-    ),
-  )
-    .toEqual(''),
+  'test: global expect': async () => expect(await eslint({
+    'src/index.spec.js': endent`
+      expect(1).toEqual(1)
+      
+    `,
+  })).toEqual(''),
   'test: prod dependency': async () => expect(
     await eslint({
-      'node_modules/foo/index.js': 'export default 1',
+      'node_modules/foo/index.js': endent`
+        export default 1
+        
+      `,
       'package.json': JSON.stringify({
         dependencies: {
           foo: '^1.0.0',
@@ -284,9 +319,56 @@ export default {
       }, undefined, 2),
       'src/index.spec.js': endent`
         import foo from 'foo'
+
         console.log(foo)
+
       `,
     }),
   )
     .toEqual(''),
+  'quotes: nested': async () => expect(
+    await eslint({
+      'test.js': endent`
+        export default "foo 'bar'"
+
+      `,
+    }),
+  )
+    .toEqual(''),
+  'quotes: unnecessary escapes': async () => expect(
+    await eslint({
+      'test.js': endent`
+        export default 'foo \\'bar\\''
+
+      `,
+    }),
+  )
+    .toMatch('Replace `\'foo·\\\'bar\\\'\'` with `"foo·\'bar\'"`'),
+  'arrow function block': async () => expect(
+    await eslint({
+      'test.js': endent`
+        export default foo => {
+          console.log(foo)
+        }
+
+      `,
+    }),
+  )
+    .toEqual(''),
+  /*'pipeline operator': async () => expect(
+    await eslint({
+      'test.js': endent`
+        export default async () => 1 |> (x => x + 1) |> await
+      `,
+    }),
+  )
+    .toEqual(''),*/
+  'deep nesting': async () => expect(
+    await eslint({
+      'test.js': endent`
+        export default async () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5)
+      `,
+    }),
+  )
+    .toMatch('error  Insert `⏎`  prettier/prettier'),
 }

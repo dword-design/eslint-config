@@ -2,7 +2,7 @@ import getPackageName from 'get-package-name'
 import safeRequire from 'safe-require'
 import P from 'path'
 import nodeEnv from 'better-node-env'
-import restrictedImports from './restricted-imports.config'
+import restrictedImports from './restricted-imports'
 import { omitBy, mapValues, values } from '@dword-design/functions'
 
 const packageName = safeRequire(P.join(process.cwd(), 'package.json'))?.name
@@ -16,6 +16,11 @@ const eslintRestrictedImports = restrictedImports
   |> values
 
 export default {
+  extends: [
+    getPackageName(require.resolve('eslint-config-airbnb-base')),
+    `plugin:${getPackageName(require.resolve('eslint-plugin-vue'))}/recommended`,
+    `plugin:${getPackageName(require.resolve('eslint-plugin-prettier'))}/recommended`,
+  ],
   env: {
     browser: true,
     es6: true,
@@ -28,35 +33,28 @@ export default {
       configFile: require.resolve('@dword-design/babel-config'),
     },
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:eslint-plugin-vue/recommended',
-  ],
   plugins: [
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
-    getPackageName(require.resolve('eslint-plugin-import')),
     getPackageName(require.resolve('eslint-plugin-json-format')),
-    getPackageName(require.resolve('eslint-plugin-vue')),
   ],
   rules: {
-    indent: ['error', 2, { SwitchCase: 1 }],
+    'prettier/prettier': ['error', {
+      singleQuote: true,
+      semi: false,
+      arrowParens: 'avoid',
+    }],
     'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'never'],
-    'comma-dangle': ['error', 'always-multiline'],
+    'no-console': 'off',
+    'import/no-dynamic-require': 'off',
+    'global-require': 'off',
     'arrow-parens': ['error', 'as-needed'],
     'prefer-arrow/prefer-arrow-functions': ['error'],
-    'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
-    'no-var': 'error',
-    'prefer-const': 'error',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
     'import/no-commonjs': 'error',
     'no-regex-spaces': 'off',
     'no-restricted-imports': ['error', {
       paths: eslintRestrictedImports,
     }],
+    'no-template-curly-in-string': 'off',
     'vue/jsx-uses-vars': 'error',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
@@ -67,11 +65,7 @@ export default {
       globals: {
         expect: 'readonly',
       },
-      settings: {
-        'import/resolver': require.resolve('./eslint-import-resolver-test'),
-      },
       rules: {
-        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
         'no-restricted-imports': ['error', {
           paths: [
             ...eslintRestrictedImports,
