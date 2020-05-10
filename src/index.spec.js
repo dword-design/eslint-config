@@ -4,9 +4,14 @@ import withLocalTmpDir from 'with-local-tmp-dir'
 import outputFiles from 'output-files'
 
 const eslint = (files, { nodeEnv } = {}) => withLocalTmpDir(async () => {
-  await outputFiles(files)
+  await outputFiles({
+    ...files,
+    '.eslintrc.json': JSON.stringify({
+      extends: require.resolve('.'),
+    }, undefined, 2),
+  })
   try {
-    await execa('eslint', ['--config', require.resolve('.'), '--ext', '.js,.json', '.'], { all: true, env: { ...process.env, NODE_ENV: nodeEnv } })
+    await execa('eslint', ['--ext', '.js,.json', '.'], { all: true, env: { ...process.env, NODE_ENV: nodeEnv } })
     return ''
   } catch ({ all }) {
     return all
@@ -61,14 +66,15 @@ export default {
     .toEqual(''),
   'indent: invalid': async () => expect(
     await eslint({
-      'test.txt': endent`
+      'test.js': endent`
         export default () => {
             console.log('foo')
         }
+
       `,
     }),
   )
-    .toMatch('You are linting ".", but all of the files matching the glob pattern "." are ignored.'),
+    .toMatch('error  Delete `··`  prettier/prettier'),
   'json: valid': async () => expect(
     await eslint({
       'test.json': endent`
@@ -293,6 +299,7 @@ export default {
         import expect from 'expect'
 
         expect(1).toEqual(1)
+
       `,
     }),
   )
@@ -356,6 +363,7 @@ export default {
     await eslint({
       'test.js': endent`
         export default async () => 1 |> (x => x + 1) |> await
+        
       `,
     }),
   )
