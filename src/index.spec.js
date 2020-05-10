@@ -4,12 +4,9 @@ import withLocalTmpDir from 'with-local-tmp-dir'
 import outputFiles from 'output-files'
 
 const eslint = (files, { nodeEnv } = {}) => withLocalTmpDir(async () => {
-  await outputFiles({
-    ...files,
-    '.eslintrc.json': JSON.stringify({ extends: '@dword-design' }),
-  })
+  await outputFiles(files)
   try {
-    await execa.command('eslint --ext .js,.json .', { all: true, env: { ...process.env, NODE_ENV: nodeEnv } })
+    await execa('eslint', ['--config', require.resolve('.'), '--ext', '.js,.json', '.'], { all: true, env: { ...process.env, NODE_ENV: nodeEnv } })
     return ''
   } catch ({ all }) {
     return all
@@ -355,14 +352,14 @@ export default {
     }),
   )
     .toEqual(''),
-  /*'pipeline operator': async () => expect(
+  'pipeline operator': async () => expect(
     await eslint({
       'test.js': endent`
         export default async () => 1 |> (x => x + 1) |> await
       `,
     }),
   )
-    .toEqual(''),*/
+    .toEqual(''),
   'deep nesting': async () => expect(
     await eslint({
       'test.js': endent`

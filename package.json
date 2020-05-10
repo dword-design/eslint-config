@@ -12,9 +12,9 @@
   "scripts": {
     "commit": "base commit",
     "depgraph": "base depgraph",
+    "dev": "base dev",
     "prepare": "base prepare",
     "prepublishOnly": "base prepublishOnly",
-    "release": "base release",
     "test": "base test"
   },
   "dependencies": {
@@ -40,6 +40,9 @@
     "execa": "^4.0.0",
     "output-files": "^1.1.7",
     "with-local-tmp-dir": "^2.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "baseConfig": {
     "depcheckConfig": {
