@@ -320,7 +320,7 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-syntax-json-strings" "^7.8.0"
 
-"@babel/plugin-proposal-nullish-coalescing-operator@^7.4.4", "@babel/plugin-proposal-nullish-coalescing-operator@^7.8.3":
+"@babel/plugin-proposal-nullish-coalescing-operator@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-nullish-coalescing-operator/-/plugin-proposal-nullish-coalescing-operator-7.8.3.tgz#e4572253fdeed65cddeecfdab3f928afeb2fd5d2"
   integrity sha512-TS9MlfzXpXKt6YYomudb/KU7nQI6/xnapG6in1uZxoxDghuSMZsPb6D2fyUwNYSAp4l1iR7QtFOjkqcRYcUsfw==
@@ -900,7 +900,7 @@
     postcss-custom-unit "^1.0.0"
     postcss-functions "^3.0.0"
 
-"@dword-design/babel-config@^1.0.0":
+"@dword-design/babel-config@^1.0.0", "@dword-design/babel-config@^1.0.10", "@dword-design/babel-config@^1.0.4", "@dword-design/babel-config@^1.1.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-1.2.0.tgz#a526cba593811d74bdb84b8423261e05f06ef086"
   integrity sha512-Mbq5OROlkXxL0a1kxhGhrZw38KxVHnracCOwzRS+XIEPzF4LdgijIvV/m800W0Htqm7WQJIyBCrJtJTf1gGgDA==
@@ -909,37 +909,21 @@
     "@babel/plugin-proposal-pipeline-operator" "^7.5.0"
     "@babel/preset-env" "^7.6.3"
     "@dword-design/functions" "^2.2.2"
-    "@vue/babel-preset-jsx" dword-design/jsx#fork/babel-preset-jsx
-    babel-plugin-add-module-exports "^1.0.2"
-    babel-plugin-transform-imports "^2.0.0"
-    get-package-name "^1.0.0"
-    param-case "^3.0.3"
-
-"@dword-design/babel-config@^1.0.10", "@dword-design/babel-config@^1.0.4", "@dword-design/babel-config@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-1.1.7.tgz#5b6522c038d1a05fea5e1e7cefbccc63b7b76cf5"
-  integrity sha512-AZTVScN0PJpmChpw9JdYDntaQA6dZa93P3oW2FIWL4kYvRGav8fXG+tLqjkxPtieqNNjZP6V/uPaTonJCV8qUw==
-  dependencies:
-    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.4.4"
-    "@babel/plugin-proposal-optional-chaining" "^7.6.0"
-    "@babel/plugin-proposal-pipeline-operator" "^7.5.0"
-    "@babel/preset-env" "^7.6.3"
-    "@dword-design/functions" "^2.2.2"
-    "@vue/babel-preset-jsx" dword-design/jsx#fork/babel-preset-jsx
+    "@vue/babel-preset-jsx" "github:dword-design/jsx#fork/babel-preset-jsx"
     babel-plugin-add-module-exports "^1.0.2"
     babel-plugin-transform-imports "^2.0.0"
     get-package-name "^1.0.0"
     param-case "^3.0.3"
 
 "@dword-design/base-config-node@^1.0.0", "@dword-design/base-config-node@^1.5.3":
-  version "1.5.12"
-  resolved "https://registry.yarnpkg.com/@dword-design/base-config-node/-/base-config-node-1.5.12.tgz#94e79de4e8779241d3545a85b146deafe63e6e6a"
-  integrity sha512-c1byjWprpOgO3GRu2k4QKPTQQuSZArca9nNb4z5EtrbTf+V99VX0Lff/9PdnVRx0kAnLzIFg0AZJmLmFrysJ5g==
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/base-config-node/-/base-config-node-1.6.0.tgz#dd453d9e0cc416465a404ed3e153f9eeba503d03"
+  integrity sha512-3DuJ2MTM0cB/jYzKKsIs8eamJF3G+X34fNhOJbP3VhcVwwm6BrGotGkuBMrLg9AnlJdLORyXk6GbEW5jfypm4g==
   dependencies:
     "@babel/cli" "^7.7.5"
     "@babel/core" "^7.7.5"
     "@dword-design/babel-config" "^1.0.4"
-    "@dword-design/eslint-config" "^1.2.0"
+    "@dword-design/eslint-config" "^1.9.0"
     "@dword-design/functions" "^2.2.2"
     chokidar "^3.4.0"
     debounce "^1.2.0"
@@ -971,7 +955,7 @@
     get-package-name "^1.1.0"
     node-sass "^4.13.1"
     nuxt "^2.11.0"
-    safe-require dword-design/node-safe-require#fork
+    safe-require "github:dword-design/node-safe-require#fork"
     sass-loader "^8.0.0"
 
 "@dword-design/base@^6.0.0":
@@ -987,7 +971,7 @@
     "@dword-design/depcheck-config" "^1.1.0"
     "@dword-design/depgraph" "^1.0.0"
     "@dword-design/functions" "^2.2.2"
-    "@eclass/semantic-release-ssh-commands" dword-design/semantic-release-ssh-commands#fork
+    "@eclass/semantic-release-ssh-commands" "github:dword-design/semantic-release-ssh-commands#fork"
     "@qawolf/ci-info" "^2.1.0"
     "@semantic-release/changelog" "^5.0.0"
     "@semantic-release/git" "^9.0.0"
@@ -995,7 +979,7 @@
     commitizen "^4.0.3"
     constant-case "^3.0.3"
     cz-conventional-changelog "^3.1.0"
-    depcheck dword-design/depcheck#fork
+    depcheck "github:dword-design/depcheck#fork"
     execa "^4.0.0"
     expect "^25.1.0"
     find-up "^4.1.0"
@@ -1018,7 +1002,7 @@
     parse-pkg-name "^2.0.0"
     resolve-from "^5.0.0"
     safe-readfile "^1.0.2"
-    safe-require dword-design/node-safe-require#fork
+    safe-require "github:dword-design/node-safe-require#fork"
     semantic-release "^17.0.3"
     sort-package-json "^1.39.1"
     spdx-expression-parse "^3.0.0"
@@ -1044,7 +1028,7 @@
     "@dword-design/babel-config" "^1.0.10"
     "@dword-design/depcheck-execa-detector" "^1.0.0"
     "@dword-design/get-depcheck-babel-parser" "^1.0.0"
-    depcheck dword-design/depcheck#fork
+    depcheck "github:dword-design/depcheck#fork"
 
 "@dword-design/depcheck-execa-detector@^1.0.0":
   version "1.0.1"
@@ -1102,23 +1086,25 @@
     constant-case "^3.0.3"
     find-up "^4.1.0"
 
-"@dword-design/eslint-config@^1.2.0", "@dword-design/eslint-config@^1.4.0":
-  version "1.8.5"
-  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-1.8.5.tgz#1e755535ecc210bd6e9f4befda6549624ecf6cc5"
-  integrity sha512-pczbtMkfheETNBuS0tAyHxDXeMZ4UG6YxZYXSy5d+5HheBPlBecICt7E9Y4puOG/tWyWbkLJjN81ZwN80Oyb2w==
+"@dword-design/eslint-config@^1.4.0", "@dword-design/eslint-config@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-1.9.0.tgz#c3a0083fe7d356804bf53932f589a8ccdf2f0160"
+  integrity sha512-gQpIzNA8f0TM7f915c0W2njph4sQMNQlIMW0VG2xgZRMelB5++4JSeYWP5hYjrxCNPeBR0PGtleulm70VAA8WQ==
   dependencies:
     "@dword-design/babel-config" "^1.0.0"
     "@dword-design/functions" "^2.2.2"
-    "@dword-design/resolver-test" "^1.0.0"
     babel-eslint "^11.0.0-beta.0"
     better-node-env "^1.0.3"
-    eslint-import-resolver-node "^0.3.2"
-    eslint-plugin-import dword-design/eslint-plugin-import#fork
+    eslint-config-airbnb-base "^14.1.0"
+    eslint-config-prettier "^6.11.0"
+    eslint-plugin-import "github:dword-design/eslint-plugin-import#fork"
     eslint-plugin-json-format "^2.0.1"
     eslint-plugin-prefer-arrow "^1.1.6"
+    eslint-plugin-prettier "^3.1.3"
     eslint-plugin-vue "^6.1.2"
     get-package-name "^1.0.0"
-    safe-require dword-design/node-safe-require#fork
+    prettier "github:prettier/prettier#19545e049ea424273fb6d647eefd1787d998b333"
+    safe-require "github:dword-design/node-safe-require#fork"
     vue-eslint-parser "^7.0.0"
 
 "@dword-design/functions@^1.1.1":
@@ -1126,7 +1112,7 @@
   resolved "https://registry.yarnpkg.com/@dword-design/functions/-/functions-1.1.1.tgz#255a4661dba1271f70fe40d0dc7379a14b685294"
   integrity sha512-djaV/ExhyXvhHOyisML8GGULqgbQsydpsf3Lfqe0D0GKeWPrsnYBqmJHk80wRzYqiRtbVPE9LadYVrIz/m4LUg==
   dependencies:
-    endent dword-design/endent#fork
+    endent "github:dword-design/endent#fork"
     lodash "^4.17.15"
     p-is-promise "^3.0.0"
     tinycolor2 "^1.4.1"
@@ -1156,7 +1142,7 @@
     "@dword-design/functions" "^2.7.2"
     get-package-name "^1.1.0"
     serve-static "^1.14.1"
-    webpack-atomizer-loader dword-design/webpack-atomizer-loader#fork
+    webpack-atomizer-loader "github:dword-design/webpack-atomizer-loader#fork"
 
 "@dword-design/nuxt-express-server@^1.0.0":
   version "1.0.0"
@@ -1173,7 +1159,7 @@
   dependencies:
     reset-css "^5.0.0"
 
-"@dword-design/resolver-test@^1.0.0", "@dword-design/resolver-test@^1.0.6":
+"@dword-design/resolver-test@^1.0.6":
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/@dword-design/resolver-test/-/resolver-test-1.1.6.tgz#235666c0b7ede4e249c49772f10500be9c4085ef"
   integrity sha512-p5yWTJbs6UuLaczun7VAlstE6flvpLhZ0t7e/jFd3eRK4DCDP6LDc7P82PkKJr47AGV8tGeHV13DrAbCe2oxqw==
@@ -1192,8 +1178,9 @@
     switch-fn "^1.0.2"
     vue-functional-data-merge "^3.1.0"
 
-"@eclass/semantic-release-ssh-commands@dword-design/semantic-release-ssh-commands#fork":
+"@eclass/semantic-release-ssh-commands@github:dword-design/semantic-release-ssh-commands#fork":
   version "1.0.0"
+  uid "2112496ab055a4a2500b4681448d313ce86bce65"
   resolved "https://codeload.github.com/dword-design/semantic-release-ssh-commands/tar.gz/2112496ab055a4a2500b4681448d313ce86bce65"
   dependencies:
     "@semantic-release/error" "^2.1.0"
@@ -1954,8 +1941,9 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-jsx@^1.1.2", "@vue/babel-preset-jsx@dword-design/jsx#fork/babel-preset-jsx", "@vue/babel-preset-jsx@github:dword-design/jsx#fork/babel-preset-jsx":
+"@vue/babel-preset-jsx@^1.1.2", "@vue/babel-preset-jsx@github:dword-design/jsx#fork/babel-preset-jsx":
   version "1.1.2"
+  uid "2d986d9fe3881743b3efe9755f48bb3eade788b4"
   resolved "https://codeload.github.com/dword-design/jsx/tar.gz/2d986d9fe3881743b3efe9755f48bb3eade788b4"
   dependencies:
     "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
@@ -1974,6 +1962,7 @@
 
 "@vue/babel-sugar-inject-h@dword-design/jsx#fork/babel-sugar-inject-h":
   version "1.1.2"
+  uid ecc193a1fe7558d59b2b62d441b125d22fc03f60
   resolved "https://codeload.github.com/dword-design/jsx/tar.gz/ecc193a1fe7558d59b2b62d441b125d22fc03f60"
   dependencies:
     "@babel/plugin-syntax-jsx" "^7.2.0"
@@ -3379,8 +3368,9 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-chdir@dword-design/node-chdir#fork:
+"chdir@github:dword-design/node-chdir#fork":
   version "0.0.0"
+  uid "7eaa8592e576b0f9d6d3ce699b02b04dcd8a2c16"
   resolved "https://codeload.github.com/dword-design/node-chdir/tar.gz/7eaa8592e576b0f9d6d3ce699b02b04dcd8a2c16"
 
 check-types@^8.0.3:
@@ -3456,6 +3446,7 @@ ci-info@^1.5.0, ci-info@^1.6.0:
 
 ci-info@^2.0.0, ci-info@watson/ci-info#f43f6a1cefff47fb361c88cf4b943fdbcaafe540:
   version "2.0.0"
+  uid f43f6a1cefff47fb361c88cf4b943fdbcaafe540
   resolved "https://codeload.github.com/watson/ci-info/tar.gz/f43f6a1cefff47fb361c88cf4b943fdbcaafe540"
 
 cidr-regex@^2.0.10:
@@ -4933,7 +4924,7 @@ debug@4, debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   dependencies:
     ms "^2.1.1"
 
-debuglog@^1.0.1:
+debuglog@*, debuglog@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
   integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -4958,6 +4949,7 @@ decode-uri-component@^0.2.0:
 
 dedent@0.7.0, dedent@dword-design/dedent#fork:
   version "0.7.0"
+  uid c8d46e5017d60504657c2d01b59082c0329a12a7
   resolved "https://codeload.github.com/dword-design/dedent/tar.gz/c8d46e5017d60504657c2d01b59082c0329a12a7"
   dependencies:
     babel-plugin-add-module-exports "^1.0.2"
@@ -5040,8 +5032,9 @@ delegates@^1.0.0:
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
 
-depcheck@dword-design/depcheck#fork:
+"depcheck@github:dword-design/depcheck#fork":
   version "0.0.1"
+  uid "8a9eb41006c2c6f9cbd79e4e68bf265e1c1df1dc"
   resolved "https://codeload.github.com/dword-design/depcheck/tar.gz/8a9eb41006c2c6f9cbd79e4e68bf265e1c1df1dc"
   dependencies:
     "@babel/parser" "^7.8.4"
@@ -5425,8 +5418,9 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-endent@dword-design/endent#fork:
+endent@dword-design/endent#fork, "endent@github:dword-design/endent#fork":
   version "1.4.0"
+  uid be5433db67eaec07c6c9d00ba3bed2ed946dc664
   resolved "https://codeload.github.com/dword-design/endent/tar.gz/be5433db67eaec07c6c9d00ba3bed2ed946dc664"
   dependencies:
     dedent dword-design/dedent#fork
@@ -5605,8 +5599,9 @@ eslint-module-utils@^2.4.1:
     debug "^2.6.9"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@dword-design/eslint-plugin-import#fork:
+eslint-plugin-import@dword-design/eslint-plugin-import#fork, "eslint-plugin-import@github:dword-design/eslint-plugin-import#fork":
   version "2.20.1"
+  uid "092878bcc1f9b7ef80ca755bfd77e13b15aa9ef3"
   resolved "https://codeload.github.com/dword-design/eslint-plugin-import/tar.gz/092878bcc1f9b7ef80ca755bfd77e13b15aa9ef3"
   dependencies:
     array-includes "^3.0.3"
@@ -7292,7 +7287,7 @@ import-lazy@^2.1.0:
   resolved "https://registry.yarnpkg.com/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
   integrity sha1-BWmOPUXIjo1+nZLLBYTnfwlvPkM=
 
-imurmurhash@^0.1.4:
+imurmurhash@*, imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -8585,6 +8580,11 @@ lockfile@^1.0.4:
   dependencies:
     signal-exit "^3.0.2"
 
+lodash._baseindexof@*:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
+  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
+
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -8593,10 +8593,32 @@ lodash._baseuniq@~4.6.0:
     lodash._createset "~4.0.0"
     lodash._root "~3.0.0"
 
+lodash._bindcallback@*:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
+  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
+
+lodash._cacheindexof@*:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
+  integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
+
+lodash._createcache@*:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
+  integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
+  dependencies:
+    lodash._getnative "^3.0.0"
+
 lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
+
+lodash._getnative@*, lodash._getnative@^3.0.0:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
+  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
@@ -8662,6 +8684,11 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.restparam@*:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
+  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
 lodash.template@^4.5.0:
   version "4.5.0"
@@ -9763,6 +9790,7 @@ npm@^6.10.3:
     cmd-shim "^3.0.3"
     columnify "~1.5.4"
     config-chain "^1.1.12"
+    debuglog "*"
     detect-indent "~5.0.0"
     detect-newline "^2.1.0"
     dezalgo "~1.0.3"
@@ -9777,6 +9805,7 @@ npm@^6.10.3:
     has-unicode "~2.0.1"
     hosted-git-info "^2.8.8"
     iferr "^1.0.2"
+    imurmurhash "*"
     infer-owner "^1.0.4"
     inflight "~1.0.6"
     inherits "^2.0.4"
@@ -9795,8 +9824,14 @@ npm@^6.10.3:
     libnpx "^10.2.2"
     lock-verify "^2.1.0"
     lockfile "^1.0.4"
+    lodash._baseindexof "*"
     lodash._baseuniq "~4.6.0"
+    lodash._bindcallback "*"
+    lodash._cacheindexof "*"
+    lodash._createcache "*"
+    lodash._getnative "*"
     lodash.clonedeep "~4.5.0"
+    lodash.restparam "*"
     lodash.union "~4.6.0"
     lodash.uniq "~4.5.0"
     lodash.without "~4.4.0"
@@ -11416,8 +11451,9 @@ prettier@^1.18.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
 
-prettier@prettier/prettier#19545e049ea424273fb6d647eefd1787d998b333:
+"prettier@github:prettier/prettier#19545e049ea424273fb6d647eefd1787d998b333", prettier@prettier/prettier#19545e049ea424273fb6d647eefd1787d998b333:
   version "2.1.0-dev"
+  uid "19545e049ea424273fb6d647eefd1787d998b333"
   resolved "https://codeload.github.com/prettier/prettier/tar.gz/19545e049ea424273fb6d647eefd1787d998b333"
   dependencies:
     "@angular/compiler" "9.0.5"
@@ -12394,8 +12430,9 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
-safe-require@dword-design/node-safe-require#fork:
+safe-require@dword-design/node-safe-require#fork, "safe-require@github:dword-design/node-safe-require#fork":
   version "1.0.3"
+  uid "53682cf7aa25d784c6278f8ccbc9986ad0dd5f38"
   resolved "https://codeload.github.com/dword-design/node-safe-require/tar.gz/53682cf7aa25d784c6278f8ccbc9986ad0dd5f38"
 
 "safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.0.2, safer-buffer@^2.1.0, safer-buffer@~2.1.0:
@@ -14445,8 +14482,9 @@ wcwidth@^1.0.0:
   dependencies:
     defaults "^1.0.3"
 
-webpack-atomizer-loader@dword-design/webpack-atomizer-loader#fork:
+"webpack-atomizer-loader@github:dword-design/webpack-atomizer-loader#fork":
   version "1.0.2"
+  uid "7fd9e8d7eab26934de91eac026cf37589234772e"
   resolved "https://codeload.github.com/dword-design/webpack-atomizer-loader/tar.gz/7fd9e8d7eab26934de91eac026cf37589234772e"
   dependencies:
     atomizer "^3.5.1"
@@ -14633,7 +14671,7 @@ with-local-tmp-dir@^2.2.2:
   resolved "https://registry.yarnpkg.com/with-local-tmp-dir/-/with-local-tmp-dir-2.2.9.tgz#e4bffa3add9d4bb04a915b1fc79c30bd26eb805a"
   integrity sha512-9tnGwchonFxKVP/S+/6WgB0aNR8x8ovJ2xFIW1prEGHU/PbEZxptRmmj+DhadrmxkkkBwcMVK1CXq8UukgCskQ==
   dependencies:
-    chdir dword-design/node-chdir#fork
+    chdir "github:dword-design/node-chdir#fork"
     tmp-promise "^2.0.2"
 
 word-wrap@^1.0.3, word-wrap@~1.2.3:
