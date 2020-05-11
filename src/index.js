@@ -2,12 +2,13 @@ import getPackageName from 'get-package-name'
 import safeRequire from 'safe-require'
 import P from 'path'
 import nodeEnv from 'better-node-env'
-import restrictedImports from './restricted-imports'
 import { omitBy, mapValues, values } from '@dword-design/functions'
+import restrictedImports from './restricted-imports.json'
 
 const packageName = safeRequire(P.join(process.cwd(), 'package.json'))?.name
 
-const eslintRestrictedImports = restrictedImports
+const eslintRestrictedImports =
+  restrictedImports
   |> omitBy(newName => newName === packageName)
   |> mapValues((newName, oldName) => ({
     name: oldName,
@@ -18,8 +19,12 @@ const eslintRestrictedImports = restrictedImports
 export default {
   extends: [
     getPackageName(require.resolve('eslint-config-airbnb-base')),
-    `plugin:${getPackageName(require.resolve('eslint-plugin-vue'))}/recommended`,
-    `plugin:${getPackageName(require.resolve('eslint-plugin-prettier'))}/recommended`,
+    `plugin:${getPackageName(
+      require.resolve('eslint-plugin-vue')
+    )}/recommended`,
+    `plugin:${getPackageName(
+      require.resolve('eslint-plugin-prettier')
+    )}/recommended`,
   ],
   env: {
     browser: true,
@@ -38,11 +43,14 @@ export default {
     getPackageName(require.resolve('eslint-plugin-json-format')),
   ],
   rules: {
-    'prettier/prettier': ['error', {
-      singleQuote: true,
-      semi: false,
-      arrowParens: 'avoid',
-    }],
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        semi: false,
+        arrowParens: 'avoid',
+      },
+    ],
     'linebreak-style': ['error', 'unix'],
     'no-console': 'off',
     'import/no-dynamic-require': 'off',
@@ -51,9 +59,12 @@ export default {
     'prefer-arrow/prefer-arrow-functions': ['error'],
     'import/no-commonjs': 'error',
     'no-regex-spaces': 'off',
-    'no-restricted-imports': ['error', {
-      paths: eslintRestrictedImports,
-    }],
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: eslintRestrictedImports,
+      },
+    ],
     'no-template-curly-in-string': 'off',
     'vue/jsx-uses-vars': 'error',
     'vue/require-default-prop': 'off',
@@ -66,12 +77,18 @@ export default {
         expect: 'readonly',
       },
       rules: {
-        'no-restricted-imports': ['error', {
-          paths: [
-            ...eslintRestrictedImports,
-            { name: 'expect', message: 'Please use the global \'expect\' variable instead.' },
-          ],
-        }],
+        'no-restricted-imports': [
+          'error',
+          {
+            paths: [
+              ...eslintRestrictedImports,
+              {
+                name: 'expect',
+                message: "Please use the global 'expect' variable instead.",
+              },
+            ],
+          },
+        ],
       },
     },
   ],
