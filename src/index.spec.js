@@ -417,4 +417,13 @@ export default {
       `,
       })
     ).toMatch('error  Insert `⏎`  prettier/prettier'),
+  'single export': async () =>
+    expect(
+      await eslint({
+        'test.js': endent`
+          export const foo = 'bar'
+
+        `,
+      })
+    ).toEqual(''),
 }

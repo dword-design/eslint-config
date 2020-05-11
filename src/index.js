@@ -66,6 +66,7 @@ export default {
       },
     ],
     'no-template-curly-in-string': 'off',
+    'import/prefer-default-export': 'off',
     'vue/jsx-uses-vars': 'error',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
