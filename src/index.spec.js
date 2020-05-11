@@ -3,7 +3,7 @@ import execa from 'execa'
 import withLocalTmpDir from 'with-local-tmp-dir'
 import outputFiles from 'output-files'
 
-const runTest = ({ files, match }) => () =>
+const runTest = ({ files, match = '' }) => () =>
   withLocalTmpDir(async () => {
     await outputFiles({
       ...files,
@@ -21,7 +21,11 @@ const runTest = ({ files, match }) => () =>
       })
       expect(all).toBeFalsy()
     } catch (error) {
-      expect(error.all).toMatch(match)
+      if (match) {
+        expect(error.all).toMatch(match)
+      } else {
+        throw error
+      }
     }
   })
 
@@ -399,6 +403,17 @@ export default {
     files: {
       'test.js': endent`
         export const foo = 'bar'
+
+      `,
+    },
+  },
+  'param reassign': {
+    files: {
+      'test.js': endent`
+        export default ({ foo }) => {
+          foo = 'bar'
+          console.log(foo)
+        }
 
       `,
     },
