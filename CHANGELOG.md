@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/dword-design/eslint-config/compare/v1.10.0...v1.11.0) (2020-05-11)
+
+
+### Features
+
+* allow param reassign ([e216f80](https://github.com/dword-design/eslint-config/commit/e216f80979ea16b829b7872e7281fad09c5946f9))
+
 # [1.10.0](https://github.com/dword-design/eslint-config/compare/v1.9.0...v1.10.0) (2020-05-11)
 
 
