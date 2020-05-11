@@ -1,3 +1,16 @@
+# [1.10.0](https://github.com/dword-design/eslint-config/compare/v1.9.0...v1.10.0) (2020-05-11)
+
+
+### Bug Fixes
+
+* **config:** Update changed files ([480bd35](https://github.com/dword-design/eslint-config/commit/480bd357e006f8d80949e353d468ca341081f55a))
+* upgrade base ([e60337e](https://github.com/dword-design/eslint-config/commit/e60337ec0df3f42230c7c758cc1b820d28deae36))
+
+
+### Features
+
+* remove prefer-default-export rule ([bb45e3d](https://github.com/dword-design/eslint-config/commit/bb45e3d774ade2e9e24ce3295b1e0b3b798c4842))
+
 # [1.9.0](https://github.com/dword-design/eslint-config/compare/v1.8.5...v1.9.0) (2020-05-10)
 
 
