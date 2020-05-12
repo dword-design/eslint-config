@@ -425,4 +425,14 @@ export default {
       `,
     },
   },
+  'self-closing void elements': {
+    files: {
+      'test.vue': endent`
+        <template>
+          <img />
+        </template>
+
+      `,
+    },
+  },
 } |> mapValues(runTest)
