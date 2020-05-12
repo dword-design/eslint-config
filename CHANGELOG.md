@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/dword-design/eslint-config/compare/v1.13.0...v1.14.0) (2020-05-12)
+
+
+### Features
+
+* allow self-closing void elements ([6197923](https://github.com/dword-design/eslint-config/commit/61979238301cbb8b308824f2bd8aa47090206be5))
+
 # [1.13.0](https://github.com/dword-design/eslint-config/compare/v1.12.1...v1.13.0) (2020-05-12)
 
 
