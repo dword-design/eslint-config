@@ -407,4 +407,22 @@ export default {
       `,
     },
   },
+  'v-html': {
+    files: {
+      'test.vue': endent`
+        <template>
+          <div v-html="foo" />
+        </template>
+        
+        <script>
+        export default {
+          computed: {
+            foo: () => 'foo',
+          },
+        }
+        </script>
+
+      `,
+    },
+  },
 } |> mapValues(runTest)
