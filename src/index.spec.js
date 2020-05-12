@@ -136,27 +136,6 @@ export default {
     },
     match: 'Format Error: unexpected "  "',
   },
-  'jsx: with var': {
-    files: {
-      'test.js': endent`
-        const Foo = <div>Hello world</div>
-        export default (
-          <div>
-            <Foo />
-          </div>
-        )
-
-      `,
-    },
-  },
-  'jsx: valid': {
-    files: {
-      'test.js': endent`
-        export default <div>Hello world</div>
-        
-      `,
-    },
-  },
   'package.json: valid': {
     files: {
       'package.json': endent`
