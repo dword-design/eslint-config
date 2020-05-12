@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/dword-design/eslint-config/compare/v1.11.0...v1.12.0) (2020-05-12)
+
+
+### Features
+
+* remove jsx ([e8afc22](https://github.com/dword-design/eslint-config/commit/e8afc22ac2c57498072434519dc4dbab4f75fb68))
+
 # [1.11.0](https://github.com/dword-design/eslint-config/compare/v1.10.0...v1.11.0) (2020-05-11)
 
 
