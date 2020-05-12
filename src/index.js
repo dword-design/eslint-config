@@ -70,6 +70,7 @@ export default {
     'no-param-reassign': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
+    'vue/max-attributes-per-line': 'off', // conflicts with prettier
   },
   overrides: [
     {

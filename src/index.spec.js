@@ -16,7 +16,7 @@ const runTest = ({ files, match = '' }) => () =>
       ),
     })
     try {
-      const { all } = await execa('eslint', ['--ext', '.js,.json', '.'], {
+      const { all } = await execa('eslint', ['--ext', '.js,.json,.vue', '.'], {
         all: true,
       })
       expect(all).toBeFalsy()
@@ -393,6 +393,16 @@ export default {
           foo = 'bar'
           console.log(foo)
         }
+
+      `,
+    },
+  },
+  'multiple attributes per line': {
+    files: {
+      'test.vue': endent`
+        <template>
+          <div class="foo" style="color: red" />
+        </template>
 
       `,
     },
