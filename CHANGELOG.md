@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/dword-design/eslint-config/compare/v1.12.1...v1.13.0) (2020-05-12)
+
+
+### Features
+
+* enable v-html ([1f08991](https://github.com/dword-design/eslint-config/commit/1f089916f1a8d8a409f106b766f7f348ac1331ca))
+
 ## [1.12.1](https://github.com/dword-design/eslint-config/compare/v1.12.0...v1.12.1) (2020-05-12)
 
 
