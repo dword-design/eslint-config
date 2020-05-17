@@ -435,4 +435,12 @@ export default {
       `,
     },
   },
+  'nested ternary': {
+    files: {
+      'test.js': endent`
+        export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
+
+      `,
+    },
+  },
 } |> mapValues(runTest)
