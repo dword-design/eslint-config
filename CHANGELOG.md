@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/dword-design/eslint-config/compare/v1.14.0...v1.15.0) (2020-05-17)
+
+
+### Features
+
+* upgrades and enable nested ternaries ([ae4a1af](https://github.com/dword-design/eslint-config/commit/ae4a1aff724c4d76f4aafac47e462a59506ce2ac))
+
 # [1.14.0](https://github.com/dword-design/eslint-config/compare/v1.13.0...v1.14.0) (2020-05-12)
 
 
