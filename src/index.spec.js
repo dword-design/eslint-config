@@ -443,4 +443,24 @@ export default {
       `,
     },
   },
+  'unnamed function': {
+    files: {
+      'test.js': endent`
+        console.log(function () {
+          console.log(this)
+        })
+
+      `,
+    },
+  },
+  'new lower-case': {
+    files: {
+      'test.js': endent`
+        const foo = () => {}
+
+        export default new foo()
+
+      `,
+    },
+  },
 } |> mapValues(runTest)

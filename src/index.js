@@ -70,6 +70,8 @@ export default {
     'vue/no-v-html': 'off',
     'no-param-reassign': 'off',
     'no-nested-ternary': 'off',
+    'func-names': ['error', 'never'],
+    'new-cap': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
     'vue/max-attributes-per-line': 'off', // conflicts with prettier
