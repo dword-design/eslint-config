@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/dword-design/eslint-config/compare/v1.16.0...v1.16.1) (2020-05-20)
+
+
+### Bug Fixes
+
+* allow underscore dangle ([48c06e9](https://github.com/dword-design/eslint-config/commit/48c06e929b58dcab18c6e258025fa43aebe95bd4))
+
 # [1.16.0](https://github.com/dword-design/eslint-config/compare/v1.15.0...v1.16.0) (2020-05-17)
 
 
