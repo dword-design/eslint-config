@@ -463,4 +463,14 @@ export default {
       `,
     },
   },
+  'underscore dangle': {
+    files: {
+      'test.js': endent`
+        const foo = {}
+
+        console.log(foo._bar)
+
+      `,
+    },
+  },
 } |> mapValues(runTest)

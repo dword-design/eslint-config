@@ -72,6 +72,7 @@ export default {
     'no-nested-ternary': 'off',
     'func-names': ['error', 'never'],
     'new-cap': 'off',
+    'no-underscore-dangle': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
     'vue/max-attributes-per-line': 'off', // conflicts with prettier
