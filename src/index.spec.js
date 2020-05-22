@@ -473,4 +473,19 @@ export default {
       `,
     },
   },
+  'html indent': {
+    files: {
+      'test.vue': endent`
+        <template>
+          <div
+            :is-active="
+              $route.name === 'task-view-detail' &&
+              $route.params.taskViewId === entity._id
+            "
+          />
+        </template>
+
+      `,
+    },
+  },
 } |> mapValues(runTest)

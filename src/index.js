@@ -77,6 +77,7 @@ export default {
     'vue/require-prop-types': 'off',
     'vue/max-attributes-per-line': 'off', // conflicts with prettier
     'vue/html-self-closing': 'off', // conflicts with prettier
+    'vue/html-indent': 'off', // conflicts with prettier
   },
   overrides: [
     {
