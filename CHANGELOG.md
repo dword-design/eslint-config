@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/dword-design/eslint-config/compare/v1.16.1...v1.16.2) (2020-05-22)
+
+
+### Bug Fixes
+
+* fix vue html indent ([3831ac3](https://github.com/dword-design/eslint-config/commit/3831ac31575e098afe3b67cc134e4fb6f7bed4ef))
+
 ## [1.16.1](https://github.com/dword-design/eslint-config/compare/v1.16.0...v1.16.1) (2020-05-20)
 
 
