@@ -1,32 +1,29 @@
-import { endent, mapValues } from '@dword-design/functions'
-import execa from 'execa'
+import { endent, mapValues, map, filter } from '@dword-design/functions'
 import withLocalTmpDir from 'with-local-tmp-dir'
 import outputFiles from 'output-files'
+import { ESLint } from 'eslint'
+import P from 'path'
+import stealthyRequire from 'stealthy-require'
 
-const runTest = ({ files, match = '' }) => () =>
+const runTest = ({ files, result: expectedResult = [] }) => () =>
   withLocalTmpDir(async () => {
-    await outputFiles({
-      ...files,
-      '.eslintrc.json': JSON.stringify(
-        {
-          extends: require.resolve('.'),
-        },
-        undefined,
-        2
-      ),
+    await outputFiles(files)
+    const config = stealthyRequire(require.cache, () => require('.'))
+    const eslint = new ESLint({
+      extensions: ['.js', '.json', '.vue'],
+      baseConfig: config,
     })
-    try {
-      const { all } = await execa('eslint', ['--ext', '.js,.json,.vue', '.'], {
-        all: true,
-      })
-      expect(all).toBeFalsy()
-    } catch (error) {
-      if (match) {
-        expect(error.all).toMatch(match)
-      } else {
-        throw error
-      }
-    }
+    const result =
+      eslint.lintFiles('**')
+      |> await
+      |> filter(
+        fileResult => fileResult.errorCount + fileResult.warningCount > 0
+      )
+      |> map(fileResult => ({
+        filePath: P.relative(process.cwd(), fileResult.filePath),
+        messages: fileResult.messages |> map('message'),
+      }))
+    expect(result).toEqual(expectedResult)
   })
 
 export default {
@@ -46,10 +43,17 @@ export default {
         import foo from 'foo'
 
         console.log(foo)
+
       `,
     },
-    match:
-      "'foo' should be listed in the project's dependencies, not devDependencies",
+    result: [
+      {
+        filePath: 'index.js',
+        messages: [
+          "'foo' should be listed in the project's dependencies, not devDependencies.",
+        ],
+      },
+    ],
   },
   'dev dependency in source': {
     files: {
@@ -65,10 +69,17 @@ export default {
         import foo from 'foo'
 
         console.log(foo)
+
       `,
     },
-    match:
-      "'foo' should be listed in the project's dependencies, not devDependencies",
+    result: [
+      {
+        filePath: P.join('src', 'index.js'),
+        messages: [
+          "'foo' should be listed in the project's dependencies, not devDependencies.",
+        ],
+      },
+    ],
   },
   'indent: valid': {
     files: {
@@ -89,7 +100,12 @@ export default {
 
       `,
     },
-    match: 'Delete `··`  prettier/prettier',
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Delete `··`'],
+      },
+    ],
   },
   'json: valid': {
     files: {
@@ -114,7 +130,12 @@ export default {
         }
       `,
     },
-    match: 'Unexpected token',
+    result: [
+      {
+        filePath: 'test.json',
+        messages: ['Unexpected token }'],
+      },
+    ],
   },
   'json: no indent': {
     files: {
@@ -124,7 +145,12 @@ export default {
         }
       `,
     },
-    match: 'Format Error: expected "  "',
+    result: [
+      {
+        filePath: 'test.json',
+        messages: ['Format Error: expected "  " '],
+      },
+    ],
   },
   'json: indent too big': {
     files: {
@@ -134,7 +160,12 @@ export default {
       }
     `,
     },
-    match: 'Format Error: unexpected "  "',
+    result: [
+      {
+        filePath: 'test.json',
+        messages: ['Format Error: unexpected "  "'],
+      },
+    ],
   },
   'package.json: valid': {
     files: {
@@ -155,7 +186,12 @@ export default {
       }
     `,
     },
-    match: 'JSON is not sorted',
+    result: [
+      {
+        filePath: 'package.json',
+        messages: ['JSON is not sorted'],
+      },
+    ],
   },
   'arrow function': {
     files: {
@@ -168,11 +204,18 @@ export default {
   'function block': {
     files: {
       'test.js': endent`
-        export default function () { console.log('foo') }
+        export default function () {
+          console.log('foo')
+        }
 
       `,
     },
-    match: 'Prefer using arrow functions over plain functions',
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Prefer using arrow functions over plain functions'],
+      },
+    ],
   },
   'prod dependency in src': {
     files: {
@@ -217,23 +260,36 @@ export default {
         }
       `,
       'test.js': endent`
-        import puppeteer from 'puppeteer'
-
-        console.log(puppeteer)
+        import 'puppeteer'
 
       `,
     },
   },
   'restricted import: outside': {
     files: {
+      'node_modules/puppeteer/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            puppeteer: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
       'test.js': endent`
-        import puppeteer from 'puppeteer'
-        console.log(puppeteer)
+        import 'puppeteer'
 
       `,
     },
-    match:
-      "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
+    result: [
+      {
+        filePath: 'test.js',
+        messages: [
+          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead.",
+        ],
+      },
+    ],
   },
   valid: {
     files: {
@@ -250,7 +306,12 @@ export default {
 
       `,
     },
-    match: 'error  Delete `;`',
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Delete `;`'],
+      },
+    ],
   },
   'test: dev dependency': {
     files: {
@@ -275,14 +336,29 @@ export default {
   },
   'test: restricted import': {
     files: {
+      'node_modules/puppeteer/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            puppeteer: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
       'src/index.spec.js': endent`
-        import puppeteer from 'puppeteer'
-        console.log(puppeteer)
+        import 'puppeteer'
 
       `,
     },
-    match:
-      "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
+    result: [
+      {
+        filePath: P.join('src', 'index.spec.js'),
+        messages: [
+          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead.",
+        ],
+      },
+    ],
   },
   'test: imported expect': {
     files: {
@@ -301,8 +377,14 @@ export default {
 
       `,
     },
-    match:
-      "'expect' import is restricted from being used. Please use the global 'expect' variable instead",
+    result: [
+      {
+        filePath: P.join('src', 'index.spec.js'),
+        messages: [
+          "'expect' import is restricted from being used. Please use the global 'expect' variable instead.",
+        ],
+      },
+    ],
   },
   'test: global expect': {
     files: {
@@ -350,7 +432,12 @@ export default {
 
       `,
     },
-    match: "Replace `'foo·\\'bar\\''` with `\"foo·'bar'\"`",
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ["Replace `'foo·\\'bar\\''` with `\"foo·'bar'\"`"],
+      },
+    ],
   },
   'arrow function block': {
     files: {
@@ -376,7 +463,12 @@ export default {
         export default async () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5)
       `,
     },
-    match: 'error  Insert `⏎`',
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Insert `⏎`'],
+      },
+    ],
   },
   'single export': {
     files: {
