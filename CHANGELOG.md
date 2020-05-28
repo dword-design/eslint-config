@@ -1,3 +1,10 @@
+## [1.16.4](https://github.com/dword-design/eslint-config/compare/v1.16.3...v1.16.4) (2020-05-28)
+
+
+### Bug Fixes
+
+* optimize tests ([7174289](https://github.com/dword-design/eslint-config/commit/7174289b4834f57f103a9c05a7354588dd158423))
+
 ## [1.16.3](https://github.com/dword-design/eslint-config/compare/v1.16.2...v1.16.3) (2020-05-28)
 
 
