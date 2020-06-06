@@ -11,7 +11,7 @@ const runTest = ({ files, result: expectedResult = [] }) => () =>
     const config = stealthyRequire(require.cache, () => require('.'))
     const eslint = new ESLint({
       extensions: ['.js', '.json', '.vue'],
-      baseConfig: config,
+      overrideConfig: config,
     })
     const result =
       eslint.lintFiles('**')
@@ -460,13 +460,16 @@ export default {
   'deep nesting': {
     files: {
       'test.js': endent`
-        export default async () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5)
+        export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344)
+
       `,
     },
     result: [
       {
         filePath: 'test.js',
-        messages: ['Insert `⏎`'],
+        messages: [
+          'Replace `·console.log(()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344` with `⏎··console.log(⏎····()·=>⏎······(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344⏎··`',
+        ],
       },
     ],
   },
@@ -579,5 +582,33 @@ export default {
 
       `,
     },
+  },
+  'async without await': {
+    files: {
+      'test.js': endent`
+        export default async () => console.log('foo')
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ["Async arrow function has no 'await' expression."],
+      },
+    ],
+  },
+  'promise then': {
+    files: {
+      'test.js': endent`
+        export default () => Promise.resolve().then(x => x)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Prefer await to then().'],
+      },
+    ],
   },
 } |> mapValues(runTest)

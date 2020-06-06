@@ -20,6 +20,9 @@ export default {
   extends: [
     getPackageName(require.resolve('eslint-config-airbnb-base')),
     `plugin:${getPackageName(
+      require.resolve('eslint-plugin-promise')
+    )}/recommended`,
+    `plugin:${getPackageName(
       require.resolve('eslint-plugin-vue')
     )}/recommended`,
     `plugin:${getPackageName(
@@ -73,6 +76,9 @@ export default {
     'func-names': ['error', 'never'],
     'new-cap': 'off',
     'no-underscore-dangle': 'off',
+    'require-await': 'error',
+    'promise/prefer-await-to-then': 'error',
+    'promise/prefer-await-to-callbacks': 'error',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
     'vue/max-attributes-per-line': 'off', // conflicts with prettier
