@@ -79,6 +79,12 @@ export default {
     'require-await': 'error',
     'promise/prefer-await-to-then': 'error',
     'promise/prefer-await-to-callbacks': 'error',
+    'no-restricted-syntax': [
+      'error',
+      'ObjectPattern',
+      'ArrayPattern',
+      "LogicalExpression[operator='??']",
+    ],
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
     'vue/max-attributes-per-line': 'off', // conflicts with prettier

@@ -484,7 +484,7 @@ export default {
   'param reassign': {
     files: {
       'test.js': endent`
-        export default ({ foo }) => {
+        export default foo => {
           foo = 'bar'
           console.log(foo)
         }
@@ -608,6 +608,64 @@ export default {
       {
         filePath: 'test.js',
         messages: ['Prefer await to then().'],
+      },
+    ],
+  },
+  'destructuring: object': {
+    files: {
+      'test.js': endent`
+        const { foo } = { foo: 'bar' }
+        console.log(foo)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ["Using 'ObjectPattern' is not allowed."],
+      },
+    ],
+  },
+  'destructuring: array': {
+    files: {
+      'test.js': endent`
+        const [foo] = ['bar']
+        console.log(foo)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ["Using 'ArrayPattern' is not allowed."],
+      },
+    ],
+  },
+  'destructuring: parameter': {
+    files: {
+      'test.js': endent`
+        export default ({ foo }) => console.log(foo)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ["Using 'ObjectPattern' is not allowed."],
+      },
+    ],
+  },
+  'nullish coalescing': {
+    files: {
+      'test.js': endent`
+        console.log(1 ?? 2)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ["Using 'LogicalExpression[operator='??']' is not allowed."],
       },
     ],
   },
