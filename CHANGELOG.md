@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/dword-design/eslint-config/compare/v1.17.0...v1.18.0) (2020-06-06)
+
+
+### Features
+
+* disable destructuring and nullish coalescing operator ([6599e30](https://github.com/dword-design/eslint-config/commit/6599e30af1642985d26553302512b9388067b9d1))
+
 # [1.17.0](https://github.com/dword-design/eslint-config/compare/v1.16.4...v1.17.0) (2020-06-06)
 
 
