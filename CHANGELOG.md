@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/dword-design/eslint-config/compare/v1.16.4...v1.17.0) (2020-06-06)
+
+
+### Features
+
+* add async linting rules ([5961692](https://github.com/dword-design/eslint-config/commit/5961692835376752f10101667a3c4094869b84d4))
+
 ## [1.16.4](https://github.com/dword-design/eslint-config/compare/v1.16.3...v1.16.4) (2020-05-28)
 
 
