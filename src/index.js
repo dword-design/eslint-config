@@ -1,7 +1,6 @@
 import getPackageName from 'get-package-name'
 import safeRequire from 'safe-require'
 import P from 'path'
-import nodeEnv from 'better-node-env'
 import { omitBy, mapValues, values } from '@dword-design/functions'
 import restrictedImports from './restricted-imports.json'
 
@@ -94,7 +93,7 @@ export default {
   },
   overrides: [
     {
-      files: nodeEnv === 'test' ? ['**'] : ['**/*.spec.js'],
+      files: '**/*.spec.js',
       globals: {
         expect: 'readonly',
       },

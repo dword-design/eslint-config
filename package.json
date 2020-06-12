@@ -20,7 +20,6 @@
     "@dword-design/babel-config": "^1.0.0",
     "@dword-design/functions": "^2.2.2",
     "babel-eslint": "^11.0.0-beta.0",
-    "better-node-env": "^1.0.3",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "dword-design/eslint-plugin-import#fork",
