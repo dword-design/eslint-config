@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/dword-design/eslint-config/compare/v1.18.0...v1.18.1) (2020-06-12)
+
+
+### Bug Fixes
+
+* remove destructuring rule ([7fd04f9](https://github.com/dword-design/eslint-config/commit/7fd04f9e12c83f8f8575a51d3f2e176526dcc0c5))
+
 # [1.18.0](https://github.com/dword-design/eslint-config/compare/v1.17.0...v1.18.0) (2020-06-06)
 
 
