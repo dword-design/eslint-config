@@ -1,3 +1,10 @@
+## [1.18.2](https://github.com/dword-design/eslint-config/compare/v1.18.1...v1.18.2) (2020-06-12)
+
+
+### Bug Fixes
+
+* fix ([7fbef09](https://github.com/dword-design/eslint-config/commit/7fbef09840a5412e6f0e59eacca586c869cfa5ad))
+
 ## [1.18.1](https://github.com/dword-design/eslint-config/compare/v1.18.0...v1.18.1) (2020-06-12)
 
 
