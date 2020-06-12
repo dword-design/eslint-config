@@ -79,6 +79,7 @@ export default {
     'require-await': 'error',
     'promise/prefer-await-to-then': 'error',
     'promise/prefer-await-to-callbacks': 'error',
+    'prefer-destructuring': 'off',
     'no-restricted-syntax': [
       'error',
       'ObjectPattern',

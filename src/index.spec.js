@@ -655,6 +655,16 @@ export default {
       },
     ],
   },
+  'possible destructuring': {
+    files: {
+      'test.js': endent`
+        const bar = { foo: 'test' }
+        const foo = bar.foo
+        console.log(foo)
+
+      `,
+    },
+  },
   'nullish coalescing': {
     files: {
       'test.js': endent`
