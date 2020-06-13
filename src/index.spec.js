@@ -679,4 +679,71 @@ export default {
       },
     ],
   },
+  'import order': {
+    files: {
+      'node_modules/foo/index.js': endent`
+        export const foo = 'foo'
+
+      `,
+      'node_modules/bar/index.js': endent`
+        export const foo = 'foo'
+
+      `,
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            bar: '^1.0.0',
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+      'test.js': endent`
+        import foo from 'foo'
+        import bar from 'bar'
+
+        console.log(foo)
+        console.log(bar)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Run autofix to sort these imports!'],
+      },
+    ],
+  },
+  'named import order': {
+    files: {
+      'node_modules/foo/index.js': endent`
+        export const foo = 'foo'
+        export const bar = 'bar'
+
+      `,
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+      'test.js': endent`
+        import { foo, bar } from 'foo'
+
+        console.log(foo)
+        console.log(bar)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Run autofix to sort these imports!'],
+      },
+    ],
+  },
 } |> mapValues(runTest)

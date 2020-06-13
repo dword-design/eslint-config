@@ -22,6 +22,9 @@ export default {
       require.resolve('eslint-plugin-promise')
     )}/recommended`,
     `plugin:${getPackageName(
+      require.resolve('eslint-plugin-import')
+    )}/recommended`,
+    `plugin:${getPackageName(
       require.resolve('eslint-plugin-vue')
     )}/recommended`,
     `plugin:${getPackageName(
@@ -42,6 +45,7 @@ export default {
   },
   plugins: [
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
+    getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
     getPackageName(require.resolve('eslint-plugin-json-format')),
   ],
   rules: {
@@ -69,6 +73,7 @@ export default {
     ],
     'no-template-curly-in-string': 'off',
     'import/prefer-default-export': 'off',
+    'simple-import-sort/sort': 'error',
     'vue/no-v-html': 'off',
     'no-param-reassign': 'off',
     'no-nested-ternary': 'off',
