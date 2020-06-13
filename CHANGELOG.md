@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/dword-design/eslint-config/compare/v1.18.2...v1.19.0) (2020-06-13)
+
+
+### Features
+
+* add import sorting ([36fe612](https://github.com/dword-design/eslint-config/commit/36fe6120dbeddf52052f6cc4070b907b395214b0))
+
 ## [1.18.2](https://github.com/dword-design/eslint-config/compare/v1.18.1...v1.18.2) (2020-06-12)
 
 
