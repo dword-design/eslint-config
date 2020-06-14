@@ -5,7 +5,6 @@ import { omitBy, mapValues, values } from '@dword-design/functions'
 import restrictedImports from './restricted-imports.json'
 
 const packageName = safeRequire(P.join(process.cwd(), 'package.json'))?.name
-
 const eslintRestrictedImports =
   restrictedImports
   |> omitBy(newName => newName === packageName)
@@ -90,11 +89,26 @@ export default {
       'ArrayPattern',
       "LogicalExpression[operator='??']",
     ],
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'never', prev: '*', next: '*' },
+      { blankLine: 'always', prev: 'import', next: '*' },
+      { blankLine: 'any', prev: 'import', next: 'import' },
+      { blankLine: 'always', prev: '*', next: 'export' },
+    ],
+    'no-inline-comments': 'error',
+    'lines-around-comment': 'error',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
-    'vue/max-attributes-per-line': 'off', // conflicts with prettier
-    'vue/html-self-closing': 'off', // conflicts with prettier
-    'vue/html-indent': 'off', // conflicts with prettier
+
+    // conflicts with prettier
+    'vue/max-attributes-per-line': 'off',
+
+    // conflicts with prettier
+    'vue/html-self-closing': 'off',
+
+    // conflicts with prettier
+    'vue/html-indent': 'off',
   },
   overrides: [
     {

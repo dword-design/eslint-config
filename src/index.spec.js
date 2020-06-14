@@ -58,13 +58,15 @@ export default {
   'dev dependency in source': {
     files: {
       'node_modules/foo/index.js': 'export default 1',
-      'package.json': endent`
+      'package.json': JSON.stringify(
         {
-          "devDependencies": {
-            "foo": "^1.0.0"
-          }
-        }
-      `,
+          devDependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
       'src/index.js': endent`
         import foo from 'foo'
 
@@ -169,22 +171,26 @@ export default {
   },
   'package.json: valid': {
     files: {
-      'package.json': endent`
+      'package.json': JSON.stringify(
         {
-          "name": "foo",
-          "version": "1.0.0"
-        }
-      `,
+          name: 'foo',
+          version: '1.0.0',
+        },
+        undefined,
+        2
+      ),
     },
   },
   'package.json: unsorted': {
     files: {
-      'package.json': endent`
-      {
-        "version": "1.0.0",
-        "name": "foo"
-      }
-    `,
+      'package.json': JSON.stringify(
+        {
+          version: '1.0.0',
+          name: 'foo',
+        },
+        undefined,
+        2
+      ),
     },
     result: [
       {
@@ -562,7 +568,6 @@ export default {
     files: {
       'test.js': endent`
         const foo = {}
-
         console.log(foo._bar)
 
       `,
@@ -715,7 +720,7 @@ export default {
       },
     ],
   },
-  'named import order': {
+  'named import wrong order': {
     files: {
       'node_modules/foo/index.js': endent`
         export const foo = 'foo'
@@ -743,6 +748,267 @@ export default {
       {
         filePath: 'test.js',
         messages: ['Run autofix to sort these imports!'],
+      },
+    ],
+  },
+  'named import right order': {
+    files: {
+      'node_modules/foo/index.js': endent`
+        export const foo = 'foo'
+        export const bar = 'bar'
+
+      `,
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+      'test.js': endent`
+        import { bar, foo } from 'foo'
+
+        console.log(bar)
+        console.log(foo)
+
+      `,
+    },
+  },
+  'blank lines: simple': {
+    files: {
+      'test.js': endent`
+        console.log('foo')
+
+        console.log('bar')
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Unexpected blank line before this statement.'],
+      },
+    ],
+  },
+  'blank lines: import and statement without newline': {
+    files: {
+      'node_modules/foo/index.js': "export default 'foo'",
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+      'test.js': endent`
+        import foo from 'foo'
+        console.log(foo)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: [
+          'Expected 1 empty line after import statement not followed by another import.',
+          'Expected blank line before this statement.',
+        ],
+      },
+    ],
+  },
+  'blank lines: import and statement with newline': {
+    files: {
+      'node_modules/foo/index.js': "export default 'foo'",
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+      'test.js': endent`
+        import foo from 'foo'
+
+        console.log(foo)
+
+      `,
+    },
+  },
+  'blank lines: imports without newline': {
+    files: {
+      'bar.js': endent`
+        export default 'bar'
+      
+      `,
+      'foo.js': endent`
+        export default 'foo'
+        
+      `,
+      'test.js': endent`
+        import bar from './bar'
+        import foo from './foo'
+
+        console.log(bar)
+        console.log(foo)
+
+      `,
+    },
+  },
+  'blank lines: imports with newline': {
+    files: {
+      'bar.js': endent`
+        export default 'bar'
+      
+      `,
+      'foo.js': endent`
+        export default 'foo'
+        
+      `,
+      'test.js': endent`
+        import bar from './bar'
+
+        import foo from './foo'
+
+        console.log(foo)
+        console.log(bar)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Run autofix to sort these imports!'],
+      },
+    ],
+  },
+  'blank lines: import groups without newline': {
+    files: {
+      'index.js': endent`
+        export default 1
+
+      `,
+      'node_modules/foo/index.js': "export default 'foo'",
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+      'test.js': endent`
+        import foo from 'foo'
+        import index from '.'
+
+        console.log(foo)
+        console.log(index)
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Run autofix to sort these imports!'],
+      },
+    ],
+  },
+  'blank lines: import groups with newline': {
+    files: {
+      'index.js': endent`
+        export default 1
+
+      `,
+      'node_modules/foo/index.js': "export default 'foo'",
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+      'test.js': endent`
+        import foo from 'foo'
+
+        import index from '.'
+        
+        console.log(foo)
+        console.log(index)
+
+      `,
+    },
+  },
+  'blank lines: exports without newline': {
+    files: {
+      'test.js': endent`
+        export const foo = 1
+        export const bar = 2
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Expected blank line before this statement.'],
+      },
+    ],
+  },
+  'blank lines: exports with newline': {
+    files: {
+      'test.js': endent`
+        export const foo = 1
+
+        export const bar = 2
+
+      `,
+    },
+  },
+  'comments: without blank line': {
+    files: {
+      'test.js': endent`
+        console.log('foo')
+        // foo
+        console.log('bar')
+
+      `,
+    },
+  },
+  'comments: with blank line': {
+    files: {
+      'test.js': endent`
+        console.log('foo')
+
+        // foo
+        console.log('bar')
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Unexpected blank line before this statement.'],
+      },
+    ],
+  },
+  'inline comments': {
+    files: {
+      'test.js': endent`
+        export default 1 // foo
+
+      `,
+    },
+    result: [
+      {
+        filePath: 'test.js',
+        messages: ['Unexpected comment inline with code.'],
       },
     ],
   },
