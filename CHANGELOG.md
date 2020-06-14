@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/dword-design/eslint-config/compare/v1.19.0...v1.20.0) (2020-06-14)
+
+
+### Features
+
+* add some linting rules ([d5fd44d](https://github.com/dword-design/eslint-config/commit/d5fd44d1ad66f42a850af9c493a65a5cd04e0992))
+
 # [1.19.0](https://github.com/dword-design/eslint-config/compare/v1.18.2...v1.19.0) (2020-06-13)
 
 
