@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/dword-design/eslint-config/compare/v1.20.0...v1.20.1) (2020-06-15)
+
+
+### Bug Fixes
+
+* use prettier vue config ([78c7d83](https://github.com/dword-design/eslint-config/commit/78c7d83df7dd2a8f5a2952086a4c6d385ac6e743))
+
 # [1.20.0](https://github.com/dword-design/eslint-config/compare/v1.19.0...v1.20.0) (2020-06-14)
 
 
