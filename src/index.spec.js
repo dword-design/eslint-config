@@ -1,31 +1,30 @@
-import { endent, mapValues, map, filter } from '@dword-design/functions'
+import { endent, mapValues, map, flatten, pick } from '@dword-design/functions'
 import withLocalTmpDir from 'with-local-tmp-dir'
 import outputFiles from 'output-files'
 import { ESLint } from 'eslint'
 import P from 'path'
 import stealthyRequire from 'stealthy-require'
 
-const runTest = ({ files, result: expectedResult = [] }) => () =>
-  withLocalTmpDir(async () => {
-    await outputFiles(files)
-    const config = stealthyRequire(require.cache, () => require('.'))
+const runTest = config => () => {
+  const filename = config.filename || 'index.js'
+  const messages = config.messages || []
+  return withLocalTmpDir(async () => {
+    await outputFiles(config.files)
+    const eslintConfig = stealthyRequire(require.cache, () => require('.'))
     const eslint = new ESLint({
       extensions: ['.js', '.json', '.vue'],
       useEslintrc: false,
-      overrideConfig: config,
+      overrideConfig: eslintConfig,
     })
-    const result =
-      eslint.lintFiles('**')
+    const lintedMessages =
+      eslint.lintText(config.code, { filePath: filename })
       |> await
-      |> filter(
-        fileResult => fileResult.errorCount + fileResult.warningCount > 0
-      )
-      |> map(fileResult => ({
-        filePath: P.relative(process.cwd(), fileResult.filePath),
-        messages: fileResult.messages |> map('message'),
-      }))
-    expect(result).toEqual(expectedResult)
+      |> map('messages')
+      |> flatten
+      |> map(pick(['message', 'ruleId']))
+    expect(lintedMessages).toEqual(messages)
   })
+}
 
 export default {
   'dev dependency in root': {
@@ -40,19 +39,18 @@ export default {
         undefined,
         2
       ),
-      'index.js': endent`
-        import foo from 'foo'
-
-        console.log(foo)
-
-      `,
     },
-    result: [
+    code: endent`
+      import foo from 'foo'
+
+      console.log(foo)
+
+    `,
+    messages: [
       {
-        filePath: 'index.js',
-        messages: [
+        message:
           "'foo' should be listed in the project's dependencies, not devDependencies.",
-        ],
+        ruleId: 'import/no-extraneous-dependencies',
       },
     ],
   },
@@ -68,159 +66,129 @@ export default {
         undefined,
         2
       ),
-      'src/index.js': endent`
-        import foo from 'foo'
-
-        console.log(foo)
-
-      `,
     },
-    result: [
+    code: endent`
+      import foo from 'foo'
+
+      console.log(foo)
+
+    `,
+    filename: P.join('src', 'index.js'),
+    messages: [
       {
-        filePath: P.join('src', 'index.js'),
-        messages: [
+        message:
           "'foo' should be listed in the project's dependencies, not devDependencies.",
-        ],
+        ruleId: 'import/no-extraneous-dependencies',
       },
     ],
   },
   'indent: valid': {
-    files: {
-      'test.js': endent`
-        export default () => {
-          console.log('foo')
-        }
+    code: endent`
+      export default () => {
+        console.log('foo')
+      }
 
-      `,
-    },
+    `,
   },
   'indent: invalid': {
-    files: {
-      'test.js': endent`
-        export default () => {
-            console.log('foo')
-        }
+    code: endent`
+      export default () => {
+          console.log('foo')
+      }
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Delete `··`'],
+        message: 'Delete `··`',
+        ruleId: 'prettier/prettier',
       },
     ],
   },
   'json: valid': {
-    files: {
-      'test.json': endent`
-        {
-          "foo": "bar",
-          "bar": {
-            "baz": [
-              "test",
-              "test2"
-            ]
-          }
+    code: endent`
+      {
+        "foo": "bar",
+        "bar": {
+          "baz": [
+            "test",
+            "test2"
+          ]
         }
-      `,
-    },
+      }
+    `,
+    filename: 'index.json',
   },
   'json: syntax error': {
-    files: {
-      'test.json': endent`
-        {
-          "foo":
-        }
-      `,
-    },
-    result: [
+    code: endent`
       {
-        filePath: 'test.json',
-        messages: ['Unexpected token }'],
-      },
-    ],
+        "foo":
+      }
+    `,
+    filename: 'index.json',
+    messages: [{ message: 'Unexpected token }', ruleId: null }],
   },
   'json: no indent': {
-    files: {
-      'test.json': endent`
-        {
-        "foo": "bar"
-        }
-      `,
-    },
-    result: [
+    code: endent`
       {
-        filePath: 'test.json',
-        messages: ['Format Error: expected "  " '],
-      },
+      "foo": "bar"
+      }
+    `,
+    filename: 'index.json',
+    messages: [
+      { message: 'Format Error: expected "  " ', ruleId: 'JSON format' },
     ],
   },
   'json: indent too big': {
-    files: {
-      'test.json': endent`
+    code: endent`
       {
           "foo": "bar"
       }
     `,
-    },
-    result: [
-      {
-        filePath: 'test.json',
-        messages: ['Format Error: unexpected "  "'],
-      },
+    filename: 'index.json',
+    messages: [
+      { message: 'Format Error: unexpected "  "', ruleId: 'JSON format' },
     ],
   },
   'package.json: valid': {
-    files: {
-      'package.json': JSON.stringify(
-        {
-          name: 'foo',
-          version: '1.0.0',
-        },
-        undefined,
-        2
-      ),
-    },
+    code: JSON.stringify(
+      {
+        name: 'foo',
+        version: '1.0.0',
+      },
+      undefined,
+      2
+    ),
+    filename: 'package.json',
   },
   'package.json: unsorted': {
-    files: {
-      'package.json': JSON.stringify(
-        {
-          version: '1.0.0',
-          name: 'foo',
-        },
-        undefined,
-        2
-      ),
-    },
-    result: [
+    code: JSON.stringify(
       {
-        filePath: 'package.json',
-        messages: ['JSON is not sorted'],
+        version: '1.0.0',
+        name: 'foo',
       },
-    ],
+      undefined,
+      2
+    ),
+    filename: 'package.json',
+    messages: [{ message: 'JSON is not sorted', ruleId: 'JSON sorting' }],
   },
   'arrow function': {
-    files: {
-      'test.js': endent`
-        export default () => console.log('foo')
+    code: endent`
+      export default () => console.log('foo')
 
-      `,
-    },
+    `,
   },
   'function block': {
-    files: {
-      'test.js': endent`
-        export default function () {
-          console.log('foo')
-        }
+    code: endent`
+      export default function () {
+        console.log('foo')
+      }
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Prefer using arrow functions over plain functions'],
+        message: 'Prefer using arrow functions over plain functions',
+        ruleId: 'prefer-arrow/prefer-arrow-functions',
       },
     ],
   },
@@ -239,21 +207,20 @@ export default {
         undefined,
         2
       ),
-      'src/index.js': endent`
-        import foo from 'foo'
-
-        console.log(foo)
-
-      `,
     },
+    code: endent`
+      import foo from 'foo'
+
+      console.log(foo)
+
+    `,
+    filename: P.join('src', 'index.js'),
   },
   'regex-spaces': {
-    files: {
-      'test.js': endent`
-        export default /  /
+    code: endent`
+      export default /  /
 
-      `,
-    },
+    `,
   },
   'restricted import: inside': {
     files: {
@@ -266,11 +233,11 @@ export default {
           }
         }
       `,
-      'test.js': endent`
-        import 'puppeteer'
-
-      `,
     },
+    code: endent`
+      import 'puppeteer'
+
+    `,
   },
   'restricted import: outside': {
     files: {
@@ -284,41 +251,31 @@ export default {
         undefined,
         2
       ),
-      'test.js': endent`
-        import 'puppeteer'
-
-      `,
     },
-    result: [
+    code: endent`
+      import 'puppeteer'
+
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: [
+        message:
           "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead.",
-        ],
+        ruleId: 'no-restricted-imports',
       },
     ],
   },
   valid: {
-    files: {
-      'test.js': endent`
-        console.log()
-      
-      `,
-    },
+    code: endent`
+      console.log()
+    
+    `,
   },
   semicolon: {
-    files: {
-      'test.js': endent`
-        console.log();
+    code: endent`
+      console.log();
 
-      `,
-    },
-    result: [
-      {
-        filePath: 'test.js',
-        messages: ['Delete `;`'],
-      },
-    ],
+    `,
+    messages: [{ message: 'Delete `;`', ruleId: 'prettier/prettier' }],
   },
   'test: dev dependency': {
     files: {
@@ -333,13 +290,14 @@ export default {
           }
         }
       `,
-      'src/index.spec.js': endent`
-        import foo from 'foo'
-
-        console.log(foo)
-        
-      `,
     },
+    code: endent`
+      import foo from 'foo'
+
+      console.log(foo)
+      
+    `,
+    filename: 'index.spec.js',
   },
   'test: restricted import': {
     files: {
@@ -353,17 +311,17 @@ export default {
         undefined,
         2
       ),
-      'src/index.spec.js': endent`
-        import 'puppeteer'
-
-      `,
     },
-    result: [
+    code: endent`
+      import 'puppeteer'
+
+    `,
+    filename: 'index.spec.js',
+    messages: [
       {
-        filePath: P.join('src', 'index.spec.js'),
-        messages: [
+        message:
           "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead.",
-        ],
+        ruleId: 'no-restricted-imports',
       },
     ],
   },
@@ -377,29 +335,28 @@ export default {
         }
 
       `,
-      'src/index.spec.js': endent`
-        import expect from 'expect'
-
-        expect(1).toEqual(1)
-
-      `,
     },
-    result: [
+    code: endent`
+      import expect from 'expect'
+
+      expect(1).toEqual(1)
+
+    `,
+    filename: 'index.spec.js',
+    messages: [
       {
-        filePath: P.join('src', 'index.spec.js'),
-        messages: [
+        message:
           "'expect' import is restricted from being used. Please use the global 'expect' variable instead.",
-        ],
+        ruleId: 'no-restricted-imports',
       },
     ],
   },
   'test: global expect': {
-    files: {
-      'src/index.spec.js': endent`
-        expect(1).toEqual(1)
-        
-      `,
-    },
+    code: endent`
+      expect(1).toEqual(1)
+      
+    `,
+    filename: 'index.spec.js',
   },
   'test: prod dependency': {
     files: {
@@ -416,272 +373,232 @@ export default {
         undefined,
         2
       ),
-      'src/index.spec.js': endent`
-        import foo from 'foo'
-
-        console.log(foo)
-
-      `,
     },
+    code: endent`
+      import foo from 'foo'
+
+      console.log(foo)
+
+    `,
+    filename: 'src/index.spec.js',
   },
   'quotes: nested': {
-    files: {
-      'test.js': endent`
-        export default "foo 'bar'"
+    code: endent`
+      export default "foo 'bar'"
 
-      `,
-    },
+    `,
   },
   'quotes: unnecessary escapes': {
-    files: {
-      'test.js': endent`
-        export default 'foo \\'bar\\''
+    code: endent`
+      export default 'foo \\'bar\\''
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ["Replace `'foo·\\'bar\\''` with `\"foo·'bar'\"`"],
+        message: "Replace `'foo·\\'bar\\''` with `\"foo·'bar'\"`",
+        ruleId: 'prettier/prettier',
       },
     ],
   },
   'arrow function block': {
-    files: {
-      'test.js': endent`
-        export default foo => {
-          console.log(foo)
-        }
+    code: endent`
+      export default foo => {
+        console.log(foo)
+      }
 
-      `,
-    },
+    `,
   },
   'pipeline operator': {
-    files: {
-      'test.js': endent`
-        export default async () => 1 |> (x => x + 1) |> await
-        
-      `,
-    },
+    code: endent`
+      export default async () => 1 |> (x => x + 1) |> await
+      
+    `,
   },
   'deep nesting': {
-    files: {
-      'test.js': endent`
-        export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344)
+    code: endent`
+      export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344)
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: [
+        message:
           'Replace `·console.log(()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344` with `⏎··console.log(⏎····()·=>⏎······(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344⏎··`',
-        ],
+        ruleId: 'prettier/prettier',
       },
     ],
   },
   'single export': {
-    files: {
-      'test.js': endent`
-        export const foo = 'bar'
+    code: endent`
+      export const foo = 'bar'
 
-      `,
-    },
+    `,
   },
   'param reassign': {
-    files: {
-      'test.js': endent`
-        export default foo => {
-          foo = 'bar'
-          console.log(foo)
-        }
+    code: endent`
+      export default foo => {
+        foo = 'bar'
+        console.log(foo)
+      }
 
-      `,
-    },
+    `,
   },
   'multiple attributes per line': {
-    files: {
-      'test.vue': endent`
-        <template>
-          <div class="foo" style="color: red" />
-        </template>
+    code: endent`
+      <template>
+        <div class="foo" style="color: red" />
+      </template>
 
-      `,
-    },
+    `,
+    filename: 'index.vue',
   },
   'v-html': {
-    files: {
-      'test.vue': endent`
-        <template>
-          <div v-html="foo" />
-        </template>
-        
-        <script>
-        export default {
-          computed: {
-            foo: () => 'foo',
-          },
-        }
-        </script>
+    code: endent`
+      <template>
+        <div v-html="foo" />
+      </template>
+      
+      <script>
+      export default {
+        computed: {
+          foo: () => 'foo',
+        },
+      }
+      </script>
 
-      `,
-    },
+    `,
+    filename: 'index.vue',
   },
   'self-closing void elements': {
-    files: {
-      'test.vue': endent`
-        <template>
-          <img />
-        </template>
+    code: endent`
+      <template>
+        <img />
+      </template>
 
-      `,
-    },
+    `,
+    filename: 'index.vue',
   },
   'nested ternary': {
-    files: {
-      'test.js': endent`
-        export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
+    code: endent`
+      export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
 
-      `,
-    },
+    `,
   },
   'unnamed function': {
-    files: {
-      'test.js': endent`
-        console.log(function () {
-          console.log(this)
-        })
+    code: endent`
+      console.log(function () {
+        console.log(this)
+      })
 
-      `,
-    },
+    `,
   },
   'new lower-case': {
-    files: {
-      'test.js': endent`
-        const foo = () => {}
+    code: endent`
+      const foo = () => {}
 
-        export default new foo()
+      export default new foo()
 
-      `,
-    },
+    `,
   },
   'underscore dangle': {
-    files: {
-      'test.js': endent`
-        const foo = {}
-        console.log(foo._bar)
+    code: endent`
+      const foo = {}
+      console.log(foo._bar)
 
-      `,
-    },
+    `,
   },
   'html indent': {
-    files: {
-      'test.vue': endent`
-        <template>
-          <div
-            :is-active="
-              $route.name === 'task-view-detail' &&
-              $route.params.taskViewId === entity._id
-            "
-          />
-        </template>
+    code: endent`
+      <template>
+        <div
+          :is-active="
+            $route.name === 'task-view-detail' &&
+            $route.params.taskViewId === entity._id
+          "
+        />
+      </template>
 
-      `,
-    },
+    `,
+    filename: 'index.vue',
   },
   'async without await': {
-    files: {
-      'test.js': endent`
-        export default async () => console.log('foo')
+    code: endent`
+      export default async () => console.log('foo')
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ["Async arrow function has no 'await' expression."],
+        message: "Async arrow function has no 'await' expression.",
+        ruleId: 'require-await',
       },
     ],
   },
   'promise then': {
-    files: {
-      'test.js': endent`
-        export default () => Promise.resolve().then(x => x)
+    code: endent`
+      export default () => Promise.resolve().then(x => x)
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Prefer await to then().'],
+        message: 'Prefer await to then().',
+        ruleId: 'promise/prefer-await-to-then',
       },
     ],
   },
   'destructuring: object': {
-    files: {
-      'test.js': endent`
-        const { foo } = { foo: 'bar' }
-        console.log(foo)
+    code: endent`
+      const { foo } = { foo: 'bar' }
+      console.log(foo)
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ["Using 'ObjectPattern' is not allowed."],
+        message: "Using 'ObjectPattern' is not allowed.",
+        ruleId: 'no-restricted-syntax',
       },
     ],
   },
   'destructuring: array': {
-    files: {
-      'test.js': endent`
-        const [foo] = ['bar']
-        console.log(foo)
+    code: endent`
+      const [foo] = ['bar']
+      console.log(foo)
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ["Using 'ArrayPattern' is not allowed."],
+        message: "Using 'ArrayPattern' is not allowed.",
+        ruleId: 'no-restricted-syntax',
       },
     ],
   },
   'destructuring: parameter': {
-    files: {
-      'test.js': endent`
-        export default ({ foo }) => console.log(foo)
+    code: endent`
+      export default ({ foo }) => console.log(foo)
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ["Using 'ObjectPattern' is not allowed."],
+        message: "Using 'ObjectPattern' is not allowed.",
+        ruleId: 'no-restricted-syntax',
       },
     ],
   },
   'possible destructuring': {
-    files: {
-      'test.js': endent`
-        const bar = { foo: 'test' }
-        const foo = bar.foo
-        console.log(foo)
+    code: endent`
+      const bar = { foo: 'test' }
+      const foo = bar.foo
+      console.log(foo)
 
-      `,
-    },
+    `,
   },
   'nullish coalescing': {
-    files: {
-      'test.js': endent`
-        console.log(1 ?? 2)
+    code: endent`
+      console.log(1 ?? 2)
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ["Using 'LogicalExpression[operator='??']' is not allowed."],
+        message: "Using 'LogicalExpression[operator='??']' is not allowed.",
+        ruleId: 'no-restricted-syntax',
       },
     ],
   },
@@ -705,19 +622,19 @@ export default {
         undefined,
         2
       ),
-      'test.js': endent`
-        import foo from 'foo'
-        import bar from 'bar'
-
-        console.log(foo)
-        console.log(bar)
-
-      `,
     },
-    result: [
+    code: endent`
+      import foo from 'foo'
+      import bar from 'bar'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Run autofix to sort these imports!'],
+        message: 'Run autofix to sort these imports!',
+        ruleId: 'simple-import-sort/sort',
       },
     ],
   },
@@ -737,18 +654,18 @@ export default {
         undefined,
         2
       ),
-      'test.js': endent`
-        import { foo, bar } from 'foo'
-
-        console.log(foo)
-        console.log(bar)
-
-      `,
     },
-    result: [
+    code: endent`
+      import { foo, bar } from 'foo'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Run autofix to sort these imports!'],
+        message: 'Run autofix to sort these imports!',
+        ruleId: 'simple-import-sort/sort',
       },
     ],
   },
@@ -768,28 +685,26 @@ export default {
         undefined,
         2
       ),
-      'test.js': endent`
-        import { bar, foo } from 'foo'
-
-        console.log(bar)
-        console.log(foo)
-
-      `,
     },
+    code: endent`
+      import { bar, foo } from 'foo'
+
+      console.log(bar)
+      console.log(foo)
+
+    `,
   },
   'blank lines: simple': {
-    files: {
-      'test.js': endent`
-        console.log('foo')
+    code: endent`
+      console.log('foo')
 
-        console.log('bar')
+      console.log('bar')
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Unexpected blank line before this statement.'],
+        message: 'Unexpected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
       },
     ],
   },
@@ -805,19 +720,21 @@ export default {
         undefined,
         2
       ),
-      'test.js': endent`
-        import foo from 'foo'
-        console.log(foo)
-
-      `,
     },
-    result: [
+    code: endent`
+      import foo from 'foo'
+      console.log(foo)
+
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: [
+        message:
           'Expected 1 empty line after import statement not followed by another import.',
-          'Expected blank line before this statement.',
-        ],
+        ruleId: 'import/newline-after-import',
+      },
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
       },
     ],
   },
@@ -833,13 +750,13 @@ export default {
         undefined,
         2
       ),
-      'test.js': endent`
-        import foo from 'foo'
-
-        console.log(foo)
-
-      `,
     },
+    code: endent`
+      import foo from 'foo'
+
+      console.log(foo)
+
+    `,
   },
   'blank lines: imports without newline': {
     files: {
@@ -851,15 +768,15 @@ export default {
         export default 'foo'
         
       `,
-      'test.js': endent`
-        import bar from './bar'
-        import foo from './foo'
-
-        console.log(bar)
-        console.log(foo)
-
-      `,
     },
+    code: endent`
+      import bar from './bar'
+      import foo from './foo'
+
+      console.log(bar)
+      console.log(foo)
+
+    `,
   },
   'blank lines: imports with newline': {
     files: {
@@ -871,26 +788,26 @@ export default {
         export default 'foo'
         
       `,
-      'test.js': endent`
-        import bar from './bar'
-
-        import foo from './foo'
-
-        console.log(foo)
-        console.log(bar)
-
-      `,
     },
-    result: [
+    code: endent`
+      import bar from './bar'
+
+      import foo from './foo'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Run autofix to sort these imports!'],
+        message: 'Run autofix to sort these imports!',
+        ruleId: 'simple-import-sort/sort',
       },
     ],
   },
   'blank lines: import groups without newline': {
     files: {
-      'index.js': endent`
+      'bar.js': endent`
         export default 1
 
       `,
@@ -904,25 +821,25 @@ export default {
         undefined,
         2
       ),
-      'test.js': endent`
-        import foo from 'foo'
-        import index from '.'
-
-        console.log(foo)
-        console.log(index)
-
-      `,
     },
-    result: [
+    code: endent`
+      import foo from 'foo'
+      import bar from './bar'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Run autofix to sort these imports!'],
+        message: 'Run autofix to sort these imports!',
+        ruleId: 'simple-import-sort/sort',
       },
     ],
   },
   'blank lines: import groups with newline': {
     files: {
-      'index.js': endent`
+      'bar.js': endent`
         export default 1
 
       `,
@@ -936,80 +853,70 @@ export default {
         undefined,
         2
       ),
-      'test.js': endent`
-        import foo from 'foo'
-
-        import index from '.'
-        
-        console.log(foo)
-        console.log(index)
-
-      `,
     },
+    code: endent`
+      import foo from 'foo'
+
+      import bar from './bar'
+      
+      console.log(foo)
+      console.log(bar)
+
+    `,
   },
   'blank lines: exports without newline': {
-    files: {
-      'test.js': endent`
-        export const foo = 1
-        export const bar = 2
+    code: endent`
+      export const foo = 1
+      export const bar = 2
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Expected blank line before this statement.'],
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
       },
     ],
   },
   'blank lines: exports with newline': {
-    files: {
-      'test.js': endent`
-        export const foo = 1
+    code: endent`
+      export const foo = 1
 
-        export const bar = 2
+      export const bar = 2
 
-      `,
-    },
+    `,
   },
   'comments: without blank line': {
-    files: {
-      'test.js': endent`
-        console.log('foo')
-        // foo
-        console.log('bar')
+    code: endent`
+      console.log('foo')
+      // foo
+      console.log('bar')
 
-      `,
-    },
+    `,
   },
   'comments: with blank line': {
-    files: {
-      'test.js': endent`
-        console.log('foo')
+    code: endent`
+      console.log('foo')
 
-        // foo
-        console.log('bar')
+      // foo
+      console.log('bar')
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Unexpected blank line before this statement.'],
+        message: 'Unexpected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
       },
     ],
   },
   'inline comments': {
-    files: {
-      'test.js': endent`
-        export default 1 // foo
+    code: endent`
+      export default 1 // foo
 
-      `,
-    },
-    result: [
+    `,
+    messages: [
       {
-        filePath: 'test.js',
-        messages: ['Unexpected comment inline with code.'],
+        message: 'Unexpected comment inline with code.',
+        ruleId: 'no-inline-comments',
       },
     ],
   },
