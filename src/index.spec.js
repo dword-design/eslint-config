@@ -887,7 +887,8 @@ export default {
       },
     ],
   },
-  /*alias: {
+
+  /* alias: {
     files: {
       'foo.js': '',
     },
@@ -895,5 +896,5 @@ export default {
       import '@/foo'
 
     `,
-  },*/
+  }, */
 } |> mapValues(runTest)
