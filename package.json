@@ -19,10 +19,12 @@
   },
   "dependencies": {
     "@dword-design/babel-config": "^1.0.0",
+    "@dword-design/eslint-plugin-import-alias": "^1.1.1",
     "@dword-design/functions": "^2.2.2",
     "babel-eslint": "^11.0.0-beta.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-babel-module": "^5.1.2",
     "eslint-plugin-import": "dword-design/eslint-plugin-import#fork",
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-prefer-arrow": "^1.1.6",

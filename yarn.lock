@@ -998,6 +998,24 @@
     safe-require dword-design/node-safe-require#fork
     vue-eslint-parser "^7.0.0"
 
+"@dword-design/eslint-plugin-import-alias@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-plugin-import-alias/-/eslint-plugin-import-alias-1.1.1.tgz#9965b26787005bc03a71380fac92c68f1347d2a5"
+  integrity sha512-KLcEmveI0DwOoqYMto6OYmg+dRfpQ9RNKY72nbtn97vnWmwhIURClyJqWoio6btdPL6G/vvI1GviaiFeoCVauw==
+  dependencies:
+    "@dword-design/functions" "^1.1.2"
+    babel-plugin-module-resolver "^4.0.0"
+
+"@dword-design/functions@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@dword-design/functions/-/functions-1.1.2.tgz#a0785964548eacc2809b75b7dc9f3b84a8566480"
+  integrity sha512-20qJB41LEzZUZsh/kY93WpSaTzrij21P7o2Korhmo0uK01A4OYRNhkd3naWqUnz+aga3lg6sLF4rOWsm1x5y7g==
+  dependencies:
+    endent dword-design/endent#fork
+    lodash "^4.17.15"
+    p-is-promise "^3.0.0"
+    tinycolor2 "^1.4.1"
+
 "@dword-design/functions@^2.2.2", "@dword-design/functions@^2.2.4", "@dword-design/functions@^2.7.2":
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/@dword-design/functions/-/functions-2.7.2.tgz#08ef65bf7fea7cfb1e4252ce4536df46b866cf0e"
@@ -3201,6 +3219,14 @@ eslint-config-prettier@^6.11.0:
   integrity sha512-oB8cpLWSAjOVFEJhhyMZh6NOEOtBVziaqdDQ86+qhDHFbZXoRTM7pNSvFRfW/W/L/LrQ38C99J5CGuRBBzBsdA==
   dependencies:
     get-stdin "^6.0.0"
+
+eslint-import-resolver-babel-module@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-babel-module/-/eslint-import-resolver-babel-module-5.1.2.tgz#3d5599d49f641f9c832f001ccf7087a70a3c8c1b"
+  integrity sha512-pzKE6UzXgT1Opp4N2P2yoE7OY29+LX3FNX6bqAjmGV+btR/ZYnE/oQFoGzL2/3RkLYRTBYRFwvrphRy5wEAUwg==
+  dependencies:
+    pkg-up "^2.0.0"
+    resolve "^1.10.0"
 
 eslint-import-resolver-node@^0.3.2:
   version "0.3.3"

@@ -9,7 +9,13 @@ const runTest = config => () => {
   const filename = config.filename || 'index.js'
   const messages = config.messages || []
   return withLocalTmpDir(async () => {
-    await outputFiles(config.files)
+    await outputFiles({
+      '.babelrc.json': JSON.stringify({
+        extends: '@dword-design/babel-config',
+      }),
+      'package.json': JSON.stringify({}),
+      ...config.files,
+    })
     const eslintConfig = stealthyRequire(require.cache, () => require('.'))
     const eslint = new ESLint({
       extensions: ['.js', '.json', '.vue'],
@@ -887,7 +893,7 @@ export default {
       },
     ],
   },
-  /*alias: {
+  'alias: parent': {
     files: {
       'foo.js': '',
     },
@@ -895,5 +901,22 @@ export default {
       import '@/foo'
 
     `,
-  },*/
+    filename: P.join('sub', 'index.js'),
+  },
+  'alias: child': {
+    files: {
+      'foo.js': '',
+    },
+    code: endent`
+      import '@/foo'
+
+    `,
+    messages: [
+      {
+        message:
+          "Unexpected subpath import via alias '@/foo'. Use './foo' instead",
+        ruleId: '@dword-design/import-alias/prefer-alias',
+      },
+    ],
+  },
 } |> mapValues(runTest)

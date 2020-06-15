@@ -25,6 +25,9 @@ export default {
       require.resolve('eslint-plugin-import')
     )}/recommended`,
     `plugin:${getPackageName(
+      require.resolve('@dword-design/eslint-plugin-import-alias')
+    )}/recommended`,
+    `plugin:${getPackageName(
       require.resolve('eslint-plugin-vue')
     )}/recommended`,
     `plugin:${getPackageName(
@@ -44,14 +47,13 @@ export default {
       configFile: require.resolve('@dword-design/babel-config'),
     },
   },
-
-  /* settings: {
+  settings: {
     'import/resolver': {
       [getPackageName(
         require.resolve('eslint-import-resolver-babel-module')
       )]: {},
     },
-  }, */
+  },
   plugins: [
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
     getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
