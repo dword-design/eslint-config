@@ -29,6 +29,7 @@ export default {
     `plugin:${getPackageName(
       require.resolve('eslint-plugin-prettier')
     )}/recommended`,
+    'prettier/vue',
   ],
   env: {
     browser: true,
@@ -100,15 +101,6 @@ export default {
     'lines-around-comment': 'error',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
-
-    // conflicts with prettier
-    'vue/max-attributes-per-line': 'off',
-
-    // conflicts with prettier
-    'vue/html-self-closing': 'off',
-
-    // conflicts with prettier
-    'vue/html-indent': 'off',
   },
   overrides: [
     {
