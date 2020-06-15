@@ -1,7 +1,8 @@
+import { mapValues, omitBy, values } from '@dword-design/functions'
 import getPackageName from 'get-package-name'
-import safeRequire from 'safe-require'
 import P from 'path'
-import { omitBy, mapValues, values } from '@dword-design/functions'
+import safeRequire from 'safe-require'
+
 import restrictedImports from './restricted-imports.json'
 
 const packageName = safeRequire(P.join(process.cwd(), 'package.json'))?.name
@@ -43,6 +44,14 @@ export default {
       configFile: require.resolve('@dword-design/babel-config'),
     },
   },
+
+  /* settings: {
+    'import/resolver': {
+      [getPackageName(
+        require.resolve('eslint-import-resolver-babel-module')
+      )]: {},
+    },
+  }, */
   plugins: [
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
     getPackageName(require.resolve('eslint-plugin-simple-import-sort')),

@@ -36,12 +36,8 @@ jobs:
       - run: git config --global user.name "GitHub Actions"
       - run: yarn --frozen-lockfile
       - run: yarn test
-      - name: Push changed files
-        run: yarn dw-ci push-changed-files
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
       - name: Coveralls
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 12
         run: yarn dw-ci coveralls
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -54,12 +50,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - run: git config --global user.email "actions@github.com"
+      - run: git config --global user.name "GitHub Actions"
       - run: yarn --frozen-lockfile
+      - run: yarn lint
+      - name: Push changed files
+        run: yarn dw-ci push-changed-files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

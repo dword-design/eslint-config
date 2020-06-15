@@ -1,9 +1,9 @@
-import { endent, mapValues, map, flatten, pick } from '@dword-design/functions'
-import withLocalTmpDir from 'with-local-tmp-dir'
-import outputFiles from 'output-files'
+import { endent, flatten, map, mapValues, pick } from '@dword-design/functions'
 import { ESLint } from 'eslint'
+import outputFiles from 'output-files'
 import P from 'path'
 import stealthyRequire from 'stealthy-require'
+import withLocalTmpDir from 'with-local-tmp-dir'
 
 const runTest = config => () => {
   const filename = config.filename || 'index.js'
@@ -29,7 +29,7 @@ const runTest = config => () => {
 export default {
   'dev dependency in root': {
     files: {
-      'node_modules/foo/index.js': 'export default 1',
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           devDependencies: {
@@ -41,9 +41,7 @@ export default {
       ),
     },
     code: endent`
-      import foo from 'foo'
-
-      console.log(foo)
+      import 'foo'
 
     `,
     messages: [
@@ -56,7 +54,7 @@ export default {
   },
   'dev dependency in source': {
     files: {
-      'node_modules/foo/index.js': 'export default 1',
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           devDependencies: {
@@ -68,9 +66,7 @@ export default {
       ),
     },
     code: endent`
-      import foo from 'foo'
-
-      console.log(foo)
+      import 'foo'
 
     `,
     filename: P.join('src', 'index.js'),
@@ -194,10 +190,7 @@ export default {
   },
   'prod dependency in src': {
     files: {
-      'node_modules/foo/index.js': endent`
-        export default 1
-        
-      `,
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -209,9 +202,7 @@ export default {
       ),
     },
     code: endent`
-      import foo from 'foo'
-
-      console.log(foo)
+      import 'foo'
 
     `,
     filename: P.join('src', 'index.js'),
@@ -279,10 +270,7 @@ export default {
   },
   'test: dev dependency': {
     files: {
-      'node_modules/foo/index.js': endent`
-        export default 1
-
-      `,
+      'node_modules/foo/index.js': '',
       'package.json': endent`
         {
           "devDependencies": {
@@ -292,9 +280,7 @@ export default {
       `,
     },
     code: endent`
-      import foo from 'foo'
-
-      console.log(foo)
+      import 'foo'
       
     `,
     filename: 'index.spec.js',
@@ -360,10 +346,7 @@ export default {
   },
   'test: prod dependency': {
     files: {
-      'node_modules/foo/index.js': endent`
-        export default 1
-        
-      `,
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -375,9 +358,7 @@ export default {
       ),
     },
     code: endent`
-      import foo from 'foo'
-
-      console.log(foo)
+      import 'foo'
 
     `,
     filename: 'src/index.spec.js',
@@ -604,14 +585,8 @@ export default {
   },
   'import order': {
     files: {
-      'node_modules/foo/index.js': endent`
-        export const foo = 'foo'
-
-      `,
-      'node_modules/bar/index.js': endent`
-        export const foo = 'foo'
-
-      `,
+      'node_modules/foo/index.js': '',
+      'node_modules/bar/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -640,11 +615,7 @@ export default {
   },
   'named import wrong order': {
     files: {
-      'node_modules/foo/index.js': endent`
-        export const foo = 'foo'
-        export const bar = 'bar'
-
-      `,
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -671,11 +642,7 @@ export default {
   },
   'named import right order': {
     files: {
-      'node_modules/foo/index.js': endent`
-        export const foo = 'foo'
-        export const bar = 'bar'
-
-      `,
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -710,7 +677,7 @@ export default {
   },
   'blank lines: import and statement without newline': {
     files: {
-      'node_modules/foo/index.js': "export default 'foo'",
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -740,7 +707,7 @@ export default {
   },
   'blank lines: import and statement with newline': {
     files: {
-      'node_modules/foo/index.js': "export default 'foo'",
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -811,7 +778,7 @@ export default {
         export default 1
 
       `,
-      'node_modules/foo/index.js': "export default 'foo'",
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -843,7 +810,7 @@ export default {
         export default 1
 
       `,
-      'node_modules/foo/index.js': "export default 'foo'",
+      'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
           dependencies: {
@@ -920,4 +887,13 @@ export default {
       },
     ],
   },
+  /*alias: {
+    files: {
+      'foo.js': '',
+    },
+    code: endent`
+      import '@/foo'
+
+    `,
+  },*/
 } |> mapValues(runTest)
