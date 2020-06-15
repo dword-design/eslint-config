@@ -11,6 +11,7 @@ const runTest = ({ files, result: expectedResult = [] }) => () =>
     const config = stealthyRequire(require.cache, () => require('.'))
     const eslint = new ESLint({
       extensions: ['.js', '.json', '.vue'],
+      useEslintrc: false,
       overrideConfig: config,
     })
     const result =
