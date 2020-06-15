@@ -1,3 +1,15 @@
+# [1.21.0](https://github.com/dword-design/eslint-config/compare/v1.20.2...v1.21.0) (2020-06-15)
+
+
+### Bug Fixes
+
+* merge ([c709f36](https://github.com/dword-design/eslint-config/commit/c709f36344996f57ba4415d301da18037cc8406d))
+
+
+### Features
+
+* add alias plugin ([6da4852](https://github.com/dword-design/eslint-config/commit/6da4852fec1d4d8aa7e4a215b9f4f9d013a62aa7))
+
 ## [1.20.2](https://github.com/dword-design/eslint-config/compare/v1.20.1...v1.20.2) (2020-06-15)
 
 
