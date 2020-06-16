@@ -1,3 +1,15 @@
+# [1.22.0](https://github.com/dword-design/eslint-config/compare/v1.21.0...v1.22.0) (2020-06-16)
+
+
+### Bug Fixes
+
+* remove lines around comments ([ef71719](https://github.com/dword-design/eslint-config/commit/ef717191bbfc25de97e8ce9b25a1a28052b49ad8))
+
+
+### Features
+
+* add restricted imports ([a69c04b](https://github.com/dword-design/eslint-config/commit/a69c04be230418751f04f70826ee0b34affd215c))
+
 # [1.21.0](https://github.com/dword-design/eslint-config/compare/v1.20.2...v1.21.0) (2020-06-15)
 
 
