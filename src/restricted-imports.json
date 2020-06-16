@@ -4,5 +4,7 @@
   "fs": "fs-extra",
   "resolve-dep": "matchdep",
   "puppeteer": "@dword-design/puppeteer",
-  "tree-kill": "tree-kill-promise"
+  "tree-kill": "tree-kill-promise",
+  "glob": "matched",
+  "glob-promise": "matched"
 }
