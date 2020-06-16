@@ -256,7 +256,7 @@ export default {
     messages: [
       {
         message:
-          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead.",
+          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
         ruleId: 'no-restricted-imports',
       },
     ],
@@ -312,7 +312,7 @@ export default {
     messages: [
       {
         message:
-          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead.",
+          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
         ruleId: 'no-restricted-imports',
       },
     ],
@@ -338,7 +338,7 @@ export default {
     messages: [
       {
         message:
-          "'expect' import is restricted from being used. Please use the global 'expect' variable instead.",
+          "'expect' import is restricted from being used. Please use the global 'expect' variable instead",
         ruleId: 'no-restricted-imports',
       },
     ],

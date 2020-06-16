@@ -1,17 +1,16 @@
 import { mapValues, omitBy, values } from '@dword-design/functions'
 import getPackageName from 'get-package-name'
-import P from 'path'
-import safeRequire from 'safe-require'
+import loadPkg from 'load-pkg'
 
-import restrictedImports from './restricted-imports.json'
+import restrictedImports from './restricted-imports.config'
 
-const packageName = safeRequire(P.join(process.cwd(), 'package.json'))?.name
+const packageName = loadPkg.sync().name
 const eslintRestrictedImports =
   restrictedImports
   |> omitBy(newName => newName === packageName)
   |> mapValues((newName, oldName) => ({
     name: oldName,
-    message: `Please use '${newName}' instead.`,
+    message: `Please use '${newName}' instead`,
   }))
   |> values
 
@@ -126,7 +125,7 @@ export default {
               ...eslintRestrictedImports,
               {
                 name: 'expect',
-                message: "Please use the global 'expect' variable instead.",
+                message: "Please use the global 'expect' variable instead",
               },
             ],
           },
