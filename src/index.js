@@ -109,7 +109,6 @@ export default {
       { blankLine: 'always', prev: '*', next: 'export' },
     ],
     'no-inline-comments': 'error',
-    'lines-around-comment': 'error',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
   },
