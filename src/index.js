@@ -50,7 +50,7 @@ export default {
     'import/resolver': {
       [getPackageName(
         require.resolve('eslint-import-resolver-babel-module')
-      )]: {},
+      )]: { alias: { '@': '.' } },
     },
   },
   plugins: [
@@ -66,6 +66,11 @@ export default {
         semi: false,
         arrowParens: 'avoid',
       },
+    ],
+
+    '@dword-design/import-alias/prefer-alias': [
+      'error',
+      { cwd: 'packagejson' },
     ],
     'linebreak-style': ['error', 'unix'],
     'no-console': 'off',

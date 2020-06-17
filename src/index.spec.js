@@ -919,4 +919,36 @@ export default {
       },
     ],
   },
+  'alias: import in package': {
+    files: {
+      sub: {
+        'foo.js': '',
+        'package.json': JSON.stringify({}),
+      },
+    },
+    code: endent`
+      import '@/foo'
+
+    `,
+    filename: P.join('sub', 'sub', 'index.js'),
+  },
+  'alias: parent import in package': {
+    files: {
+      sub: {
+        'foo.js': '',
+        'package.json': JSON.stringify({}),
+      },
+    },
+    code: endent`
+      import '../foo'
+
+    `,
+    filename: P.join('sub', 'sub', 'index.js'),
+    messages: [
+      {
+        message: "Unexpected parent import '../foo'. Use '@/foo' instead",
+        ruleId: '@dword-design/import-alias/prefer-alias',
+      },
+    ],
+  },
 } |> mapValues(runTest)
