@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/dword-design/eslint-config/compare/v1.22.2...v1.23.0) (2020-06-20)
+
+
+### Features
+
+* disable nested ternary ([f088e46](https://github.com/dword-design/eslint-config/commit/f088e46486d2f0d76bbe8edde73ad92b485fa46f))
+
 ## [1.22.2](https://github.com/dword-design/eslint-config/compare/v1.22.1...v1.22.2) (2020-06-17)
 
 
