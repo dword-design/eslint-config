@@ -469,6 +469,12 @@ export default {
       export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
 
     `,
+    messages: [
+      {
+        message: 'Do not nest ternary expressions.',
+        ruleId: 'no-nested-ternary',
+      },
+    ],
   },
   'unnamed function': {
     code: endent`

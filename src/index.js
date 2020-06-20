@@ -91,7 +91,6 @@ export default {
     'simple-import-sort/sort': 'error',
     'vue/no-v-html': 'off',
     'no-param-reassign': 'off',
-    'no-nested-ternary': 'off',
     'func-names': ['error', 'never'],
     'new-cap': 'off',
     'no-underscore-dangle': 'off',
