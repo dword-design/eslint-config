@@ -90,6 +90,7 @@ export default {
     'import/prefer-default-export': 'off',
     'simple-import-sort/sort': 'error',
     'vue/no-v-html': 'off',
+    'vue/no-deprecated-functional-template': 'error',
     'no-param-reassign': 'off',
     'func-names': ['error', 'never'],
     'new-cap': 'off',

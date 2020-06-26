@@ -464,6 +464,21 @@ export default {
     `,
     filename: 'index.vue',
   },
+  'functional in template': {
+    code: endent`
+      <template functional>
+        <div />
+      </template>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'The `functional` template are deprecated.',
+        ruleId: 'vue/no-deprecated-functional-template',
+      },
+    ],
+  },
   'nested ternary': {
     code: endent`
       export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
