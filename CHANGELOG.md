@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/dword-design/eslint-config/compare/v1.23.0...v1.23.1) (2020-06-26)
+
+
+### Bug Fixes
+
+* disable functional templates ([63e2d52](https://github.com/dword-design/eslint-config/commit/63e2d5263dbd3ea5449e8962d4c139a9509da7cb))
+
 # [1.23.0](https://github.com/dword-design/eslint-config/compare/v1.22.2...v1.23.0) (2020-06-20)
 
 
