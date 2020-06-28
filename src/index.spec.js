@@ -395,6 +395,27 @@ export default {
 
     `,
   },
+  'arrow function returning block': {
+    code: endent`
+      export default foo => {
+        return console.log(foo)
+      }
+
+    `,
+    messages: [
+      {
+        message:
+          'Unexpected block statement surrounding arrow body; move the returned value immediately after the `=>`.',
+        ruleId: 'arrow-body-style',
+      },
+    ],
+  },
+  'arrow function assignment': {
+    code: endent`
+      export default foo => (foo.bar = 'bar')
+
+    `,
+  },
   'pipeline operator': {
     code: endent`
       export default async () => 1 |> (x => x + 1) |> await

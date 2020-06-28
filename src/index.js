@@ -81,12 +81,14 @@ export default {
     'prefer-arrow/prefer-arrow-functions': ['error'],
     'import/no-commonjs': 'error',
     'no-regex-spaces': 'off',
+    'arrow-body-style': ['error', 'as-needed'],
     'no-restricted-imports': [
       'error',
       {
         paths: eslintRestrictedImports,
       },
     ],
+    'no-return-assign': 'off',
     'no-template-curly-in-string': 'off',
     'import/prefer-default-export': 'off',
     'simple-import-sort/sort': 'error',
