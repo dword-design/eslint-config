@@ -9,12 +9,17 @@ const eslintRestrictedImports =
   restrictedImports
   |> omitBy(newName => newName === packageName)
   |> mapValues((newName, oldName) => ({
-    name: oldName,
     message: `Please use '${newName}' instead`,
+    name: oldName,
   }))
   |> values
 
 export default {
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
+  },
   extends: [
     getPackageName(require.resolve('eslint-config-airbnb-base')),
     `plugin:${getPackageName(
@@ -34,92 +39,6 @@ export default {
     )}/recommended`,
     'prettier/vue',
   ],
-  env: {
-    browser: true,
-    es6: true,
-    node: true,
-  },
-  parser: getPackageName(require.resolve('vue-eslint-parser')),
-  parserOptions: {
-    parser: getPackageName(require.resolve('babel-eslint')),
-    babelOptions: {
-      configFile: require.resolve('@dword-design/babel-config'),
-    },
-  },
-  settings: {
-    'import/resolver': {
-      [getPackageName(
-        require.resolve('eslint-import-resolver-babel-module')
-      )]: { alias: { '@': '.' } },
-    },
-  },
-  plugins: [
-    getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
-    getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
-    getPackageName(require.resolve('eslint-plugin-json-format')),
-    getPackageName(require.resolve('eslint-plugin-sort-keys-fix')),
-  ],
-  rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        semi: false,
-        arrowParens: 'avoid',
-      },
-    ],
-
-    '@dword-design/import-alias/prefer-alias': [
-      'error',
-      { cwd: 'packagejson' },
-    ],
-    'linebreak-style': ['error', 'unix'],
-    'no-console': 'off',
-    'import/no-dynamic-require': 'off',
-    'global-require': 'off',
-    'arrow-parens': ['error', 'as-needed'],
-    'prefer-arrow/prefer-arrow-functions': ['error'],
-    'import/no-commonjs': 'error',
-    'no-regex-spaces': 'off',
-    'arrow-body-style': ['error', 'as-needed'],
-    'no-restricted-imports': [
-      'error',
-      {
-        paths: eslintRestrictedImports,
-      },
-    ],
-    'no-return-assign': 'off',
-    'no-template-curly-in-string': 'off',
-    'import/prefer-default-export': 'off',
-    'simple-import-sort/sort': 'error',
-    'vue/no-v-html': 'off',
-    'vue/no-deprecated-functional-template': 'error',
-    'no-param-reassign': 'off',
-    'func-names': ['error', 'never'],
-    'new-cap': 'off',
-    'no-underscore-dangle': 'off',
-    'require-await': 'error',
-    'promise/prefer-await-to-then': 'error',
-    'promise/prefer-await-to-callbacks': 'error',
-    'prefer-destructuring': 'off',
-    'sort-keys-fix/sort-keys-fix': 'error',
-    'no-restricted-syntax': [
-      'error',
-      'ObjectPattern',
-      'ArrayPattern',
-      "LogicalExpression[operator='??']",
-    ],
-    'padding-line-between-statements': [
-      'error',
-      { blankLine: 'never', prev: '*', next: '*' },
-      { blankLine: 'always', prev: 'import', next: '*' },
-      { blankLine: 'any', prev: 'import', next: 'import' },
-      { blankLine: 'always', prev: '*', next: 'export' },
-    ],
-    'no-inline-comments': 'error',
-    'vue/require-default-prop': 'off',
-    'vue/require-prop-types': 'off',
-  },
   overrides: [
     {
       files: '**/*.spec.js',
@@ -133,8 +52,8 @@ export default {
             paths: [
               ...eslintRestrictedImports,
               {
-                name: 'expect',
                 message: "Please use the global 'expect' variable instead",
+                name: 'expect',
               },
             ],
           },
@@ -142,4 +61,85 @@ export default {
       },
     },
   ],
+  parser: getPackageName(require.resolve('vue-eslint-parser')),
+  parserOptions: {
+    babelOptions: {
+      configFile: require.resolve('@dword-design/babel-config'),
+    },
+    parser: getPackageName(require.resolve('babel-eslint')),
+  },
+  plugins: [
+    getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
+    getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
+    getPackageName(require.resolve('eslint-plugin-json-format')),
+    getPackageName(require.resolve('eslint-plugin-sort-keys-fix')),
+  ],
+  rules: {
+    '@dword-design/import-alias/prefer-alias': [
+      'error',
+      { cwd: 'packagejson' },
+    ],
+
+    'arrow-body-style': ['error', 'as-needed'],
+    'arrow-parens': ['error', 'as-needed'],
+    'func-names': ['error', 'never'],
+    'global-require': 'off',
+    'import/no-commonjs': 'error',
+    'import/no-dynamic-require': 'off',
+    'import/prefer-default-export': 'off',
+    'linebreak-style': ['error', 'unix'],
+    'new-cap': 'off',
+    'no-console': 'off',
+    'no-inline-comments': 'error',
+    'no-param-reassign': 'off',
+    'no-regex-spaces': 'off',
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: eslintRestrictedImports,
+      },
+    ],
+    'no-restricted-syntax': [
+      'error',
+      'ObjectPattern',
+      'ArrayPattern',
+      "LogicalExpression[operator='??']",
+    ],
+    'no-return-assign': 'off',
+    'no-template-curly-in-string': 'off',
+    'no-underscore-dangle': 'off',
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'never', next: '*', prev: '*' },
+      { blankLine: 'always', next: '*', prev: 'import' },
+      { blankLine: 'any', next: 'import', prev: 'import' },
+      { blankLine: 'always', next: 'export', prev: '*' },
+    ],
+    'prefer-arrow/prefer-arrow-functions': ['error'],
+    'prefer-destructuring': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        arrowParens: 'avoid',
+        semi: false,
+        singleQuote: true,
+      },
+    ],
+    'promise/prefer-await-to-callbacks': 'error',
+    'promise/prefer-await-to-then': 'error',
+    'require-await': 'error',
+    'simple-import-sort/sort': 'error',
+    'sort-keys-fix/sort-keys-fix': 'error',
+    'vue/no-deprecated-functional-template': 'error',
+    'vue/no-v-html': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/require-prop-types': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      [getPackageName(
+        require.resolve('eslint-import-resolver-babel-module')
+      )]: { alias: { '@': '.' } },
+    },
+  },
 }
