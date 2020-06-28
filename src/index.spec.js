@@ -1020,7 +1020,7 @@ export default {
       },
     ],
   },
-  /*'tilde ranges: invalid': {
+  /* 'tilde ranges: invalid': {
     code: JSON.stringify(
       {
         dependencies: {
@@ -1037,7 +1037,7 @@ export default {
         ruleId: 'json-files/restrict-ranges',
       },
     ],
-  },*/
+  }, */
   'tilde ranges: valid': {
     code: JSON.stringify(
       {
