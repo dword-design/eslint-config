@@ -1,3 +1,10 @@
+## [1.23.3](https://github.com/dword-design/eslint-config/compare/v1.23.2...v1.23.3) (2020-06-28)
+
+
+### Bug Fixes
+
+* add sort keys ([93e9968](https://github.com/dword-design/eslint-config/commit/93e9968dd4263449461688aee6e6e74d8b6a6e00))
+
 ## [1.23.2](https://github.com/dword-design/eslint-config/compare/v1.23.1...v1.23.2) (2020-06-28)
 
 
