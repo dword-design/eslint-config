@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/dword-design/eslint-config/compare/v1.23.1...v1.23.2) (2020-06-28)
+
+
+### Bug Fixes
+
+* add restricted import ([c0ad05a](https://github.com/dword-design/eslint-config/commit/c0ad05ab3b1976678df5cf737999377788545479))
+
 ## [1.23.1](https://github.com/dword-design/eslint-config/compare/v1.23.0...v1.23.1) (2020-06-26)
 
 
