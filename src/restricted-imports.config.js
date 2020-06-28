@@ -15,4 +15,5 @@ export default {
   'glob-promise': 'globby',
   // Only works for Node.js >= 12
   matched: 'globby',
+  proxyquire: '@dword-design/proxyquire',
 }
