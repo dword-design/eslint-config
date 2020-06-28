@@ -128,6 +128,7 @@ export default {
     ],
     'promise/prefer-await-to-callbacks': 'error',
     'promise/prefer-await-to-then': 'error',
+    'react/jsx-boolean-value': 'error',
     'react/jsx-sort-props': 'error',
     'require-await': 'error',
     'simple-import-sort/sort': 'error',

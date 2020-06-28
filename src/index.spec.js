@@ -604,86 +604,6 @@ export default {
     `,
     filename: 'index.json',
   },
-  'jsx: attributes not sorted': {
-    code: endent`
-      <script>
-      export default {
-        render: () => <div class="foo" aria-hidden="true" />,
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-    messages: [
-      {
-        message: 'Props should be sorted alphabetically',
-        ruleId: 'react/jsx-sort-props',
-      },
-    ],
-  },
-  'jsx: boolean before value': {
-    code: endent`
-      <script>
-      export default {
-        render: () => <div is-hidden class="foo" />,
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-    messages: [
-      {
-        message: 'Props should be sorted alphabetically',
-        ruleId: 'react/jsx-sort-props',
-      },
-    ],
-  },
-  'jsx: component order: invalid': {
-    code: endent`
-      <script>
-      export default {
-        props: {
-          foo: {},
-        },
-        data: () => ({ bar: 1 }),
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-    messages: [
-      {
-        message:
-          "Expected object keys to be in ascending order. 'data' should be before 'props'.",
-        ruleId: 'sort-keys-fix/sort-keys-fix',
-      },
-    ],
-  },
-  'jsx: component order: valid': {
-    code: endent`
-      <script>
-      export default {
-        data: () => ({ bar: 1 }),
-        props: {
-          foo: {},
-        },
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-  },
-  'jsx: valid': {
-    code: endent`
-      <script>
-      export default {
-        render: () => <div aria-hidden="true" class="foo" />,
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-  },
   'named import right order': {
     code: endent`
       import { bar, foo } from 'foo'
@@ -1068,5 +988,124 @@ export default {
       export default 1
     
     `,
+  },
+  'vue: attributes not sorted': {
+    code: endent`
+      <script>
+      export default {
+        render: () => <div class="foo" aria-hidden="true" />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'Props should be sorted alphabetically',
+        ruleId: 'react/jsx-sort-props',
+      },
+    ],
+  },
+  'vue: boolean before value': {
+    code: endent`
+      <script>
+      export default {
+        render: () => <div is-hidden class="foo" />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'Props should be sorted alphabetically',
+        ruleId: 'react/jsx-sort-props',
+      },
+    ],
+  },
+  'vue: boolean: constant true': {
+    code: endent`
+      <script>
+      export default {
+        render: () => <div is-foo={true} />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'Value must be omitted for boolean attributes',
+        ruleId: 'react/jsx-boolean-value',
+      },
+    ],
+  },
+  'vue: boolean: prop': {
+    code: endent`
+      <script>
+      export default {
+        render: context => <div is-foo={context.props.foo} />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+  },
+  'vue: boolean: valid': {
+    code: endent`
+      <script>
+      export default {
+        render: () => <div is-foo />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+  },
+  'vue: component order: invalid': {
+    code: endent`
+      <script>
+      export default {
+        props: {
+          foo: {},
+        },
+        data: () => ({ bar: 1 }),
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message:
+          "Expected object keys to be in ascending order. 'data' should be before 'props'.",
+        ruleId: 'sort-keys-fix/sort-keys-fix',
+      },
+    ],
+  },
+  'vue: component order: valid': {
+    code: endent`
+      <script>
+      export default {
+        data: () => ({ bar: 1 }),
+        props: {
+          foo: {},
+        },
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+  },
+  'vue: valid': {
+    code: endent`
+      <script>
+      export default {
+        render: () => <div aria-hidden="true" class="foo" />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
   },
 } |> mapValues(runTest)
