@@ -1,7 +1,9 @@
 import { endent, flatten, map, mapValues, pick } from '@dword-design/functions'
 import { ESLint } from 'eslint'
+import getPackageName from 'get-package-name'
 import outputFiles from 'output-files'
 import P from 'path'
+import sortObjectKeys from 'sort-object-keys'
 import stealthyRequire from 'stealthy-require'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
@@ -57,6 +59,11 @@ export default {
     filename: P.join('sub', 'sub', 'index.js'),
     files: {
       sub: {
+        '.babelrc.json': JSON.stringify({
+          extends: getPackageName(
+            require.resolve('@dword-design/babel-config')
+          ),
+        }),
         'foo.js': '',
         'package.json': JSON.stringify({}),
       },
@@ -80,6 +87,11 @@ export default {
     filename: P.join('sub', 'sub', 'index.js'),
     files: {
       sub: {
+        '.babelrc.json': JSON.stringify({
+          extends: getPackageName(
+            require.resolve('@dword-design/babel-config')
+          ),
+        }),
         'foo.js': '',
         'package.json': JSON.stringify({}),
       },
@@ -609,17 +621,52 @@ export default {
   'jsx: attributes not sorted': {
     code: endent`
       export default {
-        render: () => <div class="foo" aria-hidden="true" />
+        render: () => <div class="foo" aria-hidden="true" />,
       }
 
     `,
     messages: [
       {
-        message:
-          "Expected object keys to be in ascending order. 'a' should be before 'b'.",
-        ruleId: 'sort-keys-fix/sort-keys-fix',
+        message: 'Props should be sorted alphabetically',
+        ruleId: 'react/jsx-sort-props',
       },
     ],
+  },
+  'jsx: boolean before value': {
+    code: endent`
+      export default {
+        render: () => <div is-hidden class="foo" />,
+      }
+
+    `,
+    messages: [
+      {
+        message: 'Props should be sorted alphabetically',
+        ruleId: 'react/jsx-sort-props',
+      },
+    ],
+  },
+  'jsx: events before attributes': {
+    code: endent`
+      export default {
+        render: () => <div v-on:click={() => {}} class="foo" />,
+      }
+
+    `,
+    messages: [
+      {
+        message: 'Props should be sorted alphabetically',
+        ruleId: 'react/jsx-sort-props',
+      },
+    ],
+  },
+  'jsx: valid': {
+    code: endent`
+      export default {
+        render: () => <div aria-hidden="true" class="foo" />,
+      }
+
+    `,
   },
   'multiple attributes per line': {
     code: endent`
@@ -712,10 +759,13 @@ export default {
   },
   'package.json: unsorted': {
     code: JSON.stringify(
-      {
-        name: 'foo',
-        version: '1.0.0',
-      },
+      sortObjectKeys(
+        {
+          name: 'foo',
+          version: '1.0.0',
+        },
+        ['version', 'name']
+      ),
       undefined,
       2
     ),

@@ -73,13 +73,13 @@ export default {
     getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
     getPackageName(require.resolve('eslint-plugin-json-format')),
     getPackageName(require.resolve('eslint-plugin-sort-keys-fix')),
+    getPackageName(require.resolve('eslint-plugin-react')),
   ],
   rules: {
     '@dword-design/import-alias/prefer-alias': [
       'error',
       { cwd: 'packagejson' },
     ],
-
     'arrow-body-style': ['error', 'as-needed'],
     'arrow-parens': ['error', 'as-needed'],
     'func-names': ['error', 'never'],
@@ -127,6 +127,7 @@ export default {
     ],
     'promise/prefer-await-to-callbacks': 'error',
     'promise/prefer-await-to-then': 'error',
+    'react/jsx-sort-props': 'error',
     'require-await': 'error',
     'simple-import-sort/sort': 'error',
     'sort-keys-fix/sort-keys-fix': 'error',
@@ -139,7 +140,7 @@ export default {
     'import/resolver': {
       [getPackageName(
         require.resolve('eslint-import-resolver-babel-module')
-      )]: { alias: { '@': '.' } },
+      )]: {},
     },
   },
 }
