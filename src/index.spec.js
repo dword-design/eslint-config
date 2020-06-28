@@ -972,4 +972,17 @@ export default {
       },
     ],
   },
+  'unsorted object keys': {
+    code: endent`
+      export default { b: 1, a: 2 }
+
+    `,
+    messages: [
+      {
+        message:
+          "Expected object keys to be in ascending order. 'a' should be before 'b'.",
+        ruleId: 'sort-keys-fix/sort-keys-fix',
+      },
+    ],
+  },
 } |> mapValues(runTest)

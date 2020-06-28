@@ -57,6 +57,7 @@ export default {
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
     getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
     getPackageName(require.resolve('eslint-plugin-json-format')),
+    getPackageName(require.resolve('eslint-plugin-sort-keys-fix')),
   ],
   rules: {
     'prettier/prettier': [
@@ -99,6 +100,7 @@ export default {
     'promise/prefer-await-to-then': 'error',
     'promise/prefer-await-to-callbacks': 'error',
     'prefer-destructuring': 'off',
+    'sort-keys-fix/sort-keys-fix': 'error',
     'no-restricted-syntax': [
       'error',
       'ObjectPattern',
