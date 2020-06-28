@@ -3,7 +3,6 @@ import getPackageName from 'get-package-name'
 import loadPkg from 'load-pkg'
 
 import restrictedImports from './restricted-imports'
-// import tildePackages from './tilde-packages'
 
 const packageName = loadPkg.sync().name
 const eslintRestrictedImports =
@@ -73,7 +72,6 @@ export default {
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
     getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
     getPackageName(require.resolve('eslint-plugin-json-format')),
-    // getPackageName(require.resolve('eslint-plugin-json-files')),
     getPackageName(require.resolve('eslint-plugin-sort-keys-fix')),
     getPackageName(require.resolve('eslint-plugin-react')),
   ],
@@ -97,6 +95,7 @@ export default {
     'new-cap': 'off',
     'no-console': 'off',
     'no-inline-comments': 'error',
+    'no-negated-condition': 'error',
     'no-param-reassign': 'off',
     'no-regex-spaces': 'off',
     'no-restricted-imports': [

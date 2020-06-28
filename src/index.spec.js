@@ -725,6 +725,23 @@ export default {
       },
     ],
   },
+  'negated condition': {
+    code: endent`
+      const foo = 1
+      if (!foo) {
+        console.log('foo')
+      } else {
+        console.log('bar')
+      }
+    
+    `,
+    messages: [
+      {
+        message: 'Unexpected negated condition.',
+        ruleId: 'no-negated-condition',
+      },
+    ],
+  },
   'nested ternary': {
     code: endent`
       export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
@@ -1019,36 +1036,6 @@ export default {
         ruleId: 'no-restricted-imports',
       },
     ],
-  },
-  /*'tilde ranges: invalid': {
-    code: JSON.stringify(
-      {
-        dependencies: {
-          nuxt: '^1.0.0',
-        },
-      },
-      undefined,
-      2
-    ),
-    filename: 'package.json',
-    messages: [
-      {
-        message: 'Invalid SemVer hint (tilde).',
-        ruleId: 'json-files/restrict-ranges',
-      },
-    ],
-  },*/
-  'tilde ranges: valid': {
-    code: JSON.stringify(
-      {
-        dependencies: {
-          nuxt: '~1.0.0',
-        },
-      },
-      undefined,
-      2
-    ),
-    filename: 'package.json',
   },
   'underscore dangle': {
     code: endent`
