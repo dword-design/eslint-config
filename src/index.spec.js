@@ -495,20 +495,6 @@ export default {
       },
     ],
   },
-  'html indent': {
-    code: endent`
-      <template>
-        <div
-          :is-active="
-            $route.name === 'task-view-detail' &&
-            $route.params.taskViewId === entity._id
-          "
-        />
-      </template>
-
-    `,
-    filename: 'index.vue',
-  },
   'import order': {
     code: endent`
       import foo from 'foo'
@@ -652,6 +638,41 @@ export default {
       },
     ],
   },
+  'jsx: component order: invalid': {
+    code: endent`
+      <script>
+      export default {
+        props: {
+          foo: {},
+        },
+        data: () => ({ bar: 1 }),
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message:
+          "Expected object keys to be in ascending order. 'data' should be before 'props'.",
+        ruleId: 'sort-keys-fix/sort-keys-fix',
+      },
+    ],
+  },
+  'jsx: component order: valid': {
+    code: endent`
+      <script>
+      export default {
+        data: () => ({ bar: 1 }),
+        props: {
+          foo: {},
+        },
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+  },
   'jsx: events before attributes': {
     code: endent`
       <script>
@@ -676,15 +697,6 @@ export default {
         render: () => <div aria-hidden="true" class="foo" />,
       }
       </script>
-
-    `,
-    filename: 'index.vue',
-  },
-  'multiple attributes per line': {
-    code: endent`
-      <template>
-        <div class="foo" style="color: red" />
-      </template>
 
     `,
     filename: 'index.vue',
@@ -932,15 +944,6 @@ export default {
       },
     ],
   },
-  'self-closing void elements': {
-    code: endent`
-      <template>
-        <img />
-      </template>
-
-    `,
-    filename: 'index.vue',
-  },
   semicolon: {
     code: endent`
       console.log();
@@ -1076,23 +1079,6 @@ export default {
         ruleId: 'sort-keys-fix/sort-keys-fix',
       },
     ],
-  },
-  'v-html': {
-    code: endent`
-      <template>
-        <div v-html="foo" />
-      </template>
-      
-      <script>
-      export default {
-        computed: {
-          foo: () => 'foo',
-        },
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
   },
   valid: {
     code: endent`

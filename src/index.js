@@ -133,7 +133,7 @@ export default {
     'simple-import-sort/sort': 'error',
     'sort-keys-fix/sort-keys-fix': 'error',
     'vue/no-deprecated-functional-template': 'error',
-    'vue/no-v-html': 'off',
+    'vue/order-in-components': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
   },
