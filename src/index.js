@@ -2,7 +2,8 @@ import { mapValues, omitBy, values } from '@dword-design/functions'
 import getPackageName from 'get-package-name'
 import loadPkg from 'load-pkg'
 
-import restrictedImports from './restricted-imports.config'
+import restrictedImports from './restricted-imports'
+// import tildePackages from './tilde-packages'
 
 const packageName = loadPkg.sync().name
 const eslintRestrictedImports =
@@ -72,6 +73,7 @@ export default {
     getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
     getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
     getPackageName(require.resolve('eslint-plugin-json-format')),
+    // getPackageName(require.resolve('eslint-plugin-json-files')),
     getPackageName(require.resolve('eslint-plugin-sort-keys-fix')),
     getPackageName(require.resolve('eslint-plugin-react')),
   ],
@@ -87,6 +89,10 @@ export default {
     'import/no-commonjs': 'error',
     'import/no-dynamic-require': 'off',
     'import/prefer-default-export': 'off',
+    /* 'json-files/restrict-ranges': [
+      'error',
+      { packages: tildePackages, versionHint: 'tilde' },
+    ], */
     'linebreak-style': ['error', 'unix'],
     'new-cap': 'off',
     'no-console': 'off',

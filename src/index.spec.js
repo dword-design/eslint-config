@@ -1020,6 +1020,36 @@ export default {
       },
     ],
   },
+  /*'tilde ranges: invalid': {
+    code: JSON.stringify(
+      {
+        dependencies: {
+          nuxt: '^1.0.0',
+        },
+      },
+      undefined,
+      2
+    ),
+    filename: 'package.json',
+    messages: [
+      {
+        message: 'Invalid SemVer hint (tilde).',
+        ruleId: 'json-files/restrict-ranges',
+      },
+    ],
+  },*/
+  'tilde ranges: valid': {
+    code: JSON.stringify(
+      {
+        dependencies: {
+          nuxt: '~1.0.0',
+        },
+      },
+      undefined,
+      2
+    ),
+    filename: 'package.json',
+  },
   'underscore dangle': {
     code: endent`
       const foo = {}
@@ -1067,7 +1097,7 @@ export default {
   },
   valid: {
     code: endent`
-      console.log()
+      export default 1
     
     `,
   },
