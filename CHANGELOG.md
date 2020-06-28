@@ -1,3 +1,10 @@
+## [1.25.3](https://github.com/dword-design/eslint-config/compare/v1.25.2...v1.25.3) (2020-06-28)
+
+
+### Bug Fixes
+
+* fix vue order conflict ([9f4a9bd](https://github.com/dword-design/eslint-config/commit/9f4a9bd44b13ee2ef22a02a37773ff447d1e1a1b))
+
 ## [1.25.2](https://github.com/dword-design/eslint-config/compare/v1.25.1...v1.25.2) (2020-06-28)
 
 
