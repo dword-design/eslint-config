@@ -1,3 +1,10 @@
+## [1.25.4](https://github.com/dword-design/eslint-config/compare/v1.25.3...v1.25.4) (2020-06-28)
+
+
+### Bug Fixes
+
+* add new rule ([ba95f3d](https://github.com/dword-design/eslint-config/commit/ba95f3d19cae34dd955a27ec12caba566c2db193))
+
 ## [1.25.3](https://github.com/dword-design/eslint-config/compare/v1.25.2...v1.25.3) (2020-06-28)
 
 
