@@ -620,11 +620,14 @@ export default {
   },
   'jsx: attributes not sorted': {
     code: endent`
+      <script>
       export default {
         render: () => <div class="foo" aria-hidden="true" />,
       }
+      </script>
 
     `,
+    filename: 'index.vue',
     messages: [
       {
         message: 'Props should be sorted alphabetically',
@@ -634,11 +637,14 @@ export default {
   },
   'jsx: boolean before value': {
     code: endent`
+      <script>
       export default {
         render: () => <div is-hidden class="foo" />,
       }
+      </script>
 
     `,
+    filename: 'index.vue',
     messages: [
       {
         message: 'Props should be sorted alphabetically',
@@ -648,11 +654,14 @@ export default {
   },
   'jsx: events before attributes': {
     code: endent`
+      <script>
       export default {
         render: () => <div v-on:click={() => {}} class="foo" />,
       }
+      </script>
 
     `,
+    filename: 'index.vue',
     messages: [
       {
         message: 'Props should be sorted alphabetically',
@@ -662,11 +671,14 @@ export default {
   },
   'jsx: valid': {
     code: endent`
+      <script>
       export default {
         render: () => <div aria-hidden="true" class="foo" />,
       }
+      </script>
 
     `,
+    filename: 'index.vue',
   },
   'multiple attributes per line': {
     code: endent`
