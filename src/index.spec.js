@@ -33,6 +33,64 @@ const runTest = config => () => {
 }
 
 export default {
+  'alias: child': {
+    code: endent`
+      import '@/foo'
+
+    `,
+    files: {
+      'foo.js': '',
+    },
+    messages: [
+      {
+        message:
+          "Unexpected subpath import via alias '@/foo'. Use './foo' instead",
+        ruleId: '@dword-design/import-alias/prefer-alias',
+      },
+    ],
+  },
+  'alias: import in package': {
+    code: endent`
+      import '@/foo'
+
+    `,
+    filename: P.join('sub', 'sub', 'index.js'),
+    files: {
+      sub: {
+        'foo.js': '',
+        'package.json': JSON.stringify({}),
+      },
+    },
+  },
+  'alias: parent': {
+    code: endent`
+      import '@/foo'
+
+    `,
+    filename: P.join('sub', 'index.js'),
+    files: {
+      'foo.js': '',
+    },
+  },
+  'alias: parent import in package': {
+    code: endent`
+      import '../foo'
+
+    `,
+    filename: P.join('sub', 'sub', 'index.js'),
+    files: {
+      sub: {
+        'foo.js': '',
+        'package.json': JSON.stringify({}),
+      },
+    },
+    messages: [
+      {
+        message: "Unexpected parent import '../foo'. Use '@/foo' instead",
+        ruleId: '@dword-design/import-alias/prefer-alias',
+      },
+    ],
+  },
   'arrow function': {
     code: endent`
       export default () => console.log('foo')
@@ -68,6 +126,232 @@ export default {
       },
     ],
   },
+  'async without await': {
+    code: endent`
+      export default async () => console.log('foo')
+
+    `,
+    messages: [
+      {
+        message: "Async arrow function has no 'await' expression.",
+        ruleId: 'require-await',
+      },
+    ],
+  },
+  'blank lines: exports with newline': {
+    code: endent`
+      export const foo = 1
+
+      export const bar = 2
+
+    `,
+  },
+  'blank lines: exports without newline': {
+    code: endent`
+      export const foo = 1
+      export const bar = 2
+
+    `,
+    messages: [
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+  },
+  'blank lines: import and statement with newline': {
+    code: endent`
+      import foo from 'foo'
+
+      console.log(foo)
+
+    `,
+    files: {
+      'node_modules/foo/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+    },
+  },
+  'blank lines: import and statement without newline': {
+    code: endent`
+      import foo from 'foo'
+      console.log(foo)
+
+    `,
+    files: {
+      'node_modules/foo/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+    },
+    messages: [
+      {
+        message:
+          'Expected 1 empty line after import statement not followed by another import.',
+        ruleId: 'import/newline-after-import',
+      },
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+  },
+  'blank lines: import groups with newline': {
+    code: endent`
+      import foo from 'foo'
+
+      import bar from './bar'
+      
+      console.log(foo)
+      console.log(bar)
+
+    `,
+    files: {
+      'bar.js': endent`
+        export default 1
+
+      `,
+      'node_modules/foo/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+    },
+  },
+  'blank lines: import groups without newline': {
+    code: endent`
+      import foo from 'foo'
+      import bar from './bar'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
+    files: {
+      'bar.js': endent`
+        export default 1
+
+      `,
+      'node_modules/foo/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+    },
+    messages: [
+      {
+        message: 'Run autofix to sort these imports!',
+        ruleId: 'simple-import-sort/sort',
+      },
+    ],
+  },
+  'blank lines: imports with newline': {
+    code: endent`
+      import bar from './bar'
+
+      import foo from './foo'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
+    files: {
+      'bar.js': endent`
+        export default 'bar'
+      
+      `,
+      'foo.js': endent`
+        export default 'foo'
+        
+      `,
+    },
+    messages: [
+      {
+        message: 'Run autofix to sort these imports!',
+        ruleId: 'simple-import-sort/sort',
+      },
+    ],
+  },
+  'blank lines: imports without newline': {
+    code: endent`
+      import bar from './bar'
+      import foo from './foo'
+
+      console.log(bar)
+      console.log(foo)
+
+    `,
+    files: {
+      'bar.js': endent`
+        export default 'bar'
+      
+      `,
+      'foo.js': endent`
+        export default 'foo'
+        
+      `,
+    },
+  },
+  'blank lines: simple': {
+    code: endent`
+      console.log('foo')
+
+      console.log('bar')
+
+    `,
+    messages: [
+      {
+        message: 'Unexpected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+  },
+  'comments: with blank line': {
+    code: endent`
+      console.log('foo')
+
+      // foo
+      console.log('bar')
+
+    `,
+    messages: [
+      {
+        message: 'Unexpected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+  },
+  'comments: without blank line': {
+    code: endent`
+      console.log('foo')
+      // foo
+      console.log('bar')
+
+    `,
+  },
   'deep nesting': {
     code: endent`
       export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344)
@@ -81,15 +365,41 @@ export default {
       },
     ],
   },
-  'async without await': {
+  'destructuring: array': {
     code: endent`
-      export default async () => console.log('foo')
+      const [foo] = ['bar']
+      console.log(foo)
 
     `,
     messages: [
       {
-        message: "Async arrow function has no 'await' expression.",
-        ruleId: 'require-await',
+        message: "Using 'ArrayPattern' is not allowed.",
+        ruleId: 'no-restricted-syntax',
+      },
+    ],
+  },
+  'destructuring: object': {
+    code: endent`
+      const { foo } = { foo: 'bar' }
+      console.log(foo)
+
+    `,
+    messages: [
+      {
+        message: "Using 'ObjectPattern' is not allowed.",
+        ruleId: 'no-restricted-syntax',
+      },
+    ],
+  },
+  'destructuring: parameter': {
+    code: endent`
+      export default ({ foo }) => console.log(foo)
+
+    `,
+    messages: [
+      {
+        message: "Using 'ObjectPattern' is not allowed.",
+        ruleId: 'no-restricted-syntax',
       },
     ],
   },
@@ -115,19 +425,6 @@ export default {
         message:
           "'foo' should be listed in the project's dependencies, not devDependencies.",
         ruleId: 'import/no-extraneous-dependencies',
-      },
-    ],
-  },
-  'destructuring: object': {
-    code: endent`
-      const { foo } = { foo: 'bar' }
-      console.log(foo)
-
-    `,
-    messages: [
-      {
-        message: "Using 'ObjectPattern' is not allowed.",
-        ruleId: 'no-restricted-syntax',
       },
     ],
   },
@@ -157,19 +454,6 @@ export default {
       },
     ],
   },
-  'destructuring: array': {
-    code: endent`
-      const [foo] = ['bar']
-      console.log(foo)
-
-    `,
-    messages: [
-      {
-        message: "Using 'ArrayPattern' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
-  },
   'function block': {
     code: endent`
       export default function () {
@@ -181,18 +465,6 @@ export default {
       {
         message: 'Prefer using arrow functions over plain functions',
         ruleId: 'prefer-arrow/prefer-arrow-functions',
-      },
-    ],
-  },
-  'destructuring: parameter': {
-    code: endent`
-      export default ({ foo }) => console.log(foo)
-
-    `,
-    messages: [
-      {
-        message: "Using 'ObjectPattern' is not allowed.",
-        ruleId: 'no-restricted-syntax',
       },
     ],
   },
@@ -277,33 +549,15 @@ export default {
 
     `,
   },
-  'blank lines: import and statement without newline': {
+  'inline comments': {
     code: endent`
-      import foo from 'foo'
-      console.log(foo)
+      export default 1 // foo
 
     `,
-    files: {
-      'node_modules/foo/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
-        undefined,
-        2
-      ),
-    },
     messages: [
       {
-        message:
-          'Expected 1 empty line after import statement not followed by another import.',
-        ruleId: 'import/newline-after-import',
-      },
-      {
-        message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        message: 'Unexpected comment inline with code.',
+        ruleId: 'no-inline-comments',
       },
     ],
   },
@@ -318,26 +572,6 @@ export default {
       { message: 'Format Error: unexpected "  "', ruleId: 'JSON format' },
     ],
   },
-  'blank lines: import and statement with newline': {
-    code: endent`
-      import foo from 'foo'
-
-      console.log(foo)
-
-    `,
-    files: {
-      'node_modules/foo/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
-        undefined,
-        2
-      ),
-    },
-  },
   'json: no indent': {
     code: endent`
       {
@@ -349,33 +583,6 @@ export default {
       { message: 'Format Error: expected "  " ', ruleId: 'JSON format' },
     ],
   },
-  'blank lines: imports with newline': {
-    code: endent`
-      import bar from './bar'
-
-      import foo from './foo'
-
-      console.log(foo)
-      console.log(bar)
-
-    `,
-    files: {
-      'bar.js': endent`
-        export default 'bar'
-      
-      `,
-      'foo.js': endent`
-        export default 'foo'
-        
-      `,
-    },
-    messages: [
-      {
-        message: 'Run autofix to sort these imports!',
-        ruleId: 'simple-import-sort/sort',
-      },
-    ],
-  },
   'json: syntax error': {
     code: endent`
       {
@@ -384,33 +591,6 @@ export default {
     `,
     filename: 'index.json',
     messages: [{ message: 'Unexpected token }', ruleId: null }],
-  },
-  'blank lines: import groups with newline': {
-    code: endent`
-      import foo from 'foo'
-
-      import bar from './bar'
-      
-      console.log(foo)
-      console.log(bar)
-
-    `,
-    files: {
-      'bar.js': endent`
-        export default 1
-
-      `,
-      'node_modules/foo/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
-        undefined,
-        2
-      ),
-    },
   },
   'json: valid': {
     code: endent`
@@ -426,13 +606,20 @@ export default {
     `,
     filename: 'index.json',
   },
-  'blank lines: exports with newline': {
+  'jsx: attributes not sorted': {
     code: endent`
-      export const foo = 1
-
-      export const bar = 2
+      export default {
+        render: () => <div class="foo" aria-hidden="true" />
+      }
 
     `,
+    messages: [
+      {
+        message:
+          "Expected object keys to be in ascending order. 'a' should be before 'b'.",
+        ruleId: 'sort-keys-fix/sort-keys-fix',
+      },
+    ],
   },
   'multiple attributes per line': {
     code: endent`
@@ -442,19 +629,6 @@ export default {
 
     `,
     filename: 'index.vue',
-  },
-  'blank lines: exports without newline': {
-    code: endent`
-      export const foo = 1
-      export const bar = 2
-
-    `,
-    messages: [
-      {
-        message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
-      },
-    ],
   },
   'named import right order': {
     code: endent`
@@ -475,321 +649,6 @@ export default {
         undefined,
         2
       ),
-    },
-  },
-  'alias: parent': {
-    code: endent`
-      import '@/foo'
-
-    `,
-    filename: P.join('sub', 'index.js'),
-    files: {
-      'foo.js': '',
-    },
-  },
-  'nested ternary': {
-    code: endent`
-      export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
-
-    `,
-    messages: [
-      {
-        message: 'Do not nest ternary expressions.',
-        ruleId: 'no-nested-ternary',
-      },
-    ],
-  },
-  'alias: child': {
-    code: endent`
-      import '@/foo'
-
-    `,
-    files: {
-      'foo.js': '',
-    },
-    messages: [
-      {
-        message:
-          "Unexpected subpath import via alias '@/foo'. Use './foo' instead",
-        ruleId: '@dword-design/import-alias/prefer-alias',
-      },
-    ],
-  },
-  'package.json: unsorted': {
-    code: JSON.stringify(
-      {
-        name: 'foo',
-        version: '1.0.0',
-      },
-      undefined,
-      2
-    ),
-    filename: 'package.json',
-    messages: [{ message: 'JSON is not sorted', ruleId: 'JSON sorting' }],
-  },
-  'alias: import in package': {
-    code: endent`
-      import '@/foo'
-
-    `,
-    filename: P.join('sub', 'sub', 'index.js'),
-    files: {
-      sub: {
-        'foo.js': '',
-        'package.json': JSON.stringify({}),
-      },
-    },
-  },
-  'package.json: valid': {
-    code: JSON.stringify(
-      {
-        name: 'foo',
-        version: '1.0.0',
-      },
-      undefined,
-      2
-    ),
-    filename: 'package.json',
-  },
-  'alias: parent import in package': {
-    code: endent`
-      import '../foo'
-
-    `,
-    filename: P.join('sub', 'sub', 'index.js'),
-    files: {
-      sub: {
-        'foo.js': '',
-        'package.json': JSON.stringify({}),
-      },
-    },
-    messages: [
-      {
-        message: "Unexpected parent import '../foo'. Use '@/foo' instead",
-        ruleId: '@dword-design/import-alias/prefer-alias',
-      },
-    ],
-  },
-  'param reassign': {
-    code: endent`
-      export default foo => {
-        foo = 'bar'
-        console.log(foo)
-      }
-
-    `,
-  },
-  'blank lines: import groups without newline': {
-    code: endent`
-      import foo from 'foo'
-      import bar from './bar'
-
-      console.log(foo)
-      console.log(bar)
-
-    `,
-    files: {
-      'bar.js': endent`
-        export default 1
-
-      `,
-      'node_modules/foo/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
-        undefined,
-        2
-      ),
-    },
-    messages: [
-      {
-        message: 'Run autofix to sort these imports!',
-        ruleId: 'simple-import-sort/sort',
-      },
-    ],
-  },
-  'prod dependency in src': {
-    code: endent`
-      import 'foo'
-
-    `,
-    filename: P.join('src', 'index.js'),
-    files: {
-      'node_modules/foo/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
-        undefined,
-        2
-      ),
-    },
-  },
-  'blank lines: imports without newline': {
-    code: endent`
-      import bar from './bar'
-      import foo from './foo'
-
-      console.log(bar)
-      console.log(foo)
-
-    `,
-    files: {
-      'bar.js': endent`
-        export default 'bar'
-      
-      `,
-      'foo.js': endent`
-        export default 'foo'
-        
-      `,
-    },
-  },
-  'quotes: nested': {
-    code: endent`
-      export default "foo 'bar'"
-
-    `,
-  },
-  'blank lines: simple': {
-    code: endent`
-      console.log('foo')
-
-      console.log('bar')
-
-    `,
-    messages: [
-      {
-        message: 'Unexpected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
-      },
-    ],
-  },
-  'regex-spaces': {
-    code: endent`
-      export default /  /
-
-    `,
-  },
-  'comments: with blank line': {
-    code: endent`
-      console.log('foo')
-
-      // foo
-      console.log('bar')
-
-    `,
-    messages: [
-      {
-        message: 'Unexpected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
-      },
-    ],
-  },
-  'restricted import: inside': {
-    code: endent`
-      import 'puppeteer'
-
-    `,
-    files: {
-      'node_modules/puppeteer/index.js': '',
-      'package.json': endent`
-        {
-          "name": "@dword-design/puppeteer",
-          "dependencies": {
-            "puppeteer": "^1.0.0"
-          }
-        }
-      `,
-    },
-  },
-  'comments: without blank line': {
-    code: endent`
-      console.log('foo')
-      // foo
-      console.log('bar')
-
-    `,
-  },
-  'restricted import: outside': {
-    code: endent`
-      import 'puppeteer'
-
-    `,
-    files: {
-      'node_modules/puppeteer/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            puppeteer: '^1.0.0',
-          },
-        },
-        undefined,
-        2
-      ),
-    },
-    messages: [
-      {
-        message:
-          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
-        ruleId: 'no-restricted-imports',
-      },
-    ],
-  },
-  'inline comments': {
-    code: endent`
-      export default 1 // foo
-
-    `,
-    messages: [
-      {
-        message: 'Unexpected comment inline with code.',
-        ruleId: 'no-inline-comments',
-      },
-    ],
-  },
-  semicolon: {
-    code: endent`
-      console.log();
-
-    `,
-    messages: [{ message: 'Delete `;`', ruleId: 'prettier/prettier' }],
-  },
-  'jsx: attributes not sorted': {
-    code: endent`
-      export default {
-        render: () => <div class="foo" aria-hidden="true" />
-      }
-
-    `,
-    messages: [
-      {
-        message:
-          "Expected object keys to be in ascending order. 'a' should be before 'b'.",
-        ruleId: 'sort-keys-fix/sort-keys-fix',
-      },
-    ],
-  },
-  'test: dev dependency': {
-    code: endent`
-      import 'foo'
-      
-    `,
-    filename: 'index.spec.js',
-    files: {
-      'node_modules/foo/index.js': '',
-      'package.json': endent`
-        {
-          "devDependencies": {
-            "foo": "^1.0.0"
-          }
-        }
-      `,
     },
   },
   'named import wrong order': {
@@ -819,12 +678,17 @@ export default {
       },
     ],
   },
-  'test: global expect': {
+  'nested ternary': {
     code: endent`
-      expect(1).toEqual(1)
-      
+      export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
+
     `,
-    filename: 'index.spec.js',
+    messages: [
+      {
+        message: 'Do not nest ternary expressions.',
+        ruleId: 'no-nested-ternary',
+      },
+    ],
   },
   'new lower-case': {
     code: endent`
@@ -833,6 +697,207 @@ export default {
       export default new foo()
 
     `,
+  },
+  'nullish coalescing': {
+    code: endent`
+      console.log(1 ?? 2)
+
+    `,
+    messages: [
+      {
+        message: "Using 'LogicalExpression[operator='??']' is not allowed.",
+        ruleId: 'no-restricted-syntax',
+      },
+    ],
+  },
+  'package.json: unsorted': {
+    code: JSON.stringify(
+      {
+        name: 'foo',
+        version: '1.0.0',
+      },
+      undefined,
+      2
+    ),
+    filename: 'package.json',
+    messages: [{ message: 'JSON is not sorted', ruleId: 'JSON sorting' }],
+  },
+  'package.json: valid': {
+    code: JSON.stringify(
+      {
+        name: 'foo',
+        version: '1.0.0',
+      },
+      undefined,
+      2
+    ),
+    filename: 'package.json',
+  },
+  'param reassign': {
+    code: endent`
+      export default foo => {
+        foo = 'bar'
+        console.log(foo)
+      }
+
+    `,
+  },
+  'pipeline operator': {
+    code: endent`
+      export default async () => 1 |> (x => x + 1) |> await
+      
+    `,
+  },
+  'possible destructuring': {
+    code: endent`
+      const bar = { foo: 'test' }
+      const foo = bar.foo
+      console.log(foo)
+
+    `,
+  },
+  'prod dependency in src': {
+    code: endent`
+      import 'foo'
+
+    `,
+    filename: P.join('src', 'index.js'),
+    files: {
+      'node_modules/foo/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+    },
+  },
+  'promise then': {
+    code: endent`
+      export default () => Promise.resolve().then(x => x)
+
+    `,
+    messages: [
+      {
+        message: 'Prefer await to then().',
+        ruleId: 'promise/prefer-await-to-then',
+      },
+    ],
+  },
+  'quotes: nested': {
+    code: endent`
+      export default "foo 'bar'"
+
+    `,
+  },
+  'quotes: unnecessary escapes': {
+    code: endent`
+      export default 'foo \\'bar\\''
+
+    `,
+    messages: [
+      {
+        message: "Replace `'foo·\\'bar\\''` with `\"foo·'bar'\"`",
+        ruleId: 'prettier/prettier',
+      },
+    ],
+  },
+  'regex-spaces': {
+    code: endent`
+      export default /  /
+
+    `,
+  },
+  'restricted import: inside': {
+    code: endent`
+      import 'puppeteer'
+
+    `,
+    files: {
+      'node_modules/puppeteer/index.js': '',
+      'package.json': endent`
+        {
+          "name": "@dword-design/puppeteer",
+          "dependencies": {
+            "puppeteer": "^1.0.0"
+          }
+        }
+      `,
+    },
+  },
+  'restricted import: outside': {
+    code: endent`
+      import 'puppeteer'
+
+    `,
+    files: {
+      'node_modules/puppeteer/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            puppeteer: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+    },
+    messages: [
+      {
+        message:
+          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
+        ruleId: 'no-restricted-imports',
+      },
+    ],
+  },
+  'self-closing void elements': {
+    code: endent`
+      <template>
+        <img />
+      </template>
+
+    `,
+    filename: 'index.vue',
+  },
+  semicolon: {
+    code: endent`
+      console.log();
+
+    `,
+    messages: [{ message: 'Delete `;`', ruleId: 'prettier/prettier' }],
+  },
+  'single export': {
+    code: endent`
+      export const foo = 'bar'
+
+    `,
+  },
+  'test: dev dependency': {
+    code: endent`
+      import 'foo'
+      
+    `,
+    filename: 'index.spec.js',
+    files: {
+      'node_modules/foo/index.js': '',
+      'package.json': endent`
+        {
+          "devDependencies": {
+            "foo": "^1.0.0"
+          }
+        }
+      `,
+    },
+  },
+  'test: global expect': {
+    code: endent`
+      expect(1).toEqual(1)
+      
+    `,
+    filename: 'index.spec.js',
   },
   'test: imported expect': {
     code: endent`
@@ -860,89 +925,12 @@ export default {
       },
     ],
   },
-  'nullish coalescing': {
-    code: endent`
-      console.log(1 ?? 2)
-
-    `,
-    messages: [
-      {
-        message: "Using 'LogicalExpression[operator='??']' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
-  },
-  valid: {
-    code: endent`
-      console.log()
-    
-    `,
-  },
-  'pipeline operator': {
-    code: endent`
-      export default async () => 1 |> (x => x + 1) |> await
-      
-    `,
-  },
-  'possible destructuring': {
-    code: endent`
-      const bar = { foo: 'test' }
-      const foo = bar.foo
-      console.log(foo)
-
-    `,
-  },
-  'test: restricted import': {
-    files: {
-      'node_modules/puppeteer/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            puppeteer: '^1.0.0',
-          },
-        },
-        undefined,
-        2
-      ),
-    },
-    code: endent`
-      import 'puppeteer'
-
-    `,
-    filename: 'index.spec.js',
-    messages: [
-      {
-        message:
-          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
-        ruleId: 'no-restricted-imports',
-      },
-    ],
-  },
-  'promise then': {
-    code: endent`
-      export default () => Promise.resolve().then(x => x)
-
-    `,
-    messages: [
-      {
-        message: 'Prefer await to then().',
-        ruleId: 'promise/prefer-await-to-then',
-      },
-    ],
-  },
-  'quotes: unnecessary escapes': {
-    code: endent`
-      export default 'foo \\'bar\\''
-
-    `,
-    messages: [
-      {
-        message: "Replace `'foo·\\'bar\\''` with `\"foo·'bar'\"`",
-        ruleId: 'prettier/prettier',
-      },
-    ],
-  },
   'test: prod dependency': {
+    code: endent`
+      import 'foo'
+
+    `,
+    filename: 'src/index.spec.js',
     files: {
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
@@ -955,26 +943,32 @@ export default {
         2
       ),
     },
-    code: endent`
-      import 'foo'
-
-    `,
-    filename: 'src/index.spec.js',
   },
-  'self-closing void elements': {
+  'test: restricted import': {
     code: endent`
-      <template>
-        <img />
-      </template>
+      import 'puppeteer'
 
     `,
-    filename: 'index.vue',
-  },
-  'single export': {
-    code: endent`
-      export const foo = 'bar'
-
-    `,
+    filename: 'index.spec.js',
+    files: {
+      'node_modules/puppeteer/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            puppeteer: '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+    },
+    messages: [
+      {
+        message:
+          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
+        ruleId: 'no-restricted-imports',
+      },
+    ],
   },
   'underscore dangle': {
     code: endent`
@@ -1020,5 +1014,11 @@ export default {
 
     `,
     filename: 'index.vue',
+  },
+  valid: {
+    code: endent`
+      console.log()
+    
+    `,
   },
 } |> mapValues(runTest)
