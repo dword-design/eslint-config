@@ -87,10 +87,6 @@ export default {
     'import/no-commonjs': 'error',
     'import/no-dynamic-require': 'off',
     'import/prefer-default-export': 'off',
-    /* 'json-files/restrict-ranges': [
-      'error',
-      { packages: tildePackages, versionHint: 'tilde' },
-    ], */
     'linebreak-style': ['error', 'unix'],
     'new-cap': 'off',
     'no-console': 'off',
