@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/dword-design/eslint-config/compare/v1.23.3...v1.24.0) (2020-06-28)
+
+
+### Features
+
+* arrow function rules ([ee797f9](https://github.com/dword-design/eslint-config/commit/ee797f949bbe3a8f6795cf1d07c0aba305d0cd3f))
+
 ## [1.23.3](https://github.com/dword-design/eslint-config/compare/v1.23.2...v1.23.3) (2020-06-28)
 
 
