@@ -673,23 +673,6 @@ export default {
     `,
     filename: 'index.vue',
   },
-  'jsx: events before attributes': {
-    code: endent`
-      <script>
-      export default {
-        render: () => <div v-on:click={() => {}} class="foo" />,
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-    messages: [
-      {
-        message: 'Props should be sorted alphabetically',
-        ruleId: 'react/jsx-sort-props',
-      },
-    ],
-  },
   'jsx: valid': {
     code: endent`
       <script>
