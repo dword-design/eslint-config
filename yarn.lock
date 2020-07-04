@@ -997,9 +997,9 @@
     safe-readfile "^1.0.2"
 
 "@dword-design/eslint-config@^1.9.0":
-  version "1.25.4"
-  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-1.25.4.tgz#1201dc6aedcdd74629f8d062c185b5ace86a3ede"
-  integrity sha512-RG7viYsos1mPdeqg3vzIhReAHrYlvZPrF5C0iXm7EEo/Wty3hXbYq+EyRuykHeBYt+LvlBL+8axtQep/1cc17Q==
+  version "1.25.5"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-1.25.5.tgz#19ebfd40ff19061ff0c8bc6ef00f5a8a19797f3f"
+  integrity sha512-/PEz4OzFtNKLTRl9f6nHo7hmEgSnBkBWZn3v4o5cpi5Xoy1s3QIHqEPbRtiRnG+RA0JmNK32qSldcyaZRadtTw==
   dependencies:
     "@dword-design/babel-config" "^1.0.0"
     "@dword-design/eslint-plugin-import-alias" "^1.1.1"
