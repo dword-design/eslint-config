@@ -1,3 +1,41 @@
+## [1.25.5](https://github.com/dword-design/eslint-config/compare/v1.25.4...v1.25.5) (2020-07-04)
+
+
+### Bug Fixes
+
+* remove inline comment rule ([8cfee71](https://github.com/dword-design/eslint-config/commit/8cfee7119a0fe981b29d1d9a51ae31bc0b80baed))
+* upgrades ([4a6e867](https://github.com/dword-design/eslint-config/commit/4a6e867a29d49c2f9f269969a25dbe62a14ddbd9))
+
+## [1.25.4](https://github.com/dword-design/eslint-config/compare/v1.25.3...v1.25.4) (2020-06-28)
+
+
+### Bug Fixes
+
+* add new rule ([ba95f3d](https://github.com/dword-design/eslint-config/commit/ba95f3d19cae34dd955a27ec12caba566c2db193))
+
+## [1.25.3](https://github.com/dword-design/eslint-config/compare/v1.25.2...v1.25.3) (2020-06-28)
+
+
+### Bug Fixes
+
+* fix vue order conflict ([9f4a9bd](https://github.com/dword-design/eslint-config/commit/9f4a9bd44b13ee2ef22a02a37773ff447d1e1a1b))
+
+## [1.25.2](https://github.com/dword-design/eslint-config/compare/v1.25.1...v1.25.2) (2020-06-28)
+
+
+### Bug Fixes
+
+* clean up ([6f079e1](https://github.com/dword-design/eslint-config/commit/6f079e1165887ab06f3af7bbe7ca09249dce03ff))
+* fixes ([bcf30e6](https://github.com/dword-design/eslint-config/commit/bcf30e65286910a9e7702dbe9beea30c46bd8e35))
+* merge ([7a49b4c](https://github.com/dword-design/eslint-config/commit/7a49b4c8fe3be5bc7680ab9484d99d0eb183973a))
+
+## [1.25.1](https://github.com/dword-design/eslint-config/compare/v1.25.0...v1.25.1) (2020-06-28)
+
+
+### Bug Fixes
+
+* fixes ([28ba1e6](https://github.com/dword-design/eslint-config/commit/28ba1e670721a423685bea6a1a3f5ebd98fea6e4))
+
 # [1.25.0](https://github.com/dword-design/eslint-config/compare/v1.24.0...v1.25.0) (2020-06-28)
 
 

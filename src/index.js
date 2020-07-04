@@ -2,7 +2,7 @@ import { mapValues, omitBy, values } from '@dword-design/functions'
 import getPackageName from 'get-package-name'
 import loadPkg from 'load-pkg'
 
-import restrictedImports from './restricted-imports.config'
+import restrictedImports from './restricted-imports'
 
 const packageName = loadPkg.sync().name
 const eslintRestrictedImports =
@@ -90,7 +90,7 @@ export default {
     'linebreak-style': ['error', 'unix'],
     'new-cap': 'off',
     'no-console': 'off',
-    'no-inline-comments': 'error',
+    'no-negated-condition': 'error',
     'no-param-reassign': 'off',
     'no-regex-spaces': 'off',
     'no-restricted-imports': [
@@ -127,12 +127,13 @@ export default {
     ],
     'promise/prefer-await-to-callbacks': 'error',
     'promise/prefer-await-to-then': 'error',
+    'react/jsx-boolean-value': 'error',
     'react/jsx-sort-props': 'error',
     'require-await': 'error',
     'simple-import-sort/sort': 'error',
     'sort-keys-fix/sort-keys-fix': 'error',
     'vue/no-deprecated-functional-template': 'error',
-    'vue/no-v-html': 'off',
+    'vue/order-in-components': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
   },

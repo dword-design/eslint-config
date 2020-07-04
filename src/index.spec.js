@@ -495,20 +495,6 @@ export default {
       },
     ],
   },
-  'html indent': {
-    code: endent`
-      <template>
-        <div
-          :is-active="
-            $route.name === 'task-view-detail' &&
-            $route.params.taskViewId === entity._id
-          "
-        />
-      </template>
-
-    `,
-    filename: 'index.vue',
-  },
   'import order': {
     code: endent`
       import foo from 'foo'
@@ -566,12 +552,6 @@ export default {
       export default 1 // foo
 
     `,
-    messages: [
-      {
-        message: 'Unexpected comment inline with code.',
-        ruleId: 'no-inline-comments',
-      },
-    ],
   },
   'json: indent too big': {
     code: endent`
@@ -618,65 +598,6 @@ export default {
     `,
     filename: 'index.json',
   },
-  'jsx: attributes not sorted': {
-    code: endent`
-      export default {
-        render: () => <div class="foo" aria-hidden="true" />,
-      }
-
-    `,
-    messages: [
-      {
-        message: 'Props should be sorted alphabetically',
-        ruleId: 'react/jsx-sort-props',
-      },
-    ],
-  },
-  'jsx: boolean before value': {
-    code: endent`
-      export default {
-        render: () => <div is-hidden class="foo" />,
-      }
-
-    `,
-    messages: [
-      {
-        message: 'Props should be sorted alphabetically',
-        ruleId: 'react/jsx-sort-props',
-      },
-    ],
-  },
-  'jsx: events before attributes': {
-    code: endent`
-      export default {
-        render: () => <div v-on:click={() => {}} class="foo" />,
-      }
-
-    `,
-    messages: [
-      {
-        message: 'Props should be sorted alphabetically',
-        ruleId: 'react/jsx-sort-props',
-      },
-    ],
-  },
-  'jsx: valid': {
-    code: endent`
-      export default {
-        render: () => <div aria-hidden="true" class="foo" />,
-      }
-
-    `,
-  },
-  'multiple attributes per line': {
-    code: endent`
-      <template>
-        <div class="foo" style="color: red" />
-      </template>
-
-    `,
-    filename: 'index.vue',
-  },
   'named import right order': {
     code: endent`
       import { bar, foo } from 'foo'
@@ -722,6 +643,23 @@ export default {
       {
         message: 'Run autofix to sort these imports!',
         ruleId: 'simple-import-sort/sort',
+      },
+    ],
+  },
+  'negated condition': {
+    code: endent`
+      const foo = 1
+      if (!foo) {
+        console.log('foo')
+      } else {
+        console.log('bar')
+      }
+    
+    `,
+    messages: [
+      {
+        message: 'Unexpected negated condition.',
+        ruleId: 'no-negated-condition',
       },
     ],
   },
@@ -903,15 +841,6 @@ export default {
       },
     ],
   },
-  'self-closing void elements': {
-    code: endent`
-      <template>
-        <img />
-      </template>
-
-    `,
-    filename: 'index.vue',
-  },
   semicolon: {
     code: endent`
       console.log();
@@ -1048,16 +977,113 @@ export default {
       },
     ],
   },
-  'v-html': {
+  valid: {
     code: endent`
-      <template>
-        <div v-html="foo" />
-      </template>
-      
+      export default 1
+    
+    `,
+  },
+  'vue: attributes not sorted': {
+    code: endent`
       <script>
       export default {
-        computed: {
-          foo: () => 'foo',
+        render: () => <div class="foo" aria-hidden="true" />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'Props should be sorted alphabetically',
+        ruleId: 'react/jsx-sort-props',
+      },
+    ],
+  },
+  'vue: boolean before value': {
+    code: endent`
+      <script>
+      export default {
+        render: () => <div is-hidden class="foo" />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'Props should be sorted alphabetically',
+        ruleId: 'react/jsx-sort-props',
+      },
+    ],
+  },
+  'vue: boolean: constant true': {
+    code: endent`
+      <script>
+      export default {
+        render: () => <div is-foo={true} />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'Value must be omitted for boolean attributes',
+        ruleId: 'react/jsx-boolean-value',
+      },
+    ],
+  },
+  'vue: boolean: prop': {
+    code: endent`
+      <script>
+      export default {
+        render: context => <div is-foo={context.props.foo} />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+  },
+  'vue: boolean: valid': {
+    code: endent`
+      <script>
+      export default {
+        render: () => <div is-foo />,
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+  },
+  'vue: component order: invalid': {
+    code: endent`
+      <script>
+      export default {
+        props: {
+          foo: {},
+        },
+        data: () => ({ bar: 1 }),
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message:
+          "Expected object keys to be in ascending order. 'data' should be before 'props'.",
+        ruleId: 'sort-keys-fix/sort-keys-fix',
+      },
+    ],
+  },
+  'vue: component order: valid': {
+    code: endent`
+      <script>
+      export default {
+        data: () => ({ bar: 1 }),
+        props: {
+          foo: {},
         },
       }
       </script>
@@ -1065,10 +1091,15 @@ export default {
     `,
     filename: 'index.vue',
   },
-  valid: {
+  'vue: valid': {
     code: endent`
-      console.log()
-    
+      <script>
+      export default {
+        render: () => <div aria-hidden="true" class="foo" />,
+      }
+      </script>
+
     `,
+    filename: 'index.vue',
   },
 } |> mapValues(runTest)
