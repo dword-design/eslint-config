@@ -90,7 +90,6 @@ export default {
     'linebreak-style': ['error', 'unix'],
     'new-cap': 'off',
     'no-console': 'off',
-    'no-inline-comments': 'error',
     'no-negated-condition': 'error',
     'no-param-reassign': 'off',
     'no-regex-spaces': 'off',

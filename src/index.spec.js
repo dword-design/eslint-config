@@ -552,12 +552,6 @@ export default {
       export default 1 // foo
 
     `,
-    messages: [
-      {
-        message: 'Unexpected comment inline with code.',
-        ruleId: 'no-inline-comments',
-      },
-    ],
   },
   'json: indent too big': {
     code: endent`
