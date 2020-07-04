@@ -1,3 +1,11 @@
+## [1.25.5](https://github.com/dword-design/eslint-config/compare/v1.25.4...v1.25.5) (2020-07-04)
+
+
+### Bug Fixes
+
+* remove inline comment rule ([8cfee71](https://github.com/dword-design/eslint-config/commit/8cfee7119a0fe981b29d1d9a51ae31bc0b80baed))
+* upgrades ([4a6e867](https://github.com/dword-design/eslint-config/commit/4a6e867a29d49c2f9f269969a25dbe62a14ddbd9))
+
 ## [1.25.4](https://github.com/dword-design/eslint-config/compare/v1.25.3...v1.25.4) (2020-06-28)
 
 
