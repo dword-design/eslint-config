@@ -22,4 +22,6 @@ export default {
   'resolve-dep': 'matchdep',
   // Doesn't support promises
   'tree-kill': 'tree-kill-promise',
+  // Not maintained anymore
+  chdir: '@dword-design/chdir'
 }
