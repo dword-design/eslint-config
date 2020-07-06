@@ -1,8 +1,12 @@
 export default {
+  '@nuxtjs/auth': '@dword-design/nuxt-auth',
+
   // Not maintained anymore
   chdir: '@dword-design/chdir',
+
   // Execa offers more syntactic sugar
   'child-process-promise': 'execa',
+
   // Doesn't support promises
   child_process: 'execa',
 
@@ -23,8 +27,6 @@ export default {
   puppeteer: '@dword-design/puppeteer',
 
   'resolve-dep': 'matchdep',
-
   // Doesn't support promises
   'tree-kill': 'tree-kill-promise',
-  '@nuxtjs/auth': '@dword-design/nuxt-auth'
 }
