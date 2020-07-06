@@ -1,3 +1,11 @@
+## [1.25.7](https://github.com/dword-design/eslint-config/compare/v1.25.6...v1.25.7) (2020-07-06)
+
+
+### Bug Fixes
+
+* fix linting ([39f28a6](https://github.com/dword-design/eslint-config/commit/39f28a689cbfb56333758237b3931e7debe62a06))
+* update restricted imports ([eb38b4b](https://github.com/dword-design/eslint-config/commit/eb38b4b299b81cc3abc8d999e5a1e8bc26d03f2d))
+
 ## [1.25.6](https://github.com/dword-design/eslint-config/compare/v1.25.5...v1.25.6) (2020-07-04)
 
 
