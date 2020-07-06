@@ -36,7 +36,7 @@
     "eslint-plugin-vue": "^7.0.0-alpha.6",
     "get-package-name": "^1.0.0",
     "load-pkg": "^4.0.0",
-    "prettier": "prettier/prettier#19545e049ea424273fb6d647eefd1787d998b333",
+    "prettier": "prettier/prettier#0998366d41bd35d593f1e16fe8a57b1f6d309d36",
     "vue-eslint-parser": "^7.0.0"
   },
   "devDependencies": {
