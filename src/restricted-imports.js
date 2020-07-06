@@ -26,4 +26,5 @@ export default {
 
   // Doesn't support promises
   'tree-kill': 'tree-kill-promise',
+  '@nuxtjs/auth': '@dword-design/nuxt-auth'
 }
