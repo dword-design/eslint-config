@@ -226,7 +226,7 @@ export default {
       import foo from 'foo'
 
       import bar from './bar'
-      
+
       console.log(foo)
       console.log(bar)
 
@@ -293,11 +293,11 @@ export default {
     files: {
       'bar.js': endent`
         export default 'bar'
-      
+
       `,
       'foo.js': endent`
         export default 'foo'
-        
+
       `,
     },
     messages: [
@@ -319,11 +319,11 @@ export default {
     files: {
       'bar.js': endent`
         export default 'bar'
-      
+
       `,
       'foo.js': endent`
         export default 'foo'
-        
+
       `,
     },
   },
@@ -654,7 +654,7 @@ export default {
       } else {
         console.log('bar')
       }
-    
+
     `,
     messages: [
       {
@@ -733,7 +733,7 @@ export default {
   'pipeline operator': {
     code: endent`
       export default async () => 1 |> (x => x + 1) |> await
-      
+
     `,
   },
   'possible destructuring': {
@@ -857,7 +857,7 @@ export default {
   'test: dev dependency': {
     code: endent`
       import 'foo'
-      
+
     `,
     filename: 'index.spec.js',
     files: {
@@ -874,7 +874,7 @@ export default {
   'test: global expect': {
     code: endent`
       expect(1).toEqual(1)
-      
+
     `,
     filename: 'index.spec.js',
   },
@@ -964,6 +964,21 @@ export default {
 
     `,
   },
+  'unnecessary double negation': {
+    code: endent`
+      const foo = 1
+      if (!!foo) {
+        console.log('foo')
+      }
+
+    `,
+    messages: [
+      {
+        message: 'Redundant double negation.',
+        ruleId: 'no-extra-boolean-cast',
+      },
+    ],
+  },
   'unsorted object keys': {
     code: endent`
       export default { b: 1, a: 2 }
@@ -980,7 +995,7 @@ export default {
   valid: {
     code: endent`
       export default 1
-    
+
     `,
   },
   'vue: attributes not sorted': {
