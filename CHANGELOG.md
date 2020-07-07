@@ -1,3 +1,11 @@
+## [1.25.8](https://github.com/dword-design/eslint-config/compare/v1.25.7...v1.25.8) (2020-07-07)
+
+
+### Bug Fixes
+
+* remove unneeded rule ([7aa1bad](https://github.com/dword-design/eslint-config/commit/7aa1bada709d35f2b788074ee44dcc8d344d49b0))
+* restrict double negations ([9075730](https://github.com/dword-design/eslint-config/commit/907573062c25620ccfcfff559d557dedd35535de))
+
 ## [1.25.7](https://github.com/dword-design/eslint-config/compare/v1.25.6...v1.25.7) (2020-07-06)
 
 
