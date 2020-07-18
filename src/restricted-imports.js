@@ -29,4 +29,7 @@ export default {
   'resolve-dep': 'matchdep',
   // Doesn't support promises
   'tree-kill': 'tree-kill-promise',
+  
+  // Supports inline importing CSS files
+  'node-sass-tilde-importer': 'node-sass-package-importer',
 }
