@@ -22,14 +22,15 @@ export default {
   // Only works for Node.js >= 12
   matched: 'globby',
 
+  // Supports inline importing CSS files
+  'node-sass-tilde-importer': 'node-sass-package-importer',
+
   proxyquire: '@dword-design/proxyquire',
 
   puppeteer: '@dword-design/puppeteer',
 
   'resolve-dep': 'matchdep',
+
   // Doesn't support promises
   'tree-kill': 'tree-kill-promise',
-  
-  // Supports inline importing CSS files
-  'node-sass-tilde-importer': 'node-sass-package-importer',
 }
