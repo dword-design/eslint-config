@@ -1,3 +1,10 @@
+## [1.25.10](https://github.com/dword-design/eslint-config/compare/v1.25.9...v1.25.10) (2020-08-23)
+
+
+### Bug Fixes
+
+* **deps:** update prettier commit hash to c4e9dd9 ([cdc4952](https://github.com/dword-design/eslint-config/commit/cdc495248c25a96434db4829266b2241a74b6055))
+
 ## [1.25.9](https://github.com/dword-design/eslint-config/compare/v1.25.8...v1.25.9) (2020-08-23)
 
 
