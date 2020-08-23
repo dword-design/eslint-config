@@ -1,3 +1,10 @@
+## [1.25.9](https://github.com/dword-design/eslint-config/compare/v1.25.8...v1.25.9) (2020-08-23)
+
+
+### Bug Fixes
+
+* upgrades ([20965fe](https://github.com/dword-design/eslint-config/commit/20965fea803768222b8ffaa2aeb2280d55a48fd0))
+
 ## [1.25.8](https://github.com/dword-design/eslint-config/compare/v1.25.7...v1.25.8) (2020-07-07)
 
 
