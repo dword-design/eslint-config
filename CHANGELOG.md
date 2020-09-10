@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/dword-design/eslint-config/compare/v1.25.10...v1.26.0) (2020-09-10)
+
+
+### Features
+
+* add rules for directory import ([a89767c](https://github.com/dword-design/eslint-config/commit/a89767c92cbf275b4cff59a7a5d43d18fe753d32))
+
 ## [1.25.10](https://github.com/dword-design/eslint-config/compare/v1.25.9...v1.25.10) (2020-08-23)
 
 
