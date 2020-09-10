@@ -525,6 +525,30 @@ export default {
       },
     ],
   },
+  'import: directory': {
+    code: endent`
+      import './sub'
+
+    `,
+    files: {
+      sub: {},
+    },
+  },
+  'import: extension with js': {
+    code: endent`
+      import './foo.js'
+
+    `,
+    files: {
+      'foo.js': '',
+    },
+    messages: [
+      {
+        message: 'Unexpected use of file extension "js" for "./foo.js"',
+        ruleId: 'import/extensions',
+      },
+    ],
+  },
   'indent: invalid': {
     code: endent`
       export default () => {

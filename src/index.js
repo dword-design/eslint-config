@@ -84,6 +84,16 @@ export default {
     'arrow-parens': ['error', 'as-needed'],
     'func-names': ['error', 'never'],
     'global-require': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        '': 'never',
+        js: 'never',
+        jsx: 'never',
+        mjs: 'never',
+      },
+    ],
     'import/no-commonjs': 'error',
     'import/no-dynamic-require': 'off',
     'import/prefer-default-export': 'off',
@@ -141,7 +151,7 @@ export default {
     'import/resolver': {
       [getPackageName(
         require.resolve('eslint-import-resolver-babel-module')
-      )]: {},
+      )]: { allowExistingDirectories: true },
     },
   },
 }
