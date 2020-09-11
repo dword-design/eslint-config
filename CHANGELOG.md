@@ -1,3 +1,10 @@
+## [1.26.1](https://github.com/dword-design/eslint-config/compare/v1.26.0...v1.26.1) (2020-09-11)
+
+
+### Bug Fixes
+
+* use live version of prettier ([220d59c](https://github.com/dword-design/eslint-config/commit/220d59c9313563219d74563fb0cbf9fa62552703))
+
 # [1.26.0](https://github.com/dword-design/eslint-config/compare/v1.25.10...v1.26.0) (2020-09-10)
 
 
