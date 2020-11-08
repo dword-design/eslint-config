@@ -1,3 +1,11 @@
+## [1.26.2](https://github.com/dword-design/eslint-config/compare/v1.26.1...v1.26.2) (2020-11-08)
+
+
+### Bug Fixes
+
+* fix eslint-config-airbnb-base version temporarily ([5288ece](https://github.com/dword-design/eslint-config/commit/5288ece38e35f7984aa625a88f53fd8c22203e6b))
+* upgrades ([af7f96b](https://github.com/dword-design/eslint-config/commit/af7f96bbc0dcf0116cf5b5a027da6dfad2261f20))
+
 ## [1.26.1](https://github.com/dword-design/eslint-config/compare/v1.26.0...v1.26.1) (2020-09-11)
 
 
