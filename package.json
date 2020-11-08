@@ -1,6 +1,6 @@
 {
   "name": "@dword-design/eslint-config",
-  "version": "1.26.1",
+  "version": "1.26.2",
   "description": "",
   "repository": "dword-design/eslint-config",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "@dword-design/eslint-plugin-import-alias": "^1.1.1",
     "@dword-design/functions": "^2.2.2",
     "babel-eslint": "^11.0.0-beta.0",
-    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-airbnb-base": "14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-babel-module": "dword-design/eslint-import-resolver-babel-module#fork",
     "eslint-plugin-import": "dword-design/eslint-plugin-import#fork",
