@@ -1,3 +1,10 @@
+## [1.26.3](https://github.com/dword-design/eslint-config/compare/v1.26.2...v1.26.3) (2020-11-08)
+
+
+### Bug Fixes
+
+* trigger release ([5a59f8c](https://github.com/dword-design/eslint-config/commit/5a59f8c6cc4fd7e0560a849f74d081aae565f8b3))
+
 ## [1.26.2](https://github.com/dword-design/eslint-config/compare/v1.26.1...v1.26.2) (2020-11-08)
 
 
