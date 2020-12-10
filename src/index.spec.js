@@ -138,6 +138,21 @@ export default {
       },
     ],
   },
+  'arrow function with unneeded parens': {
+    code: endent`
+      export default (foo) => foo
+
+    `,
+    messages: [
+      { message: 'Replace `(foo)` with `foo`', ruleId: 'prettier/prettier' },
+    ],
+  },
+  'arrow function without parens': {
+    code: endent`
+      export default foo => foo
+
+    `,
+  },
   'async without await': {
     code: endent`
       export default async () => console.log('foo')

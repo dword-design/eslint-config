@@ -80,8 +80,6 @@ export default {
       'error',
       { cwd: 'packagejson' },
     ],
-    'arrow-body-style': ['error', 'as-needed'],
-    'arrow-parens': ['error', 'as-needed'],
     'func-names': ['error', 'never'],
     'global-require': 'off',
     'import/extensions': [
