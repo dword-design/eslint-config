@@ -1,3 +1,12 @@
+## [1.26.4](https://github.com/dword-design/eslint-config/compare/v1.26.3...v1.26.4) (2020-12-10)
+
+
+### Bug Fixes
+
+* add arrow-body-style rule again ([60a2dc0](https://github.com/dword-design/eslint-config/commit/60a2dc0357b62ceeec7d99494d5cbe0828631427))
+* remove unneeded rule and write tests ([fbfc5f2](https://github.com/dword-design/eslint-config/commit/fbfc5f27a9186aaffd3a622cd6d85a813fd61805))
+* **deps:** update dependency eslint-config-prettier to v7 ([1631d76](https://github.com/dword-design/eslint-config/commit/1631d76dc165c4bdbba775f84d3a320ac1ef6d1b))
+
 ## [1.26.3](https://github.com/dword-design/eslint-config/compare/v1.26.2...v1.26.3) (2020-11-08)
 
 
