@@ -1,3 +1,12 @@
+## [1.26.5](https://github.com/dword-design/eslint-config/compare/v1.26.4...v1.26.5) (2020-12-11)
+
+
+### Bug Fixes
+
+* fix missing dependencies ([bcc2da7](https://github.com/dword-design/eslint-config/commit/bcc2da7225a5defab01ff1ca6cef974a1bd473ba))
+* replce get-package-name with depcheck-package-name ([71b8075](https://github.com/dword-design/eslint-config/commit/71b8075e5c3a87a7983cbc660b221d3d9b8406c2))
+* upgrades ([d7715d2](https://github.com/dword-design/eslint-config/commit/d7715d270e9013e011b1ab5d7a55f470a72120b1))
+
 ## [1.26.4](https://github.com/dword-design/eslint-config/compare/v1.26.3...v1.26.4) (2020-12-10)
 
 
