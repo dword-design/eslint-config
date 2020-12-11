@@ -24,7 +24,7 @@
     "@dword-design/functions": "^2.2.2",
     "babel-eslint": "^11.0.0-beta.0",
     "depcheck-package-name": "^1.0.0",
-    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "^7.0.0",
     "eslint-import-resolver-babel-module": "dword-design/eslint-import-resolver-babel-module#fork",
     "eslint-plugin-import": "dword-design/eslint-plugin-import#fork",
