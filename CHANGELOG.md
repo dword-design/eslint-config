@@ -1,3 +1,11 @@
+## [1.26.6](https://github.com/dword-design/eslint-config/compare/v1.26.5...v1.26.6) (2020-12-11)
+
+
+### Bug Fixes
+
+* use official eslint-plugin-import version ([f6f9629](https://github.com/dword-design/eslint-config/commit/f6f9629a6af76649cf32d822daafa29820ae5e54))
+* **deps:** update dependency eslint-config-airbnb-base to v14.2.1 ([a1336ae](https://github.com/dword-design/eslint-config/commit/a1336ae30fa0391065d4be4f829c3c27ce237096))
+
 ## [1.26.5](https://github.com/dword-design/eslint-config/compare/v1.26.4...v1.26.5) (2020-12-11)
 
 
