@@ -1,6 +1,6 @@
 import { endent, flatten, map, mapValues, pick } from '@dword-design/functions'
-import { ESLint } from 'eslint'
 import packageName from 'depcheck-package-name'
+import { ESLint } from 'eslint'
 import outputFiles from 'output-files'
 import P from 'path'
 import sortObjectKeys from 'sort-object-keys'

@@ -23,6 +23,7 @@
     "@dword-design/eslint-plugin-import-alias": "^1.1.1",
     "@dword-design/functions": "^2.2.2",
     "babel-eslint": "^11.0.0-beta.0",
+    "depcheck-package-name": "^1.0.0",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-import-resolver-babel-module": "dword-design/eslint-import-resolver-babel-module#fork",
@@ -35,7 +36,6 @@
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "eslint-plugin-sort-keys-fix": "^1.1.1",
     "eslint-plugin-vue": "^7.0.0-alpha.6",
-    "get-package-name": "^1.0.0",
     "load-pkg": "^4.0.0",
     "prettier": "^2.1.1",
     "vue-eslint-parser": "^7.0.0"

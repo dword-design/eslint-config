@@ -4,10 +4,10 @@ import loadPkg from 'load-pkg'
 
 import restrictedImports from './restricted-imports'
 
-const packageName = loadPkg.sync().name
+const name = loadPkg.sync().name
 const eslintRestrictedImports =
   restrictedImports
-  |> omitBy(newName => newName === packageName)
+  |> omitBy(newName => newName === name)
   |> mapValues((newName, oldName) => ({
     message: `Please use '${newName}' instead`,
     name: oldName,
@@ -138,7 +138,9 @@ export default {
   },
   settings: {
     'import/resolver': {
-      [packageName`eslint-import-resolver-babel-module`]: { allowExistingDirectories: true },
+      [packageName`eslint-import-resolver-babel-module`]: {
+        allowExistingDirectories: true,
+      },
     },
   },
 }
