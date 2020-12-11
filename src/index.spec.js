@@ -1,6 +1,6 @@
 import { endent, flatten, map, mapValues, pick } from '@dword-design/functions'
 import { ESLint } from 'eslint'
-import getPackageName from 'get-package-name'
+import packageName from 'depcheck-package-name'
 import outputFiles from 'output-files'
 import P from 'path'
 import sortObjectKeys from 'sort-object-keys'
@@ -60,9 +60,7 @@ export default {
     files: {
       sub: {
         '.babelrc.json': JSON.stringify({
-          extends: getPackageName(
-            require.resolve('@dword-design/babel-config')
-          ),
+          extends: packageName`@dword-design/babel-config`,
         }),
         'foo.js': '',
         'package.json': JSON.stringify({}),
@@ -88,9 +86,7 @@ export default {
     files: {
       sub: {
         '.babelrc.json': JSON.stringify({
-          extends: getPackageName(
-            require.resolve('@dword-design/babel-config')
-          ),
+          extends: packageName`@dword-design/babel-config`,
         }),
         'foo.js': '',
         'package.json': JSON.stringify({}),

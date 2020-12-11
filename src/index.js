@@ -1,5 +1,5 @@
 import { mapValues, omitBy, values } from '@dword-design/functions'
-import getPackageName from 'get-package-name'
+import packageName from 'depcheck-package-name'
 import loadPkg from 'load-pkg'
 
 import restrictedImports from './restricted-imports'
@@ -21,22 +21,12 @@ export default {
     node: true,
   },
   extends: [
-    getPackageName(require.resolve('eslint-config-airbnb-base')),
-    `plugin:${getPackageName(
-      require.resolve('eslint-plugin-promise')
-    )}/recommended`,
-    `plugin:${getPackageName(
-      require.resolve('eslint-plugin-import')
-    )}/recommended`,
-    `plugin:${getPackageName(
-      require.resolve('@dword-design/eslint-plugin-import-alias')
-    )}/recommended`,
-    `plugin:${getPackageName(
-      require.resolve('eslint-plugin-vue')
-    )}/recommended`,
-    `plugin:${getPackageName(
-      require.resolve('eslint-plugin-prettier')
-    )}/recommended`,
+    packageName`eslint-config-airbnb-base`,
+    `plugin:${packageName`eslint-plugin-promise`}/recommended`,
+    `plugin:${packageName`eslint-plugin-import`}/recommended`,
+    `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
+    `plugin:${packageName`eslint-plugin-vue`}/recommended`,
+    `plugin:${packageName`eslint-plugin-prettier`}/recommended`,
     'prettier/vue',
   ],
   overrides: [
@@ -61,19 +51,19 @@ export default {
       },
     },
   ],
-  parser: getPackageName(require.resolve('vue-eslint-parser')),
+  parser: packageName`vue-eslint-parser`,
   parserOptions: {
     babelOptions: {
       configFile: require.resolve('@dword-design/babel-config'),
     },
-    parser: getPackageName(require.resolve('babel-eslint')),
+    parser: packageName`babel-eslint`,
   },
   plugins: [
-    getPackageName(require.resolve('eslint-plugin-prefer-arrow')),
-    getPackageName(require.resolve('eslint-plugin-simple-import-sort')),
-    getPackageName(require.resolve('eslint-plugin-json-format')),
-    getPackageName(require.resolve('eslint-plugin-sort-keys-fix')),
-    getPackageName(require.resolve('eslint-plugin-react')),
+    packageName`eslint-plugin-prefer-arrow`,
+    packageName`eslint-plugin-simple-import-sort`,
+    packageName`eslint-plugin-json-format`,
+    packageName`eslint-plugin-sort-keys-fix`,
+    packageName`eslint-plugin-react`,
   ],
   rules: {
     '@dword-design/import-alias/prefer-alias': [
@@ -148,9 +138,7 @@ export default {
   },
   settings: {
     'import/resolver': {
-      [getPackageName(
-        require.resolve('eslint-import-resolver-babel-module')
-      )]: { allowExistingDirectories: true },
+      [packageName`eslint-import-resolver-babel-module`]: { allowExistingDirectories: true },
     },
   },
 }
