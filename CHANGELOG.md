@@ -1,3 +1,10 @@
+## [1.26.7](https://github.com/dword-design/eslint-config/compare/v1.26.6...v1.26.7) (2021-02-16)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v7 ([#78](https://github.com/dword-design/eslint-config/issues/78)) ([1dd3cd0](https://github.com/dword-design/eslint-config/commit/1dd3cd07ad8e93f82a43366248defff5e8c81131))
+
 ## [1.26.6](https://github.com/dword-design/eslint-config/compare/v1.26.5...v1.26.6) (2020-12-11)
 
 
