@@ -352,6 +352,15 @@ export default {
       },
     ],
   },
+  callbacks: {
+    code: endent`
+      const foo = () => {}
+      foo(async error => {
+        await console.log(error)
+      })
+
+    `,
+  },
   'comments: with blank line': {
     code: endent`
       console.log('foo')
