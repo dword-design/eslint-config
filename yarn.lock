@@ -9209,9 +9209,9 @@ widest-line@^2.0.0:
     string-width "^2.1.1"
 
 with-local-tmp-dir@^2.2.2:
-  version "2.2.13"
-  resolved "https://registry.yarnpkg.com/with-local-tmp-dir/-/with-local-tmp-dir-2.2.13.tgz#3bcb260150c319e18eefd5c55373ea5c5d923713"
-  integrity sha512-wO8wK8G5rpMvj07HlWGCCX0dDbui7xhIO2U+4pMjT2MY4BBHLkiwtEXv4UAAel0I2WT9j4U1Yardw8DZbNvDmg==
+  version "2.2.14"
+  resolved "https://registry.yarnpkg.com/with-local-tmp-dir/-/with-local-tmp-dir-2.2.14.tgz#8c27f341557a2eff2f56e853118eff97ce656f8e"
+  integrity sha512-aFD5YUSryj4pYzhRnzxCAVtCJ4IQCtHkeSutvVk2k3qWOxPV9mhqFVs/sPpx4JDwUhm7uWs8ytdElP9zTaplJQ==
   dependencies:
     "@dword-design/chdir" "^1.0.0"
     tmp-promise "^3.0.0"
