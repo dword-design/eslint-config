@@ -1016,9 +1016,9 @@
     param-case "^3.0.3"
 
 "@dword-design/base-config-node@^1.6.0":
-  version "1.8.17"
-  resolved "https://registry.yarnpkg.com/@dword-design/base-config-node/-/base-config-node-1.8.17.tgz#25970f82cb90222a8001b7debee9f4af0d06dbb6"
-  integrity sha512-Z7GNMlcj9pdB6ItpMfDAIPX/+INLbthlbARlzId/vjzUg9ismjwtJQ1sxWF20/ofalKA0bXmf6zvWV+lnEUXpA==
+  version "1.8.18"
+  resolved "https://registry.yarnpkg.com/@dword-design/base-config-node/-/base-config-node-1.8.18.tgz#c331a5eefecb10b8918b17703c37e57203a7eb39"
+  integrity sha512-cgfdJRjQyf//aFMDE7/tASpyn2LS1hcY9Et0o6hk383fEdxfbaYhjjRfKDEtqNngXevpznJmI+Bf4tXq9zT1UQ==
   dependencies:
     "@babel/cli" "^7.7.5"
     "@babel/core" "^7.7.5"
@@ -1033,9 +1033,9 @@
     fs-extra "^9.0.0"
 
 "@dword-design/base@^7.0.0":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-7.0.3.tgz#5088d806c68b2a26f05fab765b2b276d6e4720e8"
-  integrity sha512-LpZS6Yim1vB8fkgFpdWmfOO10BFNA5eHzJeite6VQY4Czx7j/zVUdzWlUzeH9LSiWZVgTfuA05c6lkYk3oCZdw==
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-7.0.4.tgz#38742e51605eda5d14c960a48970d110cfa8163a"
+  integrity sha512-IRe/sfvBmz/Sp8rxTF++C2LBaTcsgczFW2qnF2eivL9ln7T6wNv1idR/u++jS7AK+qvNwe7Z4pprO2UuO9RuCQ==
   dependencies:
     "@babel/core" "^7.6.4"
     "@babel/register" "^7.6.2"
@@ -1104,9 +1104,9 @@
     safe-readfile "^1.0.2"
 
 "@dword-design/eslint-config@^1.9.0":
-  version "1.26.6"
-  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-1.26.6.tgz#2d046ffe331424adae4245e571a843b712c50b11"
-  integrity sha512-2i5RegVbHQdKKZo+5nkd2zZEcbut7v3g8LDXdYDEluv+3iDwZCaxN+AAkuekxDgkAgLe1Lapk5biafdFsg3PCQ==
+  version "1.26.7"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-1.26.7.tgz#dcf6018efa13870503dfaf81b38c8d72f3e74f1e"
+  integrity sha512-nOR2CYw2aUEoTFnf7pH9osm1mJsDb6QT5JshchZlEi7XkLE7aU9IUQelcqMY1HZH9L8hscdXNl+Bl6cJ8u4FZg==
   dependencies:
     "@dword-design/babel-config" "^1.0.0"
     "@dword-design/eslint-plugin-import-alias" "^1.1.1"
@@ -1553,7 +1553,7 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-jsx@github:dword-design/jsx#fork-babel-preset-jsx":
+"@vue/babel-preset-jsx@dword-design/jsx#fork-babel-preset-jsx":
   version "1.1.2"
   resolved "https://codeload.github.com/dword-design/jsx/tar.gz/a73cb9961541a60a66b1b99a69a32e00bc66d336"
   dependencies:
@@ -1983,7 +1983,7 @@ babel-plugin-transform-imports@^2.0.0:
     "@babel/types" "^7.4"
     is-valid-path "^0.1.1"
 
-"babel-plugin-wildcard@github:dword-design/babel-plugin-wildcard#fork":
+babel-plugin-wildcard@dword-design/babel-plugin-wildcard#fork:
   version "6.0.0"
   resolved "https://codeload.github.com/dword-design/babel-plugin-wildcard/tar.gz/691d11923ee2dcf63e86f205b0a2c998883e3a3c"
   dependencies:
@@ -3193,7 +3193,7 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-endent@dword-design/endent#fork, "endent@github:dword-design/endent#fork":
+endent@dword-design/endent#fork:
   version "1.4.0"
   resolved "https://codeload.github.com/dword-design/endent/tar.gz/be5433db67eaec07c6c9d00ba3bed2ed946dc664"
   dependencies:
@@ -3322,7 +3322,6 @@ eslint-config-prettier@^7.0.0:
 
 eslint-import-resolver-babel-module@dword-design/eslint-import-resolver-babel-module#fork, "eslint-import-resolver-babel-module@github:dword-design/eslint-import-resolver-babel-module#fork":
   version "5.1.2"
-  uid "97550c5b7626a9cf582ea2392b9749702a27473d"
   resolved "https://codeload.github.com/dword-design/eslint-import-resolver-babel-module/tar.gz/97550c5b7626a9cf582ea2392b9749702a27473d"
   dependencies:
     pkg-up "^2.0.0"
@@ -5841,9 +5840,9 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 make-cli@^1.0.16, make-cli@^1.0.9:
-  version "1.0.24"
-  resolved "https://registry.yarnpkg.com/make-cli/-/make-cli-1.0.24.tgz#f0f8926954cd6460b7c3698aadfbad6e0ca7d6ff"
-  integrity sha512-tWA4ks5BVl0BJ0AnhLJHSa1EFqU8LavK4sXPgwRl7naP9nojwq8oaJORdW7rNdtLULRDkP70ULAz++zA0JoTMg==
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/make-cli/-/make-cli-1.0.26.tgz#5fde2c8f42a4d16e40f96c9486bd6f2cd18aec8d"
+  integrity sha512-WsEEM5i+4HoxpVlPmLaaxSIGuMo7UIfl5JWkJXELnZtpmul5qBoBRINzacuQaC1T19+Wy+bTvfu2oqVd/wCTFQ==
   dependencies:
     "@dword-design/functions" "^2.2.2"
     commander "^6.0.0"
