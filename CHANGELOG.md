@@ -1,3 +1,10 @@
+## [1.26.8](https://github.com/dword-design/eslint-config/compare/v1.26.7...v1.26.8) (2021-02-17)
+
+
+### Bug Fixes
+
+* remove callbacks rule ([2c43384](https://github.com/dword-design/eslint-config/commit/2c433841238873f4606261bf9ed72fca7831c98b))
+
 ## [1.26.7](https://github.com/dword-design/eslint-config/compare/v1.26.6...v1.26.7) (2021-02-16)
 
 
