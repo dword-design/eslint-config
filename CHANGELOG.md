@@ -1,3 +1,10 @@
+## [1.26.9](https://github.com/dword-design/eslint-config/compare/v1.26.8...v1.26.9) (2021-02-17)
+
+
+### Bug Fixes
+
+* update dependency eslint-plugin-simple-import-sort to v7 ([#74](https://github.com/dword-design/eslint-config/issues/74)) ([ecbe087](https://github.com/dword-design/eslint-config/commit/ecbe0872bf3650730b0890b099a30b5f6c685691))
+
 ## [1.26.8](https://github.com/dword-design/eslint-config/compare/v1.26.7...v1.26.8) (2021-02-17)
 
 
