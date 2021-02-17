@@ -287,7 +287,7 @@ export default {
     messages: [
       {
         message: 'Run autofix to sort these imports!',
-        ruleId: 'simple-import-sort/sort',
+        ruleId: 'simple-import-sort/imports',
       },
     ],
   },
@@ -314,7 +314,7 @@ export default {
     messages: [
       {
         message: 'Run autofix to sort these imports!',
-        ruleId: 'simple-import-sort/sort',
+        ruleId: 'simple-import-sort/imports',
       },
     ],
   },
@@ -541,7 +541,7 @@ export default {
     messages: [
       {
         message: 'Run autofix to sort these imports!',
-        ruleId: 'simple-import-sort/sort',
+        ruleId: 'simple-import-sort/imports',
       },
     ],
   },
@@ -686,7 +686,7 @@ export default {
     messages: [
       {
         message: 'Run autofix to sort these imports!',
-        ruleId: 'simple-import-sort/sort',
+        ruleId: 'simple-import-sort/imports',
       },
     ],
   },

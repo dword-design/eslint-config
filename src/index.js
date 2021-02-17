@@ -128,7 +128,7 @@ export default {
     'react/jsx-boolean-value': 'error',
     'react/jsx-sort-props': 'error',
     'require-await': 'error',
-    'simple-import-sort/sort': 'error',
+    'simple-import-sort/imports': 'error',
     'sort-keys-fix/sort-keys-fix': 'error',
     'vue/no-deprecated-functional-template': 'error',
     'vue/order-in-components': 'off',
