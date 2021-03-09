@@ -1,3 +1,11 @@
+## [1.26.10](https://github.com/dword-design/eslint-config/compare/v1.26.9...v1.26.10) (2021-03-09)
+
+
+### Bug Fixes
+
+* remove prettier/vue ([15b392f](https://github.com/dword-design/eslint-config/commit/15b392fcfe3a717755a1383ebd84bd35b806cb1d))
+* update dependency eslint-config-prettier to v8 ([93e7f06](https://github.com/dword-design/eslint-config/commit/93e7f0660d3e7fa577d47219c650aa6907b43506))
+
 ## [1.26.9](https://github.com/dword-design/eslint-config/compare/v1.26.8...v1.26.9) (2021-02-17)
 
 
