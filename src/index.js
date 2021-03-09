@@ -27,7 +27,6 @@ export default {
     `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
     `plugin:${packageName`eslint-plugin-vue`}/recommended`,
     `plugin:${packageName`eslint-plugin-prettier`}/recommended`,
-    'prettier/vue',
   ],
   overrides: [
     {
