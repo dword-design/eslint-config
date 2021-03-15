@@ -33,4 +33,7 @@ export default {
 
   // Doesn't support promises
   'tree-kill': 'tree-kill-promise',
+  
+  // Doesn't support recursive sorting
+  'sort-object-keys': 'sort-keys',
 }
