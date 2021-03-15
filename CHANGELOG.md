@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/dword-design/eslint-config/compare/v1.26.10...v1.27.0) (2021-03-15)
+
+
+### Features
+
+* replace sort-object-keys with sort-keys ([cba5ca4](https://github.com/dword-design/eslint-config/commit/cba5ca49ed8bc590e738487abc7faf4a65c1d801))
+
 ## [1.26.10](https://github.com/dword-design/eslint-config/compare/v1.26.9...v1.26.10) (2021-03-09)
 
 
