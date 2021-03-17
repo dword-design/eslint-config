@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/dword-design/eslint-config/compare/v1.27.0...v1.27.1) (2021-03-17)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#84](https://github.com/dword-design/eslint-config/issues/84)) ([10fa787](https://github.com/dword-design/eslint-config/commit/10fa7874a54b6fa66245c236c3b3e26d9419d00d))
+
 # [1.27.0](https://github.com/dword-design/eslint-config/compare/v1.26.10...v1.27.0) (2021-03-15)
 
 
