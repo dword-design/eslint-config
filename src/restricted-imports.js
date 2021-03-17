@@ -31,6 +31,9 @@ export default {
 
   'resolve-dep': 'matchdep',
 
+  // Doesn't support recursive sorting
+  'sort-object-keys': 'sort-keys',
+
   // Doesn't support promises
   'tree-kill': 'tree-kill-promise',
 }
