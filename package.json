@@ -3,6 +3,7 @@
   "version": "1.27.0",
   "description": "",
   "repository": "dword-design/eslint-config",
+  "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
   "author": "Sebastian Landwehr <info@dword-design.de>",
   "main": "dist/index.js",
