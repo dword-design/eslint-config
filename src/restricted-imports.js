@@ -10,6 +10,8 @@ export default {
   // Doesn't support promises
   child_process: 'execa',
 
+  delay: '@dword-design/functions',
+
   // Doesn't support promises
   fs: 'fs-extra',
 
@@ -36,6 +38,4 @@ export default {
 
   // Doesn't support promises
   'tree-kill': 'tree-kill-promise',
-  
-  'delay': '@dword-design/functions',
 }
