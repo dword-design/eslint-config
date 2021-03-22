@@ -3,7 +3,7 @@ import packageName from 'depcheck-package-name'
 import { ESLint } from 'eslint'
 import outputFiles from 'output-files'
 import P from 'path'
-import sortObjectKeys from 'sort-object-keys'
+import sortKeys from 'sort-keys'
 import stealthyRequire from 'stealthy-require'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
@@ -741,12 +741,12 @@ export default {
   },
   'package.json: unsorted': {
     code: JSON.stringify(
-      sortObjectKeys(
+      sortKeys(
         {
           name: 'foo',
           version: '1.0.0',
         },
-        ['version', 'name']
+        { compare: (a, b) => -a.localeCompare(b) }
       ),
       undefined,
       2
