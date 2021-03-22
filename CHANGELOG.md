@@ -1,3 +1,10 @@
+## [1.27.3](https://github.com/dword-design/eslint-config/compare/v1.27.2...v1.27.3) (2021-03-22)
+
+
+### Bug Fixes
+
+* add delay to restricted imports ([#86](https://github.com/dword-design/eslint-config/issues/86)) ([cee6be6](https://github.com/dword-design/eslint-config/commit/cee6be656f48d62c6979acf1c3c72b3e9ce8e008))
+
 ## [1.27.2](https://github.com/dword-design/eslint-config/compare/v1.27.1...v1.27.2) (2021-03-22)
 
 
