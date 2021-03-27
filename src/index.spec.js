@@ -390,25 +390,21 @@ export default {
         controls.minPolarAngle = 0.25 * Math.PI
       
         const playerMovement = new PlayerMovement(camera)
-        scene.add(
-          (() => {
-            const x = new THREE.DirectionalLight(0xffffff, 1)
-            x.position.set(0, 20, 20)
-            x.castShadow = true
-            x.shadow.mapSize.width = 2048
-            x.shadow.mapSize.height = 2048
-            x.shadow.camera = new THREE.OrthographicCamera(
-              -500,
-              500,
-              500,
-              -500,
-              0.5,
-              1000
-            )
       
-            return x
-          })()
+        const light = new THREE.DirectionalLight(0xffffff, 1)
+        light.position.set(0, 20, 20)
+        light.castShadow = true
+        light.shadow.mapSize.width = 2048
+        light.shadow.mapSize.height = 2048
+        light.shadow.camera = new THREE.OrthographicCamera(
+          -500,
+          500,
+          500,
+          -500,
+          0.5,
+          1000
         )
+        scene.add(light)
       
         const groundTexture = textureLoader.load('grasslight-big.jpg')
         groundTexture.wrapS = THREE.RepeatWrapping
@@ -448,7 +444,6 @@ export default {
           if (event.code === 'Space' && !keyStates[event.code]) {
             actionManager.triggerOneTimeAction('Jump')
           }
-      
           keyStates[event.code] = true
         })
         document.addEventListener('keyup', event => (keyStates[event.code] = false))
@@ -466,7 +461,6 @@ export default {
           requestAnimationFrame(animate)
       
           const delta = clock.getDelta()
-      
           if (actionManager.activeAction.getClip().name !== 'Jump') {
             actionManager.setAction(
               keyStates.KeyW || keyStates.KeyS || keyStates.KeyA || keyStates.KeyD
@@ -474,7 +468,6 @@ export default {
                 : 'Idle'
             )
           }
-      
           actionManager.update(delta)
           controls.update()
           playerMovement.update(delta)
@@ -847,7 +840,6 @@ export default {
   'negated condition': {
     code: endent`
       const foo = 1
-
       if (!foo) {
         console.log('foo')
       } else {
@@ -1167,7 +1159,6 @@ export default {
   'unnecessary double negation': {
     code: endent`
       const foo = 1
-
       if (!!foo) {
         console.log('foo')
       }
