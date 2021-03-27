@@ -1,3 +1,10 @@
+## [1.27.5](https://github.com/dword-design/eslint-config/compare/v1.27.4...v1.27.5) (2021-03-27)
+
+
+### Bug Fixes
+
+* improve blank lines ([#90](https://github.com/dword-design/eslint-config/issues/90)) ([ffd7e6f](https://github.com/dword-design/eslint-config/commit/ffd7e6f85f5966e7142ea47389bf347b137e595c))
+
 ## [1.27.4](https://github.com/dword-design/eslint-config/compare/v1.27.3...v1.27.4) (2021-03-23)
 
 
