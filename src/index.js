@@ -108,10 +108,21 @@ export default {
     'no-underscore-dangle': 'off',
     'padding-line-between-statements': [
       'error',
-      { blankLine: 'never', next: '*', prev: '*' },
-      { blankLine: 'always', next: '*', prev: 'import' },
-      { blankLine: 'any', next: 'import', prev: 'import' },
-      { blankLine: 'always', next: 'export', prev: '*' },
+      {
+        blankLine: 'always',
+        next: '*',
+        prev: '*',
+      },
+      {
+        blankLine: 'never',
+        next: ['expression'],
+        prev: ['var', 'const', 'expression'],
+      },
+      {
+        blankLine: 'any',
+        next: 'import',
+        prev: 'import',
+      },
     ],
     'prefer-arrow/prefer-arrow-functions': ['error'],
     'prefer-destructuring': 'off',
