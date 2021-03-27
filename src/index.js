@@ -109,19 +109,34 @@ export default {
     'padding-line-between-statements': [
       'error',
       {
-        blankLine: 'always',
+        blankLine: 'never',
         next: '*',
         prev: '*',
       },
       {
-        blankLine: 'never',
-        next: ['expression'],
-        prev: ['var', 'const', 'expression'],
+        blankLine: 'always',
+        next: ['var', 'const'],
+        prev: ['*'],
+      },
+      {
+        blankLine: 'always',
+        next: '*',
+        prev: 'import',
       },
       {
         blankLine: 'any',
         next: 'import',
         prev: 'import',
+      },
+      {
+        blankLine: 'always',
+        next: 'export',
+        prev: '*',
+      },
+      {
+        blankLine: 'always',
+        next: 'return',
+        prev: '*',
       },
     ],
     'prefer-arrow/prefer-arrow-functions': ['error'],
