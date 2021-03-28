@@ -1,3 +1,10 @@
+## [1.27.7](https://github.com/dword-design/eslint-config/compare/v1.27.6...v1.27.7) (2021-03-28)
+
+
+### Bug Fixes
+
+* use fromPairs and map instead of zipObject ([#93](https://github.com/dword-design/eslint-config/issues/93)) ([b9479bc](https://github.com/dword-design/eslint-config/commit/b9479bc220c97c4b2c22684c3165240b0e345957))
+
 ## [1.27.6](https://github.com/dword-design/eslint-config/compare/v1.27.5...v1.27.6) (2021-03-27)
 
 
