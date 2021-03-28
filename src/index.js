@@ -1,18 +1,26 @@
-import { mapValues, omitBy, values } from '@dword-design/functions'
+import { compact, filter, join, map, omit } from '@dword-design/functions'
 import packageName from 'depcheck-package-name'
 import loadPkg from 'load-pkg'
 
-import restrictedImports from './restricted-imports'
+import restrictedImports from './restricted-imports.json'
 
 const name = loadPkg.sync().name
 const eslintRestrictedImports =
   restrictedImports
-  |> omitBy(newName => newName === name)
-  |> mapValues((newName, oldName) => ({
-    message: `Please use '${newName}' instead`,
-    name: oldName,
+  |> filter(
+    importDef =>
+      importDef.alternative === undefined || importDef.alternative !== name
+  )
+  |> map(importDef => ({
+    ...(importDef |> omit(['alternative'])),
+    message:
+      [
+        importDef.message,
+        importDef.alternative ? `Use '${importDef.alternative}' instead` : '',
+      ]
+      |> compact
+      |> join(' '),
   }))
-  |> values
 
 export default {
   env: {
@@ -41,7 +49,7 @@ export default {
             paths: [
               ...eslintRestrictedImports,
               {
-                message: "Please use the global 'expect' variable instead",
+                message: "Use the global 'expect' variable instead",
                 name: 'expect',
               },
             ],
