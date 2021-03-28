@@ -1008,6 +1008,33 @@ export default {
       `,
     },
   },
+  'restricted import: name': {
+    code: endent`
+      import { zipObject } from '@dword-design/functions'
+
+      console.log(zipObject)
+
+    `,
+    files: {
+      'node_modules/@dword-design/functions/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            '@dword-design/functions': '^1.0.0',
+          },
+        },
+        undefined,
+        2
+      ),
+    },
+    messages: [
+      {
+        message:
+          "'zipObject' import from '@dword-design/functions' is restricted. Use map and fromPairs instead",
+        ruleId: 'no-restricted-imports',
+      },
+    ],
+  },
   'restricted import: outside': {
     code: endent`
       import 'puppeteer'
@@ -1028,7 +1055,7 @@ export default {
     messages: [
       {
         message:
-          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
+          "'puppeteer' import is restricted from being used. Does not set no-sandbox. Use '@dword-design/puppeteer' instead",
         ruleId: 'no-restricted-imports',
       },
     ],
@@ -1091,7 +1118,7 @@ export default {
     messages: [
       {
         message:
-          "'expect' import is restricted from being used. Please use the global 'expect' variable instead",
+          "'expect' import is restricted from being used. Use the global 'expect' variable instead",
         ruleId: 'no-restricted-imports',
       },
     ],
@@ -1136,7 +1163,7 @@ export default {
     messages: [
       {
         message:
-          "'puppeteer' import is restricted from being used. Please use '@dword-design/puppeteer' instead",
+          "'puppeteer' import is restricted from being used. Does not set no-sandbox. Use '@dword-design/puppeteer' instead",
         ruleId: 'no-restricted-imports',
       },
     ],

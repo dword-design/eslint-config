@@ -1,0 +1,83 @@
+[
+  {
+    "message": "Does not auto-rewrite redirects.",
+    "alternative": "@dword-design/nuxt-auth",
+    "name": "@nuxtjs/auth"
+  },
+  {
+    "message": "It is not maintained anymore.",
+    "alternative": "@dword-design/chdir",
+    "name": "chdir"
+  },
+  {
+    "message": "'execa' provides more features and syntactic sugar.",
+    "alternative": "execa",
+    "name": "child-process-promise"
+  },
+  {
+    "message": "It does not support promises.",
+    "alternative": "execa",
+    "name": "child_process"
+  },
+  {
+    "message": "delay is included in '@dword-design/functions'.",
+    "alternative": "@dword-design/functions",
+    "name": "delay"
+  },
+  {
+    "message": "Does not support promises.",
+    "alternative": "fs-extra",
+    "name": "fs"
+  },
+  {
+    "message": "Does not support promises.",
+    "alternative": "globby",
+    "name": "glob"
+  },
+  {
+    "message": "Does not support pattern arrays.",
+    "alternative": "globby",
+    "name": "glob-promise"
+  },
+  {
+    "message": "Only works for Node.js >= 12.",
+    "name": "matched",
+    "alternative": "globby"
+  },
+  {
+    "message": "Does not support inline importing CSS files.",
+    "name": "node-sass-tilde-importer",
+    "alternative": "node-sass-package-importer"
+  },
+  {
+    "message": "Does not set some important default values.",
+    "alternative": "@dword-design/proxyquire",
+    "name": "proxyquire"
+  },
+  {
+    "message": "Does not set no-sandbox.",
+    "name": "puppeteer",
+    "alternative": "@dword-design/puppeteer"
+  },
+  {
+    "name": "resolve-dep",
+    "alternative": "matchdep"
+  },
+  {
+    "message": "Does not support recursive sorting.",
+    "name": "sort-object-keys",
+    "alternative": "sort-keys"
+  },
+  {
+    "message": "Does not support promises.",
+    "name": "tree-kill",
+    "alternative": "tree-kill-promise"
+  },
+  {
+    "name": "@dword-design/functions",
+    "message": "Use map and fromPairs instead",
+    "importNames": [
+      "zipObject"
+    ]
+  }
+]
