@@ -5,6 +5,7 @@ import loadPkg from 'load-pkg'
 import restrictedImports from './restricted-imports.json'
 
 const name = loadPkg.sync().name
+
 const eslintRestrictedImports =
   restrictedImports
   |> filter(

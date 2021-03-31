@@ -9,7 +9,9 @@ import withLocalTmpDir from 'with-local-tmp-dir'
 
 const runTest = config => () => {
   const filename = config.filename || 'index.js'
+
   const messages = config.messages || []
+
   return withLocalTmpDir(async () => {
     await outputFiles({
       '.babelrc.json': JSON.stringify({
@@ -18,12 +20,15 @@ const runTest = config => () => {
       'package.json': JSON.stringify({}),
       ...config.files,
     })
+
     const eslintConfig = stealthyRequire(require.cache, () => require('.'))
+
     const eslint = new ESLint({
       extensions: ['.js', '.json', '.vue'],
       overrideConfig: eslintConfig,
       useEslintrc: false,
     })
+
     const lintedMessages =
       eslint.lintText(config.code, { filePath: filename })
       |> await
