@@ -1,3 +1,10 @@
+## [1.27.9](https://github.com/dword-design/eslint-config/compare/v1.27.8...v1.27.9) (2021-04-05)
+
+
+### Bug Fixes
+
+* replace babel-eslint with @babel/eslint-parser ([#97](https://github.com/dword-design/eslint-config/issues/97)) ([61cd043](https://github.com/dword-design/eslint-config/commit/61cd043fc996a832a26f111e8dce4ccf590e178f))
+
 ## [1.27.8](https://github.com/dword-design/eslint-config/compare/v1.27.7...v1.27.8) (2021-03-31)
 
 
