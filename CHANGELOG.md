@@ -1,3 +1,11 @@
+## [1.27.10](https://github.com/dword-design/eslint-config/compare/v1.27.9...v1.27.10) (2021-04-12)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#99](https://github.com/dword-design/eslint-config/issues/99)) ([1b09e7d](https://github.com/dword-design/eslint-config/commit/1b09e7d51d9dc609b1724b7cfd4d314b2d5bcf08))
+* update dependency eslint-plugin-promise to v5 ([#98](https://github.com/dword-design/eslint-config/issues/98)) ([88e50de](https://github.com/dword-design/eslint-config/commit/88e50de3cb7fbe44dbc84c0de4e2e41fc4b0604e))
+
 ## [1.27.9](https://github.com/dword-design/eslint-config/compare/v1.27.8...v1.27.9) (2021-04-05)
 
 
