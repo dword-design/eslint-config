@@ -3455,6 +3455,11 @@ eslint-plugin-promise@^4.2.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-4.3.1.tgz#61485df2a359e03149fdafc0a68b0e030ad2ac45"
   integrity sha512-bY2sGqyptzFBDLh/GMbAxfdJC+b0f23ME63FOE4+Jao0oZ3E1LEwFtWJX/1pGMJLiTtrSSern2CRM/g+dfc0eQ==
 
+eslint-plugin-promise@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-5.0.0.tgz#676d1d1555e34976b4a9bd42663f70353ddb8fef"
+  integrity sha512-6ZoHypc/CbcB3sicGMGro4YmQLbcmoHL5KhDAtE/Gw5p8TrME7fbAlyD6rH+XN/knndMHKpXdk4A4Bq+njzeSQ==
+
 eslint-plugin-react@^7.20.0:
   version "7.23.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.23.2.tgz#2d2291b0f95c03728b55869f01102290e792d494"
