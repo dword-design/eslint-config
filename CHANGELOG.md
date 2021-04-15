@@ -1,3 +1,10 @@
+## [1.27.11](https://github.com/dword-design/eslint-config/compare/v1.27.10...v1.27.11) (2021-04-15)
+
+
+### Bug Fixes
+
+* remove cwd config for eslint-plugin-import-alias ([169037a](https://github.com/dword-design/eslint-config/commit/169037a3d0e3a533b3de8973e55da209c4721fce))
+
 ## [1.27.10](https://github.com/dword-design/eslint-config/compare/v1.27.9...v1.27.10) (2021-04-12)
 
 
