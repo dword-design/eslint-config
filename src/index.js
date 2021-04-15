@@ -74,10 +74,6 @@ export default {
     packageName`eslint-plugin-react`,
   ],
   rules: {
-    '@dword-design/import-alias/prefer-alias': [
-      'error',
-      { cwd: 'packagejson' },
-    ],
     'arrow-body-style': ['error', 'as-needed'],
     'func-names': ['error', 'never'],
     'global-require': 'off',
