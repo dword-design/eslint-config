@@ -1,5 +1,10 @@
 [
   {
+    "message": "Does not work in the browser due to fs dependency in ow.",
+    "alternative": "parse-packagejson-name",
+    "name": "parse-pkg-name"
+  },
+  {
     "message": "Does not auto-rewrite redirects.",
     "alternative": "@dword-design/nuxt-auth",
     "name": "@nuxtjs/auth"
