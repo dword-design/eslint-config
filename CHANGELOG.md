@@ -1,3 +1,10 @@
+## [1.27.12](https://github.com/dword-design/eslint-config/compare/v1.27.11...v1.27.12) (2021-04-17)
+
+
+### Bug Fixes
+
+* update restricted-imports.json ([#101](https://github.com/dword-design/eslint-config/issues/101)) ([bca0ce7](https://github.com/dword-design/eslint-config/commit/bca0ce74f7bcec6cf6b8be065536222e634e88e9))
+
 ## [1.27.11](https://github.com/dword-design/eslint-config/compare/v1.27.10...v1.27.11) (2021-04-15)
 
 
