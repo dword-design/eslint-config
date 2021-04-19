@@ -1,3 +1,10 @@
+## [1.27.13](https://github.com/dword-design/eslint-config/compare/v1.27.12...v1.27.13) (2021-04-19)
+
+
+### Bug Fixes
+
+* remove import resolver fork ([#114](https://github.com/dword-design/eslint-config/issues/114)) ([e2d26b0](https://github.com/dword-design/eslint-config/commit/e2d26b096fb779c0858b5fedaee40aa266ce1956))
+
 ## [1.27.12](https://github.com/dword-design/eslint-config/compare/v1.27.11...v1.27.12) (2021-04-17)
 
 
