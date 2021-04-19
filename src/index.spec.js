@@ -967,7 +967,7 @@ export default {
     `,
     messages: [
       {
-        message: 'Prefer await to then().',
+        message: 'Prefer await to then()/catch()/finally().',
         ruleId: 'promise/prefer-await-to-then',
       },
     ],
