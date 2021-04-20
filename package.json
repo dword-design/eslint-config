@@ -1,7 +1,7 @@
 {
   "name": "@dword-design/eslint-config",
   "version": "1.27.13",
-  "description": "",
+  "description": null,
   "repository": "dword-design/eslint-config",
   "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
@@ -58,5 +58,7 @@
         "eslint-config-prettier"
       ]
     }
-  }
+  },
+  "homepage": null,
+  "keywords": []
 }
