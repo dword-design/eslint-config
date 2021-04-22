@@ -1,3 +1,11 @@
+## [1.27.15](https://github.com/dword-design/eslint-config/compare/v1.27.14...v1.27.15) (2021-04-22)
+
+
+### Bug Fixes
+
+* update config files ([027262a](https://github.com/dword-design/eslint-config/commit/027262a84b27e9dabde65b6da87ee74cedc70a6f))
+* updated package.json[description] ([#118](https://github.com/dword-design/eslint-config/issues/118)) ([f72746e](https://github.com/dword-design/eslint-config/commit/f72746e8e63532ca733ec3c58b9041dfc915aecf))
+
 ## [1.27.14](https://github.com/dword-design/eslint-config/compare/v1.27.13...v1.27.14) (2021-04-21)
 
 
