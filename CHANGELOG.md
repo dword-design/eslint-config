@@ -1,3 +1,10 @@
+## [1.27.16](https://github.com/dword-design/eslint-config/compare/v1.27.15...v1.27.16) (2021-04-26)
+
+
+### Bug Fixes
+
+* update dependency with-local-tmp-dir to v3 ([#116](https://github.com/dword-design/eslint-config/issues/116)) ([dee9b7d](https://github.com/dword-design/eslint-config/commit/dee9b7da9380662b3aa60d54c89f65cc9b018775))
+
 ## [1.27.15](https://github.com/dword-design/eslint-config/compare/v1.27.14...v1.27.15) (2021-04-22)
 
 
