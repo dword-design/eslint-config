@@ -1123,6 +1123,26 @@
     find-up "^5.0.0"
     param-case "^3.0.3"
 
+"@dword-design/babel-config@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-2.0.0.tgz#53ca017dc685eac9d0eb2af4d49c276fa701bf0f"
+  integrity sha512-xjrfsPrbl40NPKVuZZtNFCEWx7fPeXLcTsrRecXdEoX1Myxiou87XzQMjNrus7dTVC2o6b73gQNG5tGyg1fzbw==
+  dependencies:
+    "@babel/plugin-proposal-optional-chaining" "^7.6.0"
+    "@babel/plugin-proposal-pipeline-operator" "^7.5.0"
+    "@babel/preset-env" "^7.6.3"
+    "@babel/preset-typescript" "^7.13.0"
+    "@dword-design/functions" "^3.0.0"
+    "@vue/babel-preset-jsx" "github:dword-design/jsx#fork-babel-preset-jsx"
+    babel-plugin-add-module-exports "^1.0.2"
+    babel-plugin-macros "^3.0.1"
+    babel-plugin-module-resolver "^4.0.0"
+    babel-plugin-transform-imports "^2.0.0"
+    babel-plugin-wildcard "github:dword-design/babel-plugin-wildcard#fork"
+    depcheck-package-name "^1.0.0"
+    find-up "^5.0.0"
+    param-case "^3.0.3"
+
 "@dword-design/base-config-node@^1.6.0":
   version "1.9.16"
   resolved "https://registry.yarnpkg.com/@dword-design/base-config-node/-/base-config-node-1.9.16.tgz#f0895c545f16e5d65db985657b10d4360b12b4ec"
