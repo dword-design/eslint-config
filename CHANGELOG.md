@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/dword-design/eslint-config/compare/v1.27.17...v2.0.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v8 ([#122](https://github.com/dword-design/eslint-config/issues/122)) ([1b182ec](https://github.com/dword-design/eslint-config/commit/1b182ec8373050984fc49f3cad76339d47f96d52))
+
+
+### BREAKING CHANGES
+
+* require Node.js >= 12
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com>
+Co-authored-by: Sebastian Landwehr <info@dword-design.de>
+Co-authored-by: GitHub Actions <actions@github.com>
+
 ## [1.27.17](https://github.com/dword-design/eslint-config/compare/v1.27.16...v1.27.17) (2021-04-28)
 
 
