@@ -6792,6 +6792,14 @@ output-files@^1.1.7:
     "@dword-design/functions" "^3.0.0"
     fs-extra "^9.0.0"
 
+output-files@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/output-files/-/output-files-2.0.0.tgz#4a95b905bfb7f73a20e0e6334af39267120bda93"
+  integrity sha512-lfzFsSQxTHgWCigCV63+4TsRCBgJoHRnkNcvN/l8eVF22crWs1WPn5ztP9XotN/McSFT1tp8Dn/VFP24MDzkLQ==
+  dependencies:
+    "@dword-design/functions" "^3.0.0"
+    fs-extra "^9.0.0"
+
 p-each-series@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-each-series/-/p-each-series-2.2.0.tgz#105ab0357ce72b202a8a8b94933672657b5e2a9a"
