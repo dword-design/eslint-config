@@ -23,7 +23,7 @@
     "@dword-design/babel-config": "^2.0.0",
     "@dword-design/eslint-plugin-import-alias": "^1.1.1",
     "@dword-design/functions": "^3.0.0",
-    "depcheck-package-name": "^1.0.0",
+    "depcheck-package-name": "^2.0.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.0.0",
     "eslint-import-resolver-babel-module": "^5.3.0",
