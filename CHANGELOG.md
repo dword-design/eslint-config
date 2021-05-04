@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/dword-design/eslint-config/compare/v2.0.3...v2.0.4) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/functions to v4 ([#124](https://github.com/dword-design/eslint-config/issues/124)) ([fd8e9bb](https://github.com/dword-design/eslint-config/commit/fd8e9bb1082f119aaa19f2b01fbefa63ad0eab3e))
+
 ## [2.0.3](https://github.com/dword-design/eslint-config/compare/v2.0.2...v2.0.3) (2021-05-04)
 
 
