@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/dword-design/eslint-config/compare/v2.0.1...v2.0.2) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency depcheck-package-name to v2 ([#125](https://github.com/dword-design/eslint-config/issues/125)) ([b50112b](https://github.com/dword-design/eslint-config/commit/b50112bda1afe67334c2e6b33d59b317c0639f0a))
+* update dependency output-files to v2 ([#126](https://github.com/dword-design/eslint-config/issues/126)) ([d9b9eef](https://github.com/dword-design/eslint-config/commit/d9b9eef75d67e232317b883ed4a464464fc53f31))
+* update dependency with-local-tmp-dir to v4 ([#127](https://github.com/dword-design/eslint-config/issues/127)) ([f5f4cba](https://github.com/dword-design/eslint-config/commit/f5f4cba8f879a05284a55917869b44cb0850fccb))
+
 ## [2.0.1](https://github.com/dword-design/eslint-config/compare/v2.0.0...v2.0.1) (2021-05-03)
 
 
