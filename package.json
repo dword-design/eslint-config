@@ -46,7 +46,7 @@
     "output-files": "^1.1.7",
     "sort-keys": "^4.2.0",
     "stealthy-require": "^1.1.1",
-    "with-local-tmp-dir": "^3.0.0"
+    "with-local-tmp-dir": "^4.0.0"
   },
   "engines": {
     "node": ">=12"
