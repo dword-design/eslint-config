@@ -1,3 +1,11 @@
+## [2.0.5](https://github.com/dword-design/eslint-config/compare/v2.0.4...v2.0.5) (2021-05-28)
+
+
+### Bug Fixes
+
+* set eslint-plugin-import version until subpath import is fixed ([96ad3b1](https://github.com/dword-design/eslint-config/commit/96ad3b1f4dea4c9a1800dc9f401abde8db1f61e8))
+* update config files ([e994d0b](https://github.com/dword-design/eslint-config/commit/e994d0b58c67afa927ef7077e1fce4eef2525e06))
+
 ## [2.0.4](https://github.com/dword-design/eslint-config/compare/v2.0.3...v2.0.4) (2021-05-04)
 
 
