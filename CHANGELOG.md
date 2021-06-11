@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/dword-design/eslint-config/compare/v2.0.5...v2.0.6) (2021-06-11)
+
+
+### Bug Fixes
+
+* replace stealthy-require ([1321ded](https://github.com/dword-design/eslint-config/commit/1321ded9fe0a3f1571b8e477c415f20ff01c0b43))
+
 ## [2.0.5](https://github.com/dword-design/eslint-config/compare/v2.0.4...v2.0.5) (2021-05-28)
 
 
