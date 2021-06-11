@@ -60,6 +60,11 @@
     "name": "proxyquire"
   },
   {
+    "message": "Has a memory leak when requiring the same module multiple times.",
+    "alternative": "stealthy-require-no-leak",
+    "name": "stealthy-require"
+  },
+  {
     "message": "Does not set no-sandbox.",
     "name": "puppeteer",
     "alternative": "@dword-design/puppeteer"
