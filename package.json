@@ -4,7 +4,7 @@
   "repository": "dword-design/eslint-config",
   "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
-  "author": "Sebastian Landwehr <info@dword-design.de>",
+  "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -45,7 +45,7 @@
     "eslint": "^7.1.0",
     "output-files": "^2.0.0",
     "sort-keys": "^4.2.0",
-    "stealthy-require": "^1.1.1",
+    "stealthy-require-no-leak": "^1.0.2",
     "with-local-tmp-dir": "^4.0.0"
   },
   "engines": {

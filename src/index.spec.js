@@ -4,7 +4,7 @@ import { ESLint } from 'eslint'
 import outputFiles from 'output-files'
 import P from 'path'
 import sortKeys from 'sort-keys'
-import stealthyRequire from 'stealthy-require'
+import stealthyRequire from 'stealthy-require-no-leak'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
 const runTest = config => () => {
