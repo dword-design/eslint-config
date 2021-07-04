@@ -1,4 +1,11 @@
-import { endent, flatten, map, mapValues, pick } from '@dword-design/functions'
+import {
+  endent,
+  flatten,
+  map,
+  mapValues,
+  mergeAll,
+  pick,
+} from '@dword-design/functions'
 import packageName from 'depcheck-package-name'
 import { ESLint } from 'eslint'
 import outputFiles from 'output-files'
@@ -21,7 +28,10 @@ const runTest = config => () => {
       ...config.files,
     })
 
-    const eslintConfig = stealthyRequire(require.cache, () => require('.'))
+    const eslintConfig = mergeAll([
+      stealthyRequire(require.cache, () => require('.')),
+      config.eslintConfig,
+    ])
 
     const eslint = new ESLint({
       extensions: ['.js', '.json', '.vue'],
@@ -696,6 +706,26 @@ export default {
         ruleId: 'simple-import-sort/imports',
       },
     ],
+  },
+  'import order with webpack loader syntax and aliases': {
+    code: endent`
+      import buyMeACoffeeImageUrl from '!url-loader!@/buymeacoffee.svg'
+      import imageUrl from '@/support-me.jpg'
+
+      console.log(imageUrl)
+      console.log(buyMeACoffeeImageUrl)
+
+    `,
+    eslintConfig: {
+      rules: {
+        'import/no-webpack-loader-syntax': 'off',
+      },
+    },
+    filename: P.join('sub', 'index.js'),
+    files: {
+      'buymeacoffee.svg': '',
+      'support-me.jpg': '',
+    },
   },
   'import: directory': {
     code: endent`

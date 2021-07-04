@@ -89,6 +89,7 @@ export default {
     ],
     'import/no-commonjs': 'error',
     'import/no-dynamic-require': 'off',
+    'import/order': 'off',
     'import/prefer-default-export': 'off',
     'linebreak-style': ['error', 'unix'],
     'new-cap': 'off',
