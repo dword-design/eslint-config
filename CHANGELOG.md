@@ -1,3 +1,10 @@
+## [2.0.8](https://github.com/dword-design/eslint-config/compare/v2.0.7...v2.0.8) (2021-07-04)
+
+
+### Bug Fixes
+
+* fix import sort order with loader syntax and aliases ([bfd7daa](https://github.com/dword-design/eslint-config/commit/bfd7daa82047413aa0def556883e834b0a70baa0))
+
 ## [2.0.7](https://github.com/dword-design/eslint-config/compare/v2.0.6...v2.0.7) (2021-06-14)
 
 
