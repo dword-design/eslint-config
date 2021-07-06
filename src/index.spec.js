@@ -1,11 +1,5 @@
-import {
-  endent,
-  flatten,
-  map,
-  mapValues,
-  mergeAll,
-  pick,
-} from '@dword-design/functions'
+import { endent, flatten, map, mapValues, pick } from '@dword-design/functions'
+import deepmerge from 'deepmerge'
 import packageName from 'depcheck-package-name'
 import { ESLint } from 'eslint'
 import outputFiles from 'output-files'
@@ -15,9 +9,7 @@ import stealthyRequire from 'stealthy-require-no-leak'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
 const runTest = config => () => {
-  const filename = config.filename || 'index.js'
-
-  const messages = config.messages || []
+  config = { eslintConfig: {}, filename: 'index.js', messages: [], ...config }
 
   return withLocalTmpDir(async () => {
     await outputFiles({
@@ -28,7 +20,7 @@ const runTest = config => () => {
       ...config.files,
     })
 
-    const eslintConfig = mergeAll([
+    const eslintConfig = deepmerge.all([
       stealthyRequire(require.cache, () => require('.')),
       config.eslintConfig,
     ])
@@ -40,12 +32,12 @@ const runTest = config => () => {
     })
 
     const lintedMessages =
-      eslint.lintText(config.code, { filePath: filename })
+      eslint.lintText(config.code, { filePath: config.filename })
       |> await
       |> map('messages')
       |> flatten
       |> map(pick(['message', 'ruleId']))
-    expect(lintedMessages).toEqual(messages)
+    expect(lintedMessages).toEqual(config.messages)
   })
 }
 
