@@ -1,3 +1,10 @@
+## [2.0.10](https://github.com/dword-design/eslint-config/compare/v2.0.9...v2.0.10) (2021-07-06)
+
+
+### Bug Fixes
+
+* replace mergeAll with deepmerge ([831e280](https://github.com/dword-design/eslint-config/commit/831e28001b55b7b3e553811939c999f5279fac51))
+
 ## [2.0.9](https://github.com/dword-design/eslint-config/compare/v2.0.8...v2.0.9) (2021-07-06)
 
 
