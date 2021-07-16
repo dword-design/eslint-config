@@ -1,3 +1,10 @@
+## [2.0.11](https://github.com/dword-design/eslint-config/compare/v2.0.10...v2.0.11) (2021-07-16)
+
+
+### Bug Fixes
+
+* add github array foreach rule ([84f0b93](https://github.com/dword-design/eslint-config/commit/84f0b932414d9b6d3cd3a66abb20914eb276d553))
+
 ## [2.0.10](https://github.com/dword-design/eslint-config/compare/v2.0.9...v2.0.10) (2021-07-06)
 
 
