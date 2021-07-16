@@ -72,10 +72,12 @@ export default {
     packageName`eslint-plugin-json-format`,
     packageName`eslint-plugin-sort-keys-fix`,
     packageName`eslint-plugin-react`,
+    packageName`eslint-plugin-github`,
   ],
   rules: {
     'arrow-body-style': ['error', 'as-needed'],
     'func-names': ['error', 'never'],
+    'github/array-foreach': 'error',
     'global-require': 'off',
     'import/extensions': [
       'error',

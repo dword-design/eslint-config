@@ -640,6 +640,19 @@ export default {
       },
     ],
   },
+  forEach: {
+    code: endent`
+      const foo = []
+      foo.forEach(() => {})
+
+    `,
+    messages: [
+      {
+        message: 'Prefer for...of instead of Array.forEach',
+        ruleId: 'github/array-foreach',
+      },
+    ],
+  },
   'function block': {
     code: endent`
       export default function () {
