@@ -1,3 +1,10 @@
+## [2.0.12](https://github.com/dword-design/eslint-config/compare/v2.0.11...v2.0.12) (2021-07-20)
+
+
+### Bug Fixes
+
+* update config files ([22a03f7](https://github.com/dword-design/eslint-config/commit/22a03f784aa6e43916e2e4aa4f60e358f9aff929))
+
 ## [2.0.11](https://github.com/dword-design/eslint-config/compare/v2.0.10...v2.0.11) (2021-07-16)
 
 
