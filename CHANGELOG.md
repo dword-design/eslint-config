@@ -1,3 +1,10 @@
+## [2.0.13](https://github.com/dword-design/eslint-config/compare/v2.0.12...v2.0.13) (2021-09-06)
+
+
+### Bug Fixes
+
+* update dependency eslint-plugin-prettier to v4 ([#143](https://github.com/dword-design/eslint-config/issues/143)) ([4821db0](https://github.com/dword-design/eslint-config/commit/4821db0e50d7d2e55205c1b5ff615c1de7baf0f4))
+
 ## [2.0.12](https://github.com/dword-design/eslint-config/compare/v2.0.11...v2.0.12) (2021-07-20)
 
 
