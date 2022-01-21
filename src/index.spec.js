@@ -168,6 +168,14 @@ export default {
       },
     ],
   },
+  'await inside loop': {
+    code: endent`
+      for (let i = 0; i < 10; i += 1) {
+        await Promise.resolve()
+      }
+
+    `,
+  },
   'blank lines: exports with newline': {
     code: endent`
       export const foo = 1
@@ -1375,5 +1383,13 @@ export default {
 
     `,
     filename: 'index.vue',
+  },
+  'while true': {
+    code: endent`
+      while (true) {
+        console.log('foo')
+      }
+
+    `,
   },
 } |> mapValues(runTest)
