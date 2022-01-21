@@ -546,6 +546,17 @@ export default {
 
     `,
   },
+  continue: {
+    code: endent`
+      for (let i = 0; i < 10; i += 1) {
+        if (i > 5) {
+          continue
+        }
+        console.log(i)
+      }
+      
+    `,
+  },
   'deep nesting': {
     code: endent`
       export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344)

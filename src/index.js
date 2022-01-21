@@ -98,6 +98,7 @@ export default {
     'no-await-in-loop': 'off',
     'no-console': 'off',
     'no-constant-condition': ['error', { checkLoops: false }],
+    'no-continue': 'off',
     'no-negated-condition': 'error',
     'no-param-reassign': 'off',
     'no-regex-spaces': 'off',
