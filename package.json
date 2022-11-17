@@ -42,7 +42,7 @@
     "vue-eslint-parser": "^7.0.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^8.0.0",
+    "@dword-design/base": "^9.0.0",
     "deepmerge": "^4.2.2",
     "eslint": "^7.1.0",
     "output-files": "^2.0.0",
