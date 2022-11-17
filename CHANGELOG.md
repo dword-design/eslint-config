@@ -1,3 +1,10 @@
+## [2.0.16](https://github.com/dword-design/eslint-config/compare/v2.0.15...v2.0.16) (2022-11-17)
+
+
+### Bug Fixes
+
+* fix function style with string literal ([4ab3166](https://github.com/dword-design/eslint-config/commit/4ab31661a7d19d42bb6faf0174d82aaa1761befb))
+
 ## [2.0.15](https://github.com/dword-design/eslint-config/compare/v2.0.14...v2.0.15) (2022-01-21)
 
 
