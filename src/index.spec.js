@@ -686,6 +686,19 @@ export default {
       },
     ],
   },
+  'function style expression with string literal': {
+    code: endent`
+      export default {
+        'foo bar': function () {
+          console.log(this)
+        },
+      }
+
+    `,
+    messages: [
+      { message: 'Expected method shorthand.', ruleId: 'object-shorthand' },
+    ],
+  },
   'functional in template': {
     code: endent`
       <template functional>

@@ -117,6 +117,7 @@ export default {
     'no-return-assign': 'off',
     'no-template-curly-in-string': 'off',
     'no-underscore-dangle': 'off',
+    'object-shorthand': ['error', 'always'],
     'padding-line-between-statements': [
       'error',
       {
