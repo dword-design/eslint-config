@@ -1,16 +1,15 @@
 import { endent, flatten, map, mapValues, pick } from '@dword-design/functions'
+import deepmerge from 'deepmerge'
 import packageName from 'depcheck-package-name'
 import { ESLint } from 'eslint'
 import outputFiles from 'output-files'
 import P from 'path'
 import sortKeys from 'sort-keys'
-import stealthyRequire from 'stealthy-require'
+import stealthyRequire from 'stealthy-require-no-leak'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
 const runTest = config => () => {
-  const filename = config.filename || 'index.js'
-
-  const messages = config.messages || []
+  config = { eslintConfig: {}, filename: 'index.js', messages: [], ...config }
 
   return withLocalTmpDir(async () => {
     await outputFiles({
@@ -21,7 +20,10 @@ const runTest = config => () => {
       ...config.files,
     })
 
-    const eslintConfig = stealthyRequire(require.cache, () => require('.'))
+    const eslintConfig = deepmerge.all([
+      stealthyRequire(require.cache, () => require('.')),
+      config.eslintConfig,
+    ])
 
     const eslint = new ESLint({
       extensions: ['.json', '.vue'],
@@ -30,12 +32,12 @@ const runTest = config => () => {
     })
 
     const lintedMessages =
-      eslint.lintText(config.code, { filePath: filename })
+      eslint.lintText(config.code, { filePath: config.filename })
       |> await
       |> map('messages')
       |> flatten
       |> map(pick(['message', 'ruleId']))
-    expect(lintedMessages).toEqual(messages)
+    expect(lintedMessages).toEqual(config.messages)
   })
 }
 
@@ -165,6 +167,14 @@ export default {
         ruleId: 'require-await',
       },
     ],
+  },
+  'await inside loop': {
+    code: endent`
+      for (let i = 0; i < 10; i += 1) {
+        await Promise.resolve()
+      }
+
+    `,
   },
   'blank lines: exports with newline': {
     code: endent`
@@ -536,6 +546,17 @@ export default {
 
     `,
   },
+  continue: {
+    code: endent`
+      for (let i = 0; i < 10; i += 1) {
+        if (i > 5) {
+          continue
+        }
+        console.log(i)
+      }
+      
+    `,
+  },
   'deep nesting': {
     code: endent`
       export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344)
@@ -638,6 +659,19 @@ export default {
       },
     ],
   },
+  forEach: {
+    code: endent`
+      const foo = []
+      foo.forEach(() => {})
+
+    `,
+    messages: [
+      {
+        message: 'Prefer for...of instead of Array.forEach',
+        ruleId: 'github/array-foreach',
+      },
+    ],
+  },
   'function block': {
     code: endent`
       export default function () {
@@ -650,6 +684,19 @@ export default {
         message: 'Prefer using arrow functions over plain functions',
         ruleId: 'prefer-arrow/prefer-arrow-functions',
       },
+    ],
+  },
+  'function style expression with string literal': {
+    code: endent`
+      export default {
+        'foo bar': function () {
+          console.log(this)
+        },
+      }
+
+    `,
+    messages: [
+      { message: 'Expected method shorthand.', ruleId: 'object-shorthand' },
     ],
   },
   'functional in template': {
@@ -696,6 +743,26 @@ export default {
         ruleId: 'simple-import-sort/imports',
       },
     ],
+  },
+  'import order with webpack loader syntax and aliases': {
+    code: endent`
+      import buyMeACoffeeImageUrl from '!url-loader!@/buymeacoffee.svg'
+      import imageUrl from '@/support-me.jpg'
+
+      console.log(imageUrl)
+      console.log(buyMeACoffeeImageUrl)
+
+    `,
+    eslintConfig: {
+      rules: {
+        'import/no-webpack-loader-syntax': 'off',
+      },
+    },
+    filename: P.join('sub', 'index.js'),
+    files: {
+      'buymeacoffee.svg': '',
+      'support-me.jpg': '',
+    },
   },
   'import: directory': {
     code: endent`
@@ -1340,5 +1407,13 @@ export default {
 
     `,
     filename: 'index.vue',
+  },
+  'while true': {
+    code: endent`
+      while (true) {
+        console.log('foo')
+      }
+
+    `,
   },
 } |> mapValues(runTest)

@@ -72,10 +72,12 @@ export default {
     packageName`eslint-plugin-json-format`,
     packageName`eslint-plugin-sort-keys-fix`,
     packageName`eslint-plugin-react`,
+    packageName`eslint-plugin-github`,
   ],
   rules: {
     'arrow-body-style': ['error', 'as-needed'],
     'func-names': ['error', 'never'],
+    'github/array-foreach': 'error',
     'global-require': 'off',
     'import/extensions': [
       'error',
@@ -87,10 +89,14 @@ export default {
     ],
     'import/no-commonjs': 'error',
     'import/no-dynamic-require': 'off',
+    'import/order': 'off',
     'import/prefer-default-export': 'off',
     'linebreak-style': ['error', 'unix'],
     'new-cap': 'off',
+    'no-await-in-loop': 'off',
     'no-console': 'off',
+    'no-constant-condition': ['error', { checkLoops: false }],
+    'no-continue': 'off',
     'no-negated-condition': 'error',
     'no-param-reassign': 'off',
     'no-regex-spaces': 'off',
@@ -109,6 +115,7 @@ export default {
     'no-return-assign': 'off',
     'no-template-curly-in-string': 'off',
     'no-underscore-dangle': 'off',
+    'object-shorthand': ['error', 'always'],
     'padding-line-between-statements': [
       'error',
       {

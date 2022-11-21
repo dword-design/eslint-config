@@ -1,3 +1,171 @@
+## [2.0.16](https://github.com/dword-design/eslint-config/compare/v2.0.15...v2.0.16) (2022-11-17)
+
+
+### Bug Fixes
+
+* fix function style with string literal ([4ab3166](https://github.com/dword-design/eslint-config/commit/4ab31661a7d19d42bb6faf0174d82aaa1761befb))
+
+## [2.0.15](https://github.com/dword-design/eslint-config/compare/v2.0.14...v2.0.15) (2022-01-21)
+
+
+### Bug Fixes
+
+* foo ([71a9eea](https://github.com/dword-design/eslint-config/commit/71a9eea8ef05faa7c1038606b2229420b441386f))
+
+## [2.0.14](https://github.com/dword-design/eslint-config/compare/v2.0.13...v2.0.14) (2022-01-21)
+
+
+### Bug Fixes
+
+* fixes ([0ebe632](https://github.com/dword-design/eslint-config/commit/0ebe632a1d33b7c1c9ba09bc1a8f8b8d5bfe980a))
+
+## [2.0.13](https://github.com/dword-design/eslint-config/compare/v2.0.12...v2.0.13) (2021-09-06)
+
+
+### Bug Fixes
+
+* update dependency eslint-plugin-prettier to v4 ([#143](https://github.com/dword-design/eslint-config/issues/143)) ([4821db0](https://github.com/dword-design/eslint-config/commit/4821db0e50d7d2e55205c1b5ff615c1de7baf0f4))
+
+## [2.0.12](https://github.com/dword-design/eslint-config/compare/v2.0.11...v2.0.12) (2021-07-20)
+
+
+### Bug Fixes
+
+* update config files ([22a03f7](https://github.com/dword-design/eslint-config/commit/22a03f784aa6e43916e2e4aa4f60e358f9aff929))
+
+## [2.0.11](https://github.com/dword-design/eslint-config/compare/v2.0.10...v2.0.11) (2021-07-16)
+
+
+### Bug Fixes
+
+* add github array foreach rule ([84f0b93](https://github.com/dword-design/eslint-config/commit/84f0b932414d9b6d3cd3a66abb20914eb276d553))
+
+## [2.0.10](https://github.com/dword-design/eslint-config/compare/v2.0.9...v2.0.10) (2021-07-06)
+
+
+### Bug Fixes
+
+* replace mergeAll with deepmerge ([831e280](https://github.com/dword-design/eslint-config/commit/831e28001b55b7b3e553811939c999f5279fac51))
+
+## [2.0.9](https://github.com/dword-design/eslint-config/compare/v2.0.8...v2.0.9) (2021-07-06)
+
+
+### Bug Fixes
+
+* update config files ([42f5201](https://github.com/dword-design/eslint-config/commit/42f5201b938eb3645cd2ec114e24ca9407e1c08a))
+
+## [2.0.8](https://github.com/dword-design/eslint-config/compare/v2.0.7...v2.0.8) (2021-07-04)
+
+
+### Bug Fixes
+
+* fix import sort order with loader syntax and aliases ([bfd7daa](https://github.com/dword-design/eslint-config/commit/bfd7daa82047413aa0def556883e834b0a70baa0))
+
+## [2.0.7](https://github.com/dword-design/eslint-config/compare/v2.0.6...v2.0.7) (2021-06-14)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#133](https://github.com/dword-design/eslint-config/issues/133)) ([e8f38f9](https://github.com/dword-design/eslint-config/commit/e8f38f9a58f295a7a7bddb78ca7441b3441bc8e6))
+
+## [2.0.6](https://github.com/dword-design/eslint-config/compare/v2.0.5...v2.0.6) (2021-06-11)
+
+
+### Bug Fixes
+
+* replace stealthy-require ([1321ded](https://github.com/dword-design/eslint-config/commit/1321ded9fe0a3f1571b8e477c415f20ff01c0b43))
+
+## [2.0.5](https://github.com/dword-design/eslint-config/compare/v2.0.4...v2.0.5) (2021-05-28)
+
+
+### Bug Fixes
+
+* set eslint-plugin-import version until subpath import is fixed ([96ad3b1](https://github.com/dword-design/eslint-config/commit/96ad3b1f4dea4c9a1800dc9f401abde8db1f61e8))
+* update config files ([e994d0b](https://github.com/dword-design/eslint-config/commit/e994d0b58c67afa927ef7077e1fce4eef2525e06))
+
+## [2.0.4](https://github.com/dword-design/eslint-config/compare/v2.0.3...v2.0.4) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/functions to v4 ([#124](https://github.com/dword-design/eslint-config/issues/124)) ([fd8e9bb](https://github.com/dword-design/eslint-config/commit/fd8e9bb1082f119aaa19f2b01fbefa63ad0eab3e))
+
+## [2.0.3](https://github.com/dword-design/eslint-config/compare/v2.0.2...v2.0.3) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/eslint-plugin-import-alias to v2 ([#128](https://github.com/dword-design/eslint-config/issues/128)) ([1e3446d](https://github.com/dword-design/eslint-config/commit/1e3446ddf370b573913b81c5dbd96eb70af72363))
+
+## [2.0.2](https://github.com/dword-design/eslint-config/compare/v2.0.1...v2.0.2) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency depcheck-package-name to v2 ([#125](https://github.com/dword-design/eslint-config/issues/125)) ([b50112b](https://github.com/dword-design/eslint-config/commit/b50112bda1afe67334c2e6b33d59b317c0639f0a))
+* update dependency output-files to v2 ([#126](https://github.com/dword-design/eslint-config/issues/126)) ([d9b9eef](https://github.com/dword-design/eslint-config/commit/d9b9eef75d67e232317b883ed4a464464fc53f31))
+* update dependency with-local-tmp-dir to v4 ([#127](https://github.com/dword-design/eslint-config/issues/127)) ([f5f4cba](https://github.com/dword-design/eslint-config/commit/f5f4cba8f879a05284a55917869b44cb0850fccb))
+
+## [2.0.1](https://github.com/dword-design/eslint-config/compare/v2.0.0...v2.0.1) (2021-05-03)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/babel-config to v2 ([#123](https://github.com/dword-design/eslint-config/issues/123)) ([1320050](https://github.com/dword-design/eslint-config/commit/1320050355baed9288c10162de70bebbb2a85ee3))
+
+# [2.0.0](https://github.com/dword-design/eslint-config/compare/v1.27.17...v2.0.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v8 ([#122](https://github.com/dword-design/eslint-config/issues/122)) ([1b182ec](https://github.com/dword-design/eslint-config/commit/1b182ec8373050984fc49f3cad76339d47f96d52))
+
+
+### BREAKING CHANGES
+
+* require Node.js >= 12
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com>
+Co-authored-by: Sebastian Landwehr <info@dword-design.de>
+Co-authored-by: GitHub Actions <actions@github.com>
+
+## [1.27.17](https://github.com/dword-design/eslint-config/compare/v1.27.16...v1.27.17) (2021-04-28)
+
+
+### Bug Fixes
+
+* updated package.json[description] ([#119](https://github.com/dword-design/eslint-config/issues/119)) ([652b970](https://github.com/dword-design/eslint-config/commit/652b97087592ce7388a438579152929f36bcf3be))
+
+## [1.27.16](https://github.com/dword-design/eslint-config/compare/v1.27.15...v1.27.16) (2021-04-26)
+
+
+### Bug Fixes
+
+* update dependency with-local-tmp-dir to v3 ([#116](https://github.com/dword-design/eslint-config/issues/116)) ([dee9b7d](https://github.com/dword-design/eslint-config/commit/dee9b7da9380662b3aa60d54c89f65cc9b018775))
+
+## [1.27.15](https://github.com/dword-design/eslint-config/compare/v1.27.14...v1.27.15) (2021-04-22)
+
+
+### Bug Fixes
+
+* update config files ([027262a](https://github.com/dword-design/eslint-config/commit/027262a84b27e9dabde65b6da87ee74cedc70a6f))
+* updated package.json[description] ([#118](https://github.com/dword-design/eslint-config/issues/118)) ([f72746e](https://github.com/dword-design/eslint-config/commit/f72746e8e63532ca733ec3c58b9041dfc915aecf))
+
+## [1.27.14](https://github.com/dword-design/eslint-config/compare/v1.27.13...v1.27.14) (2021-04-21)
+
+
+### Bug Fixes
+
+* update config files ([2293f79](https://github.com/dword-design/eslint-config/commit/2293f79659e0f3320c31f9a20a76a4cbead22279))
+* updated package.json[description] ([#117](https://github.com/dword-design/eslint-config/issues/117)) ([578b6ff](https://github.com/dword-design/eslint-config/commit/578b6ff896d54fdd6fb2f37d83b5d252aad9cdc3))
+
+## [1.27.13](https://github.com/dword-design/eslint-config/compare/v1.27.12...v1.27.13) (2021-04-19)
+
+
+### Bug Fixes
+
+* remove import resolver fork ([#114](https://github.com/dword-design/eslint-config/issues/114)) ([e2d26b0](https://github.com/dword-design/eslint-config/commit/e2d26b096fb779c0858b5fedaee40aa266ce1956))
+
 ## [1.27.12](https://github.com/dword-design/eslint-config/compare/v1.27.11...v1.27.12) (2021-04-17)
 
 
