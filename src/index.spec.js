@@ -8,7 +8,7 @@ import stealthyRequire from 'stealthy-require'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
 const runTest = config => () => {
-  const filename = config.filename || 'index.mjs'
+  const filename = config.filename || 'index.js'
 
   const messages = config.messages || []
 
@@ -61,7 +61,7 @@ export default {
       import '@/foo'
 
     `,
-    filename: P.join('sub', 'sub', 'index.mjs'),
+    filename: P.join('sub', 'sub', 'index.js'),
     files: {
       sub: {
         '.babelrc.json': JSON.stringify({
@@ -77,30 +77,29 @@ export default {
       import '@/foo'
 
     `,
-    filename: P.join('sub', 'index.mjs'),
+    filename: P.join('sub', 'index.js'),
     files: {
       'foo.js': '',
     },
   },
   'alias: parent import in package': {
     code: endent`
-      import '../foo.mjs'
+      import '../foo.js'
 
     `,
-    filename: P.join('sub', 'sub', 'index.mjs'),
+    filename: P.join('sub', 'sub', 'index.js'),
     files: {
       sub: {
         '.babelrc.json': JSON.stringify({
           extends: packageName`@dword-design/babel-config`,
         }),
-        'foo.mjs': '',
+        'foo.js': '',
         'package.json': JSON.stringify({}),
       },
     },
     messages: [
       {
-        message:
-          "Unexpected parent import '../foo.mjs'. Use '@/foo.mjs' instead",
+        message: "Unexpected parent import '../foo.js'. Use '@/foo.js' instead",
         ruleId: '@dword-design/import-alias/prefer-alias',
       },
     ],
@@ -242,14 +241,14 @@ export default {
     code: endent`
       import foo from 'foo'
 
-      import bar from './bar.mjs'
+      import bar from './bar.js'
 
       console.log(foo)
       console.log(bar)
 
     `,
     files: {
-      'bar.mjs': endent`
+      'bar.js': endent`
         export default 1
 
       `,
@@ -268,14 +267,14 @@ export default {
   'blank lines: import groups without newline': {
     code: endent`
       import foo from 'foo'
-      import bar from './bar.mjs'
+      import bar from './bar.js'
 
       console.log(foo)
       console.log(bar)
 
     `,
     files: {
-      'bar.mjs': endent`
+      'bar.js': endent`
         export default 1
 
       `,
@@ -299,20 +298,20 @@ export default {
   },
   'blank lines: imports with newline': {
     code: endent`
-      import bar from './bar.mjs'
+      import bar from './bar.js'
 
-      import foo from './foo.mjs'
+      import foo from './foo.js'
 
       console.log(foo)
       console.log(bar)
 
     `,
     files: {
-      'bar.mjs': endent`
+      'bar.js': endent`
         export default 'bar'
 
       `,
-      'foo.mjs': endent`
+      'foo.js': endent`
         export default 'foo'
 
       `,
@@ -326,19 +325,19 @@ export default {
   },
   'blank lines: imports without newline': {
     code: endent`
-      import bar from './bar.mjs'
-      import foo from './foo.mjs'
+      import bar from './bar.js'
+      import foo from './foo.js'
 
       console.log(bar)
       console.log(foo)
 
     `,
     files: {
-      'bar.mjs': endent`
+      'bar.js': endent`
         export default 'bar'
 
       `,
-      'foo.mjs': endent`
+      'foo.js': endent`
         export default 'foo'
 
       `,
@@ -364,8 +363,8 @@ export default {
       import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
       import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
       
-      import ActionManager from './three-utils/action-manager.mjs'
-      import PlayerMovement from './three-utils/player-movement.mjs'
+      import ActionManager from './three-utils/action-manager.js'
+      import PlayerMovement from './three-utils/player-movement.js'
       
       export default async () => {
         const scene = new THREE.Scene()
@@ -491,7 +490,7 @@ export default {
           'controls/OrbitControls.js': '',
           'loaders/GLTFLoader.js': '',
         },
-        'index.mjs': '',
+        'index.js': '',
       },
       'package.json':
         {
@@ -500,8 +499,8 @@ export default {
           },
         } |> JSON.stringify,
       'three-utils': {
-        'action-manager.mjs': '',
-        'player-movement.mjs': '',
+        'action-manager.js': '',
+        'player-movement.js': '',
       },
     },
   },
@@ -618,7 +617,7 @@ export default {
       import 'foo'
 
     `,
-    filename: P.join('src', 'index.mjs'),
+    filename: P.join('src', 'index.js'),
     files: {
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
@@ -707,17 +706,17 @@ export default {
       sub: {},
     },
   },
-  'import: missing mjs extension': {
+  'import: missing js extension': {
     code: endent`
       import './foo'
 
     `,
     files: {
-      'foo.mjs': '',
+      'foo.js': '',
     },
     messages: [
       {
-        message: 'Missing file extension "mjs" for "./foo"',
+        message: 'Missing file extension "js" for "./foo"',
         ruleId: 'import/extensions',
       },
     ],
@@ -947,7 +946,7 @@ export default {
       import 'foo'
 
     `,
-    filename: P.join('src', 'index.mjs'),
+    filename: P.join('src', 'index.js'),
     files: {
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(

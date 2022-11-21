@@ -82,7 +82,7 @@ export default {
       'ignorePackages',
       {
         '': 'never',
-        mjs: 'always',
+        js: 'always',
       },
     ],
     'import/no-commonjs': 'error',
