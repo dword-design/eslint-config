@@ -26,7 +26,7 @@ const runTest = config => () => {
     ])
 
     const eslint = new ESLint({
-      extensions: ['.js', '.json', '.vue'],
+      extensions: ['.json', '.vue'],
       overrideConfig: eslintConfig,
       useEslintrc: false,
     })
@@ -86,7 +86,7 @@ export default {
   },
   'alias: parent import in package': {
     code: endent`
-      import '../foo'
+      import '../foo.js'
 
     `,
     filename: P.join('sub', 'sub', 'index.js'),
@@ -101,7 +101,7 @@ export default {
     },
     messages: [
       {
-        message: "Unexpected parent import '../foo'. Use '@/foo' instead",
+        message: "Unexpected parent import '../foo.js'. Use '@/foo.js' instead",
         ruleId: '@dword-design/import-alias/prefer-alias',
       },
     ],
@@ -251,7 +251,7 @@ export default {
     code: endent`
       import foo from 'foo'
 
-      import bar from './bar'
+      import bar from './bar.js'
 
       console.log(foo)
       console.log(bar)
@@ -277,7 +277,7 @@ export default {
   'blank lines: import groups without newline': {
     code: endent`
       import foo from 'foo'
-      import bar from './bar'
+      import bar from './bar.js'
 
       console.log(foo)
       console.log(bar)
@@ -308,9 +308,9 @@ export default {
   },
   'blank lines: imports with newline': {
     code: endent`
-      import bar from './bar'
+      import bar from './bar.js'
 
-      import foo from './foo'
+      import foo from './foo.js'
 
       console.log(foo)
       console.log(bar)
@@ -335,8 +335,8 @@ export default {
   },
   'blank lines: imports without newline': {
     code: endent`
-      import bar from './bar'
-      import foo from './foo'
+      import bar from './bar.js'
+      import foo from './foo.js'
 
       console.log(bar)
       console.log(foo)
@@ -373,8 +373,8 @@ export default {
       import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
       import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
       
-      import ActionManager from './three-utils/action-manager'
-      import PlayerMovement from './three-utils/player-movement'
+      import ActionManager from './three-utils/action-manager.js'
+      import PlayerMovement from './three-utils/player-movement.js'
       
       export default async () => {
         const scene = new THREE.Scene()
@@ -773,9 +773,9 @@ export default {
       sub: {},
     },
   },
-  'import: extension with js': {
+  'import: missing js extension': {
     code: endent`
-      import './foo.js'
+      import './foo'
 
     `,
     files: {
@@ -783,7 +783,7 @@ export default {
     },
     messages: [
       {
-        message: 'Unexpected use of file extension "js" for "./foo.js"',
+        message: 'Missing file extension "js" for "./foo"',
         ruleId: 'import/extensions',
       },
     ],

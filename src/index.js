@@ -84,9 +84,7 @@ export default {
       'ignorePackages',
       {
         '': 'never',
-        js: 'never',
-        jsx: 'never',
-        mjs: 'never',
+        js: 'always',
       },
     ],
     'import/no-commonjs': 'error',

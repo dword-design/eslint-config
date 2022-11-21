@@ -42,7 +42,7 @@
     "vue-eslint-parser": "^7.0.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^8.0.0",
+    "@dword-design/base": "^9.0.1",
     "deepmerge": "^4.2.2",
     "eslint": "^7.1.0",
     "output-files": "^2.0.0",
@@ -51,7 +51,7 @@
     "with-local-tmp-dir": "^4.0.0"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "publishConfig": {
     "access": "public"
