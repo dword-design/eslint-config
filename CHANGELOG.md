@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/dword-design/eslint-config/compare/v3.0.0...v3.0.1) (2022-11-21)
+
+
+### Bug Fixes
+
+* refactoring ([59443af](https://github.com/dword-design/eslint-config/commit/59443af3f14d0a8da87c1461e85bc82300c82e7a))
+
 # [3.0.0](https://github.com/dword-design/eslint-config/compare/v2.0.16...v3.0.0) (2022-11-21)
 
 
