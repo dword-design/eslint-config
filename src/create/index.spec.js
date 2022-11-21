@@ -5,8 +5,9 @@ import { ESLint } from 'eslint'
 import outputFiles from 'output-files'
 import P from 'path'
 import sortKeys from 'sort-keys'
-import stealthyRequire from 'stealthy-require-no-leak'
 import withLocalTmpDir from 'with-local-tmp-dir'
+
+import self from '.'
 
 const runTest = config => () => {
   config = { eslintConfig: {}, filename: 'index.js', messages: [], ...config }
@@ -20,10 +21,7 @@ const runTest = config => () => {
       ...config.files,
     })
 
-    const eslintConfig = deepmerge.all([
-      stealthyRequire(require.cache, () => require('.')),
-      config.eslintConfig,
-    ])
+    const eslintConfig = deepmerge.all([self(), config.eslintConfig])
 
     const eslint = new ESLint({
       extensions: ['.json', '.vue'],

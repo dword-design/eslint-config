@@ -9957,18 +9957,6 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-stealthy-require-no-leak@^1.0.2:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/stealthy-require-no-leak/-/stealthy-require-no-leak-1.0.7.tgz#9f1ae1ab29d2c2896ebf93d1f9c0d56d25a61606"
-  integrity sha512-qgBrF5ikMTbIhSnvTKTe4QSFgEw0IMqXAuQOsEb4D2dlG4gupGDPVabi6WGcLPbZ6j8b94gZyMSxJd07Du4PnA==
-  dependencies:
-    stealthy-require "^1.1.1"
-
-stealthy-require@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
-  integrity sha512-ZnWpYnYugiOVEY5GkcuJK1io5V8QmNYChG62gSit9pQVGErXtrKuPC55ITaVSukmMta5qpMU7vqLt2Lnni4f/g==
-
 stream-combiner2@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stream-combiner2/-/stream-combiner2-1.1.1.tgz#fb4d8a1420ea362764e21ad4780397bebcb41cbe"
