@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/dword-design/eslint-config/compare/v2.0.16...v3.0.0) (2022-11-21)
+
+
+### Bug Fixes
+
+* esm ([#113](https://github.com/dword-design/eslint-config/issues/113)) ([8c67da2](https://github.com/dword-design/eslint-config/commit/8c67da20b66e774e76a3f9e724864f0946585c11))
+
+
+### BREAKING CHANGES
+
+* drop node 12 support, switch to esm
+
 ## [2.0.16](https://github.com/dword-design/eslint-config/compare/v2.0.15...v2.0.16) (2022-11-17)
 
 
