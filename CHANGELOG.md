@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/dword-design/eslint-config/compare/v3.0.2...v3.0.3) (2022-11-27)
+
+
+### Bug Fixes
+
+* commonjs compat ([#189](https://github.com/dword-design/eslint-config/issues/189)) ([58c2401](https://github.com/dword-design/eslint-config/commit/58c24019868e551375437ffbee87b311e869d91c))
+
 ## [3.0.2](https://github.com/dword-design/eslint-config/compare/v3.0.1...v3.0.2) (2022-11-21)
 
 
