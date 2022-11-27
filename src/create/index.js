@@ -5,13 +5,14 @@ import loadPkg from 'load-pkg'
 import restrictedImports from './restricted-imports'
 
 export default () => {
-  const name = loadPkg.sync().name
+  const packageConfig = loadPkg.sync() || {}
 
   const eslintRestrictedImports =
     restrictedImports
     |> filter(
       importDef =>
-        importDef.alternative === undefined || importDef.alternative !== name
+        importDef.alternative === undefined ||
+        importDef.alternative !== packageConfig.name
     )
     |> map(importDef => ({
       ...(importDef |> omit(['alternative'])),
@@ -85,7 +86,9 @@ export default () => {
         'ignorePackages',
         {
           '': 'never',
-          js: 'always',
+          ...(packageConfig.type === 'module'
+            ? { js: 'always' }
+            : { js: 'never', jsx: 'never', mjs: 'never' }),
         },
       ],
       'import/no-commonjs': 'error',

@@ -82,24 +82,25 @@ export default {
       'foo.js': '',
     },
   },
-  'alias: parent import in package': {
+  'alias: parent import': {
     code: endent`
       import '../foo.js'
 
     `,
     filename: P.join('sub', 'sub', 'index.js'),
     files: {
+      '.babelrc.json': JSON.stringify({
+        extends: packageName`@dword-design/babel-config`,
+      }),
+      'package.json': JSON.stringify({ type: 'module' }),
       sub: {
-        '.babelrc.json': JSON.stringify({
-          extends: packageName`@dword-design/babel-config`,
-        }),
         'foo.js': '',
-        'package.json': JSON.stringify({}),
       },
     },
     messages: [
       {
-        message: "Unexpected parent import '../foo.js'. Use '@/foo.js' instead",
+        message:
+          "Unexpected parent import '../foo.js'. Use '@/sub/foo.js' instead",
         ruleId: '@dword-design/import-alias/prefer-alias',
       },
     ],
@@ -266,6 +267,7 @@ export default {
           dependencies: {
             foo: '^1.0.0',
           },
+          type: 'module',
         },
         undefined,
         2
@@ -292,6 +294,7 @@ export default {
           dependencies: {
             foo: '^1.0.0',
           },
+          type: 'module',
         },
         undefined,
         2
@@ -323,6 +326,7 @@ export default {
         export default 'foo'
 
       `,
+      'package.json': JSON.stringify({ type: 'module' }),
     },
     messages: [
       {
@@ -349,6 +353,7 @@ export default {
         export default 'foo'
 
       `,
+      'package.json': JSON.stringify({ type: 'module' }),
     },
   },
   'blank lines: simple': {
@@ -505,6 +510,7 @@ export default {
           dependencies: {
             three: '^1.0.0',
           },
+          type: 'module',
         } |> JSON.stringify,
       'three-utils': {
         'action-manager.js': '',
@@ -543,6 +549,15 @@ export default {
       console.log('bar')
 
     `,
+  },
+  commonjs: {
+    code: endent`
+      import './foo'
+
+    `,
+    files: {
+      'foo.js': '',
+    },
   },
   continue: {
     code: endent`
@@ -778,6 +793,7 @@ export default {
     `,
     files: {
       'foo.js': '',
+      'package.json': JSON.stringify({ type: 'module' }),
     },
     messages: [
       {
