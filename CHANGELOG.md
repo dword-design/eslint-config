@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/dword-design/eslint-config/compare/v3.0.3...v3.0.4) (2022-12-03)
+
+
+### Bug Fixes
+
+* update dependency eslint-plugin-import to ~2.26.0 ([#131](https://github.com/dword-design/eslint-config/issues/131)) ([895fd45](https://github.com/dword-design/eslint-config/commit/895fd4566d2ee3d75ad0cd48c1aed6e1a5b8277a))
+
 ## [3.0.3](https://github.com/dword-design/eslint-config/compare/v3.0.2...v3.0.3) (2022-11-27)
 
 
