@@ -54,12 +54,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "baseConfig": {
-    "depcheckConfig": {
-      "ignoreMatches": [
-        "eslint-config-prettier"
-      ]
-    }
   }
 }
