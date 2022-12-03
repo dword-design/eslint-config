@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/dword-design/eslint-config/compare/v3.0.4...v3.0.5) (2022-12-03)
+
+
+### Bug Fixes
+
+* fix base config ([a8a5b20](https://github.com/dword-design/eslint-config/commit/a8a5b2074bed2a63deac8554f9e351c60e4376bf))
+
 ## [3.0.4](https://github.com/dword-design/eslint-config/compare/v3.0.3...v3.0.4) (2022-12-03)
 
 
