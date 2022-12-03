@@ -627,7 +627,10 @@ export default {
 
     `,
     files: {
-      'node_modules/foo/index.js': '',
+      'node_modules/foo': {
+        'index.js': '',
+        'package.json': JSON.stringify({ name: 'foo' }),
+      },
       'package.json': JSON.stringify(
         {
           devDependencies: {
@@ -653,7 +656,10 @@ export default {
     `,
     filename: P.join('src', 'index.js'),
     files: {
-      'node_modules/foo/index.js': '',
+      'node_modules/foo': {
+        'index.js': '',
+        'package.json': JSON.stringify({ name: 'foo' }),
+      },
       'package.json': JSON.stringify(
         {
           devDependencies: {
