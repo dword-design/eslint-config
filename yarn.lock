@@ -1424,6 +1424,15 @@
     "@dword-design/functions" "^4.0.0"
     babel-plugin-module-resolver "^4.0.0"
 
+"@dword-design/eslint-plugin-import-alias@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-plugin-import-alias/-/eslint-plugin-import-alias-3.0.0.tgz#dc95f58f3879f76d41ff28d9516d2d94a16dd676"
+  integrity sha512-qdalNfBD8pHW6lJxmGYyF+KzwvTtr4HPTSHNu4fGkac/fzJch5vyXZyAOhZRZvBjLRZKPg6nRrT9Q8KINUtxUw==
+  dependencies:
+    "@babel/core" "^7.10.2"
+    "@dword-design/functions" "^4.0.0"
+    babel-plugin-module-resolver "^4.0.0"
+
 "@dword-design/functions@^4.0.0", "@dword-design/functions@^4.0.7":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@dword-design/functions/-/functions-4.1.0.tgz#98473461ddbd986bae884e591113653e30001369"
