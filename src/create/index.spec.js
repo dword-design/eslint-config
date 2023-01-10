@@ -439,8 +439,8 @@ export default {
   'blank lines: variables and expressions': {
     code: endent`
       import * as THREE from 'three'
-      import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-      import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+      import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+      import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
       
       import ActionManager from './three-utils/action-manager.js'
       import PlayerMovement from './three-utils/player-movement.js'
@@ -879,15 +879,6 @@ export default {
       'support-me.jpg': '',
     },
   },
-  'import: directory': {
-    code: endent`
-      import './sub'
-
-    `,
-    files: {
-      sub: {},
-    },
-  },
   'import: missing js extension': {
     code: endent`
       import './foo'
@@ -899,10 +890,33 @@ export default {
     },
     messages: [
       {
-        message: 'Missing file extension "js" for "./foo"',
-        ruleId: 'import/extensions',
+        message: "require file extension '.js'.",
+        ruleId: 'node/file-extension-in-import',
       },
     ],
+    output: endent`
+      import './foo.js'
+
+    `,
+  },
+  'import: unneeded js extension': {
+    code: endent`
+      import './foo.js'
+
+    `,
+    files: {
+      'foo.js': '',
+    },
+    messages: [
+      {
+        message: "forbid file extension '.js'.",
+        ruleId: 'node/file-extension-in-import',
+      },
+    ],
+    output: endent`
+      import './foo'
+
+    `,
   },
   'indent: invalid': {
     code: endent`
