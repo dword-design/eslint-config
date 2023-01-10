@@ -1,3 +1,10 @@
+## [3.0.8](https://github.com/dword-design/eslint-config/compare/v3.0.7...v3.0.8) (2023-01-10)
+
+
+### Bug Fixes
+
+* autofix extension ([a58bdd8](https://github.com/dword-design/eslint-config/commit/a58bdd896d824465764968193738afe2e926f1b8))
+
 ## [3.0.7](https://github.com/dword-design/eslint-config/compare/v3.0.6...v3.0.7) (2023-01-10)
 
 
