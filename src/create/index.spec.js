@@ -1,16 +1,23 @@
-import { endent, flatten, map, mapValues, pick } from '@dword-design/functions'
+import {
+  endent,
+  flatten,
+  join,
+  map,
+  mapValues,
+  pick,
+} from '@dword-design/functions'
 import deepmerge from 'deepmerge'
 import packageName from 'depcheck-package-name'
 import { ESLint } from 'eslint'
 import outputFiles from 'output-files'
 import P from 'path'
-import sortKeys from 'sort-keys'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
 import self from '.'
 
 const runTest = config => () => {
   config = { eslintConfig: {}, filename: 'index.js', messages: [], ...config }
+  config.output = config.output || config.code
 
   return withLocalTmpDir(async () => {
     await outputFiles({
@@ -21,21 +28,30 @@ const runTest = config => () => {
       ...config.files,
     })
 
-    const eslintConfig = deepmerge.all([self(), config.eslintConfig])
-
-    const eslint = new ESLint({
+    const eslintConfig = {
       extensions: ['.json', '.vue'],
-      overrideConfig: eslintConfig,
+      overrideConfig: deepmerge.all([self(), config.eslintConfig]),
       useEslintrc: false,
-    })
+    }
+
+    const eslintToLint = new ESLint(eslintConfig)
+
+    const eslintToFix = new ESLint({ ...eslintConfig, fix: true })
 
     const lintedMessages =
-      eslint.lintText(config.code, { filePath: config.filename })
+      eslintToLint.lintText(config.code, { filePath: config.filename })
       |> await
       |> map('messages')
       |> flatten
       |> map(pick(['message', 'ruleId']))
     expect(lintedMessages).toEqual(config.messages)
+
+    const lintedOutput =
+      eslintToFix.lintText(config.code, { filePath: config.filename })
+      |> await
+      |> map('output')
+      |> join('\n')
+    expect(lintedOutput || config.code).toEqual(config.output)
   })
 }
 
@@ -55,6 +71,10 @@ export default {
         ruleId: '@dword-design/import-alias/prefer-alias',
       },
     ],
+    output: endent`
+      import './foo'
+
+    `,
   },
   'alias: import in package': {
     code: endent`
@@ -104,6 +124,10 @@ export default {
         ruleId: '@dword-design/import-alias/prefer-alias',
       },
     ],
+    output: endent`
+      import '@/sub/foo.js'
+
+    `,
   },
   'arrow function': {
     code: endent`
@@ -139,6 +163,10 @@ export default {
         ruleId: 'arrow-body-style',
       },
     ],
+    output: endent`
+      export default foo => console.log(foo)
+
+    `,
   },
   'arrow function with unneeded parens': {
     code: endent`
@@ -148,6 +176,10 @@ export default {
     messages: [
       { message: 'Replace `(foo)` with `foo`', ruleId: 'prettier/prettier' },
     ],
+    output: endent`
+      export default foo => foo
+      
+    `,
   },
   'arrow function without parens': {
     code: endent`
@@ -195,6 +227,12 @@ export default {
         ruleId: 'padding-line-between-statements',
       },
     ],
+    output: endent`
+      export const foo = 1
+
+      export const bar = 2
+
+    `,
   },
   'blank lines: import and statement with newline': {
     code: endent`
@@ -245,6 +283,12 @@ export default {
         ruleId: 'padding-line-between-statements',
       },
     ],
+    output: endent`
+      import foo from 'foo'
+
+      console.log(foo)
+
+    `,
   },
   'blank lines: import groups with newline': {
     code: endent`
@@ -306,6 +350,15 @@ export default {
         ruleId: 'simple-import-sort/imports',
       },
     ],
+    output: endent`
+      import foo from 'foo'
+
+      import bar from './bar.js'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
   },
   'blank lines: imports with newline': {
     code: endent`
@@ -334,6 +387,14 @@ export default {
         ruleId: 'simple-import-sort/imports',
       },
     ],
+    output: endent`
+      import bar from './bar.js'
+      import foo from './foo.js'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
   },
   'blank lines: imports without newline': {
     code: endent`
@@ -369,12 +430,17 @@ export default {
         ruleId: 'padding-line-between-statements',
       },
     ],
+    output: endent`
+      console.log('foo')
+      console.log('bar')
+
+    `,
   },
   'blank lines: variables and expressions': {
     code: endent`
       import * as THREE from 'three'
-      import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-      import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+      import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+      import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
       
       import ActionManager from './three-utils/action-manager.js'
       import PlayerMovement from './three-utils/player-movement.js'
@@ -541,6 +607,12 @@ export default {
         ruleId: 'padding-line-between-statements',
       },
     ],
+    output: endent`
+      console.log('foo')
+      // foo
+      console.log('bar')
+
+    `,
   },
   'comments: without blank line': {
     code: endent`
@@ -582,6 +654,14 @@ export default {
         ruleId: 'prettier/prettier',
       },
     ],
+    output: endent`
+      export default () =>
+        console.log(
+          () =>
+            (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344
+        )
+
+    `,
   },
   'destructuring: array': {
     code: endent`
@@ -717,6 +797,14 @@ export default {
     messages: [
       { message: 'Expected method shorthand.', ruleId: 'object-shorthand' },
     ],
+    output: endent`
+      export default {
+        'foo bar'() {
+          console.log(this)
+        },
+      }
+
+    `,
   },
   'functional in template': {
     code: endent`
@@ -762,6 +850,14 @@ export default {
         ruleId: 'simple-import-sort/imports',
       },
     ],
+    output: endent`
+      import bar from 'bar'
+      import foo from 'foo'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
   },
   'import order with webpack loader syntax and aliases': {
     code: endent`
@@ -783,15 +879,6 @@ export default {
       'support-me.jpg': '',
     },
   },
-  'import: directory': {
-    code: endent`
-      import './sub'
-
-    `,
-    files: {
-      sub: {},
-    },
-  },
   'import: missing js extension': {
     code: endent`
       import './foo'
@@ -803,10 +890,33 @@ export default {
     },
     messages: [
       {
-        message: 'Missing file extension "js" for "./foo"',
-        ruleId: 'import/extensions',
+        message: "require file extension '.js'.",
+        ruleId: 'node/file-extension-in-import',
       },
     ],
+    output: endent`
+      import './foo.js'
+
+    `,
+  },
+  'import: unneeded js extension': {
+    code: endent`
+      import './foo.js'
+
+    `,
+    files: {
+      'foo.js': '',
+    },
+    messages: [
+      {
+        message: "forbid file extension '.js'.",
+        ruleId: 'node/file-extension-in-import',
+      },
+    ],
+    output: endent`
+      import './foo'
+
+    `,
   },
   'indent: invalid': {
     code: endent`
@@ -821,6 +931,12 @@ export default {
         ruleId: 'prettier/prettier',
       },
     ],
+    output: endent`
+      export default () => {
+        console.log('foo')
+      }
+
+    `,
   },
   'indent: valid': {
     code: endent`
@@ -846,6 +962,11 @@ export default {
     messages: [
       { message: 'Format Error: unexpected "  "', ruleId: 'JSON format' },
     ],
+    output: endent`
+      {
+        "foo": "bar"
+      }
+    `,
   },
   'json: no indent': {
     code: endent`
@@ -857,6 +978,11 @@ export default {
     messages: [
       { message: 'Format Error: expected "  " ', ruleId: 'JSON format' },
     ],
+    output: endent`
+      {
+        "foo": "bar"
+      }
+    `,
   },
   'json: syntax error': {
     code: endent`
@@ -928,6 +1054,13 @@ export default {
         ruleId: 'simple-import-sort/imports',
       },
     ],
+    output: endent`
+      import { bar, foo } from 'foo'
+
+      console.log(foo)
+      console.log(bar)
+
+    `,
   },
   'negated condition': {
     code: endent`
@@ -979,19 +1112,22 @@ export default {
     ],
   },
   'package.json: unsorted': {
-    code: JSON.stringify(
-      sortKeys(
-        {
-          name: 'foo',
-          version: '1.0.0',
-        },
-        { compare: (a, b) => -a.localeCompare(b) }
-      ),
-      undefined,
-      2
-    ),
+    code: endent`
+      {
+        "version": "1.0.0",
+        "name": "foo"
+      }
+      
+    `,
     filename: 'package.json',
     messages: [{ message: 'JSON is not sorted', ruleId: 'JSON sorting' }],
+    output: endent`
+      {
+        "name": "foo",
+        "version": "1.0.0"
+      }
+      
+    `,
   },
   'package.json: valid': {
     code: JSON.stringify(
@@ -1076,6 +1212,10 @@ export default {
         ruleId: 'prettier/prettier',
       },
     ],
+    output: endent`
+      export default "foo 'bar'"
+
+    `,
   },
   'regex-spaces': {
     code: endent`
@@ -1158,6 +1298,10 @@ export default {
 
     `,
     messages: [{ message: 'Delete `;`', ruleId: 'prettier/prettier' }],
+    output: endent`
+      console.log()
+      
+    `,
   },
   'single export': {
     code: endent`
@@ -1289,6 +1433,13 @@ export default {
         ruleId: 'no-extra-boolean-cast',
       },
     ],
+    output: endent`
+      const foo = 1
+      if (foo) {
+        console.log('foo')
+      }
+
+    `,
   },
   'unsorted object keys': {
     code: endent`
@@ -1302,6 +1453,10 @@ export default {
         ruleId: 'sort-keys-fix/sort-keys-fix',
       },
     ],
+    output: endent`
+      export default { a: 2, b: 1 }
+
+    `,
   },
   valid: {
     code: endent`
@@ -1325,6 +1480,14 @@ export default {
         ruleId: 'react/jsx-sort-props',
       },
     ],
+    output: endent`
+      <script>
+      export default {
+        render: () => <div aria-hidden="true" class="foo" />,
+      }
+      </script>
+
+    `,
   },
   'vue: boolean before value': {
     code: endent`
@@ -1342,6 +1505,14 @@ export default {
         ruleId: 'react/jsx-sort-props',
       },
     ],
+    output: endent`
+      <script>
+      export default {
+        render: () => <div class="foo" is-hidden />,
+      }
+      </script>
+
+    `,
   },
   'vue: boolean: constant true': {
     code: endent`
@@ -1359,6 +1530,14 @@ export default {
         ruleId: 'react/jsx-boolean-value',
       },
     ],
+    output: endent`
+      <script>
+      export default {
+        render: () => <div is-foo />,
+      }
+      </script>
+
+    `,
   },
   'vue: boolean: prop': {
     code: endent`
@@ -1402,6 +1581,17 @@ export default {
         ruleId: 'sort-keys-fix/sort-keys-fix',
       },
     ],
+    output: endent`
+      <script>
+      export default {
+        data: () => ({ bar: 1 }),
+        props: {
+          foo: {},
+        },
+      }
+      </script>
+
+    `,
   },
   'vue: component order: valid': {
     code: endent`
