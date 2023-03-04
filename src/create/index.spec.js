@@ -1309,6 +1309,15 @@ export default {
 
     `,
   },
+  'template literal': {
+    code: endent`
+      export default () =>
+        \`
+        adsfasdf
+      \`
+
+    `,
+  },
   'test: dev dependency': {
     code: endent`
       import 'foo'
