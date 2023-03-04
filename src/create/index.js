@@ -112,10 +112,7 @@ export default () => {
       'no-return-assign': 'off',
       'no-template-curly-in-string': 'off',
       'no-underscore-dangle': 'off',
-      'node/file-extension-in-import': [
-        'error',
-        packageConfig.type === 'module' ? 'always' : 'never',
-      ],
+      'node/file-extension-in-import': 'error',
       'object-shorthand': ['error', 'always'],
       'padding-line-between-statements': [
         'error',
