@@ -58,7 +58,7 @@ const runTest = config => () => {
 export default {
   'alias: child': {
     code: endent`
-      import '@/foo'
+      import '@/foo.js'
 
     `,
     files: {
@@ -67,12 +67,12 @@ export default {
     messages: [
       {
         message:
-          "Unexpected subpath import via alias '@/foo'. Use './foo' instead",
+          "Unexpected subpath import via alias '@/foo.js'. Use './foo.js' instead",
         ruleId: '@dword-design/import-alias/prefer-alias',
       },
     ],
     output: endent`
-      import './foo'
+      import './foo.js'
 
     `,
   },
@@ -94,7 +94,7 @@ export default {
   },
   'alias: parent': {
     code: endent`
-      import '@/foo'
+      import '@/foo.js'
 
     `,
     filename: P.join('sub', 'index.js'),
@@ -622,15 +622,6 @@ export default {
 
     `,
   },
-  commonjs: {
-    code: endent`
-      import './foo'
-
-    `,
-    files: {
-      'foo.js': '',
-    },
-  },
   continue: {
     code: endent`
       for (let i = 0; i < 10; i += 1) {
@@ -879,45 +870,6 @@ export default {
       'support-me.jpg': '',
     },
   },
-  'import: missing js extension': {
-    code: endent`
-      import './foo'
-
-    `,
-    files: {
-      'foo.js': '',
-      'package.json': JSON.stringify({ type: 'module' }),
-    },
-    messages: [
-      {
-        message: "require file extension '.js'.",
-        ruleId: 'node/file-extension-in-import',
-      },
-    ],
-    output: endent`
-      import './foo.js'
-
-    `,
-  },
-  'import: unneeded js extension': {
-    code: endent`
-      import './foo.js'
-
-    `,
-    files: {
-      'foo.js': '',
-    },
-    messages: [
-      {
-        message: "forbid file extension '.js'.",
-        ruleId: 'node/file-extension-in-import',
-      },
-    ],
-    output: endent`
-      import './foo'
-
-    `,
-  },
   'indent: invalid': {
     code: endent`
       export default () => {
@@ -1006,6 +958,25 @@ export default {
       }
     `,
     filename: 'index.json',
+  },
+  'missing file extension': {
+    code: endent`
+      import './foo'
+
+    `,
+    files: {
+      'foo.js': '',
+    },
+    messages: [
+      {
+        message: "require file extension '.js'.",
+        ruleId: 'node/file-extension-in-import',
+      },
+    ],
+    output: endent`
+      import './foo.js'
+
+    `,
   },
   'named import right order': {
     code: endent`
