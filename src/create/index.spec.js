@@ -1311,10 +1311,27 @@ export default {
   },
   'template literal': {
     code: endent`
+      let endent
+
       export default () =>
-        \`
+        endent\`
         adsfasdf
       \`
+
+    `,
+    messages: [
+      {
+        message: 'Templates should be properly indented.',
+        ruleId: 'unicorn/template-indent',
+      },
+    ],
+    output: endent`
+      let endent
+
+      export default () =>
+        endent\`
+          adsfasdf
+        \`
 
     `,
   },

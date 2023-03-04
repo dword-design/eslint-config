@@ -76,6 +76,7 @@ export default () => {
       packageName`eslint-plugin-react`,
       packageName`eslint-plugin-github`,
       packageName`eslint-plugin-node`,
+      packageName`eslint-plugin-unicorn`,
     ],
     rules: {
       'arrow-body-style': ['error', 'as-needed'],
@@ -165,6 +166,7 @@ export default () => {
       'require-await': 'error',
       'simple-import-sort/imports': 'error',
       'sort-keys-fix/sort-keys-fix': 'error',
+      'unicorn/template-indent': ['error', { tags: ['endent'] }],
       'vue/no-deprecated-functional-template': 'error',
       'vue/order-in-components': 'off',
       'vue/require-default-prop': 'off',
