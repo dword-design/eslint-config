@@ -1,3 +1,10 @@
+## [3.0.11](https://github.com/dword-design/eslint-config/compare/v3.0.10...v3.0.11) (2023-03-04)
+
+
+### Bug Fixes
+
+* fix endent indent ([#203](https://github.com/dword-design/eslint-config/issues/203)) ([b274163](https://github.com/dword-design/eslint-config/commit/b2741633c8ea80af63f89b22f6a9c4d8094290fb))
+
 ## [3.0.10](https://github.com/dword-design/eslint-config/compare/v3.0.9...v3.0.10) (2023-02-15)
 
 
