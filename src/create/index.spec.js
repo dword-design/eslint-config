@@ -978,6 +978,26 @@ export default {
 
     `,
   },
+  'missing file extension alias': {
+    code: endent`
+      import '@/foo'
+
+    `,
+    filename: P.join('sub', 'index.js'),
+    files: {
+      'foo.js': '',
+    },
+    messages: [
+      {
+        message: "require file extension '.js'.",
+        ruleId: 'node/file-extension-in-import',
+      },
+    ],
+    output: endent`
+      import '@/foo.js'
+
+    `,
+  },
   'named import right order': {
     code: endent`
       import { bar, foo } from 'foo'
