@@ -1,3 +1,10 @@
+## [3.0.12](https://github.com/dword-design/eslint-config/compare/v3.0.11...v3.0.12) (2023-03-04)
+
+
+### Bug Fixes
+
+* file extension always ([#204](https://github.com/dword-design/eslint-config/issues/204)) ([4dcc06b](https://github.com/dword-design/eslint-config/commit/4dcc06bb16489febe2784e4ff9fc11c1e39e09bd))
+
 ## [3.0.11](https://github.com/dword-design/eslint-config/compare/v3.0.10...v3.0.11) (2023-03-04)
 
 
