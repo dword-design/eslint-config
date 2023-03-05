@@ -155,6 +155,7 @@ export default () => {
           arrowParens: 'avoid',
           semi: false,
           singleQuote: true,
+          trailingComma: 'all',
         },
       ],
       'promise/prefer-await-to-then': 'error',
