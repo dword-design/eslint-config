@@ -1,3 +1,10 @@
+## [3.0.13](https://github.com/dword-design/eslint-config/compare/v3.0.12...v3.0.13) (2023-03-05)
+
+
+### Bug Fixes
+
+* trailing comma ([#206](https://github.com/dword-design/eslint-config/issues/206)) ([e38286a](https://github.com/dword-design/eslint-config/commit/e38286ad96ea777826f415adbd015b51a035323a))
+
 ## [3.0.12](https://github.com/dword-design/eslint-config/compare/v3.0.11...v3.0.12) (2023-03-04)
 
 
