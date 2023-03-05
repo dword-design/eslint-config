@@ -462,7 +462,7 @@ export default {
           75,
           window.innerWidth / window.innerHeight,
           0.1,
-          1000
+          1000,
         )
         camera.position.y = 2
         camera.position.z = 5
@@ -486,7 +486,7 @@ export default {
           500,
           -500,
           0.5,
-          1000
+          1000,
         )
         scene.add(light)
       
@@ -501,14 +501,14 @@ export default {
       
         const ground = new THREE.Mesh(
           new THREE.PlaneGeometry(1000, 1000),
-          groundMaterial
+          groundMaterial,
         )
         ground.rotation.x = -Math.PI / 2
         ground.receiveShadow = true
         scene.add(ground)
       
         const gltf = await new Promise((resolve, reject) =>
-          gltfLoader.load('RobotExpressive.glb', resolve, undefined, reject)
+          gltfLoader.load('RobotExpressive.glb', resolve, undefined, reject),
         )
       
         const player = gltf.scene
@@ -549,7 +549,7 @@ export default {
             actionManager.setAction(
               keyStates.KeyW || keyStates.KeyS || keyStates.KeyA || keyStates.KeyD
                 ? 'Running'
-                : 'Idle'
+                : 'Idle',
             )
           }
           actionManager.update(delta)
@@ -641,7 +641,7 @@ export default {
     messages: [
       {
         message:
-          'Replace `·console.log(()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344` with `⏎··console.log(⏎····()·=>⏎······(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344⏎··`',
+          'Replace `·console.log(()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344` with `⏎··console.log(⏎····()·=>⏎······(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344,⏎··`',
         ruleId: 'prettier/prettier',
       },
     ],
@@ -649,7 +649,7 @@ export default {
       export default () =>
         console.log(
           () =>
-            (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344
+            (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344,
         )
 
     `,
@@ -975,6 +975,25 @@ export default {
     ],
     output: endent`
       import './foo.js'
+
+    `,
+  },
+  'missing trailing comma': {
+    code: endent`
+      let foo
+      foo(
+        'fooadfa sdfasdfasdf asdfasdfasdfasdf',
+        'adfsddfsdfsadfasdf asdfasdf asdfasdf'
+      )
+
+    `,
+    messages: [{ message: 'Insert `,`', ruleId: 'prettier/prettier' }],
+    output: endent`
+      let foo
+      foo(
+        'fooadfa sdfasdfasdf asdfasdfasdfasdf',
+        'adfsddfsdfsadfasdf asdfasdf asdfasdf',
+      )
 
     `,
   },
