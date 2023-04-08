@@ -109,7 +109,6 @@ export default () => {
       'no-restricted-syntax': [
         'error',
         'ObjectPattern',
-        'ArrayPattern',
         "LogicalExpression[operator='??']",
       ],
       'no-return-assign': 'off',

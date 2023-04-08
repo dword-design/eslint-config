@@ -651,18 +651,22 @@ export default {
 
     `,
   },
-  'destructuring: array': {
+  'destructuring: array Promise.all': {
     code: endent`
-      const [foo] = ['bar']
+      const [foo, bar] = await Promise.all([])
       console.log(foo)
+      console.log(bar)
 
     `,
-    messages: [
-      {
-        message: "Using 'ArrayPattern' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
+  },
+  'destructuring: array for loop Object.entries': {
+    code: endent`
+      for (const [foo, bar] of Object.entries({})) {
+        console.log(foo)
+        console.log(bar)
+      }
+
+    `,
   },
   'destructuring: object': {
     code: endent`
