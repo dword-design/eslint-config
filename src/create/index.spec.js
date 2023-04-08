@@ -24,7 +24,7 @@ const runTest = config => () => {
       '.babelrc.json': JSON.stringify({
         extends: '@dword-design/babel-config',
       }),
-      'package.json': JSON.stringify({}),
+      'package.json': JSON.stringify({ type: 'module' }),
       ...config.files,
     })
 
@@ -112,7 +112,6 @@ export default {
       '.babelrc.json': JSON.stringify({
         extends: packageName`@dword-design/babel-config`,
       }),
-      'package.json': JSON.stringify({ type: 'module' }),
       sub: {
         'foo.js': '',
       },
@@ -379,7 +378,6 @@ export default {
         export default 'foo'
 
       `,
-      'package.json': JSON.stringify({ type: 'module' }),
     },
     messages: [
       {
@@ -414,7 +412,6 @@ export default {
         export default 'foo'
 
       `,
-      'package.json': JSON.stringify({ type: 'module' }),
     },
   },
   'blank lines: simple': {
@@ -748,6 +745,27 @@ export default {
         ruleId: 'import/no-extraneous-dependencies',
       },
     ],
+  },
+  'esm import without main field': {
+    code: endent`
+      import 'foo'
+
+    `,
+    files: {
+      'foo.js': '',
+      'node_modules/foo': {
+        'dist/index.js': '',
+        'package.json': JSON.stringify({
+          exports: './dist/index.js',
+          name: 'foo',
+          type: 'module',
+        }),
+      },
+      'package.json': JSON.stringify({
+        dependencies: { foo: '^1.0.0' },
+        type: 'module',
+      }),
+    },
   },
   forEach: {
     code: endent`

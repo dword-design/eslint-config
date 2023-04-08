@@ -178,6 +178,7 @@ export default () => {
         [packageName`eslint-import-resolver-babel-module`]: {
           allowExistingDirectories: true,
         },
+        [packageName`eslint-import-resolver-exports`]: {},
       },
     },
   }
