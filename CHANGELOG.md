@@ -1,3 +1,10 @@
+## [3.0.16](https://github.com/dword-design/eslint-config/compare/v3.0.15...v3.0.16) (2023-04-08)
+
+
+### Bug Fixes
+
+* allow array destructuring ([b07ddbe](https://github.com/dword-design/eslint-config/commit/b07ddbe21d6c49786060b993afcf2d96eef66b0e))
+
 ## [3.0.15](https://github.com/dword-design/eslint-config/compare/v3.0.14...v3.0.15) (2023-04-08)
 
 
