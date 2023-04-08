@@ -13,7 +13,7 @@ import outputFiles from 'output-files'
 import P from 'path'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
-import self from '.'
+import self from './index.js'
 
 const runTest = config => () => {
   config = { eslintConfig: {}, filename: 'index.js', messages: [], ...config }
@@ -178,7 +178,7 @@ export default {
     ],
     output: endent`
       export default foo => foo
-      
+
     `,
   },
   'arrow function without parens': {
@@ -250,7 +250,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
   },
@@ -269,7 +269,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [
@@ -314,7 +314,7 @@ export default {
           type: 'module',
         },
         undefined,
-        2
+        2,
       ),
     },
   },
@@ -341,7 +341,7 @@ export default {
           type: 'module',
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [
@@ -441,23 +441,23 @@ export default {
       import * as THREE from 'three'
       import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
       import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-      
+
       import ActionManager from './three-utils/action-manager.js'
       import PlayerMovement from './three-utils/player-movement.js'
-      
+
       export default async () => {
         const scene = new THREE.Scene()
         scene.background = new THREE.Color(0xcce0ff)
         scene.fog = new THREE.Fog(0xcce0ff, 100, 500)
-      
+
         const textureLoader = new THREE.TextureLoader()
-      
+
         const gltfLoader = new GLTFLoader()
-      
+
         const renderer = new THREE.WebGLRenderer()
         renderer.setSize(window.innerWidth, window.innerHeight)
         renderer.shadowMap.enabled = true
-      
+
         const camera = new THREE.PerspectiveCamera(
           75,
           window.innerWidth / window.innerHeight,
@@ -466,15 +466,15 @@ export default {
         )
         camera.position.y = 2
         camera.position.z = 5
-      
+
         const controls = new OrbitControls(camera, renderer.domElement)
         controls.maxDistance = 15
         controls.maxPolarAngle = 0.4 * Math.PI
         controls.minDistance = 15
         controls.minPolarAngle = 0.25 * Math.PI
-      
+
         const playerMovement = new PlayerMovement(camera)
-      
+
         const light = new THREE.DirectionalLight(0xffffff, 1)
         light.position.set(0, 20, 20)
         light.castShadow = true
@@ -489,16 +489,16 @@ export default {
           1000,
         )
         scene.add(light)
-      
+
         const groundTexture = textureLoader.load('grasslight-big.jpg')
         groundTexture.wrapS = THREE.RepeatWrapping
         groundTexture.wrapT = THREE.RepeatWrapping
         groundTexture.repeat.set(50, 50)
         groundTexture.anisotropy = 16
         groundTexture.encoding = THREE.sRGBEncoding
-      
+
         const groundMaterial = new THREE.MeshLambertMaterial({ map: groundTexture })
-      
+
         const ground = new THREE.Mesh(
           new THREE.PlaneGeometry(1000, 1000),
           groundMaterial,
@@ -506,11 +506,11 @@ export default {
         ground.rotation.x = -Math.PI / 2
         ground.receiveShadow = true
         scene.add(ground)
-      
+
         const gltf = await new Promise((resolve, reject) =>
           gltfLoader.load('RobotExpressive.glb', resolve, undefined, reject),
         )
-      
+
         const player = gltf.scene
         player.rotation.y = Math.PI
         player.traverse(child => {
@@ -519,10 +519,10 @@ export default {
           }
         })
         scene.add(player)
-      
+
         const actionManager = new ActionManager(gltf)
         actionManager.setAction('Idle')
-      
+
         const keyStates = {}
         document.addEventListener('keydown', event => {
           if (event.code === 'Space' && !keyStates[event.code]) {
@@ -538,12 +538,12 @@ export default {
           camera.updateProjectionMatrix()
           renderer.setSize(window.innerWidth, window.innerHeight)
         })
-      
+
         const clock = new THREE.Clock()
-      
+
         const animate = () => {
           requestAnimationFrame(animate)
-      
+
           const delta = clock.getDelta()
           if (actionManager.activeAction.getClip().name !== 'Jump') {
             actionManager.setAction(
@@ -558,7 +558,7 @@ export default {
           renderer.render(scene, camera)
         }
         animate()
-      
+
         return renderer
       }
 
@@ -630,7 +630,7 @@ export default {
         }
         console.log(i)
       }
-      
+
     `,
   },
   'deep nesting': {
@@ -709,7 +709,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [
@@ -738,7 +738,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [
@@ -832,7 +832,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [
@@ -1014,7 +1014,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
   },
@@ -1035,7 +1035,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [
@@ -1107,7 +1107,7 @@ export default {
         "version": "1.0.0",
         "name": "foo"
       }
-      
+
     `,
     filename: 'package.json',
     messages: [{ message: 'JSON is not sorted', ruleId: 'JSON sorting' }],
@@ -1116,7 +1116,7 @@ export default {
         "name": "foo",
         "version": "1.0.0"
       }
-      
+
     `,
   },
   'package.json: valid': {
@@ -1126,7 +1126,7 @@ export default {
         version: '1.0.0',
       },
       undefined,
-      2
+      2,
     ),
     filename: 'package.json',
   },
@@ -1169,7 +1169,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
   },
@@ -1246,7 +1246,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [
@@ -1271,7 +1271,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [
@@ -1290,7 +1290,7 @@ export default {
     messages: [{ message: 'Delete `;`', ruleId: 'prettier/prettier' }],
     output: endent`
       console.log()
-      
+
     `,
   },
   'single export': {
@@ -1390,7 +1390,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
   },
@@ -1409,7 +1409,7 @@ export default {
           },
         },
         undefined,
-        2
+        2,
       ),
     },
     messages: [

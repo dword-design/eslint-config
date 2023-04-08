@@ -2,7 +2,7 @@ import { compact, filter, join, map, omit } from '@dword-design/functions'
 import packageName from 'depcheck-package-name'
 import loadPkg from 'load-pkg'
 
-import restrictedImports from './restricted-imports'
+import restrictedImports from './restricted-imports.js'
 
 export default () => {
   const packageConfig = loadPkg.sync() || {}
@@ -12,7 +12,7 @@ export default () => {
     |> filter(
       importDef =>
         importDef.alternative === undefined ||
-        importDef.alternative !== packageConfig.name
+        importDef.alternative !== packageConfig.name,
     )
     |> map(importDef => ({
       ...(importDef |> omit(['alternative'])),
