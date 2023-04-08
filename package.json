@@ -5,7 +5,9 @@
   "funding": "https://github.com/sponsors/dword-design",
   "license": "MIT",
   "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
-  "main": "dist/index.js",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "main": "dist/cjs-fallback.cjs",
   "files": [
     "dist"
   ],
@@ -48,6 +50,8 @@
     "@dword-design/base": "^9.0.1",
     "deepmerge": "^4.2.2",
     "eslint": "^8.35.0",
+    "execa": "^7.1.1",
+    "fs-extra": "^11.1.1",
     "output-files": "^2.0.0",
     "with-local-tmp-dir": "^4.0.0"
   },

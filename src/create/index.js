@@ -1,8 +1,11 @@
 import { compact, filter, join, map, omit } from '@dword-design/functions'
 import packageName from 'depcheck-package-name'
 import loadPkg from 'load-pkg'
+import { createRequire } from 'module'
 
 import restrictedImports from './restricted-imports.js'
+
+const _require = createRequire(import.meta.url)
 
 export default () => {
   const packageConfig = loadPkg.sync() || {}
@@ -64,7 +67,7 @@ export default () => {
     parser: packageName`vue-eslint-parser`,
     parserOptions: {
       babelOptions: {
-        configFile: require.resolve('@dword-design/babel-config'),
+        configFile: _require.resolve(packageName`@dword-design/babel-config`),
       },
       parser: packageName`@babel/eslint-parser`,
     },

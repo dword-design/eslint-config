@@ -4,5 +4,6 @@
     "ignoreMatches": [
       "eslint-config-prettier"
     ]
-  }
+  },
+  "cjsFallback": true
 }
