@@ -1,3 +1,10 @@
+## [3.0.14](https://github.com/dword-design/eslint-config/compare/v3.0.13...v3.0.14) (2023-04-08)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#202](https://github.com/dword-design/eslint-config/issues/202)) ([59f9220](https://github.com/dword-design/eslint-config/commit/59f922003f5c348ca9123afc246a4e2e98945bf2))
+
 ## [3.0.13](https://github.com/dword-design/eslint-config/compare/v3.0.12...v3.0.13) (2023-03-05)
 
 
