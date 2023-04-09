@@ -1,3 +1,11 @@
+## [3.0.19](https://github.com/dword-design/eslint-config/compare/v3.0.18...v3.0.19) (2023-04-09)
+
+
+### Bug Fixes
+
+* upgrades ([8b1186b](https://github.com/dword-design/eslint-config/commit/8b1186bc7c4afc496d963d6856f5a5933903d6d9))
+* upgrades ([461824e](https://github.com/dword-design/eslint-config/commit/461824e67ecefef5caad53d610a8f77594e3d3ee))
+
 ## [3.0.18](https://github.com/dword-design/eslint-config/compare/v3.0.17...v3.0.18) (2023-04-09)
 
 
