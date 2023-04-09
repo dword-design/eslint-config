@@ -99,6 +99,7 @@ export default () => {
       'no-continue': 'off',
       'no-negated-condition': 'error',
       'no-param-reassign': 'off',
+      'no-promise-executor-return': 'off',
       'no-regex-spaces': 'off',
       'no-restricted-imports': [
         'error',
