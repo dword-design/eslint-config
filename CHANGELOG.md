@@ -1,3 +1,10 @@
+## [3.0.21](https://github.com/dword-design/eslint-config/compare/v3.0.20...v3.0.21) (2023-04-09)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v9.5.7 ([df68370](https://github.com/dword-design/eslint-config/commit/df68370c2ae0912056fc24eb3aff1277ce642dae))
+
 ## [3.0.20](https://github.com/dword-design/eslint-config/compare/v3.0.19...v3.0.20) (2023-04-09)
 
 
