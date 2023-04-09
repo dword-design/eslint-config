@@ -1,3 +1,10 @@
+## [3.0.20](https://github.com/dword-design/eslint-config/compare/v3.0.19...v3.0.20) (2023-04-09)
+
+
+### Bug Fixes
+
+* fix vue rule ([3f60b21](https://github.com/dword-design/eslint-config/commit/3f60b2135716b00b51522735fd17fcb751498fc0))
+
 ## [3.0.19](https://github.com/dword-design/eslint-config/compare/v3.0.18...v3.0.19) (2023-04-09)
 
 
