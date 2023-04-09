@@ -1,3 +1,10 @@
+## [3.0.18](https://github.com/dword-design/eslint-config/compare/v3.0.17...v3.0.18) (2023-04-09)
+
+
+### Bug Fixes
+
+* update dependency depcheck-package-name to v3 ([#197](https://github.com/dword-design/eslint-config/issues/197)) ([f6537e5](https://github.com/dword-design/eslint-config/commit/f6537e590478456321c6ea3d762fa93d12918cc8))
+
 ## [3.0.17](https://github.com/dword-design/eslint-config/compare/v3.0.16...v3.0.17) (2023-04-09)
 
 
