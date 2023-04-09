@@ -826,7 +826,7 @@ export default {
       </template>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
     messages: [
       {
         message: 'The `functional` template are deprecated.',
@@ -1511,7 +1511,7 @@ export default {
       </script>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
     messages: [
       {
         message: 'Props should be sorted alphabetically',
@@ -1536,7 +1536,7 @@ export default {
       </script>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
     messages: [
       {
         message: 'Props should be sorted alphabetically',
@@ -1561,7 +1561,7 @@ export default {
       </script>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
     messages: [
       {
         message: 'Value must be omitted for boolean attributes',
@@ -1586,7 +1586,7 @@ export default {
       </script>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
   },
   'vue: boolean: valid': {
     code: endent`
@@ -1597,7 +1597,7 @@ export default {
       </script>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
   },
   'vue: component order: invalid': {
     code: endent`
@@ -1611,7 +1611,7 @@ export default {
       </script>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
     messages: [
       {
         message:
@@ -1643,7 +1643,7 @@ export default {
       </script>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
   },
   'vue: valid': {
     code: endent`
@@ -1654,7 +1654,7 @@ export default {
       </script>
 
     `,
-    filename: 'index.vue',
+    filename: 'app-component.vue',
   },
   'while true': {
     code: endent`
