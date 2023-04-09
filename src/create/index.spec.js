@@ -1645,6 +1645,39 @@ export default {
     `,
     filename: 'app-component.vue',
   },
+  'vue: index component name': {
+    code: endent`
+      <template>
+        <div />
+      </template>
+
+    `,
+    filename: P.join('src', 'index.vue'),
+  },
+  'vue: multi-word component name': {
+    code: endent`
+      <template>
+        <div />
+      </template>
+
+    `,
+    filename: 'app-component.vue',
+  },
+  'vue: single-word component name': {
+    code: endent`
+      <template>
+        <div />
+      </template>
+
+    `,
+    filename: 'foo.vue',
+    messages: [
+      {
+        message: 'Component name "foo" should always be multi-word.',
+        ruleId: 'vue/multi-word-component-names',
+      },
+    ],
+  },
   'vue: valid': {
     code: endent`
       <script>
