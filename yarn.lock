@@ -1385,9 +1385,9 @@
     vue-eslint-parser "^9.1.1"
 
 "@dword-design/eslint-plugin-import-alias@^3.0.6":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/@dword-design/eslint-plugin-import-alias/-/eslint-plugin-import-alias-3.0.6.tgz#1a894969d01dae5c98fff634b9be3c2de5c78983"
-  integrity sha512-Ff6PlY/RmxyQ1Vvl3iLdEeasHoeTdi22J9ETSb6N9XqesOUz5F5exsDQHRnRuZRAHE0PjK2iQLIiAbaWE/v2ZA==
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-plugin-import-alias/-/eslint-plugin-import-alias-3.0.8.tgz#21b9409264bd23dae8660990a750c1b1ad5f4aef"
+  integrity sha512-2ow6wL2xGurhjKou3YzCNdG8IwpNRPkrcVElaiShWYyz3ahV4xCrjo4CZKQsO9xDAqiYwNo/YHD08TLz3KmqBA==
   dependencies:
     "@babel/core" "^7.10.2"
     "@dword-design/functions" "^4.0.0"
@@ -3248,9 +3248,9 @@ camelcase@^6.0.0, camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001449:
-  version "1.0.30001476"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001476.tgz#759906c53eae17133217d75b482f9dc5c02f7898"
-  integrity sha512-JmpktFppVSvyUN4gsLS0bShY2L9ZUslHLE72vgemBkS43JD2fOvKTKs+GtRwuxrtRGnwJFW0ye7kWRRlLJS9vQ==
+  version "1.0.30001477"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001477.tgz#a2ffb2276258233034bbb869d4558b02658a511e"
+  integrity sha512-lZim4iUHhGcy5p+Ri/G7m84hJwncj+Kz7S5aD4hoQfslKZJgt0tHc/hafVbqHC5bbhHb+mrW2JOUHkI5KH7toQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
