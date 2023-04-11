@@ -1,3 +1,10 @@
+## [3.0.27](https://github.com/dword-design/eslint-config/compare/v3.0.26...v3.0.27) (2023-04-11)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/babel-config to v2.2.10 ([3151a44](https://github.com/dword-design/eslint-config/commit/3151a4484bba16a33896c67f94339a5538138784))
+
 ## [3.0.26](https://github.com/dword-design/eslint-config/compare/v3.0.25...v3.0.26) (2023-04-11)
 
 
