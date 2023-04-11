@@ -1191,23 +1191,24 @@
     "@jridgewell/trace-mapping" "0.3.9"
 
 "@dword-design/babel-config@^2.0.0":
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-2.1.8.tgz#8fd91fa92f03f4e570b2e99526a39bb4b4808479"
-  integrity sha512-nACO1q5jILtJGMXuvI12d4O0PZxbLz4pBXMf1THV6cuEM1SAapmtzp1+zAjz2GY8KfVB+eyIDpMHN5eLyDcSEw==
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-2.2.10.tgz#91e55e81dfb8cd481077a5747207fcca782a1118"
+  integrity sha512-ZQt3X5xkDkAhgb60bFbp0yU9p+bX171RNmMV8UKzDwX+i16iOcaZgny7VFgScD7yTTeE+d19MypWqypriYnZkA==
   dependencies:
     "@babel/plugin-proposal-optional-chaining" "^7.6.0"
     "@babel/plugin-proposal-pipeline-operator" "^7.5.0"
+    "@babel/plugin-syntax-import-assertions" "^7.20.0"
     "@babel/preset-env" "^7.6.3"
     "@babel/preset-typescript" "^7.13.0"
     "@dword-design/functions" "^4.0.0"
-    "@vue/babel-preset-jsx" dword-design/jsx#fork-babel-preset-jsx
+    "@vue/babel-preset-jsx" "github:dword-design/jsx#fork-babel-preset-jsx"
     babel-plugin-add-module-exports "^1.0.2"
     babel-plugin-macros "^3.0.1"
-    babel-plugin-module-resolver "^4.0.0"
+    babel-plugin-module-resolver "^4"
     babel-plugin-transform-imports "^2.0.0"
     babel-plugin-wildcard "npm:@dword-design/babel-plugin-wildcard"
-    depcheck-package-name "^2.0.0"
-    find-up "^5.0.0"
+    depcheck-package-name "^3.0.0"
+    find-up "^6.3.0"
     load-pkg "npm:@dword-design/load-pkg"
     param-case "^3.0.3"
 
@@ -2330,7 +2331,7 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-jsx@dword-design/jsx#fork-babel-preset-jsx", "@vue/babel-preset-jsx@github:dword-design/jsx#fork-babel-preset-jsx":
+"@vue/babel-preset-jsx@github:dword-design/jsx#fork-babel-preset-jsx":
   version "1.1.2"
   uid a73cb9961541a60a66b1b99a69a32e00bc66d336
   resolved "https://codeload.github.com/dword-design/jsx/tar.gz/a73cb9961541a60a66b1b99a69a32e00bc66d336"
@@ -3978,13 +3979,6 @@ depcheck-detector-package-name@^3.0.0:
   resolved "https://registry.yarnpkg.com/depcheck-detector-package-name/-/depcheck-detector-package-name-3.0.1.tgz#da4a99afde8eba10b249b469c2f3e8932eb0af8e"
   integrity sha512-pn+ES1LmL52TIl0d/SsaHIFAuW9AHWAoSxCkm6K6JOWhNqX3EKjPCaJz8wQPKIt6PHE50HLPET+k4qG2IaF+6Q==
 
-depcheck-package-name@^2.0.0:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/depcheck-package-name/-/depcheck-package-name-2.0.6.tgz#998015be43593711641fa23569aca131f133dc31"
-  integrity sha512-9C8RbkOrafLWXTMt6DIimYiLeKk2qSaQyFoiTTPx1GdnmNo1VpO7zoAmRUy/teEEtSa+5DuyGXi91lhs2G0S8g==
-  dependencies:
-    tagged-template-noop "^2.1.1"
-
 depcheck-package-name@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/depcheck-package-name/-/depcheck-package-name-3.0.0.tgz#01ca55e4da86fe3a88740656f360ac4749c0b26e"
@@ -4173,9 +4167,9 @@ duplexer2@~0.1.0:
     readable-stream "^2.0.2"
 
 electron-to-chromium@^1.4.284:
-  version "1.4.356"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.356.tgz#b75a8a8c31d571f6024310cc980a08cd6c15a8c5"
-  integrity sha512-nEftV1dRX3omlxAj42FwqRZT0i4xd2dIg39sog/CnCJeCcL1TRd2Uh0i9Oebgv8Ou0vzTPw++xc+Z20jzS2B6A==
+  version "1.4.357"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.357.tgz#ad02bab69e696e9a122788da4460c86166a98a01"
+  integrity sha512-UTkCbNTAcGXABmEnQrGcW4m3cG6fcyBfD4KDF0iyEAlbrGZiY9dmslyDAGOD1Kr5biN2F743Y30aRCOtau35Vw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -6206,7 +6200,14 @@ is-cidr@*:
   dependencies:
     cidr-regex "4.0.3"
 
-is-core-module@^2.11.0, is-core-module@^2.4.0, is-core-module@^2.5.0, is-core-module@^2.8.1, is-core-module@^2.9.0:
+is-core-module@^2.11.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.12.0.tgz#36ad62f6f73c8253fd6472517a12483cf03e7ec4"
+  integrity sha512-RECHCBCd/viahWmwj6enj19sKbHfJrddi/6cBDsNTKbNq0f7VeaUkBo60BqzvPqo/W54ChS62Z5qyun7cfOMqQ==
+  dependencies:
+    has "^1.0.3"
+
+is-core-module@^2.4.0, is-core-module@^2.5.0, is-core-module@^2.8.1, is-core-module@^2.9.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.11.0.tgz#ad4cb3e3863e814523c96f3f58d26cc570ff0144"
   integrity sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==
