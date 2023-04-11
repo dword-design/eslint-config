@@ -1191,9 +1191,9 @@
     "@jridgewell/trace-mapping" "0.3.9"
 
 "@dword-design/babel-config@^2.0.0", "@dword-design/babel-config@^2.1.1":
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-2.2.10.tgz#91e55e81dfb8cd481077a5747207fcca782a1118"
-  integrity sha512-ZQt3X5xkDkAhgb60bFbp0yU9p+bX171RNmMV8UKzDwX+i16iOcaZgny7VFgScD7yTTeE+d19MypWqypriYnZkA==
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-2.2.11.tgz#05e49aabb1f05cbc9e0f337ca422ee05bee9aa95"
+  integrity sha512-9DB74jGulrPn/wViBqh9hLOVdjrTmcVmB9rwqY6TfB6JrKrVW8Aq9S+vPrU36WdPIua6zZq8lHwUYQmm9RbTOg==
   dependencies:
     "@babel/plugin-proposal-optional-chaining" "^7.6.0"
     "@babel/plugin-proposal-pipeline-operator" "^7.5.0"
@@ -4145,9 +4145,9 @@ duplexer2@~0.1.0:
     readable-stream "^2.0.2"
 
 electron-to-chromium@^1.4.284:
-  version "1.4.358"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.358.tgz#301afde62c1bbe36aeec3155b11f7db1c5b01c78"
-  integrity sha512-dbqpWy662dGVwq27q8i6+t5FPcQiFPs/VExXJ+/T9Xp9KUV0b5bvG+B/i07FNNr7PgcN3GhZQCZoYJ9EUfnIOg==
+  version "1.4.359"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.359.tgz#5c4d13cb08032469fcd6bd36457915caa211356b"
+  integrity sha512-OoVcngKCIuNXtZnsYoqlCvr0Cf3NIPzDIgwUfI9bdTFjXCrr79lI0kwQstLPZ7WhCezLlGksZk/BFAzoXC7GDw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
