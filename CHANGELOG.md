@@ -1,3 +1,10 @@
+## [3.0.29](https://github.com/dword-design/eslint-config/compare/v3.0.28...v3.0.29) (2023-04-12)
+
+
+### Bug Fixes
+
+* update dependency output-files to v2.0.27 ([d823fe1](https://github.com/dword-design/eslint-config/commit/d823fe1b6d3be3d274493ee94bc3fb449e6ec300))
+
 ## [3.0.28](https://github.com/dword-design/eslint-config/compare/v3.0.27...v3.0.28) (2023-04-12)
 
 
