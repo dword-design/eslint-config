@@ -1,3 +1,10 @@
+## [3.0.32](https://github.com/dword-design/eslint-config/compare/v3.0.31...v3.0.32) (2023-04-22)
+
+
+### Bug Fixes
+
+* update dependency eslint-plugin-vue to v9.11.0 ([0b3df27](https://github.com/dword-design/eslint-config/commit/0b3df276a390d805b48d8fe51dc1dc1fa6afc4cb))
+
 ## [3.0.31](https://github.com/dword-design/eslint-config/compare/v3.0.30...v3.0.31) (2023-04-22)
 
 
