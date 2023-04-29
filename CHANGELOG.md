@@ -1,3 +1,11 @@
+## [3.0.33](https://github.com/dword-design/eslint-config/compare/v3.0.32...v3.0.33) (2023-04-29)
+
+
+### Bug Fixes
+
+* fix vue ([ba517e3](https://github.com/dword-design/eslint-config/commit/ba517e3cc85d2072184e7e0dc2c9b9c8111206e7))
+* update dependency prettier to v2.8.8 ([bf62d7c](https://github.com/dword-design/eslint-config/commit/bf62d7c48425e1a311d46334295e288017c7e751))
+
 ## [3.0.32](https://github.com/dword-design/eslint-config/compare/v3.0.31...v3.0.32) (2023-04-22)
 
 
