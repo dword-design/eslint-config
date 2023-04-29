@@ -826,7 +826,7 @@ export default {
       </template>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
     messages: [
       {
         message: 'The `functional` template are deprecated.',
@@ -1496,6 +1496,56 @@ export default {
 
     `,
   },
+  'v-html on component': {
+    code: endent`
+      <template>
+        <foo v-html="html" />
+      </template>
+
+      <script>
+      export default {
+        computed: {
+          html: () => '<div>foo</div>',
+        },
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: "'v-html' directive can lead to XSS attack.",
+        ruleId: 'vue/no-v-html',
+      },
+      {
+        message: "Using v-html on component may break component's content.",
+        ruleId: 'vue/no-v-text-v-html-on-component',
+      },
+    ],
+  },
+  'v-html on native element': {
+    code: endent`
+      <template>
+        <span v-html="html" />
+      </template>
+
+      <script>
+      export default {
+        computed: {
+          html: () => '<div>foo</div>',
+        },
+      }
+      </script>
+
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: "'v-html' directive can lead to XSS attack.",
+        ruleId: 'vue/no-v-html',
+      },
+    ],
+  },
   valid: {
     code: endent`
       export default 1
@@ -1511,7 +1561,7 @@ export default {
       </script>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
     messages: [
       {
         message: 'Props should be sorted alphabetically',
@@ -1536,7 +1586,7 @@ export default {
       </script>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
     messages: [
       {
         message: 'Props should be sorted alphabetically',
@@ -1561,7 +1611,7 @@ export default {
       </script>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
     messages: [
       {
         message: 'Value must be omitted for boolean attributes',
@@ -1586,7 +1636,7 @@ export default {
       </script>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
   },
   'vue: boolean: valid': {
     code: endent`
@@ -1597,7 +1647,7 @@ export default {
       </script>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
   },
   'vue: component order: invalid': {
     code: endent`
@@ -1611,7 +1661,7 @@ export default {
       </script>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
     messages: [
       {
         message:
@@ -1643,7 +1693,7 @@ export default {
       </script>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
   },
   'vue: index component name': {
     code: endent`
@@ -1661,19 +1711,40 @@ export default {
       </template>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
   },
-  'vue: single-word component name': {
+  'vue: page single-word name': {
     code: endent`
       <template>
         <div />
       </template>
 
     `,
-    filename: 'foo.vue',
+    filename: P.join('pages', 'about.vue'),
+  },
+  'vue: single-word component name in library': {
+    code: endent`
+      <template>
+        <div />
+      </template>
+
+    `,
+    filename: P.join('src', 'button.vue'),
+  },
+  'vue: single-word component registered': {
+    code: endent`
+      import Vue from 'vue'
+
+      Vue.component('Foo', {})
+
+    `,
+    files: {
+      'node_modules/vue/index.js': '',
+      'package.json': JSON.stringify({ dependencies: { vue: '*' } }),
+    },
     messages: [
       {
-        message: 'Component name "foo" should always be multi-word.',
+        message: 'Component name "Foo" should always be multi-word.',
         ruleId: 'vue/multi-word-component-names',
       },
     ],
@@ -1687,7 +1758,7 @@ export default {
       </script>
 
     `,
-    filename: 'app-component.vue',
+    filename: 'index.vue',
   },
   'while true': {
     code: endent`

@@ -63,6 +63,12 @@ export default () => {
           ],
         },
       },
+      {
+        files: '**/*.vue',
+        rules: {
+          'vue/multi-word-component-names': 'off',
+        },
+      },
     ],
     parser: packageName`vue-eslint-parser`,
     parserOptions: {
@@ -168,12 +174,6 @@ export default () => {
       'simple-import-sort/imports': 'error',
       'sort-keys-fix/sort-keys-fix': 'error',
       'unicorn/template-indent': ['error', { tags: ['endent'] }],
-      'vue/multi-word-component-names': [
-        'error',
-        {
-          ignores: ['index'],
-        },
-      ],
       'vue/no-deprecated-functional-template': 'error',
       'vue/order-in-components': 'off',
       'vue/require-default-prop': 'off',
