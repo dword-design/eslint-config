@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/dword-design/eslint-config/compare/v3.1.0...v3.1.1) (2023-05-01)
+
+
+### Bug Fixes
+
+* foo ([c1c48ec](https://github.com/dword-design/eslint-config/commit/c1c48ec1f4bee4b33f5b8ae9c0a4f536b6f76bd1))
+
 # [3.1.0](https://github.com/dword-design/eslint-config/compare/v3.0.33...v3.1.0) (2023-05-01)
 
 
