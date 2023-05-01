@@ -693,6 +693,24 @@ export default {
       },
     ],
   },
+  'dev dependency in global-test-hooks.js': {
+    code: endent`
+      import 'foo'
+
+    `,
+    filename: 'global-test-hooks.js',
+    files: {
+      'node_modules/foo': {
+        'index.js': '',
+        'package.json': JSON.stringify({ name: 'foo' }),
+      },
+      'package.json': JSON.stringify({
+        devDependencies: {
+          foo: '^1.0.0',
+        },
+      }),
+    },
+  },
   'dev dependency in root': {
     code: endent`
       import 'foo'
@@ -1347,7 +1365,7 @@ export default {
 
     `,
   },
-  'test: dev dependency': {
+  'dev dependency in test': {
     code: endent`
       import 'foo'
 

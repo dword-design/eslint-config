@@ -95,6 +95,10 @@ export default () => {
       'import/extensions': 'off',
       'import/no-commonjs': 'error',
       'import/no-dynamic-require': 'off',
+      'import/no-extraneous-dependencies': [
+        'error',
+        { devDependencies: ['**/*.spec.js', 'global-test-hooks.js'] },
+      ],
       'import/order': 'off',
       'import/prefer-default-export': 'off',
       'linebreak-style': ['error', 'unix'],
