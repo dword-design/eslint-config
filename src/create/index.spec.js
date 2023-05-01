@@ -768,6 +768,23 @@ export default {
       },
     ],
   },
+  'dev dependency in test': {
+    code: endent`
+      import 'foo'
+
+    `,
+    filename: 'index.spec.js',
+    files: {
+      'node_modules/foo/index.js': '',
+      'package.json': endent`
+        {
+          "devDependencies": {
+            "foo": "^1.0.0"
+          }
+        }
+      `,
+    },
+  },
   'esm import without main field': {
     code: endent`
       import 'foo'
@@ -1364,23 +1381,6 @@ export default {
         \`
 
     `,
-  },
-  'dev dependency in test': {
-    code: endent`
-      import 'foo'
-
-    `,
-    filename: 'index.spec.js',
-    files: {
-      'node_modules/foo/index.js': '',
-      'package.json': endent`
-        {
-          "devDependencies": {
-            "foo": "^1.0.0"
-          }
-        }
-      `,
-    },
   },
   'test: global expect': {
     code: endent`
