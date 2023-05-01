@@ -177,7 +177,20 @@ export default () => {
       'require-await': 'error',
       'simple-import-sort/imports': 'error',
       'sort-keys-fix/sort-keys-fix': 'error',
-      'unicorn/template-indent': ['error', { tags: ['endent'] }],
+      'unicorn/template-indent': [
+        'error',
+        {
+          tags: Object.keys({
+            css: true,
+            endent: true,
+            html: true,
+            javascript: true,
+            sql: true,
+            svg: true,
+            xml: true,
+          }),
+        },
+      ],
       'vue/no-deprecated-functional-template': 'error',
       'vue/order-in-components': 'off',
       'vue/require-default-prop': 'off',
