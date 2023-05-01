@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/dword-design/eslint-config/compare/v3.0.33...v3.1.0) (2023-05-01)
+
+
+### Features
+
+* add global-test-hooks.js ([874411b](https://github.com/dword-design/eslint-config/commit/874411bf8770b0e48d7739c92bd9ae512606828d))
+
 ## [3.0.33](https://github.com/dword-design/eslint-config/compare/v3.0.32...v3.0.33) (2023-04-29)
 
 
