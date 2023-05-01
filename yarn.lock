@@ -1186,9 +1186,9 @@
     "@jridgewell/trace-mapping" "0.3.9"
 
 "@dword-design/babel-config@^2.0.0", "@dword-design/babel-config@^2.1.1":
-  version "2.2.15"
-  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-2.2.15.tgz#0389d5b8f748f67bb21902743a3f86f8fb3e74cd"
-  integrity sha512-RAI8MXgOBstZgnS2sgSGPcJqJy6ikXR6d/k+yUryg1tKWt3A644B8tm+DHsI0G0kITFW78UtWrkh/fJFcSwyoA==
+  version "2.2.16"
+  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-2.2.16.tgz#421af3b6d59d69071acd35541f48087fe137b33f"
+  integrity sha512-dFBzdxg818KbYmGCxKu2N6iJE1DMIWERs4o8CTvNvDf6L2N0C6VpF70eWX9q6/S6khEVtYjSoR8fOCmABojMXg==
   dependencies:
     "@babel/plugin-proposal-optional-chaining" "^7.6.0"
     "@babel/plugin-proposal-pipeline-operator" "^7.5.0"
@@ -1226,9 +1226,9 @@
     micromatch "^4.0.2"
 
 "@dword-design/base@^9.0.1":
-  version "9.5.23"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-9.5.23.tgz#9add04e293a1f10549139596a11857ac498b3101"
-  integrity sha512-hWxZbLDowIE9cv+S2eu7kD2TgsQJTArkmsvr1iMXI9VffHlGw7Kmseoy2utzpZ22hFHng8qAyVSXAbePYF9BSA==
+  version "9.6.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-9.6.1.tgz#f078e0413c4fe51b709275a4e7a0c19e92774378"
+  integrity sha512-aXz6qd4YlqZmEYXxV56QE90xh8EoOn0ZbpNh8tLaB79qKdwaH8oI8t3tq3Me0c7q5gmqele3yUKymSX04n++iw==
   dependencies:
     "@commitlint/cli" "^17.4.0"
     "@commitlint/config-conventional" "^17.4.0"
@@ -1331,9 +1331,9 @@
     objectorarray "^1.0.3"
 
 "@dword-design/eslint-config@^3.0.6":
-  version "3.0.32"
-  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-3.0.32.tgz#afa8b8822c83079d98cd003e7d7511fc7672179e"
-  integrity sha512-MsvW4y9rpcfmK2FEwB+opJiNeUxokgIzx5AWewXDYlPGWALNDbJIk6HjQtTkRvO7sdIwTGL8tEGcSrEd4IARmQ==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-3.1.1.tgz#b1db23822dcaebd787e62af6ad405eb6be46334d"
+  integrity sha512-EgW7jbeGj0jzKnBgGvPGX991KkcurdcifYsFdm5S02cjhbzFEyTGxGY8vkIdrH/wXQhq0e9lIVUnjZjGbLKkbA==
   dependencies:
     "@babel/eslint-parser" "^7.13.14"
     "@dword-design/babel-config" "^2.0.0"
@@ -1390,9 +1390,9 @@
     tinycolor2 "^1.4.1"
 
 "@dword-design/jiti-babel-transform@^1.0.7":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@dword-design/jiti-babel-transform/-/jiti-babel-transform-1.0.11.tgz#6a9625ee97894aa94d18c48208dfb29ba40b17db"
-  integrity sha512-U/02oHVeSGVrQXHophzhF9I+n6H4fuPMN2iNnan/+aNYBjO7wNmGCrmgXld5LrxOV/DNHfB4ZfoPk8clWjQP4A==
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@dword-design/jiti-babel-transform/-/jiti-babel-transform-1.0.12.tgz#aab4fb2260d0a0cd1c03edb1583a41f73a6a7aa2"
+  integrity sha512-F3wiLZvehijgJDiZm/Y/UtYOSdGZfBEWT5YosMOazIhZJw6Y9pDA1s7lxf9x03GRkqi2/9sKj9xonV8sKux4ow==
   dependencies:
     "@babel/core" "^7.21.4"
     "@babel/preset-env" "^7.21.4"
@@ -1434,9 +1434,9 @@
     eslint-visitor-keys "^3.3.0"
 
 "@eslint-community/regexpp@^4.4.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.5.0.tgz#f6f729b02feee2c749f57e334b7a1b5f40a81724"
-  integrity sha512-vITaYzIcNmjn5tF5uxcZ/ft7/RXGrMUIS9HalWckEOF6ESiwXKoMzAQf2UW0aVd6rnOeExTJVd5hmWXucBKGXQ==
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.5.1.tgz#cdd35dce4fa1a89a4fd42b1599eb35b3af408884"
+  integrity sha512-Z5ba73P98O1KUYCCJTUeVpja9RcGoMdncZ6T49FCUl2lN38JtCJ+3WgIDBv0AuY4WChU5PmtJmOCTlN6FZTFKQ==
 
 "@eslint/eslintrc@^2.0.2":
   version "2.0.2"
@@ -9742,9 +9742,9 @@ regex-not@^1.0.0, regex-not@^1.0.2:
     safe-regex "^1.1.0"
 
 regexp-tree@^0.1.24, regexp-tree@~0.1.1:
-  version "0.1.25"
-  resolved "https://registry.yarnpkg.com/regexp-tree/-/regexp-tree-0.1.25.tgz#1c864b07c06a198fc8153ddbe047897a5547305e"
-  integrity sha512-szcL3aqw+vEeuxhL1AMYRyeMP+goYF5I/guaH10uJX5xbGyeQeNPPneaj3ZWVmGLCDxrVaaYekkr5R12gk4dJw==
+  version "0.1.27"
+  resolved "https://registry.yarnpkg.com/regexp-tree/-/regexp-tree-0.1.27.tgz#2198f0ef54518ffa743fe74d983b56ffd631b6cd"
+  integrity sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==
 
 regexp.prototype.flags@^1.4.3, regexp.prototype.flags@^1.5.0:
   version "1.5.0"
