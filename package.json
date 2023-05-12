@@ -42,6 +42,7 @@
     "eslint-plugin-sort-keys-fix": "^1.1.1",
     "eslint-plugin-unicorn": "^46.0.0",
     "eslint-plugin-vue": "^9.10.0",
+    "jiti": "^1.18.2",
     "load-pkg": "^4.0.0",
     "prettier": "^2.1.1",
     "vue-eslint-parser": "^9.1.1"
