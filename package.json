@@ -24,7 +24,7 @@
     "@babel/eslint-parser": "^7.13.14",
     "@dword-design/babel-config": "^2.0.0",
     "@dword-design/eslint-plugin-import-alias": "^3.0.6",
-    "@dword-design/functions": "^4.0.0",
+    "@dword-design/functions": "^5.0.0",
     "depcheck-package-name": "^3.0.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.0.0",
