@@ -1054,6 +1054,16 @@ export default {
 
     `,
   },
+  'multi-root component': {
+    code: endent`
+      <template>
+        <div />
+        <div />
+      </template>
+
+    `,
+    filename: 'index.vue',
+  },
   'named import right order': {
     code: endent`
       import { bar, foo } from 'foo'
