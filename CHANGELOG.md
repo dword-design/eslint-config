@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/dword-design/eslint-config/compare/v3.1.2...v3.1.3) (2023-06-05)
+
+
+### Bug Fixes
+
+* allow multi-root components ([1768117](https://github.com/dword-design/eslint-config/commit/1768117a05906809838b27c5bf95d626828689a0))
+
 ## [3.1.2](https://github.com/dword-design/eslint-config/compare/v3.1.1...v3.1.2) (2023-05-12)
 
 
