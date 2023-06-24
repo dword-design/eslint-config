@@ -9,6 +9,7 @@ import {
 import deepmerge from 'deepmerge'
 import packageName from 'depcheck-package-name'
 import { ESLint } from 'eslint'
+import nodeVersion from 'node-version'
 import outputFiles from 'output-files'
 import P from 'path'
 import withLocalTmpDir from 'with-local-tmp-dir'
@@ -991,7 +992,19 @@ export default {
       }
     `,
     filename: 'index.json',
-    messages: [{ message: 'Unexpected token }', ruleId: null }],
+    messages: [
+      {
+        message:
+          parseInt(nodeVersion.major, 10) >= 20
+            ? endent`
+              Unexpected token '}', "{
+                "foo":
+              }" is not valid JSON
+            `
+            : 'Unexpected token }',
+        ruleId: null,
+      },
+    ],
   },
   'json: valid': {
     code: endent`

@@ -2429,7 +2429,7 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-jsx@github:dword-design/jsx#fork-babel-preset-jsx":
+"@vue/babel-preset-jsx@dword-design/jsx#fork-babel-preset-jsx":
   version "1.1.2"
   resolved "https://codeload.github.com/dword-design/jsx/tar.gz/a73cb9961541a60a66b1b99a69a32e00bc66d336"
   dependencies:
@@ -8220,6 +8220,11 @@ node-releases@^2.0.12:
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.12.tgz#35627cc224a23bfb06fb3380f2b3afaaa7eb1039"
   integrity sha512-QzsYKWhXTWx8h1kIvqfnC++o0pEmpRQA/aenALsL2F4pqNVr7YzcdMlDij5WBnwftRbJCNJL/O7zdKaxKPHqgQ==
+
+node-version@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/node-version/-/node-version-3.0.0.tgz#1ee8880d416469fbec6fa50e3e57db1bc98c9cc4"
+  integrity sha512-lOtS3Vaqo4GntMFYyH6BXbpiqgD5F+5ycBwDYaCjzBA9pKK9G1j6cKVtu3HU0HATDTikcWOTn8MxQmj/jo4iTQ==
 
 nopt@^6.0.0:
   version "6.0.0"
