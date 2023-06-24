@@ -22,9 +22,9 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.13.14",
-    "@dword-design/babel-config": "^2.0.0",
-    "@dword-design/eslint-plugin-import-alias": "^3.0.6",
-    "@dword-design/functions": "^4.0.0",
+    "@dword-design/babel-config": "^3.0.0",
+    "@dword-design/eslint-plugin-import-alias": "^4.0.8",
+    "@dword-design/functions": "^5.0.22",
     "depcheck-package-name": "^3.0.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.0.0",
@@ -48,16 +48,17 @@
     "vue-eslint-parser": "^9.1.1"
   },
   "devDependencies": {
-    "@dword-design/base": "^9.0.1",
+    "@dword-design/base": "^10.1.0",
     "deepmerge": "^4.2.2",
     "eslint": "^8.35.0",
     "execa": "^7.1.1",
     "fs-extra": "^11.1.1",
+    "node-version": "^3.0.0",
     "output-files": "^2.0.0",
     "with-local-tmp-dir": "^5.0.0"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

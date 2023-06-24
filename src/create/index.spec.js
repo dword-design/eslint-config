@@ -9,6 +9,7 @@ import {
 import deepmerge from 'deepmerge'
 import packageName from 'depcheck-package-name'
 import { ESLint } from 'eslint'
+import nodeVersion from 'node-version'
 import outputFiles from 'output-files'
 import P from 'path'
 import withLocalTmpDir from 'with-local-tmp-dir'
@@ -30,7 +31,7 @@ const runTest = config => () => {
 
     const eslintConfig = {
       extensions: ['.json', '.vue'],
-      overrideConfig: deepmerge.all([self(), config.eslintConfig]),
+      overrideConfig: deepmerge(self(), config.eslintConfig),
       useEslintrc: false,
     }
 
@@ -668,30 +669,21 @@ export default {
 
     `,
   },
-  'destructuring: object': {
-    code: endent`
-      const { foo } = { foo: 'bar' }
-      console.log(foo)
-
-    `,
-    messages: [
-      {
-        message: "Using 'ObjectPattern' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
-  },
   'destructuring: parameter': {
     code: endent`
       export default ({ foo }) => console.log(foo)
 
     `,
-    messages: [
-      {
-        message: "Using 'ObjectPattern' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
+  },
+  'destructuring: return values': {
+    code: endent`
+      const func = () => ({ x: 1, y: 2 })
+
+      const { x, y } = func()
+      console.log(x)
+      console.log(y)
+
+    `,
   },
   'dev dependency in global-test-hooks.js': {
     code: endent`
@@ -1000,7 +992,19 @@ export default {
       }
     `,
     filename: 'index.json',
-    messages: [{ message: 'Unexpected token }', ruleId: null }],
+    messages: [
+      {
+        message:
+          parseInt(nodeVersion.major, 10) >= 20
+            ? endent`
+              Unexpected token '}', "{
+                "foo":
+              }" is not valid JSON
+            `
+            : 'Unexpected token }',
+        ruleId: null,
+      },
+    ],
   },
   'json: valid': {
     code: endent`
