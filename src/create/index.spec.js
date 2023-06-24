@@ -30,7 +30,7 @@ const runTest = config => () => {
 
     const eslintConfig = {
       extensions: ['.json', '.vue'],
-      overrideConfig: deepmerge.all([self(), config.eslintConfig]),
+      overrideConfig: deepmerge(self(), config.eslintConfig),
       useEslintrc: false,
     }
 
@@ -668,30 +668,21 @@ export default {
 
     `,
   },
-  'destructuring: object': {
-    code: endent`
-      const { foo } = { foo: 'bar' }
-      console.log(foo)
-
-    `,
-    messages: [
-      {
-        message: "Using 'ObjectPattern' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
-  },
   'destructuring: parameter': {
     code: endent`
       export default ({ foo }) => console.log(foo)
 
     `,
-    messages: [
-      {
-        message: "Using 'ObjectPattern' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
+  },
+  'destructuring: return values': {
+    code: endent`
+      const func = () => ({ x: 1, y: 2 })
+
+      const { x, y } = func()
+      console.log(x)
+      console.log(y)
+
+    `,
   },
   'dev dependency in global-test-hooks.js': {
     code: endent`
