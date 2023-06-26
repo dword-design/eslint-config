@@ -77,22 +77,6 @@ export default {
 
     `,
   },
-  'alias: import in package': {
-    code: endent`
-      import '@/foo'
-
-    `,
-    filename: P.join('sub', 'sub', 'index.js'),
-    files: {
-      sub: {
-        '.babelrc.json': JSON.stringify({
-          extends: packageName`@dword-design/babel-config`,
-        }),
-        'foo.js': '',
-        'package.json': JSON.stringify({}),
-      },
-    },
-  },
   'alias: parent': {
     code: endent`
       import '@/foo.js'
@@ -1030,14 +1014,10 @@ export default {
     },
     messages: [
       {
-        message: "require file extension '.js'.",
-        ruleId: 'node/file-extension-in-import',
+        message: 'Missing file extension "js" for "./foo"',
+        ruleId: 'import/extensions',
       },
     ],
-    output: endent`
-      import './foo.js'
-
-    `,
   },
   'missing trailing comma': {
     code: endent`
@@ -1160,6 +1140,20 @@ export default {
 
     `,
   },
+  'no file extension in node_modules import': {
+    code: endent`
+      import 'foo/bar'
+
+    `,
+    files: {
+      'node_modules/foo/bar.js': '',
+      'package.json': JSON.stringify({
+        dependencies: {
+          foo: '^1.0.0',
+        },
+      }),
+    },
+  },
   'nullish coalescing': {
     code: endent`
       console.log(1 ?? 2)
@@ -1233,15 +1227,11 @@ export default {
     filename: P.join('src', 'index.js'),
     files: {
       'node_modules/foo/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
+      'package.json': JSON.stringify({
+        dependencies: {
+          foo: '^1.0.0',
         },
-        undefined,
-        2,
-      ),
+      }),
     },
   },
   'promise then': {

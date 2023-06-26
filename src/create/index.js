@@ -84,7 +84,6 @@ export default () => {
       packageName`eslint-plugin-sort-keys-fix`,
       packageName`eslint-plugin-react`,
       packageName`eslint-plugin-github`,
-      packageName`eslint-plugin-node`,
       packageName`eslint-plugin-unicorn`,
     ],
     rules: {
@@ -92,7 +91,7 @@ export default () => {
       'func-names': ['error', 'never'],
       'github/array-foreach': 'error',
       'global-require': 'off',
-      'import/extensions': 'off',
+      'import/extensions': ['error', 'ignorePackages'],
       'import/no-commonjs': 'error',
       'import/no-dynamic-require': 'off',
       'import/no-extraneous-dependencies': [
@@ -121,7 +120,6 @@ export default () => {
       'no-return-assign': 'off',
       'no-template-curly-in-string': 'off',
       'no-underscore-dangle': 'off',
-      'node/file-extension-in-import': 'error',
       'object-shorthand': ['error', 'always'],
       'padding-line-between-statements': [
         'error',
