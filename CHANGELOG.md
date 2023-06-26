@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/dword-design/eslint-config/compare/v4.0.0...v4.0.1) (2023-06-26)
+
+
+### Bug Fixes
+
+* foo ([8ef981b](https://github.com/dword-design/eslint-config/commit/8ef981b5f7549dfe2943495031ac22f9a76f5289))
+
 # [4.0.0](https://github.com/dword-design/eslint-config/compare/v3.1.3...v4.0.0) (2023-06-24)
 
 
