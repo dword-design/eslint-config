@@ -50,7 +50,7 @@
     "@dword-design/base": "^10.1.0",
     "deepmerge": "^4.2.2",
     "eslint": "^8.35.0",
-    "execa": "^7.1.1",
+    "execa": "^8.0.0",
     "fs-extra": "^11.1.1",
     "node-version": "^3.0.0",
     "output-files": "^2.0.0",
