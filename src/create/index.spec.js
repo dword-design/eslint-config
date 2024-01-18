@@ -1154,18 +1154,6 @@ export default {
       }),
     },
   },
-  'nullish coalescing': {
-    code: endent`
-      console.log(1 ?? 2)
-
-    `,
-    messages: [
-      {
-        message: "Using 'LogicalExpression[operator='??']' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
-  },
   'package.json: unsorted': {
     code: endent`
       {
@@ -1576,100 +1564,24 @@ export default {
   },
   'vue: attributes not sorted': {
     code: endent`
-      <script>
-      export default {
-        render: () => <div class="foo" aria-hidden="true" />,
-      }
-      </script>
+      <template>
+        <div class="foo" aria-hidden="true" />
+      </template>
 
     `,
     filename: 'index.vue',
     messages: [
       {
-        message: 'Props should be sorted alphabetically',
-        ruleId: 'react/jsx-sort-props',
+        message: 'Attribute "aria-hidden" should go before "class".',
+        ruleId: 'vue/attributes-order',
       },
     ],
     output: endent`
-      <script>
-      export default {
-        render: () => <div aria-hidden="true" class="foo" />,
-      }
-      </script>
+      <template>
+        <div aria-hidden="true" class="foo" />
+      </template>
 
     `,
-  },
-  'vue: boolean before value': {
-    code: endent`
-      <script>
-      export default {
-        render: () => <div is-hidden class="foo" />,
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-    messages: [
-      {
-        message: 'Props should be sorted alphabetically',
-        ruleId: 'react/jsx-sort-props',
-      },
-    ],
-    output: endent`
-      <script>
-      export default {
-        render: () => <div class="foo" is-hidden />,
-      }
-      </script>
-
-    `,
-  },
-  'vue: boolean: constant true': {
-    code: endent`
-      <script>
-      export default {
-        render: () => <div is-foo={true} />,
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-    messages: [
-      {
-        message: 'Value must be omitted for boolean attributes',
-        ruleId: 'react/jsx-boolean-value',
-      },
-    ],
-    output: endent`
-      <script>
-      export default {
-        render: () => <div is-foo />,
-      }
-      </script>
-
-    `,
-  },
-  'vue: boolean: prop': {
-    code: endent`
-      <script>
-      export default {
-        render: context => <div is-foo={context.props.foo} />,
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
-  },
-  'vue: boolean: valid': {
-    code: endent`
-      <script>
-      export default {
-        render: () => <div is-foo />,
-      }
-      </script>
-
-    `,
-    filename: 'index.vue',
   },
   'vue: component order: invalid': {
     code: endent`
@@ -1773,11 +1685,9 @@ export default {
   },
   'vue: valid': {
     code: endent`
-      <script>
-      export default {
-        render: () => <div aria-hidden="true" class="foo" />,
-      }
-      </script>
+      <template>
+        <div aria-hidden="true" class="foo" />
+      </template>
 
     `,
     filename: 'index.vue',
