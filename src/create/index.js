@@ -115,7 +115,7 @@ export default () => {
           paths: eslintRestrictedImports,
         },
       ],
-      'no-restricted-syntax': 'off',
+      'no-restricted-syntax': ['error', "LogicalExpression[operator='??']"],
       'no-return-assign': 'off',
       'no-template-curly-in-string': 'off',
       'no-underscore-dangle': 'off',

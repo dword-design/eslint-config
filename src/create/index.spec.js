@@ -1154,6 +1154,18 @@ export default {
       }),
     },
   },
+  'nullish coalescing': {
+    code: endent`
+      console.log(1 ?? 2)
+
+    `,
+    messages: [
+      {
+        message: "Using 'LogicalExpression[operator='??']' is not allowed.",
+        ruleId: 'no-restricted-syntax',
+      },
+    ],
+  },
   'package.json: unsorted': {
     code: endent`
       {
