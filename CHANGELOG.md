@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/dword-design/eslint-config/compare/v5.0.0...v5.0.1) (2024-01-18)
+
+
+### Bug Fixes
+
+* revert change ([b9abb7e](https://github.com/dword-design/eslint-config/commit/b9abb7e41870d7566fe94a68380e05173f30ad05))
+
 # [5.0.0](https://github.com/dword-design/eslint-config/compare/v4.0.1...v5.0.0) (2024-01-18)
 
 
