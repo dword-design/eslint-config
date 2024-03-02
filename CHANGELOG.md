@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/dword-design/eslint-config/compare/v5.0.2...v5.0.3) (2024-03-02)
+
+
+### Bug Fixes
+
+* fix self global ([712aa93](https://github.com/dword-design/eslint-config/commit/712aa9369651e6efca38e6cb09b833748581a050))
+
 ## [5.0.2](https://github.com/dword-design/eslint-config/compare/v5.0.1...v5.0.2) (2024-03-02)
 
 
