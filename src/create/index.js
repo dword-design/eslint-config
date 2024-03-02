@@ -1,6 +1,8 @@
 import { compact, filter, join, map, omit } from '@dword-design/functions'
+import confusingBrowserGlobals from 'confusing-browser-globals'
 import packageName from 'depcheck-package-name'
 import loadPkg from 'load-pkg'
+import { without } from 'lodash-es'
 import { createRequire } from 'module'
 
 import restrictedImports from './restricted-imports.js'
@@ -29,11 +31,6 @@ export default () => {
     }))
 
   return {
-    env: {
-      browser: true,
-      es6: true,
-      node: true,
-    },
     extends: [
       packageName`eslint-config-airbnb-base`,
       `plugin:${packageName`eslint-plugin-promise`}/recommended`,
@@ -42,6 +39,10 @@ export default () => {
       `plugin:${packageName`eslint-plugin-vue`}/vue3-recommended`,
       `plugin:${packageName`eslint-plugin-prettier`}/recommended`,
     ],
+    globals: {
+      self: true,
+      window: true,
+    },
     overrides: [
       {
         files: '**/*.spec.js',
@@ -109,16 +110,40 @@ export default () => {
       'no-param-reassign': 'off',
       'no-promise-executor-return': 'off',
       'no-regex-spaces': 'off',
+      // https://github.com/facebook/create-react-app/issues/12847
+      'no-restricted-globals': [
+        'error',
+        {
+          message:
+            'Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite',
+          name: 'isFinite',
+        },
+        {
+          message:
+            'Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan',
+          name: 'isNaN',
+        },
+        ...without(confusingBrowserGlobals, 'self').map(g => ({
+          message: `Use window.${g} instead. https://github.com/facebook/create-react-app/blob/HEAD/packages/confusing-browser-globals/README.md`,
+          name: g,
+        })),
+      ],
+
       'no-restricted-imports': [
         'error',
         {
           paths: eslintRestrictedImports,
         },
       ],
+
       'no-restricted-syntax': ['error', "LogicalExpression[operator='??']"],
+
       'no-return-assign': 'off',
+
       'no-template-curly-in-string': 'off',
+
       'no-underscore-dangle': 'off',
+
       'object-shorthand': ['error', 'always'],
       'padding-line-between-statements': [
         'error',

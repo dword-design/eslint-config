@@ -1354,6 +1354,9 @@ export default {
 
     `,
   },
+  'service worker self': {
+    code: 'console.log(self.chrome.action)\n',
+  },
   'single export': {
     code: endent`
       export const foo = 'bar'
@@ -1711,5 +1714,8 @@ export default {
       }
 
     `,
+  },
+  window: {
+    code: 'console.log(window)\n',
   },
 } |> mapValues(runTest)

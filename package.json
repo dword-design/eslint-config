@@ -25,6 +25,7 @@
     "@dword-design/babel-config": "^3.0.0",
     "@dword-design/eslint-plugin-import-alias": "^4.0.8",
     "@dword-design/functions": "^5.0.22",
+    "confusing-browser-globals": "^1.0.11",
     "depcheck-package-name": "^3.0.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
@@ -42,6 +43,7 @@
     "eslint-plugin-vue": "^9.10.0",
     "jiti": "^1.18.2",
     "load-pkg": "^4.0.0",
+    "lodash-es": "^4.17.21",
     "prettier": "^3.2.4",
     "vue-eslint-parser": "^9.1.1"
   },
