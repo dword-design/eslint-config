@@ -1197,6 +1197,23 @@
     load-pkg "npm:@dword-design/load-pkg"
     param-case "^3.0.3"
 
+"@dword-design/babel-config@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/babel-config/-/babel-config-4.0.0.tgz#b32bf30164f882a8978cb1ca21fc96feb065d372"
+  integrity sha512-Db2XVUkmaV4nssMsmlZxvlUKpOhGPjdtOwRUnnJD3QRzYj71sAa9zVADQvWTNH4g8nGQNTayqZBl7tMAewhP3g==
+  dependencies:
+    "@babel/plugin-proposal-pipeline-operator" "^7.5.0"
+    "@babel/plugin-syntax-import-assertions" "^7.20.0"
+    "@babel/preset-env" "^7.6.3"
+    babel-plugin-add-module-exports "^1.0.4"
+    babel-plugin-macros "^3.0.1"
+    babel-plugin-module-resolver "^5.0.0"
+    babel-plugin-wildcard "npm:@dword-design/babel-plugin-wildcard"
+    depcheck-package-name "^3.0.0"
+    find-up "^7.0.0"
+    jiti "^1.18.2"
+    load-pkg "npm:@dword-design/load-pkg"
+
 "@dword-design/base-config-node@^2.0.0":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@dword-design/base-config-node/-/base-config-node-2.0.1.tgz#dd23ab49704b4d7714a0f1ffa4e06deb7d8085cf"
