@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.13.14",
-    "@dword-design/babel-config": "^3.0.0",
     "@dword-design/eslint-plugin-import-alias": "^4.0.8",
     "@dword-design/functions": "^6.0.0",
     "confusing-browser-globals": "^1.0.11",
