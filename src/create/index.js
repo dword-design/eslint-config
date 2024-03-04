@@ -3,11 +3,8 @@ import confusingBrowserGlobals from 'confusing-browser-globals'
 import packageName from 'depcheck-package-name'
 import loadPkg from 'load-pkg'
 import { without } from 'lodash-es'
-import { createRequire } from 'module'
 
 import restrictedImports from './restricted-imports.js'
-
-const _require = createRequire(import.meta.url)
 
 export default () => {
   const packageConfig = loadPkg.sync() || {}
@@ -73,9 +70,6 @@ export default () => {
     ],
     parser: packageName`vue-eslint-parser`,
     parserOptions: {
-      babelOptions: {
-        configFile: _require.resolve(packageName`@dword-design/babel-config`),
-      },
       parser: packageName`@babel/eslint-parser`,
     },
     plugins: [
