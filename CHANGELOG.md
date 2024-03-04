@@ -1,3 +1,18 @@
+## [5.0.4](https://github.com/dword-design/eslint-config/compare/v5.0.3...v5.0.4) (2024-03-04)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#258](https://github.com/dword-design/eslint-config/issues/258)) ([0097fa6](https://github.com/dword-design/eslint-config/commit/0097fa6b9bacc907ddea4286a2ae343a92816779))
+* update dependency @dword-design/babel-config to v4 ([#257](https://github.com/dword-design/eslint-config/issues/257)) ([cd03c3f](https://github.com/dword-design/eslint-config/commit/cd03c3f8dfda1a3c53a0c1b5e13f40ed3af099be))
+
+## [5.0.3](https://github.com/dword-design/eslint-config/compare/v5.0.2...v5.0.3) (2024-03-02)
+
+
+### Bug Fixes
+
+* fix self global ([712aa93](https://github.com/dword-design/eslint-config/commit/712aa9369651e6efca38e6cb09b833748581a050))
+
 ## [5.0.2](https://github.com/dword-design/eslint-config/compare/v5.0.1...v5.0.2) (2024-03-02)
 
 
