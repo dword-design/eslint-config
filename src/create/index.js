@@ -70,6 +70,9 @@ export default () => {
     ],
     parser: packageName`vue-eslint-parser`,
     parserOptions: {
+      babelOptions: {
+        rootMode: 'upward-optional',
+      },
       parser: packageName`@babel/eslint-parser`,
     },
     plugins: [

@@ -1405,6 +1405,17 @@
     deepmerge "^4.3.1"
     jiti "^1.18.2"
 
+"@dword-design/eslint-plugin-import-alias@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-plugin-import-alias/-/eslint-plugin-import-alias-5.0.0.tgz#81dbd45888c8a6549d955256689b3167ee31e7c9"
+  integrity sha512-QbY2hA+YvhKiPJnAd9fOwT7gNV8OvaGLHdUsC6uVtyoUVjzx55WbUlzlEZzurlwDamXDlIB81IxbHgHT32Lx0w==
+  dependencies:
+    "@babel/core" "^7.10.2"
+    "@dword-design/functions" "^6.0.0"
+    babel-plugin-module-resolver "^5.0.0"
+    deepmerge "^4.3.1"
+    jiti "^1.18.2"
+
 "@dword-design/functions@^4.0.0", "@dword-design/functions@^4.0.7":
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@dword-design/functions/-/functions-4.1.7.tgz#40c8aa7ce0e1c0e345b080ebdc05f3b68d53259d"
@@ -5837,6 +5848,11 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==
+
+in-folder@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/in-folder/-/in-folder-1.0.3.tgz#4421320779b90c70398d5bd94ddc479bbfc5d86b"
+  integrity sha512-6qsJ6MoAejC/89JgMUC7BjBTQtbvRrh6PGoHjpGGOKLY/yzOILm6PHhJQWqYl1/YrXjmhVfBa3CBEnb4wsPQTQ==
 
 indent-string@^4.0.0:
   version "4.0.0"

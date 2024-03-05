@@ -9,6 +9,7 @@ import {
 import deepmerge from 'deepmerge'
 import packageName from 'depcheck-package-name'
 import { ESLint } from 'eslint'
+import inFolder from 'in-folder'
 import nodeVersion from 'node-version'
 import outputFiles from 'output-files'
 import P from 'path'
@@ -17,7 +18,13 @@ import withLocalTmpDir from 'with-local-tmp-dir'
 import self from './index.js'
 
 const runTest = config => () => {
-  config = { eslintConfig: {}, filename: 'index.js', messages: [], ...config }
+  config = {
+    cwd: '.',
+    eslintConfig: {},
+    filename: 'index.js',
+    messages: [],
+    ...config,
+  }
   config.output = config.output || config.code
 
   return withLocalTmpDir(async () => {
@@ -29,30 +36,32 @@ const runTest = config => () => {
       ...config.files,
     })
 
-    const eslintConfig = {
-      extensions: ['.json', '.vue'],
-      overrideConfig: deepmerge(self(), config.eslintConfig),
-      useEslintrc: false,
-    }
+    return inFolder(config.cwd, async () => {
+      const eslintConfig = {
+        extensions: ['.json', '.vue'],
+        overrideConfig: deepmerge(self(), config.eslintConfig),
+        useEslintrc: false,
+      }
 
-    const eslintToLint = new ESLint(eslintConfig)
+      const eslintToLint = new ESLint(eslintConfig)
 
-    const eslintToFix = new ESLint({ ...eslintConfig, fix: true })
+      const eslintToFix = new ESLint({ ...eslintConfig, fix: true })
 
-    const lintedMessages =
-      eslintToLint.lintText(config.code, { filePath: config.filename })
-      |> await
-      |> map('messages')
-      |> flatten
-      |> map(pick(['message', 'ruleId']))
-    expect(lintedMessages).toEqual(config.messages)
+      const lintedMessages =
+        eslintToLint.lintText(config.code, { filePath: config.filename })
+        |> await
+        |> map('messages')
+        |> flatten
+        |> map(pick(['message', 'ruleId']))
+      expect(lintedMessages).toEqual(config.messages)
 
-    const lintedOutput =
-      eslintToFix.lintText(config.code, { filePath: config.filename })
-      |> await
-      |> map('output')
-      |> join('\n')
-    expect(lintedOutput || config.code).toEqual(config.output)
+      const lintedOutput =
+        eslintToFix.lintText(config.code, { filePath: config.filename })
+        |> await
+        |> map('output')
+        |> join('\n')
+      expect(lintedOutput || config.code).toEqual(config.output)
+    })
   })
 }
 
@@ -780,6 +789,19 @@ export default {
         dependencies: { foo: '^1.0.0' },
         type: 'module',
       }),
+    },
+  },
+  'file with babel features in parent folder of package': {
+    code: endent`
+      console.log(1 |> x => x * 2)
+
+    `,
+    cwd: 'sub',
+    files: {
+      'babel.config.json': JSON.stringify({
+        extends: '@dword-design/babel-config',
+      }),
+      'sub/package.json': JSON.stringify({}),
     },
   },
   forEach: {

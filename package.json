@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.13.14",
-    "@dword-design/eslint-plugin-import-alias": "^4.0.8",
+    "@dword-design/eslint-plugin-import-alias": "^5.0.0",
     "@dword-design/functions": "^6.0.0",
     "confusing-browser-globals": "^1.0.11",
     "depcheck-package-name": "^3.0.0",
@@ -52,6 +52,7 @@
     "eslint": "^8.35.0",
     "execa": "^8.0.1",
     "fs-extra": "^11.1.1",
+    "in-folder": "^1.0.3",
     "node-version": "^3.0.0",
     "output-files": "^2.0.0",
     "with-local-tmp-dir": "^5.0.0"
