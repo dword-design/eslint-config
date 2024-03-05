@@ -1,3 +1,10 @@
+## [5.0.6](https://github.com/dword-design/eslint-config/compare/v5.0.5...v5.0.6) (2024-03-05)
+
+
+### Bug Fixes
+
+* babel.config.js support ([3236e5b](https://github.com/dword-design/eslint-config/commit/3236e5bc2ed88867504e5bcdf4d668944d8e2d55))
+
 ## [5.0.5](https://github.com/dword-design/eslint-config/compare/v5.0.4...v5.0.5) (2024-03-04)
 
 
