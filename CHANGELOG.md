@@ -1,3 +1,10 @@
+## [5.0.7](https://github.com/dword-design/eslint-config/compare/v5.0.6...v5.0.7) (2024-06-23)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#259](https://github.com/dword-design/eslint-config/issues/259)) ([0ce367f](https://github.com/dword-design/eslint-config/commit/0ce367fbc73f1377370bbb8475b1af566ce72d22))
+
 ## [5.0.6](https://github.com/dword-design/eslint-config/compare/v5.0.5...v5.0.6) (2024-03-05)
 
 
