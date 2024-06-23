@@ -67,10 +67,7 @@ const runTest = config => () => {
 
 export default {
   'alias: child': {
-    code: endent`
-      import '@/foo.js'
-
-    `,
+    code: "import '@/foo.js';\n",
     files: {
       'foo.js': '',
     },
@@ -81,26 +78,17 @@ export default {
         ruleId: '@dword-design/import-alias/prefer-alias',
       },
     ],
-    output: endent`
-      import './foo.js'
-
-    `,
+    output: "import './foo.js';\n",
   },
   'alias: parent': {
-    code: endent`
-      import '@/foo.js'
-
-    `,
+    code: "import '@/foo.js';\n",
     filename: P.join('sub', 'index.js'),
     files: {
       'foo.js': '',
     },
   },
   'alias: parent import': {
-    code: endent`
-      import '../foo.js'
-
-    `,
+    code: "import '../foo.js';\n",
     filename: P.join('sub', 'sub', 'index.js'),
     files: {
       '.babelrc.json': JSON.stringify({
@@ -117,37 +105,26 @@ export default {
         ruleId: '@dword-design/import-alias/prefer-alias',
       },
     ],
-    output: endent`
-      import '@/sub/foo.js'
-
-    `,
+    output: "import '@/sub/foo.js';\n",
   },
   'arrow function': {
-    code: endent`
-      export default () => console.log('foo')
-
-    `,
+    code: "export default () => console.log('foo');\n",
   },
   'arrow function assignment': {
-    code: endent`
-      export default foo => (foo.bar = 'bar')
-
-    `,
+    code: "export default foo => (foo.bar = 'bar');\n",
   },
   'arrow function block': {
     code: endent`
       export default foo => {
-        console.log(foo)
-      }
-
+        console.log(foo);
+      };\n
     `,
   },
   'arrow function returning block': {
     code: endent`
       export default foo => {
-        return console.log(foo)
-      }
-
+        return console.log(foo);
+      };\n
     `,
     messages: [
       {
@@ -156,35 +133,20 @@ export default {
         ruleId: 'arrow-body-style',
       },
     ],
-    output: endent`
-      export default foo => console.log(foo)
-
-    `,
+    output: 'export default foo => console.log(foo);\n',
   },
   'arrow function with unneeded parens': {
-    code: endent`
-      export default (foo) => foo
-
-    `,
+    code: 'export default (foo) => foo;\n',
     messages: [
       { message: 'Replace `(foo)` with `foo`', ruleId: 'prettier/prettier' },
     ],
-    output: endent`
-      export default foo => foo
-
-    `,
+    output: 'export default foo => foo;\n',
   },
   'arrow function without parens': {
-    code: endent`
-      export default foo => foo
-
-    `,
+    code: 'export default foo => foo;\n',
   },
   'async without await': {
-    code: endent`
-      export default async () => console.log('foo')
-
-    `,
+    code: "export default async () => console.log('foo');\n",
     messages: [
       {
         message: "Async arrow function has no 'await' expression.",
@@ -195,16 +157,14 @@ export default {
   'await inside loop': {
     code: endent`
       for (let i = 0; i < 10; i += 1) {
-        await Promise.resolve()
-      }
-
+        await Promise.resolve();
+      }\n
     `,
   },
   'blank line: between exports: no': {
     code: endent`
-      export const foo = 1
-      export const bar = 2
-
+      export const foo = 1;
+      export const bar = 2;\n
     `,
     messages: [
       {
@@ -213,25 +173,22 @@ export default {
       },
     ],
     output: endent`
-      export const foo = 1
+      export const foo = 1;
 
-      export const bar = 2
-
+      export const bar = 2;\n
     `,
   },
   'blank line: between single-line statements: no': {
     code: endent`
-      console.log('foo')
-      console.log('bar')
-
+      console.log('foo');
+      console.log('bar');\n
     `,
   },
   'blank line: between single-line statements: yes': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
 
-      console.log('bar')
-
+      console.log('bar');\n
     `,
     messages: [
       {
@@ -240,16 +197,14 @@ export default {
       },
     ],
     output: endent`
-      console.log('foo')
-      console.log('bar')
-
+      console.log('foo');
+      console.log('bar');\n
     `,
   },
   'blank line: between statement and export: no': {
     code: endent`
-      console.log('foo')
-      export const foo = 1
-
+      console.log('foo');
+      export const foo = 1;\n
     `,
     messages: [
       {
@@ -258,37 +213,15 @@ export default {
       },
     ],
     output: endent`
-      console.log('foo')
+      console.log('foo');
 
-      export const foo = 1
-
+      export const foo = 1;\n
     `,
   },
-  'blank line: import and statement with newline': {
+  'blank line: import and statement: no': {
     code: endent`
-      import foo from 'foo'
-
-      console.log(foo)
-
-    `,
-    files: {
-      'node_modules/foo/index.js': '',
-      'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
-        undefined,
-        2,
-      ),
-    },
-  },
-  'blank line: import and statement without newline': {
-    code: endent`
-      import foo from 'foo'
-      console.log(foo)
-
+      import foo from 'foo';
+      console.log(foo);\n
     `,
     files: {
       'node_modules/foo/index.js': '',
@@ -314,27 +247,41 @@ export default {
       },
     ],
     output: endent`
-      import foo from 'foo'
+      import foo from 'foo';
 
-      console.log(foo)
-
+      console.log(foo);\n
     `,
+  },
+  'blank line: import and statement: yes': {
+    code: endent`
+      import foo from 'foo';
+
+      console.log(foo);\n
+    `,
+    files: {
+      'node_modules/foo/index.js': '',
+      'package.json': JSON.stringify(
+        {
+          dependencies: {
+            foo: '^1.0.0',
+          },
+        },
+        undefined,
+        2,
+      ),
+    },
   },
   'blank line: import groups with newline': {
     code: endent`
-      import foo from 'foo'
+      import foo from 'foo';
 
-      import bar from './bar.js'
+      import bar from './bar.js';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
     files: {
-      'bar.js': endent`
-        export default 1
-
-      `,
+      'bar.js': 'export default 1;\n',
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
@@ -350,18 +297,14 @@ export default {
   },
   'blank line: import groups without newline': {
     code: endent`
-      import foo from 'foo'
-      import bar from './bar.js'
+      import foo from 'foo';
+      import bar from './bar.js';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
     files: {
-      'bar.js': endent`
-        export default 1
-
-      `,
+      'bar.js': 'export default 1;\n',
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
         {
@@ -381,34 +324,26 @@ export default {
       },
     ],
     output: endent`
-      import foo from 'foo'
+      import foo from 'foo';
 
-      import bar from './bar.js'
+      import bar from './bar.js';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
   },
   'blank line: imports with newline': {
     code: endent`
-      import bar from './bar.js'
+      import bar from './bar.js';
 
-      import foo from './foo.js'
+      import foo from './foo.js';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
     files: {
-      'bar.js': endent`
-        export default 'bar'
-
-      `,
-      'foo.js': endent`
-        export default 'foo'
-
-      `,
+      'bar.js': "export default 'bar';\n",
+      'foo.js': "export default 'foo';\n",
     },
     messages: [
       {
@@ -417,43 +352,34 @@ export default {
       },
     ],
     output: endent`
-      import bar from './bar.js'
-      import foo from './foo.js'
+      import bar from './bar.js';
+      import foo from './foo.js';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
   },
   'blank line: imports without newline': {
     code: endent`
-      import bar from './bar.js'
-      import foo from './foo.js'
+      import bar from './bar.js';
+      import foo from './foo.js';
 
-      console.log(bar)
-      console.log(foo)
-
+      console.log(bar);
+      console.log(foo);\n
     `,
     files: {
-      'bar.js': endent`
-        export default 'bar'
-
-      `,
-      'foo.js': endent`
-        export default 'foo'
-
-      `,
+      'bar.js': "export default 'bar';\n",
+      'foo.js': "export default 'foo';\n",
     },
   },
   'blank line: multi-line block: after: no': {
     code: endent`
-      const foo = 1
+      const foo = 1;
 
       if (foo) {
-        console.log('foo')
+        console.log('foo');
       }
-      console.log('foo')
-
+      console.log('foo');\n
     `,
     messages: [
       {
@@ -462,35 +388,32 @@ export default {
       },
     ],
     output: endent`
-      const foo = 1
+      const foo = 1;
 
       if (foo) {
-        console.log('foo')
+        console.log('foo');
       }
 
-      console.log('foo')
-
+      console.log('foo');\n
     `,
   },
   'blank line: multi-line block: after: yes': {
     code: endent`
-      const foo = 1
+      const foo = 1;
 
       if (foo) {
-        console.log('foo')
+        console.log('foo');
       }
 
-      console.log('foo')
-
+      console.log('foo');\n
     `,
   },
   'blank line: multi-line block: before: no': {
     code: endent`
-      const foo = true
+      const foo = true;
       if (foo) {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      }\n
     `,
     messages: [
       {
@@ -499,31 +422,28 @@ export default {
       },
     ],
     output: endent`
-      const foo = true
+      const foo = true;
 
       if (foo) {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      }\n
     `,
   },
   'blank line: multi-line block: before: yes': {
     code: endent`
-      const foo = true
+      const foo = true;
 
       if (foo) {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      }\n
     `,
   },
   'blank line: multi-line const declaration: after: no': {
     code: endent`
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
-      console.log(foo)
-
+      };
+      console.log(foo);\n
     `,
     messages: [
       {
@@ -534,31 +454,28 @@ export default {
     output: endent`
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      console.log(foo)
-
+      console.log(foo);\n
     `,
   },
   'blank line: multi-line const declaration: after: yes': {
     code: endent`
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      console.log(foo)
-
+      console.log(foo);\n
     `,
   },
   'blank line: multi-line const declaration: before: no': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      console.log(foo)
-
+      console.log(foo);\n
     `,
     messages: [
       {
@@ -567,36 +484,33 @@ export default {
       },
     ],
     output: endent`
-      console.log('foo')
+      console.log('foo');
 
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      console.log(foo)
-
+      console.log(foo);\n
     `,
   },
   'blank line: multi-line const declaration: before: yes': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
 
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      console.log(foo)
-
+      console.log(foo);\n
     `,
   },
   'blank line: multi-line let declaration: after: no': {
     code: endent`
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
-      foo = 1
-      console.log(foo)
-
+      };
+      foo = 1;
+      console.log(foo);\n
     `,
     messages: [
       {
@@ -607,34 +521,31 @@ export default {
     output: endent`
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      foo = 1
-      console.log(foo)
-
+      foo = 1;
+      console.log(foo);\n
     `,
   },
   'blank line: multi-line let declaration: after: yes': {
     code: endent`
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      foo = 1
-      console.log(foo)
-
+      foo = 1;
+      console.log(foo);\n
     `,
   },
   'blank line: multi-line let declaration: before: no': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      foo = 1
-      console.log(foo)
-
+      foo = 1;
+      console.log(foo);\n
     `,
     messages: [
       {
@@ -643,37 +554,34 @@ export default {
       },
     ],
     output: endent`
-      console.log('foo')
+      console.log('foo');
 
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      foo = 1
-      console.log(foo)
-
+      foo = 1;
+      console.log(foo);\n
     `,
   },
   'blank line: multi-line let declaration: before: yes': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
 
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      }
+      };
 
-      foo = 1
-      console.log(foo)
-
+      foo = 1;
+      console.log(foo);\n
     `,
   },
   'blank line: multi-line statement: after: no': {
     code: endent`
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
-      console.log('foo')
-
+      });
+      console.log('foo');\n
     `,
     messages: [
       {
@@ -684,29 +592,26 @@ export default {
     output: endent`
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
+      });
 
-      console.log('foo')
-
+      console.log('foo');\n
     `,
   },
   'blank line: multi-line statement: after: yes': {
     code: endent`
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
+      });
 
-      console.log('foo')
-
+      console.log('foo');\n
     `,
   },
   'blank line: multi-line statement: before: no': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
-
+      });\n
     `,
     messages: [
       {
@@ -715,57 +620,51 @@ export default {
       },
     ],
     output: endent`
-      console.log('foo')
+      console.log('foo');
 
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
-
+      });\n
     `,
   },
   'blank line: multi-line statement: before: yes': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
 
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
-
+      });\n
     `,
   },
   'blank line: newline between exports': {
     code: endent`
-      export const foo = 1
+      export const foo = 1;
 
-      export const bar = 2
-
+      export const bar = 2;\n
     `,
   },
   'blank line: newline between statement and export': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
 
-      export const foo = 1
-
+      export const foo = 1;\n
     `,
   },
   callbacks: {
     code: endent`
-      const foo = () => {}
+      const foo = () => {};
 
       foo(async error => {
-        await console.log(error)
-      })
-
+        await console.log(error);
+      });\n
     `,
   },
   'comments: with blank line': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
 
       // foo
-      console.log('bar')
-
+      console.log('bar');\n
     `,
     messages: [
       {
@@ -774,37 +673,31 @@ export default {
       },
     ],
     output: endent`
-      console.log('foo')
+      console.log('foo');
       // foo
-      console.log('bar')
-
+      console.log('bar');\n
     `,
   },
   'comments: without blank line': {
     code: endent`
-      console.log('foo')
+      console.log('foo');
       // foo
-      console.log('bar')
-
+      console.log('bar');\n
     `,
   },
   continue: {
     code: endent`
       for (let i = 0; i < 10; i += 1) {
         if (i > 5) {
-          continue
+          continue;
         }
   
-        console.log(i)
-      }
-
+        console.log(i);
+      }\n
     `,
   },
   'deep nesting': {
-    code: endent`
-      export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344)
-
-    `,
+    code: 'export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344);\n',
     messages: [
       {
         message:
@@ -817,47 +710,40 @@ export default {
         console.log(
           () =>
             (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344,
-        )
-
+        );\n
     `,
   },
   'destructuring: array Promise.all': {
     code: endent`
-      const [foo, bar] = await Promise.all([])
-      console.log(foo)
-      console.log(bar)
-
+      const [foo, bar] = await Promise.all([]);
+      console.log(foo);
+      console.log(bar);\n
     `,
   },
   'destructuring: array for loop Object.entries': {
     code: endent`
       for (const [foo, bar] of Object.entries({})) {
-        console.log(foo)
-        console.log(bar)
-      }
-
+        console.log(foo);
+        console.log(bar);
+      }\n
     `,
   },
   'destructuring: parameter': {
     code: endent`
-      export default ({ foo }) => console.log(foo)
+      export default ({ foo }) => console.log(foo);
 
     `,
   },
   'destructuring: return values': {
     code: endent`
-      const func = () => ({ x: 1, y: 2 })
-      const { x, y } = func()
-      console.log(x)
-      console.log(y)
-
+      const func = () => ({ x: 1, y: 2 });
+      const { x, y } = func();
+      console.log(x);
+      console.log(y);\n
     `,
   },
   'dev dependency in global-test-hooks.js': {
-    code: endent`
-      import 'foo'
-
-    `,
+    code: "import 'foo';\n",
     filename: 'global-test-hooks.js',
     files: {
       'node_modules/foo': {
@@ -872,10 +758,7 @@ export default {
     },
   },
   'dev dependency in root': {
-    code: endent`
-      import 'foo'
-
-    `,
+    code: "import 'foo';\n",
     files: {
       'node_modules/foo': {
         'index.js': '',
@@ -900,10 +783,7 @@ export default {
     ],
   },
   'dev dependency in source': {
-    code: endent`
-      import 'foo'
-
-    `,
+    code: "import 'foo';\n",
     filename: P.join('src', 'index.js'),
     files: {
       'node_modules/foo': {
@@ -929,10 +809,7 @@ export default {
     ],
   },
   'dev dependency in test': {
-    code: endent`
-      import 'foo'
-
-    `,
+    code: "import 'foo';\n",
     filename: 'index.spec.js',
     files: {
       'node_modules/foo/index.js': '',
@@ -946,10 +823,7 @@ export default {
     },
   },
   'esm import without main field': {
-    code: endent`
-      import 'foo'
-
-    `,
+    code: "import 'foo';\n",
     files: {
       'foo.js': '',
       'node_modules/foo': {
@@ -967,10 +841,7 @@ export default {
     },
   },
   'file with babel features in parent folder of package': {
-    code: endent`
-      console.log(1 |> x => x * 2)
-
-    `,
+    code: 'console.log(1 |> x => x * 2);\n',
     cwd: 'sub',
     files: {
       'babel.config.json': JSON.stringify({
@@ -981,9 +852,8 @@ export default {
   },
   forEach: {
     code: endent`
-      const foo = []
-      foo.forEach(() => {})
-
+      const foo = [];
+      foo.forEach(() => {});\n
     `,
     messages: [
       {
@@ -995,9 +865,8 @@ export default {
   'function block': {
     code: endent`
       export default function () {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      }\n
     `,
     messages: [
       {
@@ -1010,10 +879,9 @@ export default {
     code: endent`
       export default {
         'foo bar': function () {
-          console.log(this)
+          console.log(this);
         },
-      }
-
+      };\n
     `,
     messages: [
       { message: 'Expected method shorthand.', ruleId: 'object-shorthand' },
@@ -1021,18 +889,16 @@ export default {
     output: endent`
       export default {
         'foo bar'() {
-          console.log(this)
+          console.log(this);
         },
-      }
-
+      };\n
     `,
   },
   'functional in template': {
     code: endent`
       <template functional>
         <div />
-      </template>
-
+      </template>\n
     `,
     filename: 'index.vue',
     messages: [
@@ -1044,12 +910,11 @@ export default {
   },
   'import order': {
     code: endent`
-      import foo from 'foo'
-      import bar from 'bar'
+      import foo from 'foo';
+      import bar from 'bar';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
     files: {
       'node_modules/bar/index.js': '',
@@ -1072,22 +937,20 @@ export default {
       },
     ],
     output: endent`
-      import bar from 'bar'
-      import foo from 'foo'
+      import bar from 'bar';
+      import foo from 'foo';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
   },
   'import order with webpack loader syntax and aliases': {
     code: endent`
-      import buyMeACoffeeImageUrl from '!url-loader!@/buymeacoffee.svg'
-      import imageUrl from '@/support-me.jpg'
+      import buyMeACoffeeImageUrl from '!url-loader!@/buymeacoffee.svg';
+      import imageUrl from '@/support-me.jpg';
 
-      console.log(imageUrl)
-      console.log(buyMeACoffeeImageUrl)
-
+      console.log(imageUrl);
+      console.log(buyMeACoffeeImageUrl);\n
     `,
     eslintConfig: {
       rules: {
@@ -1103,9 +966,8 @@ export default {
   'indent: invalid': {
     code: endent`
       export default () => {
-          console.log('foo')
-      }
-
+          console.log('foo');
+      };\n
     `,
     messages: [
       {
@@ -1115,30 +977,25 @@ export default {
     ],
     output: endent`
       export default () => {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      };\n
     `,
   },
   'indent: valid': {
     code: endent`
       export default () => {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      };\n
     `,
   },
   'inline comments': {
-    code: endent`
-      export default 1 // foo
-
-    `,
+    code: 'export default 1; // foo\n',
   },
   'json: indent too big': {
     code: endent`
       {
           "foo": "bar"
-      }
+      }\n
     `,
     filename: 'index.json',
     messages: [
@@ -1147,14 +1004,14 @@ export default {
     output: endent`
       {
         "foo": "bar"
-      }
+      }\n
     `,
   },
   'json: no indent': {
     code: endent`
       {
       "foo": "bar"
-      }
+      }\n
     `,
     filename: 'index.json',
     messages: [
@@ -1163,14 +1020,14 @@ export default {
     output: endent`
       {
         "foo": "bar"
-      }
+      }\n
     `,
   },
   'json: syntax error': {
     code: endent`
       {
         "foo":
-      }
+      }\n
     `,
     filename: 'index.json',
     messages: [
@@ -1180,7 +1037,7 @@ export default {
             ? endent`
               Unexpected token '}', "{
                 "foo":
-              }" is not valid JSON
+              }\n" is not valid JSON
             `
             : 'Unexpected token }',
         ruleId: null,
@@ -1197,15 +1054,12 @@ export default {
             "test2"
           ]
         }
-      }
+      }\n
     `,
     filename: 'index.json',
   },
   'missing file extension': {
-    code: endent`
-      import './foo'
-
-    `,
+    code: "import './foo';\n",
     files: {
       'foo.js': '',
     },
@@ -1221,16 +1075,14 @@ export default {
       console.log([
         'fooadfa sdfasdfasdf asdfasdfasdfasdf',
         'adfsddfsdfsadfasdf asdfasdf asdfasdf'
-      ])
-
+      ]);\n
     `,
     messages: [{ message: 'Insert `,`', ruleId: 'prettier/prettier' }],
     output: endent`
       console.log([
         'fooadfa sdfasdfasdf asdfasdfasdfasdf',
         'adfsddfsdfsadfasdf asdfasdf asdfasdf',
-      ])
-
+      ]);\n
     `,
   },
   'multi-root component': {
@@ -1238,18 +1090,16 @@ export default {
       <template>
         <div />
         <div />
-      </template>
-
+      </template>\n
     `,
     filename: 'index.vue',
   },
   'named import right order': {
     code: endent`
-      import { bar, foo } from 'foo'
+      import { bar, foo } from 'foo';
 
-      console.log(bar)
-      console.log(foo)
-
+      console.log(bar);
+      console.log(foo);\n
     `,
     files: {
       'node_modules/foo/index.js': '',
@@ -1266,11 +1116,10 @@ export default {
   },
   'named import wrong order': {
     code: endent`
-      import { foo, bar } from 'foo'
+      import { foo, bar } from 'foo';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
     files: {
       'node_modules/foo/index.js': '',
@@ -1291,23 +1140,21 @@ export default {
       },
     ],
     output: endent`
-      import { bar, foo } from 'foo'
+      import { bar, foo } from 'foo';
 
-      console.log(foo)
-      console.log(bar)
-
+      console.log(foo);
+      console.log(bar);\n
     `,
   },
   'negated condition': {
     code: endent`
-      const foo = 1
+      const foo = 1;
 
       if (!foo) {
-        console.log('foo')
+        console.log('foo');
       } else {
-        console.log('bar')
-      }
-
+        console.log('bar');
+      }\n
     `,
     messages: [
       {
@@ -1317,10 +1164,7 @@ export default {
     ],
   },
   'nested ternary': {
-    code: endent`
-      export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4)
-
-    `,
+    code: 'export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4);\n',
     messages: [
       {
         message: 'Do not nest ternary expressions.',
@@ -1330,17 +1174,13 @@ export default {
   },
   'new lower-case': {
     code: endent`
-      const foo = () => {}
+      const foo = () => {};
 
-      export default new foo()
-
+      export default new foo();\n
     `,
   },
   'no file extension in node_modules import': {
-    code: endent`
-      import 'foo/bar'
-
-    `,
+    code: "import 'foo/bar';\n",
     files: {
       'node_modules/foo/bar.js': '',
       'package.json': JSON.stringify({
@@ -1351,10 +1191,7 @@ export default {
     },
   },
   'nullish coalescing': {
-    code: endent`
-      console.log(1 ?? 2)
-
-    `,
+    code: 'console.log(1 ?? 2);\n',
     messages: [
       {
         message: "Using 'LogicalExpression[operator='??']' is not allowed.",
@@ -1367,8 +1204,7 @@ export default {
       {
         "version": "1.0.0",
         "name": "foo"
-      }
-
+      }\n
     `,
     filename: 'package.json',
     messages: [{ message: 'JSON is not sorted', ruleId: 'JSON sorting' }],
@@ -1376,8 +1212,7 @@ export default {
       {
         "name": "foo",
         "version": "1.0.0"
-      }
-
+      }\n
     `,
   },
   'package.json: valid': {
@@ -1394,31 +1229,23 @@ export default {
   'param reassign': {
     code: endent`
       export default foo => {
-        foo = 'bar'
-        console.log(foo)
-      }
-
+        foo = 'bar';
+        console.log(foo);
+      };\n
     `,
   },
   'pipeline operator': {
-    code: endent`
-      export default async () => 1 |> (x => x + 1) |> await
-
-    `,
+    code: 'export default async () => 1 |> (x => x + 1) |> await;\n',
   },
   'possible destructuring': {
     code: endent`
-      const bar = { foo: 'test' }
-      const foo = bar.foo
-      console.log(foo)
-
+      const bar = { foo: 'test' };
+      const foo = bar.foo;
+      console.log(foo);\n
     `,
   },
   'prod dependency in src': {
-    code: endent`
-      import 'foo'
-
-    `,
+    code: "import 'foo';\n",
     filename: P.join('src', 'index.js'),
     files: {
       'node_modules/foo/index.js': '',
@@ -1430,10 +1257,7 @@ export default {
     },
   },
   'promise then': {
-    code: endent`
-      export default () => Promise.resolve().then(x => x)
-
-    `,
+    code: 'export default () => Promise.resolve().then(x => x);\n',
     messages: [
       {
         message: 'Prefer await to then()/catch()/finally().',
@@ -1442,38 +1266,23 @@ export default {
     ],
   },
   'quotes: nested': {
-    code: endent`
-      export default "foo 'bar'"
-
-    `,
+    code: `export default "foo 'bar'";\n`,
   },
   'quotes: unnecessary escapes': {
-    code: endent`
-      export default 'foo \\'bar\\''
-
-    `,
+    code: `export default 'foo \\'bar\\'';\n`,
     messages: [
       {
         message: "Replace `'foo·\\'bar\\''` with `\"foo·'bar'\"`",
         ruleId: 'prettier/prettier',
       },
     ],
-    output: endent`
-      export default "foo 'bar'"
-
-    `,
+    output: `export default "foo 'bar'";\n`,
   },
   'regex-spaces': {
-    code: endent`
-      export default /  /
-
-    `,
+    code: 'export default /  /;\n',
   },
   'restricted import: inside': {
-    code: endent`
-      import 'puppeteer'
-
-    `,
+    code: "import 'puppeteer';\n",
     files: {
       'node_modules/puppeteer/index.js': '',
       'package.json': endent`
@@ -1488,10 +1297,9 @@ export default {
   },
   'restricted import: name': {
     code: endent`
-      import { zipObject } from '@dword-design/functions'
+      import { zipObject } from '@dword-design/functions';
 
-      console.log(zipObject)
-
+      console.log(zipObject);\n
     `,
     files: {
       'node_modules/@dword-design/functions/index.js': '',
@@ -1514,10 +1322,7 @@ export default {
     ],
   },
   'restricted import: outside': {
-    code: endent`
-      import 'puppeteer'
-
-    `,
+    code: "import 'puppeteer';\n",
     files: {
       'node_modules/puppeteer/index.js': '',
       'package.json': JSON.stringify(
@@ -1539,40 +1344,30 @@ export default {
     ],
   },
   'semicolon: no': {
-    code: endent`
-      console.log()
+    code: 'console.log()\n',
+    messages: [{ message: 'Insert `;`', ruleId: 'prettier/prettier' }],
+    output: endent`
+      console.log();
 
     `,
   },
   'semicolon: yes': {
-    code: endent`
-      console.log();
-
-    `,
-    messages: [{ message: 'Delete `;`', ruleId: 'prettier/prettier' }],
-    output: endent`
-      console.log()
-
-    `,
+    code: 'console.log();\n',
   },
   'service worker self': {
-    code: 'console.log(self.chrome.action)\n',
+    code: 'console.log(self.chrome.action);\n',
   },
   'single export': {
-    code: endent`
-      export const foo = 'bar'
-
-    `,
+    code: "export const foo = 'bar';\n",
   },
   'template literal': {
     code: endent`
-      let endent
+      let endent;
 
       export default () =>
         endent\`
         adsfasdf
-      \`
-
+      \`;\n
     `,
     messages: [
       {
@@ -1581,28 +1376,23 @@ export default {
       },
     ],
     output: endent`
-      let endent
+      let endent;
 
       export default () =>
         endent\`
           adsfasdf
-        \`
-
+        \`;\n
     `,
   },
   'test: global expect': {
-    code: endent`
-      expect(1).toEqual(1)
-
-    `,
+    code: 'expect(1).toEqual(1);\n',
     filename: 'index.spec.js',
   },
   'test: imported expect': {
     code: endent`
-      import expect from 'expect'
+      import expect from 'expect';
 
-      expect(1).toEqual(1)
-
+      expect(1).toEqual(1);\n
     `,
     filename: 'index.spec.js',
     files: {
@@ -1611,8 +1401,7 @@ export default {
           "devDependencies": {
             "expect": "^1.0.0"
           }
-        }
-
+        }\n
       `,
     },
     messages: [
@@ -1624,10 +1413,7 @@ export default {
     ],
   },
   'test: prod dependency': {
-    code: endent`
-      import 'foo'
-
-    `,
+    code: "import 'foo';\n",
     filename: 'src/index.spec.js',
     files: {
       'node_modules/foo/index.js': '',
@@ -1643,10 +1429,7 @@ export default {
     },
   },
   'test: restricted import': {
-    code: endent`
-      import 'puppeteer'
-
-    `,
+    code: "import 'puppeteer';\n",
     filename: 'index.spec.js',
     files: {
       'node_modules/puppeteer/index.js': '',
@@ -1670,27 +1453,24 @@ export default {
   },
   'underscore dangle': {
     code: endent`
-      const foo = {}
-      console.log(foo._bar)
-
+      const foo = {};
+      console.log(foo._bar);\n
     `,
   },
   'unnamed function': {
     code: endent`
       console.log(function () {
-        console.log(this)
-      })
-
+        console.log(this);
+      });\n
     `,
   },
   'unnecessary double negation': {
     code: endent`
-      const foo = true
+      const foo = true;
 
       if (!!foo) {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      }\n
     `,
     messages: [
       {
@@ -1699,19 +1479,15 @@ export default {
       },
     ],
     output: endent`
-      const foo = true
+      const foo = true;
 
       if (foo) {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      }\n
     `,
   },
   'unsorted object keys': {
-    code: endent`
-      export default { b: 1, a: 2 }
-
-    `,
+    code: 'export default { b: 1, a: 2 };\n',
     messages: [
       {
         message:
@@ -1719,10 +1495,7 @@ export default {
         ruleId: 'sort-keys-fix/sort-keys-fix',
       },
     ],
-    output: endent`
-      export default { a: 2, b: 1 }
-
-    `,
+    output: 'export default { a: 2, b: 1 };\n',
   },
   'v-html on component': {
     code: endent`
@@ -1735,9 +1508,8 @@ export default {
         computed: {
           html: () => '<div>foo</div>',
         },
-      }
-      </script>
-
+      };
+      </script>\n
     `,
     filename: 'index.vue',
     messages: [
@@ -1762,9 +1534,8 @@ export default {
         computed: {
           html: () => '<div>foo</div>',
         },
-      }
-      </script>
-
+      };
+      </script>\n
     `,
     filename: 'index.vue',
     messages: [
@@ -1775,17 +1546,13 @@ export default {
     ],
   },
   valid: {
-    code: endent`
-      export default 1
-
-    `,
+    code: 'export default 1;\n',
   },
   var: {
     code: endent`
-      var foo = 1
-      foo = 2
-      console.log(foo)
-
+      var foo = 1;
+      foo = 2;
+      console.log(foo);\n
     `,
     messages: [
       {
@@ -1794,18 +1561,16 @@ export default {
       },
     ],
     output: endent`
-      let foo = 1
-      foo = 2
-      console.log(foo)
-
+      let foo = 1;
+      foo = 2;
+      console.log(foo);\n
     `,
   },
   'vue: attributes not sorted': {
     code: endent`
       <template>
         <div class="foo" aria-hidden="true" />
-      </template>
-
+      </template>\n
     `,
     filename: 'index.vue',
     messages: [
@@ -1817,8 +1582,7 @@ export default {
     output: endent`
       <template>
         <div aria-hidden="true" class="foo" />
-      </template>
-
+      </template>\n
     `,
   },
   'vue: component order: invalid': {
@@ -1829,9 +1593,8 @@ export default {
           foo: {},
         },
         data: () => ({ bar: 1 }),
-      }
-      </script>
-
+      };
+      </script>\n
     `,
     filename: 'index.vue',
     messages: [
@@ -1848,9 +1611,8 @@ export default {
         props: {
           foo: {},
         },
-      }
-      </script>
-
+      };
+      </script>\n
     `,
   },
   'vue: component order: valid': {
@@ -1861,9 +1623,8 @@ export default {
         props: {
           foo: {},
         },
-      }
-      </script>
-
+      };
+      </script>\n
     `,
     filename: 'index.vue',
   },
@@ -1871,8 +1632,7 @@ export default {
     code: endent`
       <template>
         <div />
-      </template>
-
+      </template>\n
     `,
     filename: P.join('src', 'index.vue'),
   },
@@ -1880,8 +1640,7 @@ export default {
     code: endent`
       <template>
         <div />
-      </template>
-
+      </template>\n
     `,
     filename: 'index.vue',
   },
@@ -1889,8 +1648,7 @@ export default {
     code: endent`
       <template>
         <div />
-      </template>
-
+      </template>\n
     `,
     filename: P.join('pages', 'about.vue'),
   },
@@ -1898,17 +1656,15 @@ export default {
     code: endent`
       <template>
         <div />
-      </template>
-
+      </template>\n
     `,
     filename: P.join('src', 'button.vue'),
   },
   'vue: single-word component registered': {
     code: endent`
-      import Vue from 'vue'
+      import Vue from 'vue';
 
-      Vue.component('Foo', {})
-
+      Vue.component('Foo', {});\n
     `,
     files: {
       'node_modules/vue/index.js': '',
@@ -1925,20 +1681,18 @@ export default {
     code: endent`
       <template>
         <div aria-hidden="true" class="foo" />
-      </template>
-
+      </template>\n
     `,
     filename: 'index.vue',
   },
   'while true': {
     code: endent`
       while (true) {
-        console.log('foo')
-      }
-
+        console.log('foo');
+      }\n
     `,
   },
   window: {
-    code: 'console.log(window)\n',
+    code: 'console.log(window);\n',
   },
 } |> mapValues(runTest)

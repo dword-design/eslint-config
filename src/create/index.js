@@ -183,7 +183,6 @@ export default () => {
         'error',
         {
           arrowParens: 'avoid',
-          semi: false,
           singleQuote: true,
           trailingComma: 'all',
         },

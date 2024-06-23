@@ -11,7 +11,7 @@ export default {
     this.resetWithLocalTmpDir = await withLocalTmpDir()
   },
   works: async () => {
-    await fs.outputFile('index.js', 'export default 1\n')
+    await fs.outputFile('index.js', 'export default 1;\n')
     await fs.outputFile(
       '.eslintrc.json',
       JSON.stringify({ extends: '..', root: true }),
