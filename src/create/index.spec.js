@@ -200,15 +200,7 @@ export default {
 
     `,
   },
-  'blank lines: exports with newline': {
-    code: endent`
-      export const foo = 1
-
-      export const bar = 2
-
-    `,
-  },
-  'blank lines: exports without newline': {
+  'blank lines: no newline between exports': {
     code: endent`
       export const foo = 1
       export const bar = 2
@@ -224,6 +216,41 @@ export default {
       export const foo = 1
 
       export const bar = 2
+
+    `,
+  },
+  'blank lines: newline between exports': {
+    code: endent`
+      export const foo = 1
+
+      export const bar = 2
+
+    `,
+  },
+  'blank lines: no newline between statement and export': {
+    code: endent`
+      console.log('foo')
+      export const foo = 1
+
+    `,
+    messages: [
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+    output: endent`
+      console.log('foo')
+
+      export const foo = 1
+
+    `,
+  },
+  'blank lines: newline between statement and export': {
+    code: endent`
+      console.log('foo')
+      
+      export const foo = 1
 
     `,
   },
@@ -408,7 +435,7 @@ export default {
       `,
     },
   },
-  'blank lines: simple': {
+  'blank lines: blank line between single-line statements': {
     code: endent`
       console.log('foo')
 
@@ -427,157 +454,83 @@ export default {
 
     `,
   },
-  'blank lines: variables and expressions': {
+  'blank lines: no blank line between single-line statements': {
     code: endent`
-      import * as THREE from 'three'
-      import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-      import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+      console.log('foo')
+      console.log('bar')
 
-      import ActionManager from './three-utils/action-manager.js'
-      import PlayerMovement from './three-utils/player-movement.js'
+    `,
+  },
+  'blank lines: blank line before multi-line statement': {
+    code: endent`
+      console.log('foo')
 
-      export default async () => {
-        const scene = new THREE.Scene()
-        scene.background = new THREE.Color(0xcce0ff)
-        scene.fog = new THREE.Fog(0xcce0ff, 100, 500)
+      console.log({
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+      })
 
-        const textureLoader = new THREE.TextureLoader()
+    `,
+  },
+  'blank lines: no blank line before multi-line statement': {
+    code: endent`
+      console.log('foo')
+      console.log({
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+      })
 
-        const gltfLoader = new GLTFLoader()
+    `,
+    messages: [
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+    output: endent`
+      console.log('foo')
 
-        const renderer = new THREE.WebGLRenderer()
-        renderer.setSize(window.innerWidth, window.innerHeight)
-        renderer.shadowMap.enabled = true
+      console.log({
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+      })
 
-        const camera = new THREE.PerspectiveCamera(
-          75,
-          window.innerWidth / window.innerHeight,
-          0.1,
-          1000,
-        )
-        camera.position.y = 2
-        camera.position.z = 5
+    `,
+  },
+  'blank lines: blank line before multi-line block': {
+    code: endent`
+      const foo = true
 
-        const controls = new OrbitControls(camera, renderer.domElement)
-        controls.maxDistance = 15
-        controls.maxPolarAngle = 0.4 * Math.PI
-        controls.minDistance = 15
-        controls.minPolarAngle = 0.25 * Math.PI
-
-        const playerMovement = new PlayerMovement(camera)
-
-        const light = new THREE.DirectionalLight(0xffffff, 1)
-        light.position.set(0, 20, 20)
-        light.castShadow = true
-        light.shadow.mapSize.width = 2048
-        light.shadow.mapSize.height = 2048
-        light.shadow.camera = new THREE.OrthographicCamera(
-          -500,
-          500,
-          500,
-          -500,
-          0.5,
-          1000,
-        )
-        scene.add(light)
-
-        const groundTexture = textureLoader.load('grasslight-big.jpg')
-        groundTexture.wrapS = THREE.RepeatWrapping
-        groundTexture.wrapT = THREE.RepeatWrapping
-        groundTexture.repeat.set(50, 50)
-        groundTexture.anisotropy = 16
-        groundTexture.encoding = THREE.sRGBEncoding
-
-        const groundMaterial = new THREE.MeshLambertMaterial({ map: groundTexture })
-
-        const ground = new THREE.Mesh(
-          new THREE.PlaneGeometry(1000, 1000),
-          groundMaterial,
-        )
-        ground.rotation.x = -Math.PI / 2
-        ground.receiveShadow = true
-        scene.add(ground)
-
-        const gltf = await new Promise((resolve, reject) =>
-          gltfLoader.load('RobotExpressive.glb', resolve, undefined, reject),
-        )
-
-        const player = gltf.scene
-        player.rotation.y = Math.PI
-        player.traverse(child => {
-          if (child.isMesh) {
-            child.castShadow = true
-          }
-        })
-        scene.add(player)
-
-        const actionManager = new ActionManager(gltf)
-        actionManager.setAction('Idle')
-
-        const keyStates = {}
-        document.addEventListener('keydown', event => {
-          if (event.code === 'Space' && !keyStates[event.code]) {
-            actionManager.triggerOneTimeAction('Jump')
-          }
-          keyStates[event.code] = true
-        })
-        document.addEventListener('keyup', event => (keyStates[event.code] = false))
-        controls.target = player.position
-        playerMovement.target = player
-        window.addEventListener('resize', () => {
-          camera.aspect = window.innerWidth / window.innerHeight
-          camera.updateProjectionMatrix()
-          renderer.setSize(window.innerWidth, window.innerHeight)
-        })
-
-        const clock = new THREE.Clock()
-
-        const animate = () => {
-          requestAnimationFrame(animate)
-
-          const delta = clock.getDelta()
-          if (actionManager.activeAction.getClip().name !== 'Jump') {
-            actionManager.setAction(
-              keyStates.KeyW || keyStates.KeyS || keyStates.KeyA || keyStates.KeyD
-                ? 'Running'
-                : 'Idle',
-            )
-          }
-          actionManager.update(delta)
-          controls.update()
-          playerMovement.update(delta)
-          renderer.render(scene, camera)
-        }
-        animate()
-
-        return renderer
+      if (foo) {
+        console.log('foo')
       }
 
     `,
-    files: {
-      'node_modules/three': {
-        'examples/jsm': {
-          'controls/OrbitControls.js': '',
-          'loaders/GLTFLoader.js': '',
-        },
-        'index.js': '',
+  },
+  'blank lines: no blank line before multi-line block': {
+    code: endent`
+      const foo = true
+      if (foo) {
+        console.log('foo')
+      }
+
+    `,
+    messages: [
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
       },
-      'package.json':
-        {
-          dependencies: {
-            three: '^1.0.0',
-          },
-          type: 'module',
-        } |> JSON.stringify,
-      'three-utils': {
-        'action-manager.js': '',
-        'player-movement.js': '',
-      },
-    },
+    ],
+    output: endent`
+      const foo = true
+
+      if (foo) {
+        console.log('foo')
+      }
+
+    `,
   },
   callbacks: {
     code: endent`
       const foo = () => {}
+      
       foo(async error => {
         await console.log(error)
       })
@@ -671,7 +624,6 @@ export default {
   'destructuring: return values': {
     code: endent`
       const func = () => ({ x: 1, y: 2 })
-
       const { x, y } = func()
       console.log(x)
       console.log(y)
@@ -1043,20 +995,18 @@ export default {
   },
   'missing trailing comma': {
     code: endent`
-      let foo
-      foo(
+      console.log([
         'fooadfa sdfasdfasdf asdfasdfasdfasdf',
         'adfsddfsdfsadfasdf asdfasdf asdfasdf'
-      )
+      ])
 
     `,
     messages: [{ message: 'Insert `,`', ruleId: 'prettier/prettier' }],
     output: endent`
-      let foo
-      foo(
+      console.log([
         'fooadfa sdfasdfasdf asdfasdfasdfasdf',
         'adfsddfsdfsadfasdf asdfasdf asdfasdf',
-      )
+      ])
 
     `,
   },
@@ -1128,6 +1078,7 @@ export default {
   'negated condition': {
     code: endent`
       const foo = 1
+
       if (!foo) {
         console.log('foo')
       } else {
@@ -1235,7 +1186,6 @@ export default {
   'possible destructuring': {
     code: endent`
       const bar = { foo: 'test' }
-
       const foo = bar.foo
       console.log(foo)
 
@@ -1506,7 +1456,8 @@ export default {
   },
   'unnecessary double negation': {
     code: endent`
-      const foo = 1
+      const foo = true
+
       if (!!foo) {
         console.log('foo')
       }
@@ -1519,7 +1470,8 @@ export default {
       },
     ],
     output: endent`
-      const foo = 1
+      const foo = true
+
       if (foo) {
         console.log('foo')
       }
