@@ -249,7 +249,7 @@ export default {
   'blank lines: newline between statement and export': {
     code: endent`
       console.log('foo')
-      
+
       export const foo = 1
 
     `,
@@ -1315,13 +1315,19 @@ export default {
       },
     ],
   },
-  semicolon: {
+  'semicolon: yes': {
     code: endent`
       console.log();
 
     `,
     messages: [{ message: 'Delete `;`', ruleId: 'prettier/prettier' }],
     output: endent`
+      console.log()
+
+    `,
+  },
+  'semicolon: no': {
+    code: endent`
       console.log()
 
     `,
