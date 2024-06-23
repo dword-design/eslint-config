@@ -151,11 +151,6 @@ export default () => {
         },
         {
           blankLine: 'always',
-          next: ['var', 'const'],
-          prev: ['*'],
-        },
-        {
-          blankLine: 'always',
           next: '*',
           prev: 'import',
         },
@@ -166,12 +161,17 @@ export default () => {
         },
         {
           blankLine: 'always',
-          next: 'export',
+          next: 'multiline-expression',
           prev: '*',
         },
         {
           blankLine: 'always',
-          next: 'return',
+          next: 'multiline-block-like',
+          prev: '*',
+        },
+        {
+          blankLine: 'always',
+          next: 'export',
           prev: '*',
         },
       ],
