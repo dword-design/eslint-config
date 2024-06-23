@@ -200,57 +200,42 @@ export default {
 
     `,
   },
-  'blank lines: no newline between exports': {
+  'blank lines: blank line before multi-line block': {
     code: endent`
-      export const foo = 1
-      export const bar = 2
+      const foo = true
 
-    `,
-    messages: [
-      {
-        message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
-      },
-    ],
-    output: endent`
-      export const foo = 1
-
-      export const bar = 2
+      if (foo) {
+        console.log('foo')
+      }
 
     `,
   },
-  'blank lines: newline between exports': {
-    code: endent`
-      export const foo = 1
-
-      export const bar = 2
-
-    `,
-  },
-  'blank lines: no newline between statement and export': {
+  'blank lines: blank line before multi-line statement': {
     code: endent`
       console.log('foo')
-      export const foo = 1
+
+      console.log({
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+      })
+
+    `,
+  },
+  'blank lines: blank line between single-line statements': {
+    code: endent`
+      console.log('foo')
+
+      console.log('bar')
 
     `,
     messages: [
       {
-        message: 'Expected blank line before this statement.',
+        message: 'Unexpected blank line before this statement.',
         ruleId: 'padding-line-between-statements',
       },
     ],
     output: endent`
       console.log('foo')
-
-      export const foo = 1
-
-    `,
-  },
-  'blank lines: newline between statement and export': {
-    code: endent`
-      console.log('foo')
-
-      export const foo = 1
+      console.log('bar')
 
     `,
   },
@@ -435,72 +420,19 @@ export default {
       `,
     },
   },
-  'blank lines: blank line between single-line statements': {
+  'blank lines: newline between exports': {
     code: endent`
-      console.log('foo')
+      export const foo = 1
 
-      console.log('bar')
-
-    `,
-    messages: [
-      {
-        message: 'Unexpected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
-      },
-    ],
-    output: endent`
-      console.log('foo')
-      console.log('bar')
+      export const bar = 2
 
     `,
   },
-  'blank lines: no blank line between single-line statements': {
-    code: endent`
-      console.log('foo')
-      console.log('bar')
-
-    `,
-  },
-  'blank lines: blank line before multi-line statement': {
+  'blank lines: newline between statement and export': {
     code: endent`
       console.log('foo')
 
-      console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
-
-    `,
-  },
-  'blank lines: no blank line before multi-line statement': {
-    code: endent`
-      console.log('foo')
-      console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
-
-    `,
-    messages: [
-      {
-        message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
-      },
-    ],
-    output: endent`
-      console.log('foo')
-
-      console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
-      })
-
-    `,
-  },
-  'blank lines: blank line before multi-line block': {
-    code: endent`
-      const foo = true
-
-      if (foo) {
-        console.log('foo')
-      }
+      export const foo = 1
 
     `,
   },
@@ -527,10 +459,78 @@ export default {
 
     `,
   },
+  'blank lines: no blank line before multi-line statement': {
+    code: endent`
+      console.log('foo')
+      console.log({
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+      })
+
+    `,
+    messages: [
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+    output: endent`
+      console.log('foo')
+
+      console.log({
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+      })
+
+    `,
+  },
+  'blank lines: no blank line between single-line statements': {
+    code: endent`
+      console.log('foo')
+      console.log('bar')
+
+    `,
+  },
+  'blank lines: no newline between exports': {
+    code: endent`
+      export const foo = 1
+      export const bar = 2
+
+    `,
+    messages: [
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+    output: endent`
+      export const foo = 1
+
+      export const bar = 2
+
+    `,
+  },
+  'blank lines: no newline between statement and export': {
+    code: endent`
+      console.log('foo')
+      export const foo = 1
+
+    `,
+    messages: [
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: 'padding-line-between-statements',
+      },
+    ],
+    output: endent`
+      console.log('foo')
+
+      export const foo = 1
+
+    `,
+  },
   callbacks: {
     code: endent`
       const foo = () => {}
-      
+
       foo(async error => {
         await console.log(error)
       })
@@ -1315,6 +1315,12 @@ export default {
       },
     ],
   },
+  'semicolon: no': {
+    code: endent`
+      console.log()
+
+    `,
+  },
   'semicolon: yes': {
     code: endent`
       console.log();
@@ -1322,12 +1328,6 @@ export default {
     `,
     messages: [{ message: 'Delete `;`', ruleId: 'prettier/prettier' }],
     output: endent`
-      console.log()
-
-    `,
-  },
-  'semicolon: no': {
-    code: endent`
       console.log()
 
     `,

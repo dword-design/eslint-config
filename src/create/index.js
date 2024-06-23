@@ -171,8 +171,8 @@ export default () => {
         },
         {
           blankLine: 'always',
-          prev: '*',
           next: 'export',
+          prev: '*',
         },
       ],
       'prefer-arrow/prefer-arrow-functions': ['error'],
