@@ -1,3 +1,10 @@
+## [5.0.9](https://github.com/dword-design/eslint-config/compare/v5.0.8...v5.0.9) (2024-06-23)
+
+
+### Bug Fixes
+
+* add semicolons ([e19ea2b](https://github.com/dword-design/eslint-config/commit/e19ea2bf4d123de195a8327f01800b58684aeb76))
+
 ## [5.0.8](https://github.com/dword-design/eslint-config/compare/v5.0.7...v5.0.8) (2024-06-23)
 
 
