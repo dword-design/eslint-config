@@ -132,15 +132,10 @@ export default () => {
           paths: eslintRestrictedImports,
         },
       ],
-
       'no-restricted-syntax': ['error', "LogicalExpression[operator='??']"],
-
       'no-return-assign': 'off',
-
       'no-template-curly-in-string': 'off',
-
       'no-underscore-dangle': 'off',
-
       'object-shorthand': ['error', 'always'],
       'padding-line-between-statements': [
         'error',
@@ -159,16 +154,23 @@ export default () => {
           next: 'import',
           prev: 'import',
         },
-        {
-          blankLine: 'always',
-          next: 'multiline-expression',
-          prev: '*',
-        },
-        {
-          blankLine: 'always',
-          next: 'multiline-block-like',
-          prev: '*',
-        },
+        ...Object.keys({
+          'block-like': true,
+          const: true,
+          expression: true,
+          let: true,
+        }).flatMap(name => [
+          {
+            blankLine: 'always',
+            next: `multiline-${name}`,
+            prev: '*',
+          },
+          {
+            blankLine: 'always',
+            next: '*',
+            prev: `multiline-${name}`,
+          },
+        ]),
         {
           blankLine: 'always',
           next: 'export',
