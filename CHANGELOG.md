@@ -1,3 +1,10 @@
+## [5.0.10](https://github.com/dword-design/eslint-config/compare/v5.0.9...v5.0.10) (2024-06-23)
+
+
+### Bug Fixes
+
+* update dependency eslint-plugin-github to v5 ([#265](https://github.com/dword-design/eslint-config/issues/265)) ([49ebb1e](https://github.com/dword-design/eslint-config/commit/49ebb1ec60486dacb7685d882e380c453cb3017c))
+
 ## [5.0.9](https://github.com/dword-design/eslint-config/compare/v5.0.8...v5.0.9) (2024-06-23)
 
 
