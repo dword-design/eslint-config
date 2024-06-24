@@ -88,4 +88,4 @@ export default [
     message: 'Use map and fromPairs instead',
     name: '@dword-design/functions',
   },
-]
+];
