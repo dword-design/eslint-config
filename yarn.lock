@@ -247,7 +247,7 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-string-parser/-/helper-string-parser-7.24.7.tgz#4d2d0f14820ede3b9807ea5fc36dfc8cd7da07f2"
   integrity sha512-7MbVt6xrwFQbunH2DNQsAP5sTGxfqQtErvBIvIMi6EQnbgUOuVYanvREcmFrOPhoXBrTtjhhP+lW+o5UfK+tDg==
 
-"@babel/helper-validator-identifier@^7.22.20", "@babel/helper-validator-identifier@^7.24.5", "@babel/helper-validator-identifier@^7.24.7":
+"@babel/helper-validator-identifier@^7.24.5", "@babel/helper-validator-identifier@^7.24.7":
   version "7.24.7"
   resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.24.7.tgz#75b889cfaf9e35c2aaf42cf0d72c8e91719251db"
   integrity sha512-rR+PBcQ1SMQDDyF6X0wxtG8QyLCgUB0eRAGguqRLfkCA87l7yAP7ehq8SNj96OOGTO8OBV70KhuFYcIkHXOg0w==
@@ -1393,9 +1393,9 @@
     objectorarray "^1.0.3"
 
 "@dword-design/eslint-config@^5.0.0":
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-5.0.6.tgz#60246a70d46b0f76b37ba39d25c8bd637af281ad"
-  integrity sha512-QscvuRnW+MCzPEHGP1bu/LzZUKWZ+jjw2Mveed0nLN/ISglkNzeTEQio7xsG4NTGuhGx53HGY8AKduQ8FOqZ8Q==
+  version "5.0.10"
+  resolved "https://registry.yarnpkg.com/@dword-design/eslint-config/-/eslint-config-5.0.10.tgz#b0028dfdee2d8a4ba4c7c9f39150c4d97f5f2c6d"
+  integrity sha512-yyay9Ii11fJKJOTnthTuiaFuY2Uk0vqwmM6j2tt32CBdoesr6ov6EbXUF7v6jSEs15DbnhWrVqgkcT3EKBtzvw==
   dependencies:
     "@babel/eslint-parser" "^7.13.14"
     "@dword-design/eslint-plugin-import-alias" "^5.0.0"
@@ -1406,15 +1406,15 @@
     eslint-config-prettier "^9.1.0"
     eslint-import-resolver-babel-module "^5.3.0"
     eslint-import-resolver-exports "^1.0.0-beta.5"
-    eslint-plugin-github "^4.1.3"
+    eslint-plugin-github "^5.0.0"
     eslint-plugin-import "^2.29.1"
     eslint-plugin-json-format "^2.0.1"
     eslint-plugin-prefer-arrow "^1.1.6"
     eslint-plugin-prettier "^5.1.3"
     eslint-plugin-promise "^6.1.1"
-    eslint-plugin-simple-import-sort "^10.0.0"
+    eslint-plugin-simple-import-sort "^12.1.0"
     eslint-plugin-sort-keys-fix "^1.1.1"
-    eslint-plugin-unicorn "^50.0.1"
+    eslint-plugin-unicorn "^54.0.0"
     eslint-plugin-vue "^9.10.0"
     jiti "^1.18.2"
     load-pkg "^4.0.0"
@@ -3596,7 +3596,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==
 
-core-js-compat@^3.31.0, core-js-compat@^3.34.0, core-js-compat@^3.36.1, core-js-compat@^3.37.0:
+core-js-compat@^3.31.0, core-js-compat@^3.36.1, core-js-compat@^3.37.0:
   version "3.37.1"
   resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.37.1.tgz#c844310c7852f4bdf49b8d339730b97e17ff09ee"
   integrity sha512-9TNiImhKvQqSUkOvk/mMRZzOANTiEVC7WaBNhHcKM7x+/5E1l5NvsysR19zuDQScE8k+kfQXWRN3AtS/eOSHpg==
@@ -4397,29 +4397,6 @@ eslint-plugin-filenames@^1.3.2:
     lodash.snakecase "4.1.1"
     lodash.upperfirst "4.3.1"
 
-eslint-plugin-github@^4.1.3:
-  version "4.10.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-github/-/eslint-plugin-github-4.10.2.tgz#04bee657d4813f2d0f74831658cf5b036168e367"
-  integrity sha512-F1F5aAFgi1Y5hYoTFzGQACBkw5W1hu2Fu5FSTrMlXqrojJnKl1S2pWO/rprlowRQpt+hzHhqSpsfnodJEVd5QA==
-  dependencies:
-    "@github/browserslist-config" "^1.0.0"
-    "@typescript-eslint/eslint-plugin" "^7.0.1"
-    "@typescript-eslint/parser" "^7.0.1"
-    aria-query "^5.3.0"
-    eslint-config-prettier ">=8.0.0"
-    eslint-plugin-escompat "^3.3.3"
-    eslint-plugin-eslint-comments "^3.2.0"
-    eslint-plugin-filenames "^1.3.2"
-    eslint-plugin-i18n-text "^1.0.1"
-    eslint-plugin-import "^2.25.2"
-    eslint-plugin-jsx-a11y "^6.7.1"
-    eslint-plugin-no-only-tests "^3.0.0"
-    eslint-plugin-prettier "^5.0.0"
-    eslint-rule-documentation ">=1.0.0"
-    jsx-ast-utils "^3.3.2"
-    prettier "^3.0.0"
-    svg-element-attributes "^1.3.1"
-
 eslint-plugin-github@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-github/-/eslint-plugin-github-5.0.1.tgz#3bc21a64b478230f7fe2fb23fe7b802fa494ee1d"
@@ -4530,11 +4507,6 @@ eslint-plugin-promise@^6.1.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-6.2.0.tgz#e24ab0e3c0a25fa227d98d9ff612156b5af15945"
   integrity sha512-QmAqwizauvnKOlifxyDj2ObfULpHQawlg/zQdgEixur9vl0CvZGv/LCJV2rtj3210QCoeGBzVMfMXqGAOr/4fA==
 
-eslint-plugin-simple-import-sort@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-10.0.0.tgz#cc4ceaa81ba73252427062705b64321946f61351"
-  integrity sha512-AeTvO9UCMSNzIHRkg8S6c3RPy5YEwKWSQPx3DYghLedo2ZQxowPFLGDN1AZ2evfg6r6mjBSZSLxLFsWSu3acsw==
-
 eslint-plugin-simple-import-sort@^12.1.0:
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-12.1.0.tgz#8186ad55474d2f5c986a2f1bf70625a981e30d05"
@@ -4549,28 +4521,6 @@ eslint-plugin-sort-keys-fix@^1.1.1:
     esutils "^2.0.2"
     natural-compare "^1.4.0"
     requireindex "~1.2.0"
-
-eslint-plugin-unicorn@^50.0.1:
-  version "50.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-50.0.1.tgz#e539cdb02dfd893c603536264c4ed9505b70e3bf"
-  integrity sha512-KxenCZxqSYW0GWHH18okDlOQcpezcitm5aOSz6EnobyJ6BIByiPDviQRjJIUAjG/tMN11958MxaQ+qCoU6lfDA==
-  dependencies:
-    "@babel/helper-validator-identifier" "^7.22.20"
-    "@eslint-community/eslint-utils" "^4.4.0"
-    "@eslint/eslintrc" "^2.1.4"
-    ci-info "^4.0.0"
-    clean-regexp "^1.0.0"
-    core-js-compat "^3.34.0"
-    esquery "^1.5.0"
-    indent-string "^4.0.0"
-    is-builtin-module "^3.2.1"
-    jsesc "^3.0.2"
-    pluralize "^8.0.0"
-    read-pkg-up "^7.0.1"
-    regexp-tree "^0.1.27"
-    regjsparser "^0.10.0"
-    semver "^7.5.4"
-    strip-indent "^3.0.0"
 
 eslint-plugin-unicorn@^54.0.0:
   version "54.0.0"
