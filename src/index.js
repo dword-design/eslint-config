@@ -1,3 +1,3 @@
-import create from './create/index.js'
+import create from './create/index.js';
 
-export default create()
+export default create();

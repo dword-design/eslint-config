@@ -1,13 +1,13 @@
-import { compact, filter, join, map, omit } from '@dword-design/functions'
-import confusingBrowserGlobals from 'confusing-browser-globals'
-import packageName from 'depcheck-package-name'
-import loadPkg from 'load-pkg'
-import { without } from 'lodash-es'
+import { compact, filter, join, map, omit } from '@dword-design/functions';
+import confusingBrowserGlobals from 'confusing-browser-globals';
+import packageName from 'depcheck-package-name';
+import loadPkg from 'load-pkg';
+import { without } from 'lodash-es';
 
-import restrictedImports from './restricted-imports.js'
+import restrictedImports from './restricted-imports.js';
 
 export default () => {
-  const packageConfig = loadPkg.sync() || {}
+  const packageConfig = loadPkg.sync() || {};
 
   const eslintRestrictedImports =
     restrictedImports
@@ -25,7 +25,7 @@ export default () => {
         ]
         |> compact
         |> join(' '),
-    }))
+    }));
 
   return {
     extends: [
@@ -220,5 +220,5 @@ export default () => {
         [packageName`eslint-import-resolver-exports`]: {},
       },
     },
-  }
-}
+  };
+};
