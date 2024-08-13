@@ -841,16 +841,6 @@ export default {
       }),
     },
   },
-  /* 'file with babel features in parent folder of package': {
-    code: 'console.log(1 |> x => x * 2);\n',
-    cwd: 'sub',
-    files: {
-      'babel.config.json': JSON.stringify({
-        extends: '@dword-design/babel-config',
-      }),
-      'sub/package.json': JSON.stringify({}),
-    },
-  }, */
   forEach: {
     code: endent`
       const foo = [];
