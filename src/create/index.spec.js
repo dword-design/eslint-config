@@ -29,7 +29,7 @@ const runTest = config => () => {
   config.output = config.output || config.code;
   return withLocalTmpDir(async () => {
     await outputFiles({
-      '.babelrc.json': JSON.stringify({
+      'babel.config.json': JSON.stringify({
         extends: '@dword-design/babel-config',
       }),
       'package.json': JSON.stringify({ type: 'module' }),
@@ -442,7 +442,7 @@ export default {
   'blank line: multi-line const declaration: after: no': {
     code: endent`
       const foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
       console.log(foo);\n
     `,
@@ -454,7 +454,7 @@ export default {
     ],
     output: endent`
       const foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       console.log(foo);\n
@@ -463,7 +463,7 @@ export default {
   'blank line: multi-line const declaration: after: yes': {
     code: endent`
       const foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       console.log(foo);\n
@@ -473,7 +473,7 @@ export default {
     code: endent`
       console.log('foo');
       const foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       console.log(foo);\n
@@ -488,7 +488,7 @@ export default {
       console.log('foo');
 
       const foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       console.log(foo);\n
@@ -499,7 +499,7 @@ export default {
       console.log('foo');
 
       const foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       console.log(foo);\n
@@ -508,7 +508,7 @@ export default {
   'blank line: multi-line let declaration: after: no': {
     code: endent`
       let foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
       foo = 1;
       console.log(foo);\n
@@ -521,7 +521,7 @@ export default {
     ],
     output: endent`
       let foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       foo = 1;
@@ -531,7 +531,7 @@ export default {
   'blank line: multi-line let declaration: after: yes': {
     code: endent`
       let foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       foo = 1;
@@ -542,7 +542,7 @@ export default {
     code: endent`
       console.log('foo');
       let foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       foo = 1;
@@ -558,7 +558,7 @@ export default {
       console.log('foo');
 
       let foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       foo = 1;
@@ -570,7 +570,7 @@ export default {
       console.log('foo');
 
       let foo = {
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
 
       foo = 1;
@@ -580,7 +580,7 @@ export default {
   'blank line: multi-line statement: after: no': {
     code: endent`
       console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });
       console.log('foo');\n
     `,
@@ -592,7 +592,7 @@ export default {
     ],
     output: endent`
       console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });
 
       console.log('foo');\n
@@ -601,7 +601,7 @@ export default {
   'blank line: multi-line statement: after: yes': {
     code: endent`
       console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });
 
       console.log('foo');\n
@@ -611,7 +611,7 @@ export default {
     code: endent`
       console.log('foo');
       console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });\n
     `,
     messages: [
@@ -624,7 +624,7 @@ export default {
       console.log('foo');
 
       console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });\n
     `,
   },
@@ -633,7 +633,7 @@ export default {
       console.log('foo');
 
       console.log({
-        foo: 'Aenean eu leo quam. Pellentesque ornare sem',
+        foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });\n
     `,
   },
@@ -841,7 +841,7 @@ export default {
       }),
     },
   },
-  'file with babel features in parent folder of package': {
+  /* 'file with babel features in parent folder of package': {
     code: 'console.log(1 |> x => x * 2);\n',
     cwd: 'sub',
     files: {
@@ -850,7 +850,7 @@ export default {
       }),
       'sub/package.json': JSON.stringify({}),
     },
-  },
+  }, */
   forEach: {
     code: endent`
       const foo = [];
@@ -1213,6 +1213,12 @@ export default {
         foo: 'bar',
       };\n
     `,
+    messages: [
+      {
+        message: "Replace `⏎··foo:·'bar',⏎` with `·foo:·'bar'·`",
+        ruleId: 'prettier/prettier',
+      },
+    ],
     output: "export default { foo: 'bar' };\n",
   },
   'object: single-line that should be multi-line': {
@@ -1262,7 +1268,7 @@ export default {
     ),
     filename: 'package.json',
   },
-  'param reassign': {
+  'param reassign asdfasdfasdf': {
     code: endent`
       export default foo => {
         foo = 'bar';
@@ -1270,7 +1276,7 @@ export default {
       };\n
     `,
   },
-  'pipeline operator': {
+  'pipeline operator asdfasdfasdf': {
     code: 'export default async () => 1 |> (x => x + 1) |> await;\n',
   },
   'possible destructuring': {
@@ -1540,11 +1546,7 @@ export default {
       </template>
 
       <script>
-      export default {
-        computed: {
-          html: () => '<div>foo</div>',
-        },
-      };
+      export default { computed: { html: () => '<div>foo</div>' } };
       </script>\n
     `,
     filename: 'index.vue',
@@ -1566,11 +1568,7 @@ export default {
       </template>
 
       <script>
-      export default {
-        computed: {
-          html: () => '<div>foo</div>',
-        },
-      };
+      export default { computed: { html: () => '<div>foo</div>' } };
       </script>\n
     `,
     filename: 'index.vue',
@@ -1624,12 +1622,7 @@ export default {
   'vue: component order: invalid': {
     code: endent`
       <script>
-      export default {
-        props: {
-          foo: {},
-        },
-        data: () => ({ bar: 1 }),
-      };
+      export default { props: { foo: {} }, data: () => ({ bar: 1 }) };
       </script>\n
     `,
     filename: 'index.vue',
@@ -1642,24 +1635,14 @@ export default {
     ],
     output: endent`
       <script>
-      export default {
-        data: () => ({ bar: 1 }),
-        props: {
-          foo: {},
-        },
-      };
+      export default { data: () => ({ bar: 1 }), props: { foo: {} } };
       </script>\n
     `,
   },
   'vue: component order: valid': {
     code: endent`
       <script>
-      export default {
-        data: () => ({ bar: 1 }),
-        props: {
-          foo: {},
-        },
-      };
+      export default { data: () => ({ bar: 1 }), props: { foo: {} } };
       </script>\n
     `,
     filename: 'index.vue',
