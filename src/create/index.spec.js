@@ -1200,6 +1200,41 @@ export default {
       },
     ],
   },
+  'object: multi-line that should be multi-line': {
+    code: endent`
+      export default {
+        foo: 'Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum.',
+      };\n
+    `,
+  },
+  'object: multi-line that should be single-line': {
+    code: endent`
+      export default {
+        foo: 'bar',
+      };\n
+    `,
+    output: "export default { foo: 'bar' };\n",
+  },
+  'object: single-line that should be multi-line': {
+    code: "export default { foo: 'Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum.' };\n",
+    messages: [
+      {
+        message:
+          "Replace `·foo:·'Maecenas·faucibus·mollis·interdum.·Maecenas·faucibus·mollis·interdum.·Maecenas·faucibus·mollis·interdum.·Maecenas·faucibus·mollis·interdum.'·` with `⏎··foo:·'Maecenas·faucibus·mollis·interdum.·Maecenas·faucibus·mollis·interdum.·Maecenas·faucibus·mollis·interdum.·Maecenas·faucibus·mollis·interdum.',⏎`",
+        ruleId: 'prettier/prettier',
+      },
+    ],
+    output: endent`
+      export default {
+        foo: 'Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum.',
+      };\n
+    `,
+  },
+  'object: single-line that should be single-line': {
+    code: endent`
+      export default { foo: 'bar' };\n
+    `,
+  },
   'package.json: unsorted': {
     code: endent`
       {
