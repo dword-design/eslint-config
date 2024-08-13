@@ -1258,7 +1258,7 @@ export default {
     ),
     filename: 'package.json',
   },
-  'param reassign asdfasdfasdf': {
+  'param reassign': {
     code: endent`
       export default foo => {
         foo = 'bar';
@@ -1266,7 +1266,7 @@ export default {
       };\n
     `,
   },
-  'pipeline operator asdfasdfasdf': {
+  'pipeline operator': {
     code: 'export default async () => 1 |> (x => x + 1) |> await;\n',
   },
   'possible destructuring': {
