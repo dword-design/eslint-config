@@ -1,3 +1,10 @@
+## [5.0.11](https://github.com/dword-design/eslint-config/compare/v5.0.10...v5.0.11) (2024-08-13)
+
+
+### Bug Fixes
+
+* ignore current formatting of objects ([#278](https://github.com/dword-design/eslint-config/issues/278)) ([5bd855a](https://github.com/dword-design/eslint-config/commit/5bd855a9fc31935fe3e8863a2dbb909bbb4c983d))
+
 ## [5.0.10](https://github.com/dword-design/eslint-config/compare/v5.0.9...v5.0.10) (2024-06-23)
 
 
