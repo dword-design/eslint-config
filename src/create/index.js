@@ -183,6 +183,7 @@ export default () => {
         'error',
         {
           arrowParens: 'avoid',
+          plugins: [packageName`prettier-plugin-compactify`],
           singleQuote: true,
           trailingComma: 'all',
         },
