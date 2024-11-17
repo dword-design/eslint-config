@@ -103,10 +103,13 @@ export default () => {
       'no-console': 'off',
       'no-constant-condition': ['error', { checkLoops: false }],
       'no-continue': 'off',
+      'no-lonely-if': 'off',
       'no-negated-condition': 'error',
       'no-param-reassign': 'off',
       'no-promise-executor-return': 'off',
+
       'no-regex-spaces': 'off',
+
       // https://github.com/facebook/create-react-app/issues/12847
       'no-restricted-globals': [
         'error',
@@ -125,7 +128,6 @@ export default () => {
           name: g,
         })),
       ],
-
       'no-restricted-imports': [
         'error',
         {
@@ -178,7 +180,6 @@ export default () => {
         },
       ],
       'prefer-arrow/prefer-arrow-functions': ['error'],
-      'prefer-destructuring': 'off',
       [`${packageName`prettier`}/prettier`]: [
         'error',
         {
@@ -188,6 +189,7 @@ export default () => {
           trailingComma: 'all',
         },
       ],
+      'prefer-destructuring': 'off',
       'promise/prefer-await-to-then': 'error',
       'require-await': 'error',
       'simple-import-sort/imports': 'error',
