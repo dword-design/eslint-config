@@ -1,3 +1,10 @@
+## [5.0.12](https://github.com/dword-design/eslint-config/compare/v5.0.11...v5.0.12) (2024-11-17)
+
+
+### Bug Fixes
+
+* disable lonely ifs rule ([c5dc68a](https://github.com/dword-design/eslint-config/commit/c5dc68a41a4c75a2a9fe0b301cdef72caa8ca6b2))
+
 ## [5.0.11](https://github.com/dword-design/eslint-config/compare/v5.0.10...v5.0.11) (2024-08-13)
 
 
