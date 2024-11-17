@@ -69,9 +69,7 @@ const runTest = config => () => {
 export default {
   'alias: child': {
     code: "import '@/foo.js';\n",
-    files: {
-      'foo.js': '',
-    },
+    files: { 'foo.js': '' },
     messages: [
       {
         message:
@@ -84,9 +82,7 @@ export default {
   'alias: parent': {
     code: "import '@/foo.js';\n",
     filename: P.join('sub', 'index.js'),
-    files: {
-      'foo.js': '',
-    },
+    files: { 'foo.js': '' },
   },
   'alias: parent import': {
     code: "import '../foo.js';\n",
@@ -95,9 +91,7 @@ export default {
       '.babelrc.json': JSON.stringify({
         extends: packageName`@dword-design/babel-config`,
       }),
-      sub: {
-        'foo.js': '',
-      },
+      sub: { 'foo.js': '' },
     },
     messages: [
       {
@@ -108,9 +102,7 @@ export default {
     ],
     output: "import '@/sub/foo.js';\n",
   },
-  'arrow function': {
-    code: "export default () => console.log('foo');\n",
-  },
+  'arrow function': { code: "export default () => console.log('foo');\n" },
   'arrow function assignment': {
     code: "export default foo => (foo.bar = 'bar');\n",
   },
@@ -143,9 +135,7 @@ export default {
     ],
     output: 'export default foo => foo;\n',
   },
-  'arrow function without parens': {
-    code: 'export default foo => foo;\n',
-  },
+  'arrow function without parens': { code: 'export default foo => foo;\n' },
   'async without await': {
     code: "export default async () => console.log('foo');\n",
     messages: [
@@ -227,11 +217,7 @@ export default {
     files: {
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
+        { dependencies: { foo: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -262,11 +248,7 @@ export default {
     files: {
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
+        { dependencies: { foo: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -285,12 +267,7 @@ export default {
       'bar.js': 'export default 1;\n',
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-          type: 'module',
-        },
+        { dependencies: { foo: '^1.0.0' }, type: 'module' },
         undefined,
         2,
       ),
@@ -308,12 +285,7 @@ export default {
       'bar.js': 'export default 1;\n',
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-          type: 'module',
-        },
+        { dependencies: { foo: '^1.0.0' }, type: 'module' },
         undefined,
         2,
       ),
@@ -751,11 +723,7 @@ export default {
         'index.js': '',
         'package.json': JSON.stringify({ name: 'foo' }),
       },
-      'package.json': JSON.stringify({
-        devDependencies: {
-          foo: '^1.0.0',
-        },
-      }),
+      'package.json': JSON.stringify({ devDependencies: { foo: '^1.0.0' } }),
     },
   },
   'dev dependency in root': {
@@ -766,11 +734,7 @@ export default {
         'package.json': JSON.stringify({ name: 'foo' }),
       },
       'package.json': JSON.stringify(
-        {
-          devDependencies: {
-            foo: '^1.0.0',
-          },
-        },
+        { devDependencies: { foo: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -792,11 +756,7 @@ export default {
         'package.json': JSON.stringify({ name: 'foo' }),
       },
       'package.json': JSON.stringify(
-        {
-          devDependencies: {
-            foo: '^1.0.0',
-          },
-        },
+        { devDependencies: { foo: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -911,12 +871,7 @@ export default {
       'node_modules/bar/index.js': '',
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            bar: '^1.0.0',
-            foo: '^1.0.0',
-          },
-        },
+        { dependencies: { bar: '^1.0.0', foo: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -943,16 +898,9 @@ export default {
       console.log(imageUrl);
       console.log(buyMeACoffeeImageUrl);\n
     `,
-    eslintConfig: {
-      rules: {
-        'import/no-webpack-loader-syntax': 'off',
-      },
-    },
+    eslintConfig: { rules: { 'import/no-webpack-loader-syntax': 'off' } },
     filename: P.join('sub', 'index.js'),
-    files: {
-      'buymeacoffee.svg': '',
-      'support-me.jpg': '',
-    },
+    files: { 'buymeacoffee.svg': '', 'support-me.jpg': '' },
   },
   'indent: invalid': {
     code: endent`
@@ -960,12 +908,7 @@ export default {
           console.log('foo');
       };\n
     `,
-    messages: [
-      {
-        message: 'Delete `··`',
-        ruleId: 'prettier/prettier',
-      },
-    ],
+    messages: [{ message: 'Delete `··`', ruleId: 'prettier/prettier' }],
     output: endent`
       export default () => {
         console.log('foo');
@@ -979,9 +922,7 @@ export default {
       };\n
     `,
   },
-  'inline comments': {
-    code: 'export default 1; // foo\n',
-  },
+  'inline comments': { code: 'export default 1; // foo\n' },
   'json: indent too big': {
     code: endent`
       {
@@ -1051,9 +992,7 @@ export default {
   },
   'missing file extension': {
     code: "import './foo';\n",
-    files: {
-      'foo.js': '',
-    },
+    files: { 'foo.js': '' },
     messages: [
       {
         message: 'Missing file extension "js" for "./foo"',
@@ -1095,11 +1034,7 @@ export default {
     files: {
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
+        { dependencies: { foo: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -1115,11 +1050,7 @@ export default {
     files: {
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
+        { dependencies: { foo: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -1174,11 +1105,7 @@ export default {
     code: "import 'foo/bar';\n",
     files: {
       'node_modules/foo/bar.js': '',
-      'package.json': JSON.stringify({
-        dependencies: {
-          foo: '^1.0.0',
-        },
-      }),
+      'package.json': JSON.stringify({ dependencies: { foo: '^1.0.0' } }),
     },
   },
   'nullish coalescing': {
@@ -1248,14 +1175,7 @@ export default {
     `,
   },
   'package.json: valid': {
-    code: JSON.stringify(
-      {
-        name: 'foo',
-        version: '1.0.0',
-      },
-      undefined,
-      2,
-    ),
+    code: JSON.stringify({ name: 'foo', version: '1.0.0' }, undefined, 2),
     filename: 'package.json',
   },
   'param reassign': {
@@ -1281,11 +1201,7 @@ export default {
     filename: P.join('src', 'index.js'),
     files: {
       'node_modules/foo/index.js': '',
-      'package.json': JSON.stringify({
-        dependencies: {
-          foo: '^1.0.0',
-        },
-      }),
+      'package.json': JSON.stringify({ dependencies: { foo: '^1.0.0' } }),
     },
   },
   'promise then': {
@@ -1297,9 +1213,7 @@ export default {
       },
     ],
   },
-  'quotes: nested': {
-    code: `export default "foo 'bar'";\n`,
-  },
+  'quotes: nested': { code: `export default "foo 'bar'";\n` },
   'quotes: unnecessary escapes': {
     code: `export default 'foo \\'bar\\'';\n`,
     messages: [
@@ -1310,9 +1224,7 @@ export default {
     ],
     output: `export default "foo 'bar'";\n`,
   },
-  'regex-spaces': {
-    code: 'export default /  /;\n',
-  },
+  'regex-spaces': { code: 'export default /  /;\n' },
   'restricted import: inside': {
     code: "import 'puppeteer';\n",
     files: {
@@ -1336,11 +1248,7 @@ export default {
     files: {
       'node_modules/@dword-design/functions/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            '@dword-design/functions': '^1.0.0',
-          },
-        },
+        { dependencies: { '@dword-design/functions': '^1.0.0' } },
         undefined,
         2,
       ),
@@ -1358,11 +1266,7 @@ export default {
     files: {
       'node_modules/puppeteer/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            puppeteer: '^1.0.0',
-          },
-        },
+        { dependencies: { puppeteer: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -1383,15 +1287,9 @@ export default {
 
     `,
   },
-  'semicolon: yes': {
-    code: 'console.log();\n',
-  },
-  'service worker self': {
-    code: 'console.log(self.chrome.action);\n',
-  },
-  'single export': {
-    code: "export const foo = 'bar';\n",
-  },
+  'semicolon: yes': { code: 'console.log();\n' },
+  'service worker self': { code: 'console.log(self.chrome.action);\n' },
+  'single export': { code: "export const foo = 'bar';\n" },
   'template literal': {
     code: endent`
       let endent;
@@ -1450,11 +1348,7 @@ export default {
     files: {
       'node_modules/foo/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            foo: '^1.0.0',
-          },
-        },
+        { dependencies: { foo: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -1466,11 +1360,7 @@ export default {
     files: {
       'node_modules/puppeteer/index.js': '',
       'package.json': JSON.stringify(
-        {
-          dependencies: {
-            puppeteer: '^1.0.0',
-          },
-        },
+        { dependencies: { puppeteer: '^1.0.0' } },
         undefined,
         2,
       ),
@@ -1569,9 +1459,7 @@ export default {
       },
     ],
   },
-  valid: {
-    code: 'export default 1;\n',
-  },
+  valid: { code: 'export default 1;\n' },
   var: {
     code: endent`
       var foo = 1;
@@ -1701,7 +1589,5 @@ export default {
       }\n
     `,
   },
-  window: {
-    code: 'console.log(window);\n',
-  },
+  window: { code: 'console.log(window);\n' },
 } |> mapValues(runTest);
