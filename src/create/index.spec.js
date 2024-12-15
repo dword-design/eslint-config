@@ -899,6 +899,9 @@ export default {
       },
     ],
   },
+  globalThis: {
+    code: 'console.log(globalThis);\n',
+  },
   'import order': {
     code: endent`
       import foo from 'foo';
