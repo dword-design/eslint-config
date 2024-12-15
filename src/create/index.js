@@ -37,6 +37,7 @@ export default () => {
       `plugin:${packageName`eslint-plugin-prettier`}/recommended`,
     ],
     globals: {
+      globalTris: true,
       self: true,
       window: true,
     },
