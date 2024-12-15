@@ -1,3 +1,11 @@
+## [5.0.13](https://github.com/dword-design/eslint-config/compare/v5.0.12...v5.0.13) (2024-12-15)
+
+
+### Bug Fixes
+
+* add globalThis to globals ([bfccaaa](https://github.com/dword-design/eslint-config/commit/bfccaaa58a872dc7901c64b16968ee98e42a6808))
+* fix this ([7587163](https://github.com/dword-design/eslint-config/commit/7587163a14eef6fedd763dcff45150dd0ad6b03d))
+
 ## [5.0.12](https://github.com/dword-design/eslint-config/compare/v5.0.11...v5.0.12) (2024-11-17)
 
 
