@@ -36,17 +36,11 @@ export default () => {
       `plugin:${packageName`eslint-plugin-vue`}/vue3-recommended`,
       `plugin:${packageName`eslint-plugin-prettier`}/recommended`,
     ],
-    globals: {
-      globalThis: true,
-      self: true,
-      window: true,
-    },
+    globals: { globalThis: true, self: true, window: true },
     overrides: [
       {
         files: '**/*.spec.js',
-        globals: {
-          expect: 'readonly',
-        },
+        globals: { expect: 'readonly' },
         rules: {
           'no-restricted-imports': [
             'error',
@@ -62,18 +56,11 @@ export default () => {
           ],
         },
       },
-      {
-        files: '**/*.vue',
-        rules: {
-          'vue/multi-word-component-names': 'off',
-        },
-      },
+      { files: '**/*.vue', rules: { 'vue/multi-word-component-names': 'off' } },
     ],
     parser: packageName`vue-eslint-parser`,
     parserOptions: {
-      babelOptions: {
-        rootMode: 'upward-optional',
-      },
+      babelOptions: { rootMode: 'upward-optional' },
       parser: packageName`@babel/eslint-parser`,
     },
     plugins: [
@@ -130,12 +117,7 @@ export default () => {
           name: g,
         })),
       ],
-      'no-restricted-imports': [
-        'error',
-        {
-          paths: eslintRestrictedImports,
-        },
-      ],
+      'no-restricted-imports': ['error', { paths: eslintRestrictedImports }],
       'no-restricted-syntax': ['error', "LogicalExpression[operator='??']"],
       'no-return-assign': 'off',
       'no-template-curly-in-string': 'off',
@@ -143,43 +125,19 @@ export default () => {
       'object-shorthand': ['error', 'always'],
       'padding-line-between-statements': [
         'error',
-        {
-          blankLine: 'never',
-          next: '*',
-          prev: '*',
-        },
-        {
-          blankLine: 'always',
-          next: '*',
-          prev: 'import',
-        },
-        {
-          blankLine: 'any',
-          next: 'import',
-          prev: 'import',
-        },
+        { blankLine: 'never', next: '*', prev: '*' },
+        { blankLine: 'always', next: '*', prev: 'import' },
+        { blankLine: 'any', next: 'import', prev: 'import' },
         ...Object.keys({
           'block-like': true,
           const: true,
           expression: true,
           let: true,
         }).flatMap(name => [
-          {
-            blankLine: 'always',
-            next: `multiline-${name}`,
-            prev: '*',
-          },
-          {
-            blankLine: 'always',
-            next: '*',
-            prev: `multiline-${name}`,
-          },
+          { blankLine: 'always', next: `multiline-${name}`, prev: '*' },
+          { blankLine: 'always', next: '*', prev: `multiline-${name}` },
         ]),
-        {
-          blankLine: 'always',
-          next: 'export',
-          prev: '*',
-        },
+        { blankLine: 'always', next: 'export', prev: '*' },
       ],
       'prefer-arrow/prefer-arrow-functions': ['error'],
       [`${packageName`prettier`}/prettier`]: [
