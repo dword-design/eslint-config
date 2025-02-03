@@ -1209,12 +1209,6 @@ export default {
   },
   'nested ternary': {
     code: 'export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4);\n',
-    messages: [
-      {
-        message: 'Do not nest ternary expressions.',
-        ruleId: 'no-nested-ternary',
-      },
-    ],
   },
   'new lower-case': {
     code: endent`

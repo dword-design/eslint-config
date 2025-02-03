@@ -106,6 +106,7 @@ export default () => {
       'no-continue': 'off',
       'no-lonely-if': 'off',
       'no-negated-condition': 'error',
+      'no-nested-ternary': 'off',
       'no-param-reassign': 'off',
       'no-promise-executor-return': 'off',
 
