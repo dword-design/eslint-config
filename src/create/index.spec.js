@@ -860,6 +860,7 @@ export default {
       },
     ],
   },
+  globalThis: { code: 'console.log(globalThis);\n' },
   'import order': {
     code: endent`
       import foo from 'foo';
@@ -991,6 +992,56 @@ export default {
     `,
     filename: 'index.json',
   },
+  'lonely if': {
+    code: endent`
+      export default ({ distanceFromTarget = 30 } = {}) =>
+        (rect1, rect2) => {
+          const center1 = {
+            x: rect1.left + rect1.width / 2,
+            y: rect1.top + rect1.height / 2,
+          };
+
+          const center2 = {
+            x: rect2.left + rect2.width / 2,
+            y: rect2.top + rect2.height / 2,
+          };
+
+          // Determine if there's a significant horizontal offset
+          const dx = center2.x - center1.x;
+          const dy = center2.y - center1.y;
+          // Use horizontal connection if there's meaningful horizontal distance
+          const isHorizontal = Math.abs(dx) > rect1.width / 2 + rect2.width / 2;
+          let joinPoint;
+          let targetPoint;
+
+          if (isHorizontal) {
+            // Connecting horizontally
+            if (dx > 0) {
+              // rect2 is to the right
+              joinPoint = { x: rect2.left - distanceFromTarget, y: center2.y };
+              targetPoint = { x: rect2.left, y: center2.y };
+            } else {
+              // rect2 is to the left
+              joinPoint = { x: rect2.right + distanceFromTarget, y: center2.y };
+              targetPoint = { x: rect2.right, y: center2.y };
+            }
+          } else {
+            // Connecting vertically
+            if (dy > 0) {
+              // rect2 is below
+              joinPoint = { x: center2.x, y: rect2.top - distanceFromTarget };
+              targetPoint = { x: center2.x, y: rect2.top };
+            } else {
+              // rect2 is above
+              joinPoint = { x: center2.x, y: rect2.bottom + distanceFromTarget };
+              targetPoint = { x: center2.x, y: rect2.bottom };
+            }
+          }
+
+          return [center1, { x: joinPoint.x, y: center1.y }, joinPoint, targetPoint];
+        };\n
+    `,
+  },
   'missing file extension': {
     code: "import './foo';\n",
     files: { 'foo.js': '' },
@@ -1088,12 +1139,6 @@ export default {
   },
   'nested ternary': {
     code: 'export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4);\n',
-    messages: [
-      {
-        message: 'Do not nest ternary expressions.',
-        ruleId: 'no-nested-ternary',
-      },
-    ],
   },
   'new lower-case': {
     code: endent`
