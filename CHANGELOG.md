@@ -1,3 +1,12 @@
+## [5.0.16](https://github.com/dword-design/eslint-config/compare/v5.0.15...v5.0.16) (2025-02-14)
+
+
+### Bug Fixes
+
+* update dependency eslint-config-prettier to v10 ([#282](https://github.com/dword-design/eslint-config/issues/282)) ([8958f71](https://github.com/dword-design/eslint-config/commit/8958f718c625ddcbca295b52c05b7e880e50fad1))
+* update dependency eslint-plugin-promise to v7 ([#273](https://github.com/dword-design/eslint-config/issues/273)) ([8bb4926](https://github.com/dword-design/eslint-config/commit/8bb4926e88bc3eadab1a9d2e33c5998c875c4a34))
+* update dependency eslint-plugin-unicorn to v56 ([#281](https://github.com/dword-design/eslint-config/issues/281)) ([ca594df](https://github.com/dword-design/eslint-config/commit/ca594dfbdb6753c0025701e273e900b2581405d4))
+
 ## [5.0.15](https://github.com/dword-design/eslint-config/compare/v5.0.14...v5.0.15) (2025-02-14)
 
 
