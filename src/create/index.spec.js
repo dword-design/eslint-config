@@ -34,6 +34,7 @@ const runTest = config => () => {
       }),
       'package.json': JSON.stringify({ type: 'module' }),
       ...config.files,
+      [config.filename]: config.code,
     });
 
     return inFolder(config.cwd, async () => {
