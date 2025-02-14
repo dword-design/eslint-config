@@ -1,5 +1,5 @@
 import { execaCommand } from 'execa';
-import fs from 'fs-extra';
+import outputFiles from 'output-files';
 import withLocalTmpDir from 'with-local-tmp-dir';
 
 export default {
@@ -11,12 +11,13 @@ export default {
     this.resetWithLocalTmpDir = await withLocalTmpDir();
   },
   works: async () => {
-    await fs.outputFile('index.js', 'export default 1;\n');
-
-    await fs.outputFile(
-      '.eslintrc.json',
-      JSON.stringify({ extends: '..', root: true }),
-    );
+    await outputFiles({
+      '.eslintrc.json': JSON.stringify({ extends: '..', root: true }),
+      'babel.config.json': JSON.stringify({
+        extends: '@dword-design/babel-config',
+      }),
+      'index.js': 'export default 1;\n',
+    });
 
     await execaCommand('eslint .');
   },
