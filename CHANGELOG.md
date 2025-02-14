@@ -1,3 +1,13 @@
+## [5.0.14](https://github.com/dword-design/eslint-config/compare/v5.0.13...v5.0.14) (2025-02-14)
+
+
+### Bug Fixes
+
+* allow nested ternaries ([2a001eb](https://github.com/dword-design/eslint-config/commit/2a001eb60aebace11eb41f81d85b4b8bafeb46db))
+* foo ([ed6286d](https://github.com/dword-design/eslint-config/commit/ed6286d4cddb26cb34de0b2a9535487770929836))
+* foo ([03d412d](https://github.com/dword-design/eslint-config/commit/03d412d689457ba7249f2db5d32b666ee35c3514))
+* lock file maintenance ([#279](https://github.com/dword-design/eslint-config/issues/279)) ([8fe6e75](https://github.com/dword-design/eslint-config/commit/8fe6e75b298511a37817c1f1c1d1e0f9a14ab2e6))
+
 ## [5.0.13](https://github.com/dword-design/eslint-config/compare/v5.0.12...v5.0.13) (2024-12-15)
 
 
