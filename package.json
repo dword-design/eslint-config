@@ -57,7 +57,7 @@
     "output-files": "^2.0.0",
     "with-local-tmp-dir": "^5.0.0"
   },
-  "packageManager": "pnpm@10.4.0+sha512.6b849d0787d97f8f4e1f03a9b8ff8f038e79e153d6f11ae539ae7c435ff9e796df6a862c991502695c7f9e8fac8aeafc1ac5a8dab47e36148d183832d886dd52",
+  "packageManager": "pnpm@10.5.1+sha512.c424c076bd25c1a5b188c37bb1ca56cc1e136fbf530d98bcb3289982a08fd25527b8c9c4ec113be5e3393c39af04521dd647bcf1d0801eaf8ac6a7b14da313af",
   "engines": {
     "node": ">=18"
   },
