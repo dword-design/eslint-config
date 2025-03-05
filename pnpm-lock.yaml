@@ -63,8 +63,8 @@ importers:
         specifier: ^56.0.0
         version: 56.0.1(eslint@8.57.1)
       eslint-plugin-vue:
-        specifier: ^9.10.0
-        version: 9.32.0(eslint@8.57.1)
+        specifier: ^10.0.0
+        version: 10.0.0(eslint@8.57.1)(vue-eslint-parser@9.4.3(eslint@8.57.1))
       jiti:
         specifier: ^1.18.2
         version: 1.21.7
@@ -2493,6 +2493,13 @@ packages:
     engines: {node: '>=18.18'}
     peerDependencies:
       eslint: '>=8.56.0'
+
+  eslint-plugin-vue@10.0.0:
+    resolution: {integrity: sha512-XKckedtajqwmaX6u1VnECmZ6xJt+YvlmMzBPZd+/sI3ub2lpYZyFnsyWo7c3nMOQKJQudeyk1lw/JxdgeKT64w==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
+      vue-eslint-parser: ^10.0.0
 
   eslint-plugin-vue@9.32.0:
     resolution: {integrity: sha512-b/Y05HYmnB/32wqVcjxjHZzNpwxj1onBOvqW89W+V+XNG1dRuaFbNd3vT9CLbr2LXjEoq+3vn8DanWf7XU22Ug==}
@@ -9020,6 +9027,17 @@ snapshots:
       regjsparser: 0.10.0
       semver: 7.7.1
       strip-indent: 3.0.0
+
+  eslint-plugin-vue@10.0.0(eslint@8.57.1)(vue-eslint-parser@9.4.3(eslint@8.57.1)):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.1(eslint@8.57.1)
+      eslint: 8.57.1
+      natural-compare: 1.4.0
+      nth-check: 2.1.1
+      postcss-selector-parser: 6.1.2
+      semver: 7.7.1
+      vue-eslint-parser: 9.4.3(eslint@8.57.1)
+      xml-name-validator: 4.0.0
 
   eslint-plugin-vue@9.32.0(eslint@8.57.1):
     dependencies:
