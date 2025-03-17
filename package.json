@@ -50,7 +50,7 @@
   "devDependencies": {
     "@dword-design/base": "^11.0.1",
     "deepmerge": "^4.2.2",
-    "eslint": "^8.35.0",
+    "eslint": "^9.0.0",
     "execa": "^9.3.0",
     "in-folder": "^1.0.3",
     "node-version": "^3.0.0",
