@@ -1,3 +1,10 @@
+## [5.0.17](https://github.com/dword-design/eslint-config/compare/v5.0.16...v5.0.17) (2025-04-13)
+
+
+### Bug Fixes
+
+* enforce file extension for alias imports ([#205](https://github.com/dword-design/eslint-config/issues/205)) ([be9479f](https://github.com/dword-design/eslint-config/commit/be9479f5f9b9e3f7b1fd719cbdfd50fa3e22e8cb))
+
 ## [5.0.16](https://github.com/dword-design/eslint-config/compare/v5.0.15...v5.0.16) (2025-02-14)
 
 
