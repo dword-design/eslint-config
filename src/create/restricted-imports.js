@@ -69,10 +69,7 @@ export default [
     message: 'Does not set no-sandbox.',
     name: 'puppeteer',
   },
-  {
-    alternative: 'matchdep',
-    name: 'resolve-dep',
-  },
+  { alternative: 'matchdep', name: 'resolve-dep' },
   {
     alternative: 'sort-keys',
     message: 'Does not support recursive sorting.',
@@ -88,4 +85,4 @@ export default [
     message: 'Use map and fromPairs instead',
     name: '@dword-design/functions',
   },
-]
+];

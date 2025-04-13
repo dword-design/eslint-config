@@ -1,18 +1,20 @@
-import { compact, filter, join, map, omit } from '@dword-design/functions'
-import packageName from 'depcheck-package-name'
-import loadPkg from 'load-pkg'
+import { compact, filter, join, map, omit } from '@dword-design/functions';
+import confusingBrowserGlobals from 'confusing-browser-globals';
+import packageName from 'depcheck-package-name';
+import loadPkg from 'load-pkg';
+import { without } from 'lodash-es';
 
-import restrictedImports from './restricted-imports'
+import restrictedImports from './restricted-imports.js';
 
 export default () => {
-  const packageConfig = loadPkg.sync() || {}
+  const packageConfig = loadPkg.sync() || {};
 
   const eslintRestrictedImports =
     restrictedImports
     |> filter(
       importDef =>
         importDef.alternative === undefined ||
-        importDef.alternative !== packageConfig.name
+        importDef.alternative !== packageConfig.name,
     )
     |> map(importDef => ({
       ...(importDef |> omit(['alternative'])),
@@ -23,28 +25,22 @@ export default () => {
         ]
         |> compact
         |> join(' '),
-    }))
+    }));
 
   return {
-    env: {
-      browser: true,
-      es6: true,
-      node: true,
-    },
     extends: [
       packageName`eslint-config-airbnb-base`,
       `plugin:${packageName`eslint-plugin-promise`}/recommended`,
       `plugin:${packageName`eslint-plugin-import`}/recommended`,
       `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
-      `plugin:${packageName`eslint-plugin-vue`}/recommended`,
+      `plugin:${packageName`eslint-plugin-vue`}/vue3-recommended`,
       `plugin:${packageName`eslint-plugin-prettier`}/recommended`,
     ],
+    globals: { globalThis: true, self: true, window: true },
     overrides: [
       {
         files: '**/*.spec.js',
-        globals: {
-          expect: 'readonly',
-        },
+        globals: { expect: 'readonly' },
         rules: {
           'no-restricted-imports': [
             'error',
@@ -60,12 +56,11 @@ export default () => {
           ],
         },
       },
+      { files: '**/*.vue', rules: { 'vue/multi-word-component-names': 'off' } },
     ],
     parser: packageName`vue-eslint-parser`,
     parserOptions: {
-      babelOptions: {
-        configFile: require.resolve('@dword-design/babel-config'),
-      },
+      babelOptions: { rootMode: 'upward-optional' },
       parser: packageName`@babel/eslint-parser`,
     },
     plugins: [
@@ -73,9 +68,7 @@ export default () => {
       packageName`eslint-plugin-simple-import-sort`,
       packageName`eslint-plugin-json-format`,
       packageName`eslint-plugin-sort-keys-fix`,
-      packageName`eslint-plugin-react`,
       packageName`eslint-plugin-github`,
-      packageName`eslint-plugin-node`,
       packageName`eslint-plugin-unicorn`,
     ],
     rules: {
@@ -83,9 +76,13 @@ export default () => {
       'func-names': ['error', 'never'],
       'github/array-foreach': 'error',
       'global-require': 'off',
-      'import/extensions': 'off',
+      'import/extensions': ['error', 'ignorePackages'],
       'import/no-commonjs': 'error',
       'import/no-dynamic-require': 'off',
+      'import/no-extraneous-dependencies': [
+        'error',
+        { devDependencies: ['**/*.spec.js', 'global-test-hooks.js'] },
+      ],
       'import/order': 'off',
       'import/prefer-default-export': 'off',
       'linebreak-style': ['error', 'unix'],
@@ -94,78 +91,87 @@ export default () => {
       'no-console': 'off',
       'no-constant-condition': ['error', { checkLoops: false }],
       'no-continue': 'off',
+      'no-lonely-if': 'off',
       'no-negated-condition': 'error',
+      'no-nested-ternary': 'off',
       'no-param-reassign': 'off',
+      'no-promise-executor-return': 'off',
+
       'no-regex-spaces': 'off',
-      'no-restricted-imports': [
+
+      // https://github.com/facebook/create-react-app/issues/12847
+      'no-restricted-globals': [
         'error',
         {
-          paths: eslintRestrictedImports,
+          message:
+            'Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite',
+          name: 'isFinite',
         },
+        {
+          message:
+            'Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan',
+          name: 'isNaN',
+        },
+        ...without(confusingBrowserGlobals, 'self').map(g => ({
+          message: `Use window.${g} instead. https://github.com/facebook/create-react-app/blob/HEAD/packages/confusing-browser-globals/README.md`,
+          name: g,
+        })),
       ],
-      'no-restricted-syntax': [
-        'error',
-        'ObjectPattern',
-        'ArrayPattern',
-        "LogicalExpression[operator='??']",
-      ],
+      'no-restricted-imports': ['error', { paths: eslintRestrictedImports }],
+      'no-restricted-syntax': ['error', "LogicalExpression[operator='??']"],
       'no-return-assign': 'off',
       'no-template-curly-in-string': 'off',
       'no-underscore-dangle': 'off',
-      'node/file-extension-in-import': 'error',
       'object-shorthand': ['error', 'always'],
       'padding-line-between-statements': [
         'error',
-        {
-          blankLine: 'never',
-          next: '*',
-          prev: '*',
-        },
-        {
-          blankLine: 'always',
-          next: ['var', 'const'],
-          prev: ['*'],
-        },
-        {
-          blankLine: 'always',
-          next: '*',
-          prev: 'import',
-        },
-        {
-          blankLine: 'any',
-          next: 'import',
-          prev: 'import',
-        },
-        {
-          blankLine: 'always',
-          next: 'export',
-          prev: '*',
-        },
-        {
-          blankLine: 'always',
-          next: 'return',
-          prev: '*',
-        },
+        { blankLine: 'never', next: '*', prev: '*' },
+        { blankLine: 'always', next: '*', prev: 'import' },
+        { blankLine: 'any', next: 'import', prev: 'import' },
+        ...Object.keys({
+          'block-like': true,
+          const: true,
+          expression: true,
+          let: true,
+        }).flatMap(name => [
+          { blankLine: 'always', next: `multiline-${name}`, prev: '*' },
+          { blankLine: 'always', next: '*', prev: `multiline-${name}` },
+        ]),
+        { blankLine: 'always', next: 'export', prev: '*' },
       ],
       'prefer-arrow/prefer-arrow-functions': ['error'],
-      'prefer-destructuring': 'off',
-      'prettier/prettier': [
+      [`${packageName`prettier`}/prettier`]: [
         'error',
         {
           arrowParens: 'avoid',
-          semi: false,
+          plugins: [packageName`prettier-plugin-compactify`],
           singleQuote: true,
+          trailingComma: 'all',
         },
       ],
+      'prefer-destructuring': 'off',
       'promise/prefer-await-to-then': 'error',
-      'react/jsx-boolean-value': 'error',
-      'react/jsx-sort-props': 'error',
       'require-await': 'error',
       'simple-import-sort/imports': 'error',
       'sort-keys-fix/sort-keys-fix': 'error',
-      'unicorn/template-indent': ['error', { tags: ['endent'] }],
+      'unicorn/template-indent': [
+        'error',
+        {
+          tags: Object.keys({
+            css: true,
+            endent: true,
+            html: true,
+            javascript: true,
+            sql: true,
+            svg: true,
+            xml: true,
+          }),
+        },
+      ],
+      'vue/attributes-order': ['error', { alphabetical: true }],
       'vue/no-deprecated-functional-template': 'error',
       'vue/order-in-components': 'off',
+      'vue/prefer-true-attribute-shorthand': 'error',
       'vue/require-default-prop': 'off',
       'vue/require-prop-types': 'off',
     },
@@ -174,7 +180,8 @@ export default () => {
         [packageName`eslint-import-resolver-babel-module`]: {
           allowExistingDirectories: true,
         },
+        [packageName`eslint-import-resolver-exports`]: {},
       },
     },
-  }
-}
+  };
+};
