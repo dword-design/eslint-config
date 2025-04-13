@@ -76,7 +76,14 @@ export default () => {
       'func-names': ['error', 'never'],
       'github/array-foreach': 'error',
       'global-require': 'off',
-      'import/extensions': ['error', 'ignorePackages'],
+      'import/extensions': [
+        'error',
+        'always',
+        {
+          ignorePackages: true,
+          pathGroupOverrides: [{ action: 'enforce', pattern: '@' }],
+        },
+      ],
       'import/no-commonjs': 'error',
       'import/no-dynamic-require': 'off',
       'import/no-extraneous-dependencies': [

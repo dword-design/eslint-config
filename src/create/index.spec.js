@@ -802,6 +802,68 @@ export default {
       }),
     },
   },
+  'file extension: alias: existing': {
+    code: "import '@/foo.js';\n",
+    filename: P.join('sub', 'index.js'),
+    files: { 'foo.js': '' },
+  },
+  'file extension: alias: missing': {
+    code: "import '@/foo';\n",
+    filename: P.join('sub', 'index.js'),
+    files: { 'foo.js': '' },
+    messages: [
+      {
+        message: 'Missing file extension "js" for "@/foo"',
+        ruleId: 'import/extensions',
+      },
+    ],
+  },
+  'file extension: scoped package: existing': {
+    code: "import '@foo/bar.js';\n",
+    files: {
+      'node_modules/@foo/bar': {
+        'index.js': '',
+        'package.json': JSON.stringify({ name: '@foo/bar' }),
+      },
+      'package.json': JSON.stringify({
+        dependencies: { '@foo/bar': '*' },
+        type: 'module',
+      }),
+    },
+    messages: [
+      {
+        message: "Unable to resolve path to module '@foo/bar.js'.",
+        ruleId: 'import/no-unresolved',
+      },
+    ],
+  },
+  'file extension: scoped package: missing': {
+    code: "import '@foo/bar';\n",
+    files: {
+      'node_modules/@foo/bar': {
+        'index.js': '',
+        'package.json': JSON.stringify({ name: '@foo/bar' }),
+      },
+      'package.json': JSON.stringify({
+        dependencies: { '@foo/bar': '*' },
+        type: 'module',
+      }),
+    },
+  },
+  'file extension: subpath: existing': {
+    code: "import './foo.js';\n",
+    files: { 'foo.js': '' },
+  },
+  'file extension: subpath: missing': {
+    code: "import './foo';\n",
+    files: { 'foo.js': '' },
+    messages: [
+      {
+        message: 'Missing file extension "js" for "./foo"',
+        ruleId: 'import/extensions',
+      },
+    ],
+  },
   forEach: {
     code: endent`
       const foo = [];
@@ -1042,16 +1104,6 @@ export default {
         };\n
     `,
   },
-  'missing file extension': {
-    code: "import './foo';\n",
-    files: { 'foo.js': '' },
-    messages: [
-      {
-        message: 'Missing file extension "js" for "./foo"',
-        ruleId: 'import/extensions',
-      },
-    ],
-  },
   'missing trailing comma': {
     code: endent`
       console.log([
@@ -1146,13 +1198,6 @@ export default {
 
       export default new foo();\n
     `,
-  },
-  'no file extension in node_modules import': {
-    code: "import 'foo/bar';\n",
-    files: {
-      'node_modules/foo/bar.js': '',
-      'package.json': JSON.stringify({ dependencies: { foo: '^1.0.0' } }),
-    },
   },
   'nullish coalescing': {
     code: 'console.log(1 ?? 2);\n',
