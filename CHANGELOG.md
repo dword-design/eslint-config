@@ -1,3 +1,10 @@
+## [5.0.19](https://github.com/dword-design/eslint-config/compare/v5.0.18...v5.0.19) (2025-04-13)
+
+
+### Bug Fixes
+
+* eslint-plugin-import fork ([67c9df7](https://github.com/dword-design/eslint-config/commit/67c9df7f534e7cbe74e37f746ba8f60aefa14ff1))
+
 ## [5.0.18](https://github.com/dword-design/eslint-config/compare/v5.0.17...v5.0.18) (2025-04-13)
 
 
