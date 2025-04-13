@@ -6,7 +6,6 @@ import {
   mapValues,
   pick,
 } from '@dword-design/functions';
-import deepmerge from 'deepmerge';
 import packageName from 'depcheck-package-name';
 import { ESLint } from 'eslint';
 import inFolder from 'in-folder';
@@ -39,8 +38,9 @@ const runTest = config => () => {
 
     return inFolder(config.cwd, async () => {
       const eslintConfig = {
+        baseConfig: self(),
         extensions: ['.json', '.vue'],
-        overrideConfig: deepmerge(self(), config.eslintConfig),
+        overrideConfig: config.eslintConfig,
         useEslintrc: false,
       };
 
@@ -1276,6 +1276,22 @@ export default {
         console.log(foo);
       };\n
     `,
+  },
+  pathGroupOverrides: {
+    code: "import '#content/server';\n",
+    eslintConfig: {
+      rules: {
+        'import/extensions': [
+          'error',
+          'always',
+          {
+            ignorePackages: true,
+            pathGroupOverrides: [{ action: 'ignore', pattern: '#*/**' }],
+          },
+        ],
+        'import/no-unresolved': ['error', { ignore: ['#content'] }],
+      },
+    },
   },
   'pipeline operator': {
     code: 'export default async () => 1 |> (x => x + 1) |> await;\n',
