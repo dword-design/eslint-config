@@ -36,8 +36,8 @@ importers:
         specifier: ^1.0.0-beta.5
         version: 1.0.0-beta.5(@dword-design/eslint-plugin-import@0.1.0(@typescript-eslint/parser@8.29.0(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-github:
-        specifier: ^5.0.0
-        version: 5.1.8(eslint@8.57.1)(typescript@5.8.3)
+        specifier: ^6.0.0
+        version: 6.0.0(eslint@8.57.1)
       eslint-plugin-import:
         specifier: npm:@dword-design/eslint-plugin-import@^0.1.0
         version: '@dword-design/eslint-plugin-import@0.1.0(@typescript-eslint/parser@8.29.0(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1)'
@@ -2426,6 +2426,12 @@ packages:
     peerDependencies:
       eslint: ^8 || ^9
 
+  eslint-plugin-github@6.0.0:
+    resolution: {integrity: sha512-J8MvUoiR/TU/Y9NnEmg1AnbvMUj9R6IO260z47zymMLLvso7B4c80IKjd8diqmqtSmeXXlbIus4i0SvK84flag==}
+    hasBin: true
+    peerDependencies:
+      eslint: ^8 || ^9
+
   eslint-plugin-i18n-text@1.0.1:
     resolution: {integrity: sha512-3G3UetST6rdqhqW9SfcfzNYMpQXS7wNkJvp6dsXnjzGiku6Iu5hl3B0kmk6lIcFPwYjhQIY+tXVRtK9TlGT7RA==}
     peerDependencies:
@@ -3024,6 +3030,10 @@ packages:
 
   globals@15.15.0:
     resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
+    engines: {node: '>=18'}
+
+  globals@16.0.0:
+    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -8951,6 +8961,38 @@ snapshots:
       - supports-color
       - typescript
 
+  eslint-plugin-github@6.0.0(eslint@8.57.1):
+    dependencies:
+      '@eslint/compat': 1.2.8(eslint@8.57.1)
+      '@eslint/eslintrc': 3.3.1
+      '@eslint/js': 9.24.0
+      '@github/browserslist-config': 1.0.0
+      '@typescript-eslint/eslint-plugin': 8.29.0(@typescript-eslint/parser@8.29.0(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1)(typescript@5.8.3)
+      '@typescript-eslint/parser': 8.29.0(eslint@8.57.1)(typescript@5.8.3)
+      aria-query: 5.3.2
+      eslint: 8.57.1
+      eslint-config-prettier: 10.1.1(eslint@8.57.1)
+      eslint-plugin-escompat: 3.11.4(eslint@8.57.1)
+      eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.1)
+      eslint-plugin-filenames: 1.3.2(eslint@8.57.1)
+      eslint-plugin-i18n-text: 1.0.1(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.29.0(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1)
+      eslint-plugin-jsx-a11y: 6.10.2(eslint@8.57.1)
+      eslint-plugin-no-only-tests: 3.3.0
+      eslint-plugin-prettier: 5.2.6(eslint-config-prettier@10.1.1(eslint@8.57.1))(eslint@8.57.1)(prettier@3.5.3)
+      eslint-rule-documentation: 1.0.23
+      globals: 16.0.0
+      jsx-ast-utils: 3.3.5
+      prettier: 3.5.3
+      svg-element-attributes: 1.3.1
+      typescript: 5.8.3
+      typescript-eslint: 8.29.0(eslint@8.57.1)(typescript@5.8.3)
+    transitivePeerDependencies:
+      - '@types/eslint'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+
   eslint-plugin-i18n-text@1.0.1(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
@@ -9744,6 +9786,8 @@ snapshots:
   globals@14.0.0: {}
 
   globals@15.15.0: {}
+
+  globals@16.0.0: {}
 
   globalthis@1.0.4:
     dependencies:
