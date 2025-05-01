@@ -41,7 +41,7 @@
     "eslint-plugin-unicorn": "^56.0.0",
     "eslint-plugin-vue": "^9.10.0",
     "fs-extra": "^11.3.0",
-    "jiti": "^1.18.2",
+    "jiti": "^2.0.0",
     "load-pkg": "^4.0.0",
     "lodash-es": "^4.17.21",
     "prettier": "^3.2.4",
