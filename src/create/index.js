@@ -1,6 +1,7 @@
 import { compact, filter, join, map, omit } from '@dword-design/functions';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
+import fs from 'fs-extra';
 import loadPkg from 'load-pkg';
 import { without } from 'lodash-es';
 
@@ -8,6 +9,10 @@ import restrictedImports from './restricted-imports.js';
 
 export default () => {
   const packageConfig = loadPkg.sync() || {};
+
+  const baseConfig = fs.existsSync('.baserc.json')
+    ? fs.readJsonSync('.baserc.json')
+    : {};
 
   const eslintRestrictedImports =
     restrictedImports
@@ -81,7 +86,14 @@ export default () => {
       'import/no-dynamic-require': 'off',
       'import/no-extraneous-dependencies': [
         'error',
-        { devDependencies: ['**/*.spec.js', 'global-test-hooks.js'] },
+        {
+          devDependencies: [
+            '**/*.spec.js',
+            baseConfig.testRunner === 'playwright'
+              ? 'playwright.config.js'
+              : 'global-test-hooks.js',
+          ],
+        },
       ],
       'import/order': 'off',
       'import/prefer-default-export': 'off',

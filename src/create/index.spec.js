@@ -716,10 +716,59 @@ export default {
       console.log(y);\n
     `,
   },
-  'dev dependency in global-test-hooks.js': {
+  'dev dependency in global-test-hooks.js: mocha': {
     code: "import 'foo';\n",
     filename: 'global-test-hooks.js',
     files: {
+      'node_modules/foo': {
+        'index.js': '',
+        'package.json': JSON.stringify({ name: 'foo' }),
+      },
+      'package.json': JSON.stringify({ devDependencies: { foo: '^1.0.0' } }),
+    },
+  },
+  'dev dependency in global-test-hooks.js: playwright': {
+    code: "import 'foo';\n",
+    filename: 'global-test-hooks.js',
+    files: {
+      '.baserc.json': JSON.stringify({ testRunner: 'playwright' }),
+      'node_modules/foo': {
+        'index.js': '',
+        'package.json': JSON.stringify({ name: 'foo' }),
+      },
+      'package.json': JSON.stringify({ devDependencies: { foo: '^1.0.0' } }),
+    },
+    messages: [
+      {
+        message:
+          "'foo' should be listed in the project's dependencies, not devDependencies.",
+        ruleId: 'import/no-extraneous-dependencies',
+      },
+    ],
+  },
+  'dev dependency in playwright.config.js: mocha': {
+    code: "import 'foo';\n",
+    filename: 'playwright.config.js',
+    files: {
+      'node_modules/foo': {
+        'index.js': '',
+        'package.json': JSON.stringify({ name: 'foo' }),
+      },
+      'package.json': JSON.stringify({ devDependencies: { foo: '^1.0.0' } }),
+    },
+    messages: [
+      {
+        message:
+          "'foo' should be listed in the project's dependencies, not devDependencies.",
+        ruleId: 'import/no-extraneous-dependencies',
+      },
+    ],
+  },
+  'dev dependency in playwright.config.js: playwright': {
+    code: "import 'foo';\n",
+    filename: 'playwright.config.js',
+    files: {
+      '.baserc.json': JSON.stringify({ testRunner: 'playwright' }),
       'node_modules/foo': {
         'index.js': '',
         'package.json': JSON.stringify({ name: 'foo' }),
