@@ -1,3 +1,10 @@
+## [5.0.20](https://github.com/dword-design/eslint-config/compare/v5.0.19...v5.0.20) (2025-05-01)
+
+
+### Bug Fixes
+
+* playwright ([4fcede9](https://github.com/dword-design/eslint-config/commit/4fcede908a04e2a03a725cbffbd066988935fd8b))
+
 ## [5.0.19](https://github.com/dword-design/eslint-config/compare/v5.0.18...v5.0.19) (2025-04-13)
 
 
