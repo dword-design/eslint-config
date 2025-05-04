@@ -1,3 +1,10 @@
+## [5.0.21](https://github.com/dword-design/eslint-config/compare/v5.0.20...v5.0.21) (2025-05-04)
+
+
+### Bug Fixes
+
+* playwright empty object pattern ([ea521f0](https://github.com/dword-design/eslint-config/commit/ea521f01a7d2c6e1d3a2856f75d7906f25b4b158))
+
 ## [5.0.20](https://github.com/dword-design/eslint-config/compare/v5.0.19...v5.0.20) (2025-05-01)
 
 
