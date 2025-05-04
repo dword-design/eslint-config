@@ -112,6 +112,7 @@ export default () => {
       'no-console': 'off',
       'no-constant-condition': ['error', { checkLoops: false }],
       'no-continue': 'off',
+      'no-empty-pattern': 'error',
       'no-lonely-if': 'off',
       'no-negated-condition': 'error',
       'no-nested-ternary': 'off',

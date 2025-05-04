@@ -843,7 +843,26 @@ export default {
       },
     ],
   },
-  'empty object pattern > playwright: yes': {
+  'empty object pattern > playwright: yes > test file: no': {
+    code: endent`
+      import { test as base } from '${packageName`@playwright/test`}';
+
+      export const test = base.extend({ _: [({}, use) => use(), { auto: true }] });\n
+    `,
+    files: {
+      '.baserc.json': JSON.stringify({ testRunner: 'playwright' }),
+      'package.json': JSON.stringify({
+        dependencies: { [packageName`@playwright/test`]: '*' },
+      }),
+    },
+    messages: [
+      {
+        message: 'Unexpected empty object pattern.',
+        ruleId: 'no-empty-pattern',
+      },
+    ],
+  },
+  'empty object pattern > playwright: yes > test file: yes': {
     code: endent`
       import { test as base } from '${packageName`@playwright/test`}';
 
