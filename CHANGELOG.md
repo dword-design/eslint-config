@@ -1,3 +1,10 @@
+## [5.0.23](https://github.com/dword-design/eslint-config/compare/v5.0.22...v5.0.23) (2025-05-04)
+
+
+### Bug Fixes
+
+* fix dep ([560d859](https://github.com/dword-design/eslint-config/commit/560d859f35d7f060a924e225a09fa96ee2c92f30))
+
 ## [5.0.22](https://github.com/dword-design/eslint-config/compare/v5.0.21...v5.0.22) (2025-05-04)
 
 
