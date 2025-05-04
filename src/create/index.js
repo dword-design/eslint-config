@@ -59,6 +59,9 @@ export default () => {
               ],
             },
           ],
+          ...(baseConfig.testRunner === 'playwright' && {
+            'no-empty-pattern': 'off',
+          }),
         },
       },
       { files: '**/*.vue', rules: { 'vue/multi-word-component-names': 'off' } },

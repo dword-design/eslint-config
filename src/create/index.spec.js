@@ -833,6 +833,31 @@ export default {
       `,
     },
   },
+  'empty object pattern > playwright: no': {
+    code: 'export default ({}) => {};\n',
+    filename: 'index.spec.js',
+    messages: [
+      {
+        message: 'Unexpected empty object pattern.',
+        ruleId: 'no-empty-pattern',
+      },
+    ],
+  },
+  'empty object pattern > playwright: yes': {
+    code: endent`
+      import { test as base } from '${packageName`@playwright/test`}';
+
+      const test = base.extend({ _: [({}, use) => use(), { auto: true }] });
+      test('foo', () => {});\n
+    `,
+    filename: 'index.spec.js',
+    files: {
+      '.baserc.json': JSON.stringify({ testRunner: 'playwright' }),
+      'package.json': JSON.stringify({
+        devDependencies: { [packageName`@playwright/test`]: '*' },
+      }),
+    },
+  },
   'esm import without main field': {
     code: "import 'foo';\n",
     files: {
