@@ -1,3 +1,10 @@
+## [5.0.22](https://github.com/dword-design/eslint-config/compare/v5.0.21...v5.0.22) (2025-05-04)
+
+
+### Bug Fixes
+
+* add playwright plugin ([f284936](https://github.com/dword-design/eslint-config/commit/f2849365cbaad323ddb517a70debca1695d9361c))
+
 ## [5.0.21](https://github.com/dword-design/eslint-config/compare/v5.0.20...v5.0.21) (2025-05-04)
 
 
