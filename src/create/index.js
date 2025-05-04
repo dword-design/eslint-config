@@ -40,6 +40,9 @@ export default () => {
       `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
       `plugin:${packageName`eslint-plugin-vue`}/vue3-recommended`,
       `plugin:${packageName`eslint-plugin-prettier`}/recommended`,
+      ...(baseConfig.testRunner === 'playwright'
+        ? [`plugin:${packageName`eslint-plugin-playwright`}/recommended`]
+        : []),
     ],
     globals: { globalThis: true, self: true, window: true },
     overrides: [
@@ -80,6 +83,9 @@ export default () => {
       packageName`eslint-plugin-unicorn`,
     ],
     rules: {
+      ...(baseConfig.testRunner === 'playwright' && {
+        'playwright/expect-expect': 'off',
+      }),
       'arrow-body-style': ['error', 'as-needed'],
       'func-names': ['error', 'never'],
       'github/array-foreach': 'error',
