@@ -11,6 +11,9 @@ importers:
       '@babel/eslint-parser':
         specifier: ^7.13.14
         version: 7.27.0(@babel/core@7.26.10)(eslint@8.57.1)
+      '@dword-design/defu':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@dword-design/eslint-plugin-import-alias':
         specifier: ^5.0.0
         version: 5.1.2
@@ -852,6 +855,10 @@ packages:
 
   '@dword-design/dedent@0.7.0':
     resolution: {integrity: sha512-OFmAmzKiDUh9m7WRMYcoEOPI7b5tS5hdqQmtKDwF+ZssVJv8a+GHo9VOtFsmlw3h8Roh/9QzFWIsjSFZyQUMdg==}
+
+  '@dword-design/defu@1.0.0':
+    resolution: {integrity: sha512-TSeItFcOEB9xUlw745+l9M+uU9bn6SaOH2q4uy2IFtmHbPYzLHsFEaaBvScD1XqKnxVyqOK4UtnFibv8Ja1ffA==}
+    engines: {node: '>=18'}
 
   '@dword-design/depcheck-parser-sass@4.0.4':
     resolution: {integrity: sha512-liMT6tgQ/YfhNgW6rigOaY0XqfNMMFb+DCwEeLtfBdTJhMUEHwBb8UsChw8uwrxMSQW/YsabfnDsT897pBmBlg==}
@@ -2159,6 +2166,9 @@ packages:
   define-property@2.0.2:
     resolution: {integrity: sha512-jwK2UV4cnPpbcG7+VRARKTZPUWowwXA8bzH5NP6ud0oeAxyYPuGZUAC7hMugpCdz4BeSZl2Dl9k66CHJ/46ZYQ==}
     engines: {node: '>=0.10.0'}
+
+  defu@6.1.4:
+    resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
 
   delay@5.0.0:
     resolution: {integrity: sha512-ReEBKkIfe4ya47wlPYf/gu5ib6yUG0/Aez0JQZQz94kiWtRQvZIQbTiehsnwHvLSWJnQdhVeqYue7Id1dKr0qw==}
@@ -6937,6 +6947,10 @@ snapshots:
     dependencies:
       babel-plugin-add-module-exports: 1.0.4
 
+  '@dword-design/defu@1.0.0':
+    dependencies:
+      defu: 6.1.4
+
   '@dword-design/depcheck-parser-sass@4.0.4':
     dependencies:
       '@dword-design/functions': 5.0.27
@@ -8653,6 +8667,8 @@ snapshots:
     dependencies:
       is-descriptor: 1.0.3
       isobject: 3.0.1
+
+  defu@6.1.4: {}
 
   delay@5.0.0: {}
 

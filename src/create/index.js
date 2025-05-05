@@ -1,3 +1,4 @@
+import defu from '@dword-design/defu';
 import { compact, filter, join, map, omit } from '@dword-design/functions';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
@@ -10,9 +11,10 @@ import restrictedImports from './restricted-imports.js';
 export default () => {
   const packageConfig = loadPkg.sync() || {};
 
-  const baseConfig = fs.existsSync('.baserc.json')
-    ? fs.readJsonSync('.baserc.json')
-    : {};
+  const baseConfig = defu(
+    fs.existsSync('.baserc.json') ? fs.readJsonSync('.baserc.json') : {},
+    { testRunner: 'mocha' },
+  );
 
   const eslintRestrictedImports =
     restrictedImports
@@ -48,7 +50,9 @@ export default () => {
     overrides: [
       {
         files: '**/*.spec.js',
-        globals: { expect: 'readonly' },
+        ...(baseConfig.testRunner === 'mocha' && {
+          globals: { expect: 'readonly' },
+        }),
         rules: {
           'no-restricted-imports': [
             'error',
@@ -62,6 +66,14 @@ export default () => {
               ],
             },
           ],
+        },
+      },
+      {
+        files: [
+          ...(baseConfig.testRunner === 'playwright' ? ['fixtures/**'] : []),
+          '**/*.spec.js',
+        ],
+        rules: {
           ...(baseConfig.testRunner === 'playwright' && {
             'no-empty-pattern': 'off',
           }),
