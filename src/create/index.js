@@ -208,6 +208,7 @@ export default () => {
       'vue/prefer-true-attribute-shorthand': 'error',
       'vue/require-default-prop': 'off',
       'vue/require-prop-types': 'off',
+      'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }], // Complains about title not being a string if variable is passed
     },
     settings: {
       'import/resolver': {
