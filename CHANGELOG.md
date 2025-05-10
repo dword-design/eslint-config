@@ -1,3 +1,12 @@
+## [5.0.27](https://github.com/dword-design/eslint-config/compare/v5.0.26...v5.0.27) (2025-05-10)
+
+
+### Bug Fixes
+
+* foo ([2d11c0e](https://github.com/dword-design/eslint-config/commit/2d11c0e5edc818f921ee1aa02ed86ca2531292d7))
+* foo ([055f946](https://github.com/dword-design/eslint-config/commit/055f946d15a1f8147c22b60d9023422a5a6ddbcf))
+* foo ([b1cbb50](https://github.com/dword-design/eslint-config/commit/b1cbb50f1ec251b8cf09db03e2609f54b1a34cfd))
+
 ## [5.0.26](https://github.com/dword-design/eslint-config/compare/v5.0.25...v5.0.26) (2025-05-08)
 
 
