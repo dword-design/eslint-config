@@ -173,7 +173,7 @@ export default () => {
         ]),
         { blankLine: 'always', next: 'export', prev: '*' },
       ],
-      'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
+      'prefer-arrow/prefer-arrow-functions': ['error'],
       [`${packageName`prettier`}/prettier`]: [
         'error',
         {
@@ -183,7 +183,6 @@ export default () => {
           trailingComma: 'all',
         },
       ],
-      'prefer-arrow/prefer-arrow-functions': ['error'],
       'prefer-destructuring': 'off',
       'promise/prefer-await-to-then': 'error',
       'require-await': 'error',
@@ -203,6 +202,9 @@ export default () => {
           }),
         },
       ],
+      ...(baseConfig.testRunner === 'playwright' && {
+        'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
+      }),
       'vue/attributes-order': ['error', { alphabetical: true }],
       'vue/no-deprecated-functional-template': 'error',
       'vue/order-in-components': 'off',
