@@ -173,7 +173,7 @@ export default () => {
         ]),
         { blankLine: 'always', next: 'export', prev: '*' },
       ],
-      'prefer-arrow/prefer-arrow-functions': ['error'],
+      'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
       [`${packageName`prettier`}/prettier`]: [
         'error',
         {
@@ -183,6 +183,7 @@ export default () => {
           trailingComma: 'all',
         },
       ],
+      'prefer-arrow/prefer-arrow-functions': ['error'],
       'prefer-destructuring': 'off',
       'promise/prefer-await-to-then': 'error',
       'require-await': 'error',
@@ -207,8 +208,7 @@ export default () => {
       'vue/order-in-components': 'off',
       'vue/prefer-true-attribute-shorthand': 'error',
       'vue/require-default-prop': 'off',
-      'vue/require-prop-types': 'off',
-      'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }], // Complains about title not being a string if variable is passed
+      'vue/require-prop-types': 'off', // Complains about title not being a string if variable is passed
     },
     settings: {
       'import/resolver': {
