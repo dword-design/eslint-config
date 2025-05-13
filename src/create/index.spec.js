@@ -1404,14 +1404,9 @@ export default {
       'package.json': JSON.stringify({ dependencies: { foo: '^1.0.0' } }),
     },
   },
-  'promise then': {
-    code: 'export default () => Promise.resolve().then(x => x);\n',
-    messages: [
-      {
-        message: 'Prefer await to then()/catch()/finally().',
-        ruleId: 'promise/prefer-await-to-then',
-      },
-    ],
+  'promise catch': {
+    // Cannot await catch async long-running processes
+    code: 'export default () => Promise.resolve().catch(x => x);\n',
   },
   'quotes: nested': { code: `export default "foo 'bar'";\n` },
   'quotes: unnecessary escapes': {

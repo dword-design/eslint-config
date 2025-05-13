@@ -189,7 +189,6 @@ export default () => {
         },
       ],
       'prefer-destructuring': 'off',
-      'promise/prefer-await-to-then': 'error',
       'require-await': 'error',
       'simple-import-sort/imports': 'error',
       'sort-keys-fix/sort-keys-fix': 'error',
