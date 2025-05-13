@@ -111,7 +111,7 @@ export default () => {
           devDependencies: [
             '**/*.spec.js',
             ...(baseConfig.testRunner === 'playwright'
-              ? ['fixtures/**', 'playwright.config.js']
+              ? ['fixtures/**', 'global-setup.js', 'global-teardown.js', 'playwright.config.js']
               : ['global-test-hooks.js']),
           ],
         },
