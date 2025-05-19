@@ -157,6 +157,12 @@ export default () => {
         })),
       ],
       'no-restricted-imports': ['error', { paths: eslintRestrictedImports }],
+      'no-restricted-syntax': [
+        'error',
+        'ForInStatement',
+        'LabeledStatement',
+        'WithStatement',
+      ],
       'no-return-assign': 'off',
       'no-template-curly-in-string': 'off',
       'no-underscore-dangle': 'off',
@@ -177,7 +183,6 @@ export default () => {
         ]),
         { blankLine: 'always', next: 'export', prev: '*' },
       ],
-      'prefer-arrow/prefer-arrow-functions': ['error'],
       [`${packageName`prettier`}/prettier`]: [
         'error',
         {
@@ -187,6 +192,7 @@ export default () => {
           trailingComma: 'all',
         },
       ],
+      'prefer-arrow/prefer-arrow-functions': ['error'], // Everything from airbnb except ForOfStatement
       'prefer-destructuring': 'off',
       'require-await': 'error',
       'simple-import-sort/imports': 'error',

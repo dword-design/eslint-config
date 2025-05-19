@@ -1292,9 +1292,7 @@ export default {
       export default new foo();\n
     `,
   },
-  'nullish coalescing': {
-    code: 'console.log(0 ?? 2);\n',
-  },
+  'nullish coalescing': { code: 'console.log(0 ?? 2);\n' },
   'object: multi-line that should be multi-line': {
     code: endent`
       export default {
