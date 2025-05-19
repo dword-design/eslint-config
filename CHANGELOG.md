@@ -1,3 +1,11 @@
+## [5.0.31](https://github.com/dword-design/eslint-config/compare/v5.0.30...v5.0.31) (2025-05-19)
+
+
+### Bug Fixes
+
+* enable nullish coalescing ([a6fb8fd](https://github.com/dword-design/eslint-config/commit/a6fb8fd370356feb142b77bb8ad35d43b8c2e009))
+* foo ([1ee9649](https://github.com/dword-design/eslint-config/commit/1ee9649b5ae12521aeeb09c8cab9150e04787e96))
+
 ## [5.0.30](https://github.com/dword-design/eslint-config/compare/v5.0.29...v5.0.30) (2025-05-13)
 
 
