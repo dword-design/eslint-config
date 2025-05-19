@@ -1293,13 +1293,7 @@ export default {
     `,
   },
   'nullish coalescing': {
-    code: 'console.log(1 ?? 2);\n',
-    messages: [
-      {
-        message: "Using 'LogicalExpression[operator='??']' is not allowed.",
-        ruleId: 'no-restricted-syntax',
-      },
-    ],
+    code: 'console.log(0 ?? 2);\n',
   },
   'object: multi-line that should be multi-line': {
     code: endent`

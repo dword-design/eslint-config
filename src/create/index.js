@@ -157,7 +157,6 @@ export default () => {
         })),
       ],
       'no-restricted-imports': ['error', { paths: eslintRestrictedImports }],
-      'no-restricted-syntax': ['error', "LogicalExpression[operator='??']"],
       'no-return-assign': 'off',
       'no-template-curly-in-string': 'off',
       'no-underscore-dangle': 'off',
