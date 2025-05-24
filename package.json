@@ -53,7 +53,7 @@
   "devDependencies": {
     "@dword-design/base": "^11.0.1",
     "@playwright/test": "^1.52.0",
-    "eslint": "^8.35.0",
+    "eslint": "^9.0.0",
     "execa": "^9.3.0",
     "in-folder": "^1.0.3",
     "node-version": "^3.0.0",
