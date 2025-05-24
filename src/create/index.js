@@ -38,7 +38,7 @@ export default () => {
       `plugin:${packageName`eslint-plugin-promise`}/recommended`,
       `plugin:${packageName`eslint-plugin-import`}/recommended`,
       `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
-      `plugin:${packageName`eslint-plugin-vue`}/vue3-recommended`,
+      `plugin:${packageName`eslint-plugin-vue`}/recommended`,
       `plugin:${packageName`eslint-plugin-prettier`}/recommended`,
     ],
     globals: { globalThis: true, self: true, window: true },
