@@ -39,9 +39,8 @@ const runTest = config => () => {
     return inFolder(config.cwd, async () => {
       const eslintConfig = {
         baseConfig: self(),
-        extensions: ['.json', '.vue'],
         overrideConfig: config.eslintConfig,
-        useEslintrc: false,
+        overrideConfigFile: true,
       };
 
       const eslintToLint = new ESLint(eslintConfig);
@@ -671,11 +670,11 @@ export default {
     `,
   },
   'deep nesting': {
-    code: 'export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344);\n',
+    code: 'export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55_456 + 23_434 + 23_434 + 2344);\n',
     messages: [
       {
         message:
-          'Replace `·console.log(()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344` with `⏎··console.log(⏎····()·=>⏎······(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55456·+·23434·+·23434·+·2344,⏎··`',
+          'Replace `·console.log(()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55_456·+·23_434·+·23_434·+·2344` with `⏎··console.log(⏎····()·=>⏎······(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55_456·+·23_434·+·23_434·+·2344,⏎··`',
         ruleId: 'prettier/prettier',
       },
     ],
@@ -1475,7 +1474,7 @@ export default {
     `,
   },
   'semicolon: yes': { code: 'console.log();\n' },
-  'service worker self': { code: 'console.log(self.chrome.action);\n' },
+  'service worker self': { code: 'console.log(self.chrome.action);\n', messages: [{ message: 'Prefer `globalThis` over `self`.', ruleId: 'unicorn/prefer-global-this' }] },
   'single export': { code: "export const foo = 'bar';\n" },
   'template literal': {
     code: endent`
@@ -1619,12 +1618,12 @@ export default {
     filename: 'index.vue',
     messages: [
       {
-        message: "'v-html' directive can lead to XSS attack.",
-        ruleId: 'vue/no-v-html',
-      },
-      {
         message: "Using v-html on component may break component's content.",
         ruleId: 'vue/no-v-text-v-html-on-component',
+      },
+      {
+        message: "'v-html' directive can lead to XSS attack.",
+        ruleId: 'vue/no-v-html',
       },
     ],
   },
@@ -1776,5 +1775,5 @@ export default {
       }\n
     `,
   },
-  window: { code: 'console.log(window);\n' },
+  window: { code: 'console.log(window);\n', messages: [{ message: 'Prefer `globalThis` over `window`.', ruleId: 'unicorn/prefer-global-this' }] },
 } |> mapValues(runTest);
