@@ -1,3 +1,5 @@
+import P from 'node:path';
+
 import {
   endent,
   flatten,
@@ -11,7 +13,6 @@ import { ESLint } from 'eslint';
 import inFolder from 'in-folder';
 import nodeVersion from 'node-version';
 import outputFiles from 'output-files';
-import P from 'path';
 import withLocalTmpDir from 'with-local-tmp-dir';
 
 import self from './index.js';
@@ -1052,6 +1053,10 @@ export default {
     filename: P.join('sub', 'index.js'),
     files: { 'buymeacoffee.svg': '', 'support-me.jpg': '' },
   },
+  gitignore: {
+    code: 'foo',
+    '.gitignore': '/index.js',
+  },
   'indent: invalid': {
     code: endent`
       export default () => {
@@ -1081,7 +1086,10 @@ export default {
     `,
     filename: 'index.json',
     messages: [
-      { message: 'Expected indentation of 2 spaces but found 4.', ruleId: 'jsonc/indent' },
+      {
+        message: 'Expected indentation of 2 spaces but found 4.',
+        ruleId: 'jsonc/indent',
+      },
     ],
     output: endent`
       {
@@ -1097,7 +1105,10 @@ export default {
     `,
     filename: 'index.json',
     messages: [
-      { message: 'Expected indentation of 2 spaces but found 0.', ruleId: 'jsonc/indent' },
+      {
+        message: 'Expected indentation of 2 spaces but found 0.',
+        ruleId: 'jsonc/indent',
+      },
     ],
     output: endent`
       {
@@ -1113,10 +1124,7 @@ export default {
     `,
     filename: 'index.json',
     messages: [
-      {
-        message: "Parsing error: Unexpected token '}'.",
-        ruleId: null,
-      },
+      { message: "Parsing error: Unexpected token '}'.", ruleId: null },
     ],
   },
   'json: valid': {
@@ -1278,10 +1286,12 @@ export default {
       export default new foo();\n
     `,
   },
-  'nullish coalescing': { code: endent`
-    const foo = 0;
-    console.log(foo ?? 2);\n
-  ` },
+  'nullish coalescing': {
+    code: endent`
+      const foo = 0;
+      console.log(foo ?? 2);\n
+    `,
+  },
   'object: multi-line that should be multi-line': {
     code: endent`
       export default {
@@ -1331,7 +1341,13 @@ export default {
       }\n
     `,
     filename: 'package.json',
-    messages: [{ message: "Expected object keys to be in ascending order. 'name' should be before 'version'.", ruleId: 'jsonc/sort-keys' }],
+    messages: [
+      {
+        message:
+          "Expected object keys to be in ascending order. 'name' should be before 'version'.",
+        ruleId: 'jsonc/sort-keys',
+      },
+    ],
     output: endent`
       {
         "name": "foo",
@@ -1476,7 +1492,16 @@ export default {
     `,
   },
   'semicolon: yes': { code: 'console.log();\n' },
-  'service worker self': { code: 'console.log(self.chrome.action);\n', messages: [{ message: 'Prefer `globalThis` over `self`.', ruleId: 'unicorn/prefer-global-this' }], output: 'console.log(globalThis.chrome.action);\n' },
+  'service worker self': {
+    code: 'console.log(self.chrome.action);\n',
+    messages: [
+      {
+        message: 'Prefer `globalThis` over `self`.',
+        ruleId: 'unicorn/prefer-global-this',
+      },
+    ],
+    output: 'console.log(globalThis.chrome.action);\n',
+  },
   'single export': { code: "export const foo = 'bar';\n" },
   'template literal': {
     code: endent`
@@ -1626,10 +1651,6 @@ export default {
     ],
   },
   valid: { code: 'export default 1;\n' },
-  gitignore: {
-    code: 'foo',
-    '.gitignore': '/index.js',
-  },
   var: {
     code: endent`
       var foo = 1;
@@ -1759,5 +1780,14 @@ export default {
       }\n
     `,
   },
-  window: { code: 'console.log(window);\n', messages: [{ message: 'Prefer `globalThis` over `window`.', ruleId: 'unicorn/prefer-global-this' }], output: 'console.log(globalThis);\n' },
+  window: {
+    code: 'console.log(window);\n',
+    messages: [
+      {
+        message: 'Prefer `globalThis` over `window`.',
+        ruleId: 'unicorn/prefer-global-this',
+      },
+    ],
+    output: 'console.log(globalThis);\n',
+  },
 } |> mapValues(runTest);
