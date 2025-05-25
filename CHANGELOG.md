@@ -1,3 +1,10 @@
+## [6.0.3](https://github.com/dword-design/eslint-config/compare/v6.0.2...v6.0.3) (2025-05-25)
+
+
+### Bug Fixes
+
+* eslint-config-flat-gitignore ([9f91712](https://github.com/dword-design/eslint-config/commit/9f917122c8429746c7e56e3c1dd767fd82035e98))
+
 ## [6.0.2](https://github.com/dword-design/eslint-config/compare/v6.0.1...v6.0.2) (2025-05-25)
 
 
