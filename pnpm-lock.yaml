@@ -17,9 +17,6 @@ importers:
       '@dword-design/eslint-plugin-import-alias':
         specifier: ^5.1.2
         version: 5.1.2
-      '@dword-design/functions':
-        specifier: ^6.0.2
-        version: 6.0.2
       '@eslint/compat':
         specifier: ^1.2.9
         version: 1.2.9(eslint@9.27.0(jiti@1.21.7))
@@ -50,9 +47,6 @@ importers:
       eslint-plugin-import:
         specifier: npm:@dword-design/eslint-plugin-import@^0.1.0
         version: '@dword-design/eslint-plugin-import@0.1.0(@typescript-eslint/parser@8.32.1(eslint@8.57.1)(typescript@5.8.3))(eslint@9.27.0(jiti@1.21.7))'
-      eslint-plugin-json-format:
-        specifier: ^2.0.1
-        version: 2.0.1(eslint@9.27.0(jiti@1.21.7))
       eslint-plugin-jsonc:
         specifier: ^2.20.1
         version: 2.20.1(eslint@9.27.0(jiti@1.21.7))
@@ -98,13 +92,16 @@ importers:
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
+      sort-package-json:
+        specifier: ^3.2.1
+        version: 3.2.1
     devDependencies:
       '@dword-design/base':
         specifier: ^11.3.14
         version: 11.3.14(@babel/core@7.27.1)(@types/node@22.15.21)(@typescript-eslint/parser@8.32.1(eslint@8.57.1)(typescript@5.8.3))(babel-plugin-module-resolver@5.0.2)(jest@27.5.1)(typescript@5.8.3)
-      '@eslint/migrate-config':
-        specifier: ^1.5.0
-        version: 1.5.0(eslint@9.27.0(jiti@1.21.7))
+      '@dword-design/functions':
+        specifier: ^6.0.2
+        version: 6.0.2
       '@playwright/test':
         specifier: ^1.52.0
         version: 1.52.0
@@ -114,9 +111,6 @@ importers:
       in-folder:
         specifier: ^1.0.3
         version: 1.0.3
-      node-version:
-        specifier: ^3.0.0
-        version: 3.0.0
       output-files:
         specifier: ^2.0.32
         version: 2.0.32
@@ -996,11 +990,6 @@ packages:
     resolution: {integrity: sha512-G5JD9Tu5HJEu4z2Uo4aHY2sLV64B7CDMXxFzqzjl3NKd6RVzSXNoE80jk7Y0lJkTTkjiIhBAqmlYwjuBY3tvpA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/migrate-config@1.5.0':
-    resolution: {integrity: sha512-XFLv8jczLFeAclYDLaidv9Eo4ykO/F/TMMGbUgdDtrgAA3iGnEI1xvDTaWZ6jRZi0YFtOpQBujZUYKBmksSnjQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    hasBin: true
-
   '@eslint/object-schema@2.1.6':
     resolution: {integrity: sha512-RBMg5FRL0I0gs51M/guSAj5/e14VQ4tpZnQNWwuDT66P14I43ItmPfIZRhO9fUVIPOAQXU47atlywZ/czoqFPA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -1637,10 +1626,6 @@ packages:
   ast-types-flow@0.0.8:
     resolution: {integrity: sha512-OH/2E5Fg20h2aPrbe+QL8JZQFko0YZaF+j4mnQ7BGhfavO7OpSLa8a0y9sBwomHdSbkhTS8TQNayBfnW5DwbvQ==}
 
-  ast-types@0.16.1:
-    resolution: {integrity: sha512-6t10qk83GOG8p0vKmaCr8eiilZwO171AvbROMtvvNiwrTly62t+7XkA8RdIIVbpMhCASAsxgAzdRSwh6nw/5Dg==}
-    engines: {node: '>=4'}
-
   async-function@1.0.0:
     resolution: {integrity: sha512-hsU18Ae8CDTR6Kgu9DYf0EbCr/a5iGL0rytQDobUcdpYOKokk8LEjVphnXkDkgpi0wYVsqrXuP0bZxJaTqdgoA==}
     engines: {node: '>= 0.4'}
@@ -1843,10 +1828,6 @@ packages:
   camelcase@6.3.0:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
-
-  camelcase@8.0.0:
-    resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
-    engines: {node: '>=16'}
 
   caniuse-lite@1.0.30001718:
     resolution: {integrity: sha512-AflseV1ahcSunK53NfEs9gFWgOEmzr0f+kaMFA4xiLZlr9Hzt7HxcSpIFcnNCUkz6R6dWKa54rUz3HUmI3nVcw==}
@@ -3101,6 +3082,9 @@ packages:
 
   git-hooks-list@3.2.0:
     resolution: {integrity: sha512-ZHG9a1gEhUMX1TvGrLdyWb9kDopCBbTnI8z4JgRMYxsijWipgjSEYoPWqBuIB0DnRnvqlQSEeVmzpeuPm7NdFQ==}
+
+  git-hooks-list@4.1.1:
+    resolution: {integrity: sha512-cmP497iLq54AZnv4YRAEMnEyQ1eIn4tGKbmswqwmFV4GBnAqE8NLtWxxdXa++AalfgL5EBH4IxTPyquEuGY/jA==}
 
   git-log-parser@1.2.1:
     resolution: {integrity: sha512-PI+sPDvHXNPl5WNOErAK05s3j0lgwUzMN6o8cyQrDaKfT3qd7TmNJKeXX+SknI5I0QhG5fVPAEwSY4tRGDtYoQ==}
@@ -4412,10 +4396,6 @@ packages:
   node-releases@2.0.19:
     resolution: {integrity: sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==}
 
-  node-version@3.0.0:
-    resolution: {integrity: sha512-lOtS3Vaqo4GntMFYyH6BXbpiqgD5F+5ycBwDYaCjzBA9pKK9G1j6cKVtu3HU0HATDTikcWOTn8MxQmj/jo4iTQ==}
-    engines: {node: '>=14.0.0'}
-
   normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
 
@@ -4992,10 +4972,6 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  recast@0.23.11:
-    resolution: {integrity: sha512-YTUo+Flmw4ZXiWfQKGcwwc11KnoRAYgzAE2E7mXKCjSviTKShtxBsN6YUUBB2gtaBzKzeKunxhUwNHQuRryhWA==}
-    engines: {node: '>= 4'}
-
   redent@3.0.0:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
     engines: {node: '>=8'}
@@ -5353,6 +5329,10 @@ packages:
     resolution: {integrity: sha512-9x9+o8krTT2saA9liI4BljNjwAbvUnWf11Wq+i/iZt8nl2UGYnf3TH5uBydE7VALmP7AGwlfszuEeL8BDyb0YA==}
     hasBin: true
 
+  sort-package-json@3.2.1:
+    resolution: {integrity: sha512-rTfRdb20vuoAn7LDlEtCqOkYfl2X+Qze6cLbNOzcDpbmKEhJI30tTN44d5shbKJnXsvz24QQhlCm81Bag7EOKg==}
+    hasBin: true
+
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
@@ -5599,9 +5579,6 @@ packages:
 
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
-
-  tiny-invariant@1.3.3:
-    resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
 
   tinycolor2@1.6.0:
     resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
@@ -7402,17 +7379,6 @@ snapshots:
 
   '@eslint/js@9.27.0': {}
 
-  '@eslint/migrate-config@1.5.0(eslint@9.27.0(jiti@1.21.7))':
-    dependencies:
-      '@eslint/compat': 1.2.9(eslint@9.27.0(jiti@1.21.7))
-      '@eslint/eslintrc': 3.3.1
-      camelcase: 8.0.0
-      espree: 10.3.0
-      recast: 0.23.11
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
-
   '@eslint/object-schema@2.1.6': {}
 
   '@eslint/plugin-kit@0.3.1':
@@ -8258,10 +8224,6 @@ snapshots:
 
   ast-types-flow@0.0.8: {}
 
-  ast-types@0.16.1:
-    dependencies:
-      tslib: 2.8.1
-
   async-function@1.0.0: {}
 
   asynckit@0.4.0: {}
@@ -8533,8 +8495,6 @@ snapshots:
   camelcase@5.3.1: {}
 
   camelcase@6.3.0: {}
-
-  camelcase@8.0.0: {}
 
   caniuse-lite@1.0.30001718: {}
 
@@ -9338,20 +9298,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-json-format@2.0.1(eslint@9.27.0(jiti@1.21.7)):
-    dependencies:
-      common-tags: 1.8.2
-      debug: 4.4.1(supports-color@8.1.1)
-      diff-match-patch: 1.0.5
-      eslint: 9.27.0(jiti@1.21.7)
-      json-fixer: 1.6.15
-      line-column: 1.0.2
-      lodash: 4.17.21
-      minimatch: 3.1.2
-      sort-package-json: 1.57.0
-    transitivePeerDependencies:
-      - supports-color
-
   eslint-plugin-jsonc@2.20.1(eslint@9.27.0(jiti@1.21.7)):
     dependencies:
       '@eslint-community/eslint-utils': 4.7.0(eslint@9.27.0(jiti@1.21.7))
@@ -10108,6 +10054,8 @@ snapshots:
   git-hooks-list@1.0.3: {}
 
   git-hooks-list@3.2.0: {}
+
+  git-hooks-list@4.1.1: {}
 
   git-log-parser@1.2.1:
     dependencies:
@@ -11770,8 +11718,6 @@ snapshots:
 
   node-releases@2.0.19: {}
 
-  node-version@3.0.0: {}
-
   normalize-package-data@2.5.0:
     dependencies:
       hosted-git-info: 2.8.9
@@ -12301,14 +12247,6 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  recast@0.23.11:
-    dependencies:
-      ast-types: 0.16.1
-      esprima: 4.0.1
-      source-map: 0.6.1
-      tiny-invariant: 1.3.3
-      tslib: 2.8.1
-
   redent@3.0.0:
     dependencies:
       indent-string: 4.0.0
@@ -12719,6 +12657,16 @@ snapshots:
       sort-object-keys: 1.1.3
       tinyglobby: 0.2.13
 
+  sort-package-json@3.2.1:
+    dependencies:
+      detect-indent: 7.0.1
+      detect-newline: 4.0.1
+      git-hooks-list: 4.1.1
+      is-plain-obj: 4.1.0
+      semver: 7.7.2
+      sort-object-keys: 1.1.3
+      tinyglobby: 0.2.13
+
   source-map-js@1.2.1: {}
 
   source-map-resolve@0.5.3:
@@ -12964,8 +12912,6 @@ snapshots:
       readable-stream: 3.6.2
 
   through@2.3.8: {}
-
-  tiny-invariant@1.3.3: {}
 
   tinycolor2@1.6.0: {}
 

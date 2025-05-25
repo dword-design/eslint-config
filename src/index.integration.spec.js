@@ -11,6 +11,24 @@ export default {
   async beforeEach() {
     this.resetWithLocalTmpDir = await withLocalTmpDir();
   },
+  gitignore: async () => {
+    await outputFiles({
+      '.gitignore': '/index.js',
+      'babel.config.json': JSON.stringify({
+        extends: '@dword-design/babel-config',
+      }),
+      'eslint.config.js': endent`
+        import { defineConfig } from 'eslint/config';
+
+        import self from '../src/index.js';
+
+        export default defineConfig([self]);
+      `,
+      'index.js': 'foo',
+    });
+
+    await execaCommand('eslint --ignore-pattern eslint.config.js .');
+  },
   works: async () => {
     await outputFiles({
       'babel.config.json': JSON.stringify({
@@ -19,13 +37,13 @@ export default {
       'eslint.config.js': endent`
         import { defineConfig } from 'eslint/config';
 
-        import self from '..';
+        import self from '../src/index.js';
 
         export default defineConfig([self]);
       `,
       'index.js': 'export default 1;\n',
     });
 
-    await execaCommand('eslint .');
+    await execaCommand('eslint --ignore-pattern eslint.config.js .');
   },
 };

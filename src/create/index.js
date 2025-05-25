@@ -20,7 +20,7 @@ import fs from 'fs-extra';
 import globals from 'globals';
 import loadPkg from 'load-pkg';
 import { compact, omit, without } from 'lodash-es';
-
+import { sortOrder as packageJsonSortOrder } from 'sort-package-json';
 
 import restrictedImports from './restricted-imports.js';
 
@@ -51,7 +51,9 @@ export default () => {
   const __dirname = pathLib.dirname(__filename);
   const compat = new FlatCompat({ baseDirectory: __dirname });
   return defineConfig([
-    includeIgnoreFile(pathLib.resolve('.gitignore')),
+    ...(fs.existsSync('.gitignore')
+      ? [includeIgnoreFile(pathLib.resolve('.gitignore'))]
+      : []),
     {
       languageOptions: {
         parser: babelParser,
@@ -92,6 +94,15 @@ export default () => {
     {
       files: ['**/*.json'],
       rules: { 'jsonc/indent': ['error', 2], 'jsonc/sort-keys': 'error' },
+    },
+    {
+      files: ['**/package.json'],
+      rules: {
+        'jsonc/sort-keys': [
+          'error',
+          { order: packageJsonSortOrder, pathPattern: '^$' },
+        ],
+      },
     },
     {
       files: ['**/*.js', '**/*.vue'],
@@ -204,6 +215,7 @@ export default () => {
         'unicorn/no-anonymous-default-export': 'off',
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-nested-ternary': 'off',
+        'unicorn/no-null': 'off',
         'unicorn/prevent-abbreviations': 'off',
         'unicorn/template-indent': [
           'error',

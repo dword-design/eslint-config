@@ -11,7 +11,6 @@ import {
 import packageName from 'depcheck-package-name';
 import { ESLint } from 'eslint';
 import inFolder from 'in-folder';
-import nodeVersion from 'node-version';
 import outputFiles from 'output-files';
 import withLocalTmpDir from 'with-local-tmp-dir';
 
@@ -1053,10 +1052,6 @@ export default {
     filename: P.join('sub', 'index.js'),
     files: { 'buymeacoffee.svg': '', 'support-me.jpg': '' },
   },
-  gitignore: {
-    code: 'foo',
-    '.gitignore': '/index.js',
-  },
   'indent: invalid': {
     code: endent`
       export default () => {
@@ -1344,7 +1339,7 @@ export default {
     messages: [
       {
         message:
-          "Expected object keys to be in ascending order. 'name' should be before 'version'.",
+          "Expected object keys to be in specified order. 'name' should be before 'version'.",
         ruleId: 'jsonc/sort-keys',
       },
     ],
