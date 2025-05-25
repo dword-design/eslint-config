@@ -10,9 +10,12 @@ import pluginPromise from 'eslint-plugin-promise'
 import importPlugin from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import pluginPlaywright from 'eslint-plugin-playwright'
-import github from 'eslint-plugin-github'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import { defineConfig } from "eslint/config";
+import babelParser from "@babel/eslint-parser";
+import eslintPluginJsonc from 'eslint-plugin-jsonc';
+import js from '@eslint/js';
+import globals from 'globals';
 
 import restrictedImports from './restricted-imports.js';
 
@@ -52,28 +55,42 @@ export default () => {
   const compat = new FlatCompat({ baseDirectory: __dirname });
 
   return defineConfig([
-    ...compat.extends(packageName`eslint-config-airbnb-base`),
+    {
+      languageOptions: {
+        parser: babelParser,
+        parserOptions: {
+          babelOptions: { rootMode: 'upward-optional' },
+        },
+      },
+    },
+    js.configs.recommended,
+    importPlugin.flatConfigs.recommended,
     pluginPromise.configs['flat/recommended'],
-    ...pluginVue.configs['flat/recommended'],
-    //importPlugin.flatConfigs.recommended,
+    ...pluginVue.configs['flat/recommended'].map(plugin => ({ files: ['**/*.js', '**/*.vue'], ...plugin })),
     ...compat.extends(`plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`),
-    eslintPluginPrettierRecommended,
+    { files: ['**/*.js', '**/*.vue'], ...eslintPluginPrettierRecommended },
     ...(baseConfig.testRunner === 'playwright'
-      ? pluginPlaywright.configs['flat/recommended']
+      ? [pluginPlaywright.configs['flat/recommended']]
       : []),
     ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
     ...compat.plugins(packageName`eslint-plugin-simple-import-sort`),
-    //...compat.plugins(packageName`eslint-plugin-json-format`),
     ...compat.plugins(packageName`eslint-plugin-sort-keys-fix`),
-    //github.getFlatConfigs().recommended,
-    eslintPluginUnicorn.configs.recommended,
+    { files: ['**/*.js', '**/*.vue'], ...eslintPluginUnicorn.configs.recommended },
+    ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
     {
+      files: ['**/*.vue'],
       languageOptions: {
-        globals: { globalThis: true, self: true, window: true },
         parserOptions: {
           babelOptions: { rootMode: 'upward-optional' },
           parser: packageName`@babel/eslint-parser`,
         },
+      },
+    },
+    { files: ['**/*.json'], rules: { "jsonc/indent": ["error", 2], 'jsonc/sort-keys': 'error' } },
+    {
+      files: ['**/*.js', '**/*.vue'],
+      languageOptions: {
+        globals: { ...globals.node, ...globals.browser },
       },
       rules: {
         ...(baseConfig.testRunner === 'playwright' && {
@@ -81,7 +98,6 @@ export default () => {
         }),
         'arrow-body-style': ['error', 'as-needed'],
         'func-names': ['error', 'never'],
-        //'github/array-foreach': 'error',
         'global-require': 'off',
         'import/extensions': ['error', 'ignorePackages'],
         'import/no-commonjs': 'error',
@@ -168,7 +184,7 @@ export default () => {
           'error',
           {
             arrowParens: 'avoid',
-            plugins: [packageName`prettier-plugin-compactify`],
+            objectWrap: 'collapse',
             singleQuote: true,
             trailingComma: 'all',
           },
@@ -181,6 +197,8 @@ export default () => {
         'unicorn/no-anonymous-default-export': 'off',
         'unicorn/prevent-abbreviations': 'off',
         'unicorn/catch-error-name': 'off',
+        'unicorn/no-negated-condition': 'off',
+        'unicorn/no-nested-ternary': 'off',
         'unicorn/template-indent': [
           'error',
           {
@@ -195,15 +213,16 @@ export default () => {
             }),
           },
         ],
-        ...(baseConfig.testRunner === 'playwright' && {
-          'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
-        }),
+        'no-var': 'error',
         'vue/attributes-order': ['error', { alphabetical: true }],
         'vue/no-deprecated-functional-template': 'error',
         'vue/order-in-components': 'off',
         'vue/prefer-true-attribute-shorthand': 'error',
         'vue/require-default-prop': 'off',
         'vue/require-prop-types': 'off', // Complains about title not being a string if variable is passed
+        ...(baseConfig.testRunner === 'playwright' && {
+          'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
+        }),
       },
       settings: {
         'import/resolver': {

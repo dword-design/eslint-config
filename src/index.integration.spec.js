@@ -12,7 +12,13 @@ export default {
   },
   works: async () => {
     await outputFiles({
-      '.eslintrc.json': JSON.stringify({ extends: '..', root: true }),
+      'eslint.config.js': endent`
+        import { defineConfig } from 'eslint/config';
+        
+        import self from '..';
+        
+        export default defineConfig([self]);
+      `,
       'babel.config.json': JSON.stringify({
         extends: '@dword-design/babel-config',
       }),

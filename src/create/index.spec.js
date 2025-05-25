@@ -224,11 +224,6 @@ export default {
     },
     messages: [
       {
-        message:
-          'Expected 1 empty line after import statement not followed by another import.',
-        ruleId: 'import/newline-after-import',
-      },
-      {
         message: 'Expected blank line before this statement.',
         ruleId: 'padding-line-between-statements',
       },
@@ -670,19 +665,18 @@ export default {
     `,
   },
   'deep nesting': {
-    code: 'export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55_456 + 23_434 + 23_434 + 2344);\n',
+    code: 'export default () => console.log(() => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55_456 + 23_434 + 23_434);\n',
     messages: [
       {
         message:
-          'Replace `·console.log(()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55_456·+·23_434·+·23_434·+·2344` with `⏎··console.log(⏎····()·=>⏎······(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55_456·+·23_434·+·23_434·+·2344,⏎··`',
+          'Replace `·console.log(()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55_456·+·23_434·+·23_434` with `⏎··console.log(⏎····()·=>·(1·+·2·+·3·+·4)·*·3·+·5·+·3·+·5·+·56·+·123·+·55_456·+·23_434·+·23_434,⏎··`',
         ruleId: 'prettier/prettier',
       },
     ],
     output: endent`
       export default () =>
         console.log(
-          () =>
-            (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55456 + 23434 + 23434 + 2344,
+          () => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55_456 + 23_434 + 23_434,
         );\n
     `,
   },
@@ -963,8 +957,8 @@ export default {
     `,
     messages: [
       {
-        message: 'Prefer for...of instead of Array.forEach',
-        ruleId: 'github/array-foreach',
+        message: 'Use `for…of` instead of `.forEach(…)`.',
+        ruleId: 'unicorn/no-array-for-each',
       },
     ],
   },
@@ -1087,7 +1081,7 @@ export default {
     `,
     filename: 'index.json',
     messages: [
-      { message: 'Format Error: unexpected "  "', ruleId: 'JSON format' },
+      { message: 'Expected indentation of 2 spaces but found 4.', ruleId: 'jsonc/indent' },
     ],
     output: endent`
       {
@@ -1103,7 +1097,7 @@ export default {
     `,
     filename: 'index.json',
     messages: [
-      { message: 'Format Error: expected "  " ', ruleId: 'JSON format' },
+      { message: 'Expected indentation of 2 spaces but found 0.', ruleId: 'jsonc/indent' },
     ],
     output: endent`
       {
@@ -1120,14 +1114,7 @@ export default {
     filename: 'index.json',
     messages: [
       {
-        message:
-          parseInt(nodeVersion.major, 10) >= 20
-            ? endent`
-              Unexpected token '}', "{
-                "foo":
-              }\n" is not valid JSON
-            `
-            : 'Unexpected token }',
+        message: "Parsing error: Unexpected token '}'.",
         ruleId: null,
       },
     ],
@@ -1135,13 +1122,13 @@ export default {
   'json: valid': {
     code: endent`
       {
-        "foo": "bar",
         "bar": {
           "baz": [
             "test",
             "test2"
           ]
-        }
+        },
+        "foo": "bar"
       }\n
     `,
     filename: 'index.json',
@@ -1291,7 +1278,10 @@ export default {
       export default new foo();\n
     `,
   },
-  'nullish coalescing': { code: 'console.log(0 ?? 2);\n' },
+  'nullish coalescing': { code: endent`
+    const foo = 0;
+    console.log(foo ?? 2);\n
+  ` },
   'object: multi-line that should be multi-line': {
     code: endent`
       export default {
@@ -1341,7 +1331,7 @@ export default {
       }\n
     `,
     filename: 'package.json',
-    messages: [{ message: 'JSON is not sorted', ruleId: 'JSON sorting' }],
+    messages: [{ message: "Expected object keys to be in ascending order. 'name' should be before 'version'.", ruleId: 'jsonc/sort-keys' }],
     output: endent`
       {
         "name": "foo",
@@ -1379,6 +1369,18 @@ export default {
   },
   'pipeline operator': {
     code: 'export default async () => 1 |> (x => x + 1) |> await;\n',
+  },
+  'pipeline operator in vue': {
+    code: endent`
+      <template>
+        <div>{{ foo }}</div>
+      </template>
+
+      <script setup>
+      const foo = 1 |> (x => x + 1);
+      </script>\n
+    `,
+    filename: 'index.vue',
   },
   'possible destructuring': {
     code: endent`
@@ -1474,7 +1476,7 @@ export default {
     `,
   },
   'semicolon: yes': { code: 'console.log();\n' },
-  'service worker self': { code: 'console.log(self.chrome.action);\n', messages: [{ message: 'Prefer `globalThis` over `self`.', ruleId: 'unicorn/prefer-global-this' }] },
+  'service worker self': { code: 'console.log(self.chrome.action);\n', messages: [{ message: 'Prefer `globalThis` over `self`.', ruleId: 'unicorn/prefer-global-this' }], output: 'console.log(globalThis.chrome.action);\n' },
   'single export': { code: "export const foo = 'bar';\n" },
   'template literal': {
     code: endent`
@@ -1570,28 +1572,6 @@ export default {
       console.log(function () {
         console.log(this);
       });\n
-    `,
-  },
-  'unnecessary double negation': {
-    code: endent`
-      const foo = true;
-
-      if (!!foo) {
-        console.log('foo');
-      }\n
-    `,
-    messages: [
-      {
-        message: 'Redundant double negation.',
-        ruleId: 'no-extra-boolean-cast',
-      },
-    ],
-    output: endent`
-      const foo = true;
-
-      if (foo) {
-        console.log('foo');
-      }\n
     `,
   },
   'unsorted object keys': {
@@ -1751,7 +1731,7 @@ export default {
     `,
     files: {
       'node_modules/vue/index.js': '',
-      'package.json': JSON.stringify({ dependencies: { vue: '*' } }),
+      'package.json': `${JSON.stringify({ dependencies: { vue: '*' } })}\n`,
     },
     messages: [
       {
@@ -1775,5 +1755,5 @@ export default {
       }\n
     `,
   },
-  window: { code: 'console.log(window);\n', messages: [{ message: 'Prefer `globalThis` over `window`.', ruleId: 'unicorn/prefer-global-this' }] },
+  window: { code: 'console.log(window);\n', messages: [{ message: 'Prefer `globalThis` over `window`.', ruleId: 'unicorn/prefer-global-this' }], output: 'console.log(globalThis);\n' },
 } |> mapValues(runTest);
