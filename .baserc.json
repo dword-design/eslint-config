@@ -1,9 +1,8 @@
 {
-  "name": "@dword-design/node",
   "depcheckConfig": {
     "ignoreMatches": [
       "eslint-config-prettier"
     ]
   },
-  "cjsFallback": true
+  "name": "@dword-design/node"
 }

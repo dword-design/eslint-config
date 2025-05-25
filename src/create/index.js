@@ -1,27 +1,28 @@
+import pathLib from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import babelParser from '@babel/eslint-parser';
 import defu from '@dword-design/defu';
-import { compact, filter, join, map, omit } from '@dword-design/functions';
+import { includeIgnoreFile } from '@eslint/compat';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
-import fs from 'fs-extra';
-import loadPkg from 'load-pkg';
-import { without } from 'lodash-es';
-import pluginVue from 'eslint-plugin-vue'
-import pluginPromise from 'eslint-plugin-promise'
+import { defineConfig } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import pluginPlaywright from 'eslint-plugin-playwright'
-import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import { defineConfig } from "eslint/config";
-import babelParser from "@babel/eslint-parser";
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
-import js from '@eslint/js';
+import pluginPlaywright from 'eslint-plugin-playwright';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import pluginPromise from 'eslint-plugin-promise';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import pluginVue from 'eslint-plugin-vue';
+import fs from 'fs-extra';
 import globals from 'globals';
+import loadPkg from 'load-pkg';
+import { compact, omit, without } from 'lodash-es';
+
 
 import restrictedImports from './restricted-imports.js';
-
-import { FlatCompat } from "@eslint/eslintrc";
-import pathLib from "path";
-import { fileURLToPath } from "url";
 
 export default () => {
   const packageConfig = loadPkg.sync() || {};
@@ -31,43 +32,42 @@ export default () => {
     { testRunner: 'mocha' },
   );
 
-  const eslintRestrictedImports =
-    restrictedImports
-    |> filter(
+  const eslintRestrictedImports = restrictedImports
+    .filter(
       importDef =>
         importDef.alternative === undefined ||
         importDef.alternative !== packageConfig.name,
     )
-    |> map(importDef => ({
-      ...(importDef |> omit(['alternative'])),
-      message:
-        [
-          importDef.message,
-          importDef.alternative ? `Use '${importDef.alternative}' instead` : '',
-        ]
-        |> compact
-        |> join(' '),
+    .map(importDef => ({
+      ...omit(importDef, ['alternative']),
+      message: compact([
+        importDef.message,
+        importDef.alternative ? `Use '${importDef.alternative}' instead` : '',
+      ]).join(' '),
     }));
 
   // mimic CommonJS variables -- not needed if using CommonJS
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = pathLib.dirname(__filename);
   const compat = new FlatCompat({ baseDirectory: __dirname });
-
   return defineConfig([
+    includeIgnoreFile(pathLib.resolve('.gitignore')),
     {
       languageOptions: {
         parser: babelParser,
-        parserOptions: {
-          babelOptions: { rootMode: 'upward-optional' },
-        },
+        parserOptions: { babelOptions: { rootMode: 'upward-optional' } },
       },
     },
     js.configs.recommended,
     importPlugin.flatConfigs.recommended,
     pluginPromise.configs['flat/recommended'],
-    ...pluginVue.configs['flat/recommended'].map(plugin => ({ files: ['**/*.js', '**/*.vue'], ...plugin })),
-    ...compat.extends(`plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`),
+    ...pluginVue.configs['flat/recommended'].map(plugin => ({
+      files: ['**/*.js', '**/*.vue'],
+      ...plugin,
+    })),
+    ...compat.extends(
+      `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
+    ),
     { files: ['**/*.js', '**/*.vue'], ...eslintPluginPrettierRecommended },
     ...(baseConfig.testRunner === 'playwright'
       ? [pluginPlaywright.configs['flat/recommended']]
@@ -75,7 +75,10 @@ export default () => {
     ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
     ...compat.plugins(packageName`eslint-plugin-simple-import-sort`),
     ...compat.plugins(packageName`eslint-plugin-sort-keys-fix`),
-    { files: ['**/*.js', '**/*.vue'], ...eslintPluginUnicorn.configs.recommended },
+    {
+      files: ['**/*.js', '**/*.vue'],
+      ...eslintPluginUnicorn.configs.recommended,
+    },
     ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
     {
       files: ['**/*.vue'],
@@ -86,12 +89,13 @@ export default () => {
         },
       },
     },
-    { files: ['**/*.json'], rules: { "jsonc/indent": ["error", 2], 'jsonc/sort-keys': 'error' } },
+    {
+      files: ['**/*.json'],
+      rules: { 'jsonc/indent': ['error', 2], 'jsonc/sort-keys': 'error' },
+    },
     {
       files: ['**/*.js', '**/*.vue'],
-      languageOptions: {
-        globals: { ...globals.node, ...globals.browser },
-      },
+      languageOptions: { globals: { ...globals.node, ...globals.browser } },
       rules: {
         ...(baseConfig.testRunner === 'playwright' && {
           'playwright/expect-expect': 'off',
@@ -163,7 +167,17 @@ export default () => {
         'no-return-assign': 'off',
         'no-template-curly-in-string': 'off',
         'no-underscore-dangle': 'off',
+        'no-var': 'error',
         'object-shorthand': ['error', 'always'],
+        [`${packageName`prettier`}/prettier`]: [
+          'error',
+          {
+            arrowParens: 'avoid',
+            objectWrap: 'collapse',
+            singleQuote: true,
+            trailingComma: 'all',
+          },
+        ],
         'padding-line-between-statements': [
           'error',
           { blankLine: 'never', next: '*', prev: '*' },
@@ -180,25 +194,17 @@ export default () => {
           ]),
           { blankLine: 'always', next: 'export', prev: '*' },
         ],
-        [`${packageName`prettier`}/prettier`]: [
-          'error',
-          {
-            arrowParens: 'avoid',
-            objectWrap: 'collapse',
-            singleQuote: true,
-            trailingComma: 'all',
-          },
-        ],
-        'prefer-arrow/prefer-arrow-functions': ['error'], // Everything from airbnb except ForOfStatement
+        'prefer-arrow/prefer-arrow-functions': ['error'],
+        // Everything from airbnb except ForOfStatement
         'prefer-destructuring': 'off',
         'require-await': 'error',
         'simple-import-sort/imports': 'error',
         'sort-keys-fix/sort-keys-fix': 'error',
-        'unicorn/no-anonymous-default-export': 'off',
-        'unicorn/prevent-abbreviations': 'off',
         'unicorn/catch-error-name': 'off',
+        'unicorn/no-anonymous-default-export': 'off',
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-nested-ternary': 'off',
+        'unicorn/prevent-abbreviations': 'off',
         'unicorn/template-indent': [
           'error',
           {
@@ -213,7 +219,6 @@ export default () => {
             }),
           },
         ],
-        'no-var': 'error',
         'vue/attributes-order': ['error', { alphabetical: true }],
         'vue/no-deprecated-functional-template': 'error',
         'vue/order-in-components': 'off',

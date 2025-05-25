@@ -1626,6 +1626,10 @@ export default {
     ],
   },
   valid: { code: 'export default 1;\n' },
+  gitignore: {
+    code: 'foo',
+    '.gitignore': '/index.js',
+  },
   var: {
     code: endent`
       var foo = 1;
