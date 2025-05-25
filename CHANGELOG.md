@@ -1,3 +1,11 @@
+## [6.0.2](https://github.com/dword-design/eslint-config/compare/v6.0.1...v6.0.2) (2025-05-25)
+
+
+### Bug Fixes
+
+* upgrade base ([aa99152](https://github.com/dword-design/eslint-config/commit/aa99152a1ddcd499152e4f76f540d2ce10d41ab0))
+* upgrades ([dadea38](https://github.com/dword-design/eslint-config/commit/dadea386c253b5e7bdc223e87aa437581dedb4d6))
+
 ## [6.0.1](https://github.com/dword-design/eslint-config/compare/v6.0.0...v6.0.1) (2025-05-25)
 
 
