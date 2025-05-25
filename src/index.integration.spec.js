@@ -1,7 +1,7 @@
+import { endent } from '@dword-design/functions';
 import { execaCommand } from 'execa';
 import outputFiles from 'output-files';
 import withLocalTmpDir from 'with-local-tmp-dir';
-import { endent } from '@dword-design/functions';
 
 export default {
   async afterEach() {
