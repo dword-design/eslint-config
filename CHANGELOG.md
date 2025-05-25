@@ -1,3 +1,15 @@
+# [6.0.0](https://github.com/dword-design/eslint-config/compare/v5.0.32...v6.0.0) (2025-05-25)
+
+
+### Bug Fixes
+
+* update dependency eslint to v9 ([#261](https://github.com/dword-design/eslint-config/issues/261)) ([ea072d6](https://github.com/dword-design/eslint-config/commit/ea072d6c5e3781350ba069e929effaa441fd4197))
+
+
+### BREAKING CHANGES
+
+* eslint 9 flat config
+
 ## [5.0.32](https://github.com/dword-design/eslint-config/compare/v5.0.31...v5.0.32) (2025-05-25)
 
 
