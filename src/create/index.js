@@ -133,6 +133,7 @@ export default () => {
             ],
           },
         ],
+        'import/no-named-as-default': 'off',
         'import/order': 'off',
         'import/prefer-default-export': 'off',
         'linebreak-style': ['error', 'unix'],
@@ -146,10 +147,10 @@ export default () => {
         'no-negated-condition': 'error',
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
+
         'no-promise-executor-return': 'off',
 
         'no-regex-spaces': 'off',
-
         // https://github.com/facebook/create-react-app/issues/12847
         'no-restricted-globals': [
           'error',
@@ -169,17 +170,10 @@ export default () => {
           })),
         ],
         'no-restricted-imports': ['error', { paths: eslintRestrictedImports }],
-        'no-restricted-syntax': [
-          'error',
-          'ForInStatement',
-          'LabeledStatement',
-          'WithStatement',
-        ],
         'no-return-assign': 'off',
         'no-template-curly-in-string': 'off',
         'no-underscore-dangle': 'off',
         'no-var': 'error',
-        'object-shorthand': ['error', 'always'],
         [`${packageName`prettier`}/prettier`]: [
           'error',
           {
@@ -189,6 +183,7 @@ export default () => {
             trailingComma: 'all',
           },
         ],
+        'object-shorthand': ['error', 'always'],
         'padding-line-between-statements': [
           'error',
           { blankLine: 'never', next: '*', prev: '*' },
@@ -205,8 +200,8 @@ export default () => {
           ]),
           { blankLine: 'always', next: 'export', prev: '*' },
         ],
+
         'prefer-arrow/prefer-arrow-functions': ['error'],
-        // Everything from airbnb except ForOfStatement
         'prefer-destructuring': 'off',
         'require-await': 'error',
         'simple-import-sort/imports': 'error',

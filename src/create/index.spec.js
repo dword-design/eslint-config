@@ -1210,6 +1210,24 @@ export default {
     `,
     filename: 'index.vue',
   },
+  'named as default': {
+    code: endent`
+      import foo from 'foo';
+
+      export default foo + 1;\n
+    `,
+    files: {
+      'node_modules/foo/index.js': endent`
+        export const foo = 1;
+        export default foo;
+      `,
+      'package.json': JSON.stringify(
+        { dependencies: { foo: '^1.0.0' } },
+        undefined,
+        2,
+      ),
+    },
+  },
   'named import right order': {
     code: endent`
       import { bar, foo } from 'foo';
