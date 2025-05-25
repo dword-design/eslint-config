@@ -17,9 +17,6 @@ importers:
       '@dword-design/eslint-plugin-import-alias':
         specifier: ^5.1.2
         version: 5.1.2
-      '@eslint/compat':
-        specifier: ^1.2.9
-        version: 1.2.9(eslint@9.27.0(jiti@1.21.7))
       '@eslint/eslintrc':
         specifier: ^3.3.1
         version: 3.3.1
@@ -35,6 +32,9 @@ importers:
       eslint:
         specifier: ^9.27.0
         version: 9.27.0(jiti@1.21.7)
+      eslint-config-flat-gitignore:
+        specifier: ^2.1.0
+        version: 2.1.0(eslint@9.27.0(jiti@1.21.7))
       eslint-config-prettier:
         specifier: ^10.1.5
         version: 10.1.5(eslint@9.27.0(jiti@1.21.7))
@@ -2341,6 +2341,11 @@ packages:
     engines: {node: '>=12'}
     peerDependencies:
       eslint: '>=6.0.0'
+
+  eslint-config-flat-gitignore@2.1.0:
+    resolution: {integrity: sha512-cJzNJ7L+psWp5mXM7jBX+fjHtBvvh06RBlcweMhKD8jWqQw0G78hOW5tpVALGHGFPsBV+ot2H+pdDGJy6CV8pA==}
+    peerDependencies:
+      eslint: ^9.5.0
 
   eslint-config-prettier@10.1.5:
     resolution: {integrity: sha512-zc1UmCpNltmVY34vuLRV61r1K27sWuX39E+uyUnY8xS2Bex88VV9cugG+UZbRSRGtGyFboj+D8JODyme1plMpw==}
@@ -8725,6 +8730,11 @@ snapshots:
     dependencies:
       eslint: 9.27.0(jiti@1.21.7)
       semver: 7.7.2
+
+  eslint-config-flat-gitignore@2.1.0(eslint@9.27.0(jiti@1.21.7)):
+    dependencies:
+      '@eslint/compat': 1.2.9(eslint@9.27.0(jiti@1.21.7))
+      eslint: 9.27.0(jiti@1.21.7)
 
   eslint-config-prettier@10.1.5(eslint@9.27.0(jiti@1.21.7)):
     dependencies:

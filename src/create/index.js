@@ -3,12 +3,12 @@ import { fileURLToPath } from 'node:url';
 
 import babelParser from '@babel/eslint-parser';
 import defu from '@dword-design/defu';
-import { includeIgnoreFile } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
 import { defineConfig } from 'eslint/config';
+import gitignore from 'eslint-config-flat-gitignore';
 import importPlugin from 'eslint-plugin-import';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import pluginPlaywright from 'eslint-plugin-playwright';
@@ -51,9 +51,7 @@ export default () => {
   const __dirname = pathLib.dirname(__filename);
   const compat = new FlatCompat({ baseDirectory: __dirname });
   return defineConfig([
-    ...(fs.existsSync('.gitignore')
-      ? [includeIgnoreFile(pathLib.resolve('.gitignore'))]
-      : []),
+    gitignore({ strict: false }),
     {
       languageOptions: {
         parser: babelParser,
