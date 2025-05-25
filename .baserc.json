@@ -1,5 +1,4 @@
 {
-  "allowedMatches": ["eslint.config.js"],
   "depcheckConfig": {
     "ignoreMatches": [
       "eslint-config-prettier"
