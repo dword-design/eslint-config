@@ -1,3 +1,10 @@
+## [5.0.32](https://github.com/dword-design/eslint-config/compare/v5.0.31...v5.0.32) (2025-05-25)
+
+
+### Bug Fixes
+
+* update dependency eslint-plugin-vue to v10 ([#290](https://github.com/dword-design/eslint-config/issues/290)) ([f94b2aa](https://github.com/dword-design/eslint-config/commit/f94b2aad9b38dd1134d98a03620d9378722b3749))
+
 ## [5.0.31](https://github.com/dword-design/eslint-config/compare/v5.0.30...v5.0.31) (2025-05-19)
 
 
