@@ -1,3 +1,4 @@
+import { endent } from '@dword-design/functions';
 import { execaCommand } from 'execa';
 import outputFiles from 'output-files';
 import withLocalTmpDir from 'with-local-tmp-dir';
@@ -10,15 +11,39 @@ export default {
   async beforeEach() {
     this.resetWithLocalTmpDir = await withLocalTmpDir();
   },
-  works: async () => {
+  gitignore: async () => {
     await outputFiles({
-      '.eslintrc.json': JSON.stringify({ extends: '..', root: true }),
+      '.gitignore': '/index.js',
       'babel.config.json': JSON.stringify({
         extends: '@dword-design/babel-config',
       }),
+      'eslint.config.js': endent`
+        import { defineConfig } from 'eslint/config';
+
+        import self from '../src/index.js';
+
+        export default defineConfig([self]);
+      `,
+      'index.js': 'foo',
+    });
+
+    await execaCommand('eslint --ignore-pattern eslint.config.js .');
+  },
+  works: async () => {
+    await outputFiles({
+      'babel.config.json': JSON.stringify({
+        extends: '@dword-design/babel-config',
+      }),
+      'eslint.config.js': endent`
+        import { defineConfig } from 'eslint/config';
+
+        import self from '../src/index.js';
+
+        export default defineConfig([self]);
+      `,
       'index.js': 'export default 1;\n',
     });
 
-    await execaCommand('eslint .');
+    await execaCommand('eslint --ignore-pattern eslint.config.js .');
   },
 };
