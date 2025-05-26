@@ -115,6 +115,7 @@ export default () => {
           'error',
           {
             devDependencies: [
+              'base.config.js',
               '**/*.spec.js',
               ...(baseConfig.testRunner === 'playwright'
                 ? [
