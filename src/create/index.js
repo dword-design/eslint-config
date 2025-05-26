@@ -2,6 +2,7 @@ import pathLib from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import babelParser from '@babel/eslint-parser';
+import { loadConfigSync } from '@dword-design/base';
 import defu from '@dword-design/defu';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
@@ -16,7 +17,6 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import pluginPromise from 'eslint-plugin-promise';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import pluginVue from 'eslint-plugin-vue';
-import fs from 'fs-extra';
 import globals from 'globals';
 import loadPkg from 'load-pkg';
 import { compact, omit, without } from 'lodash-es';
@@ -26,11 +26,7 @@ import restrictedImports from './restricted-imports.js';
 
 export default () => {
   const packageConfig = loadPkg.sync() || {};
-
-  const baseConfig = defu(
-    fs.existsSync('.baserc.json') ? fs.readJsonSync('.baserc.json') : {},
-    { testRunner: 'mocha' },
-  );
+  const baseConfig = defu(loadConfigSync(), { testRunner: 'mocha' });
 
   const eslintRestrictedImports = restrictedImports
     .filter(
