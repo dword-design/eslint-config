@@ -1,3 +1,10 @@
+## [6.0.4](https://github.com/dword-design/eslint-config/compare/v6.0.3...v6.0.4) (2025-05-26)
+
+
+### Bug Fixes
+
+* load base ([4d747dc](https://github.com/dword-design/eslint-config/commit/4d747dccb00640b4efabc2c63d740f4b38716c04))
+
 ## [6.0.3](https://github.com/dword-design/eslint-config/compare/v6.0.2...v6.0.3) (2025-05-25)
 
 
