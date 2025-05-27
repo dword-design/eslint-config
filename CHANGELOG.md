@@ -1,3 +1,10 @@
+## [6.0.6](https://github.com/dword-design/eslint-config/compare/v6.0.5...v6.0.6) (2025-05-27)
+
+
+### Bug Fixes
+
+* update pnpm to v10.11.0 ([#285](https://github.com/dword-design/eslint-config/issues/285)) ([ffe6f7b](https://github.com/dword-design/eslint-config/commit/ffe6f7b4b91672f437e9479e2a06e9b89fb7afe8))
+
 ## [6.0.5](https://github.com/dword-design/eslint-config/compare/v6.0.4...v6.0.5) (2025-05-26)
 
 
