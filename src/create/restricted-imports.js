@@ -25,11 +25,6 @@ export default [
     name: 'child_process',
   },
   {
-    alternative: '@dword-design/functions',
-    message: "delay is included in '@dword-design/functions'.",
-    name: 'delay',
-  },
-  {
     alternative: 'fs-extra',
     message: 'Does not support promises.',
     name: 'fs',
