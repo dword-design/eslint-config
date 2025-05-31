@@ -627,6 +627,7 @@ export default {
       });\n
     `,
   },
+  'chained arrow functions': { code: 'export default () => () => 1;\n' },
   'comments: with blank line': {
     code: endent`
       console.log('foo');

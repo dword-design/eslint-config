@@ -142,10 +142,10 @@ export default () => {
         'no-negated-condition': 'error',
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
-
         'no-promise-executor-return': 'off',
 
         'no-regex-spaces': 'off',
+
         // https://github.com/facebook/create-react-app/issues/12847
         'no-restricted-globals': [
           'error',
@@ -164,11 +164,13 @@ export default () => {
             name: g,
           })),
         ],
+
         'no-restricted-imports': ['error', { paths: eslintRestrictedImports }],
         'no-return-assign': 'off',
         'no-template-curly-in-string': 'off',
         'no-underscore-dangle': 'off',
         'no-var': 'error',
+        'object-shorthand': ['error', 'always'],
         [`${packageName`prettier`}/prettier`]: [
           'error',
           {
@@ -178,7 +180,6 @@ export default () => {
             trailingComma: 'all',
           },
         ],
-        'object-shorthand': ['error', 'always'],
         'padding-line-between-statements': [
           'error',
           { blankLine: 'never', next: '*', prev: '*' },
@@ -195,13 +196,14 @@ export default () => {
           ]),
           { blankLine: 'always', next: 'export', prev: '*' },
         ],
-
         'prefer-arrow/prefer-arrow-functions': ['error'],
+
         'prefer-destructuring': 'off',
         'require-await': 'error',
         'simple-import-sort/imports': 'error',
         'sort-keys-fix/sort-keys-fix': 'error',
         'unicorn/catch-error-name': 'off',
+        'unicorn/consistent-function-scoping': 'off',
         'unicorn/no-anonymous-default-export': 'off',
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-nested-ternary': 'off',
