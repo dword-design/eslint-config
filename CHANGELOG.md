@@ -1,3 +1,10 @@
+## [6.0.8](https://github.com/dword-design/eslint-config/compare/v6.0.7...v6.0.8) (2025-05-31)
+
+
+### Bug Fixes
+
+* allow chained arrow functions ([7546a03](https://github.com/dword-design/eslint-config/commit/7546a03d5942874905f1dc4f48fdaa6eb63c720e))
+
 ## [6.0.7](https://github.com/dword-design/eslint-config/compare/v6.0.6...v6.0.7) (2025-05-30)
 
 
