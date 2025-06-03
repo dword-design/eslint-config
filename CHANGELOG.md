@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/dword-design/eslint-config/compare/v6.0.8...v6.1.0) (2025-06-03)
+
+
+### Features
+
+* typescript ([c570231](https://github.com/dword-design/eslint-config/commit/c57023154748520b5ae3030ce15a3cf918efae94))
+
 ## [6.0.8](https://github.com/dword-design/eslint-config/compare/v6.0.7...v6.0.8) (2025-05-31)
 
 
