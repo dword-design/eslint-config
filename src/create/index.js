@@ -122,6 +122,7 @@ export default () => {
             devDependencies: [
               'base.config.js',
               '**/*.spec.js',
+              '**/*.spec.ts',
               ...(baseConfig.testRunner === 'playwright'
                 ? [
                     'fixtures/**',
