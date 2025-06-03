@@ -21,6 +21,7 @@ import globals from 'globals';
 import loadPkg from 'load-pkg';
 import { compact, omit, without } from 'lodash-es';
 import { sortOrder as packageJsonSortOrder } from 'sort-package-json';
+import tseslint from 'typescript-eslint';
 
 import restrictedImports from './restricted-imports.js';
 
@@ -55,16 +56,20 @@ export default () => {
       },
     },
     js.configs.recommended,
+    tseslint.configs.recommended,
     importPlugin.flatConfigs.recommended,
     pluginPromise.configs['flat/recommended'],
     ...pluginVue.configs['flat/recommended'].map(plugin => ({
-      files: ['**/*.js', '**/*.vue'],
+      files: ['**/*.js', '**/*.ts', '**/*.vue'],
       ...plugin,
     })),
     ...compat.extends(
       `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
     ),
-    { files: ['**/*.js', '**/*.vue'], ...eslintPluginPrettierRecommended },
+    {
+      files: ['**/*.js', '**/*.ts', '**/*.vue'],
+      ...eslintPluginPrettierRecommended,
+    },
     ...(baseConfig.testRunner === 'playwright'
       ? [pluginPlaywright.configs['flat/recommended']]
       : []),
@@ -72,7 +77,7 @@ export default () => {
     ...compat.plugins(packageName`eslint-plugin-simple-import-sort`),
     ...compat.plugins(packageName`eslint-plugin-sort-keys-fix`),
     {
-      files: ['**/*.js', '**/*.vue'],
+      files: ['**/*.js', '**/*.ts', '**/*.vue'],
       ...eslintPluginUnicorn.configs.recommended,
     },
     ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
@@ -99,7 +104,7 @@ export default () => {
       },
     },
     {
-      files: ['**/*.js', '**/*.vue'],
+      files: ['**/*.js', '**/*.ts', '**/*.vue'],
       languageOptions: { globals: { ...globals.node, ...globals.browser } },
       rules: {
         ...(baseConfig.testRunner === 'playwright' && {
@@ -214,7 +219,7 @@ export default () => {
           {
             tags: Object.keys({
               css: true,
-              endent: true,
+              dedent: true,
               html: true,
               javascript: true,
               sql: true,
@@ -243,7 +248,7 @@ export default () => {
       },
     },
     {
-      files: ['**/*.spec.js'],
+      files: ['**/*.spec.js', '**/*.spec.ts'],
       ...(baseConfig.testRunner === 'mocha' && {
         languageOptions: { globals: { expect: 'readonly' } },
       }),
@@ -266,6 +271,7 @@ export default () => {
       files: [
         ...(baseConfig.testRunner === 'playwright' ? ['fixtures/**'] : []),
         '**/*.spec.js',
+        '**/*.spec.ts',
       ],
       rules: {
         ...(baseConfig.testRunner === 'playwright' && {

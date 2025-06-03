@@ -1,4 +1,4 @@
-import { endent } from '@dword-design/functions';
+import dedent from 'dedent';
 import { execaCommand } from 'execa';
 import outputFiles from 'output-files';
 import withLocalTmpDir from 'with-local-tmp-dir';
@@ -17,7 +17,7 @@ export default {
       'babel.config.json': JSON.stringify({
         extends: '@dword-design/babel-config',
       }),
-      'eslint.config.js': endent`
+      'eslint.config.js': dedent`
         import { defineConfig } from 'eslint/config';
 
         import self from '../src/index.js';
@@ -34,7 +34,7 @@ export default {
       'babel.config.json': JSON.stringify({
         extends: '@dword-design/babel-config',
       }),
-      'eslint.config.js': endent`
+      'eslint.config.js': dedent`
         import { defineConfig } from 'eslint/config';
 
         import self from '../src/index.js';
