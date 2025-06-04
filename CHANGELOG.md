@@ -1,3 +1,10 @@
+## [6.1.3](https://github.com/dword-design/eslint-config/compare/v6.1.2...v6.1.3) (2025-06-04)
+
+
+### Bug Fixes
+
+* foo ([459f7f2](https://github.com/dword-design/eslint-config/commit/459f7f2c77e7380d28adee7c13e53035f04872a7))
+
 ## [6.1.2](https://github.com/dword-design/eslint-config/compare/v6.1.1...v6.1.2) (2025-06-04)
 
 
