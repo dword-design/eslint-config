@@ -1,3 +1,10 @@
+## [6.1.2](https://github.com/dword-design/eslint-config/compare/v6.1.1...v6.1.2) (2025-06-04)
+
+
+### Bug Fixes
+
+* temp disable rules for typescript ([0186980](https://github.com/dword-design/eslint-config/commit/0186980e7604cc15f64a00ca7ccfcd4b9ebc4e30))
+
 ## [6.1.1](https://github.com/dword-design/eslint-config/compare/v6.1.0...v6.1.1) (2025-06-03)
 
 
