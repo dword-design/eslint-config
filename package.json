@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "7.27.1",
-    "@dword-design/base": "^12.0.5",
+    "@dword-design/base": "^13.0.0",
     "@dword-design/defu": "^1.0.0",
     "@dword-design/eslint-plugin-import-alias": "^5.1.2",
     "@eslint/eslintrc": "^3.3.1",
