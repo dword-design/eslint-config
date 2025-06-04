@@ -1,7 +1,6 @@
 import pathLib from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import babelParser from '@babel/eslint-parser';
 import { loadConfigSync } from '@dword-design/base';
 import defu from '@dword-design/defu';
 import { FlatCompat } from '@eslint/eslintrc';
@@ -10,7 +9,7 @@ import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
 import { defineConfig } from 'eslint/config';
 import gitignore from 'eslint-config-flat-gitignore';
-import importPlugin from 'eslint-plugin-import';
+import { importX } from 'eslint-plugin-import-x';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import pluginPlaywright from 'eslint-plugin-playwright';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
@@ -23,7 +22,7 @@ import { compact, omit, without } from 'lodash-es';
 import { sortOrder as packageJsonSortOrder } from 'sort-package-json';
 import tseslint from 'typescript-eslint';
 
-import restrictedImports from './restricted-imports.js';
+import restrictedImports from './restricted-imports';
 
 export default () => {
   const packageConfig = loadPkg.sync() || {};
@@ -49,27 +48,19 @@ export default () => {
   const compat = new FlatCompat({ baseDirectory: __dirname });
   return defineConfig([
     gitignore({ strict: false }),
-    {
-      languageOptions: {
-        parser: babelParser,
-        parserOptions: { babelOptions: { rootMode: 'upward-optional' } },
-      },
-    },
     js.configs.recommended,
     tseslint.configs.recommended,
-    importPlugin.flatConfigs.recommended,
+    importX.flatConfigs.recommended,
+    importX.flatConfigs.typescript,
     pluginPromise.configs['flat/recommended'],
     ...pluginVue.configs['flat/recommended'].map(plugin => ({
-      files: ['**/*.js', '**/*.ts', '**/*.vue'],
+      files: ['**/*.ts', '**/*.vue'],
       ...plugin,
     })),
     ...compat.extends(
       `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
     ),
-    {
-      files: ['**/*.js', '**/*.ts', '**/*.vue'],
-      ...eslintPluginPrettierRecommended,
-    },
+    { files: ['**/*.ts', '**/*.vue'], ...eslintPluginPrettierRecommended },
     ...(baseConfig.testRunner === 'playwright'
       ? [pluginPlaywright.configs['flat/recommended']]
       : []),
@@ -77,7 +68,7 @@ export default () => {
     ...compat.plugins(packageName`eslint-plugin-simple-import-sort`),
     ...compat.plugins(packageName`eslint-plugin-sort-keys-fix`),
     {
-      files: ['**/*.js', '**/*.ts', '**/*.vue'],
+      files: ['**/*.ts', '**/*.vue'],
       ...eslintPluginUnicorn.configs.recommended,
     },
     ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
@@ -104,39 +95,37 @@ export default () => {
       },
     },
     {
-      files: ['**/*.js', '**/*.ts', '**/*.vue'],
+      files: ['**/*.ts', '**/*.vue'],
       languageOptions: { globals: { ...globals.node, ...globals.browser } },
       rules: {
         ...(baseConfig.testRunner === 'playwright' && {
           'playwright/expect-expect': 'off',
         }),
+        '@dword-design/import-alias/prefer-alias': [
+          'error',
+          { alias: { '@': '.' } },
+        ],
         'arrow-body-style': ['error', 'as-needed'],
         'func-names': ['error', 'never'],
         'global-require': 'off',
-        'import/extensions': ['error', 'ignorePackages'],
-        'import/no-commonjs': 'error',
-        'import/no-dynamic-require': 'off',
-        'import/no-extraneous-dependencies': [
+        'import-x/no-extraneous-dependencies': [
           'error',
           {
             devDependencies: [
-              'base.config.js',
-              '**/*.spec.js',
               '**/*.spec.ts',
               ...(baseConfig.testRunner === 'playwright'
                 ? [
                     'fixtures/**',
-                    'global-setup.js',
-                    'global-teardown.js',
-                    'playwright.config.js',
+                    'global-setup.ts',
+                    'global-teardown.ts',
+                    'playwright.config.ts',
                   ]
-                : ['global-test-hooks.js']),
+                : ['global-test-hooks.ts']),
             ],
           },
         ],
-        'import/no-named-as-default': 'off',
-        'import/order': 'off',
-        'import/prefer-default-export': 'off',
+        'import-x/no-named-as-default': 'off',
+        'import-x/no-named-as-default-member': 'off',
         'linebreak-style': ['error', 'unix'],
         'new-cap': 'off',
         'no-await-in-loop': 'off',
@@ -148,6 +137,7 @@ export default () => {
         'no-negated-condition': 'error',
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
+
         'no-promise-executor-return': 'off',
 
         'no-regex-spaces': 'off',
@@ -170,13 +160,11 @@ export default () => {
             name: g,
           })),
         ],
-
         'no-restricted-imports': ['error', { paths: eslintRestrictedImports }],
         'no-return-assign': 'off',
         'no-template-curly-in-string': 'off',
         'no-underscore-dangle': 'off',
         'no-var': 'error',
-        'object-shorthand': ['error', 'always'],
         [`${packageName`prettier`}/prettier`]: [
           'error',
           {
@@ -186,6 +174,7 @@ export default () => {
             trailingComma: 'all',
           },
         ],
+        'object-shorthand': ['error', 'always'],
         'padding-line-between-statements': [
           'error',
           { blankLine: 'never', next: '*', prev: '*' },
@@ -202,8 +191,8 @@ export default () => {
           ]),
           { blankLine: 'always', next: 'export', prev: '*' },
         ],
-        'prefer-arrow/prefer-arrow-functions': ['error'],
 
+        'prefer-arrow/prefer-arrow-functions': ['error'],
         'prefer-destructuring': 'off',
         'require-await': 'error',
         'simple-import-sort/imports': 'error',
@@ -239,17 +228,9 @@ export default () => {
           'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
         }),
       },
-      settings: {
-        'import/resolver': {
-          [packageName`eslint-import-resolver-babel-module`]: {
-            allowExistingDirectories: true,
-          },
-          [packageName`eslint-import-resolver-exports`]: {},
-        },
-      },
     },
     {
-      files: ['**/*.spec.js', '**/*.spec.ts'],
+      files: ['**/*.spec.ts', '**/*.spec.ts'],
       ...(baseConfig.testRunner === 'mocha' && {
         languageOptions: { globals: { expect: 'readonly' } },
       }),
@@ -271,7 +252,6 @@ export default () => {
     {
       files: [
         ...(baseConfig.testRunner === 'playwright' ? ['fixtures/**'] : []),
-        '**/*.spec.js',
         '**/*.spec.ts',
       ],
       rules: {

@@ -1,8 +1,11 @@
 {
   "depcheckConfig": {
     "ignoreMatches": [
-      "eslint-config-prettier"
+      "eslint-config-prettier",
+      "playwright",
+      "eslint-import-resolver-typescript"
     ]
   },
-  "name": "@dword-design/node"
+  "name": "@dword-design/node",
+  "testRunner": "playwright"
 }
