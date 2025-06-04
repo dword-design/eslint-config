@@ -281,5 +281,14 @@ export default () => {
       },
     },
     { files: ['**/*.vue'], rules: { 'vue/multi-word-component-names': 'off' } },
+    {
+      // TODO: Remove this after TypeScript migration
+      files: ['**/*.ts'],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        'import/extensions': 'off',
+        'import/no-unresolved': 'off',
+      },
+    },
   ]);
 };
