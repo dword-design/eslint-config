@@ -288,6 +288,7 @@ export default () => {
         '@typescript-eslint/no-explicit-any': 'off',
         'import/extensions': 'off',
         'import/no-unresolved': 'off',
+        'import/no-extraneous-dependencies': 'off',
       },
     },
   ]);
