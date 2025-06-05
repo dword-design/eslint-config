@@ -1,3 +1,10 @@
+## [7.0.2](https://github.com/dword-design/eslint-config/compare/v7.0.1...v7.0.2) (2025-06-05)
+
+
+### Bug Fixes
+
+* disable extension guessing ([63d1036](https://github.com/dword-design/eslint-config/commit/63d1036fa473a95ecc915fcaa9cea3ca281b5320))
+
 ## [7.0.1](https://github.com/dword-design/eslint-config/compare/v7.0.0...v7.0.1) (2025-06-05)
 
 
