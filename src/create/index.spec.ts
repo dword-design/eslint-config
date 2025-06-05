@@ -767,7 +767,10 @@ const tests = {
     filename: P.join('sub', 'index.ts'),
     files: { 'foo.ts': '' },
     messages: [
-      { message: "Unexpected use of file extension \"ts\" for \"@/foo.ts\"", ruleId: 'import-x/extensions' },
+      {
+        message: 'Unexpected use of file extension "ts" for "@/foo.ts"',
+        ruleId: 'import-x/extensions',
+      },
     ],
   },
   'file extension: alias: missing': {
@@ -806,7 +809,7 @@ const tests = {
     files: { 'foo.ts': '' },
     messages: [
       {
-        message: "Unexpected use of file extension \"ts\" for \"./foo.ts\"",
+        message: 'Unexpected use of file extension "ts" for "./foo.ts"',
         ruleId: 'import-x/extensions',
       },
     ],

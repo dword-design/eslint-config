@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dword-design/eslint-plugin-import-alias':
-        specifier: ^5.1.2
-        version: 5.1.2
+        specifier: ^6.0.2
+        version: 6.0.2
       '@eslint/eslintrc':
         specifier: ^3.3.1
         version: 3.3.1
@@ -858,6 +858,10 @@ packages:
 
   '@dword-design/eslint-plugin-import-alias@5.1.2':
     resolution: {integrity: sha512-+rMxHNbpDHgZq/J0z2TbE+BQ2CJtyi4YP3UYePxRA/MerKvg8Xkeh2BF8M+7W2fCifFkgCSV2eHfivzXEIOcWQ==}
+    engines: {node: '>=18'}
+
+  '@dword-design/eslint-plugin-import-alias@6.0.2':
+    resolution: {integrity: sha512-Q6Fp3jdcM9CPpZHodJcMQN18qDEMN7jTcZ6SAHKnqhki4ezvlMeiCxF8LB4TLkZLVUHIwqST4NWfSIlkhAChIA==}
     engines: {node: '>=18'}
 
   '@dword-design/eslint-plugin-import-x-fork@0.0.1':
@@ -7219,6 +7223,14 @@ snapshots:
       babel-plugin-module-resolver: 5.0.2
       deepmerge: 4.3.1
       jiti: 1.21.7
+    transitivePeerDependencies:
+      - supports-color
+
+  '@dword-design/eslint-plugin-import-alias@6.0.2':
+    dependencies:
+      '@babel/core': 7.27.4
+      '@dword-design/defu': 1.0.0
+      babel-plugin-module-resolver: 5.0.2
     transitivePeerDependencies:
       - supports-color
 

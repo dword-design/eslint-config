@@ -1,6 +1,7 @@
 import pathLib from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import importAlias from '@dword-design/eslint-plugin-import-alias';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import confusingBrowserGlobals from 'confusing-browser-globals';
@@ -55,9 +56,7 @@ export default ({ cwd = '.' } = {}) => {
       files: ['**/*.ts', '**/*.vue'],
       ...plugin,
     })),
-    ...compat.extends(
-      `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
-    ),
+    importAlias.configs.recommended,
     { files: ['**/*.ts', '**/*.vue'], ...eslintPluginPrettierRecommended },
     pluginPlaywright.configs['flat/recommended'],
     ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
