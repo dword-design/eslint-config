@@ -21,7 +21,7 @@ test('gitignore', async ({}, testInfo) => {
   });
 
   await execaCommand(
-    'eslint --ignore-pattern eslint.config.ts --no-warn-ignored .',
+    'eslint --ignore-pattern eslint.config.ts --no-error-on-unmatched-pattern .',
     { cwd },
   );
 });

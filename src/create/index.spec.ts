@@ -767,7 +767,7 @@ const tests = {
     filename: P.join('sub', 'index.ts'),
     files: { 'foo.ts': '' },
     messages: [
-      { message: "shouldn't have extension", ruleId: 'import-x/extensions' },
+      { message: "Unexpected use of file extension \"ts\" for \"@/foo.ts\"", ruleId: 'import-x/extensions' },
     ],
   },
   'file extension: alias: missing': {
@@ -776,10 +776,10 @@ const tests = {
     files: { 'foo.ts': '' },
   },
   'file extension: scoped package: existing': {
-    code: "import '@foo/bar.js';\n",
+    code: "import '@foo/bar/baz.js';\n",
     files: {
       'node_modules/@foo/bar': {
-        'index.js': '',
+        'baz.js': '',
         'package.json': JSON.stringify({ name: '@foo/bar' }),
       },
       'package.json': JSON.stringify({
@@ -806,7 +806,7 @@ const tests = {
     files: { 'foo.ts': '' },
     messages: [
       {
-        message: "extension shouldn't be there",
+        message: "Unexpected use of file extension \"ts\" for \"./foo.ts\"",
         ruleId: 'import-x/extensions',
       },
     ],
