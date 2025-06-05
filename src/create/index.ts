@@ -56,7 +56,7 @@ export default ({ cwd = '.' } = {}) => {
       files: ['**/*.ts', '**/*.vue'],
       ...plugin,
     })),
-    importAlias.configs.recommended,
+    { files: ['**/*.ts', '**/*.vue'], ...importAlias.configs.recommended },
     { files: ['**/*.ts', '**/*.vue'], ...eslintPluginPrettierRecommended },
     pluginPlaywright.configs['flat/recommended'],
     ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
