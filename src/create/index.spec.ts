@@ -778,6 +778,16 @@ const tests = {
     filename: P.join('sub', 'index.ts'),
     files: { 'foo.ts': '' },
   },
+  'file extension: js existing and matching ts file': {
+    code: "import './foo.js';\n",
+    files: { 'foo.ts': '' },
+    messages: [
+      {
+        message: "Unable to resolve path to module './foo.js'.",
+        ruleId: 'import-x/no-unresolved',
+      },
+    ],
+  },
   'file extension: scoped package: existing': {
     code: "import '@foo/bar/baz.js';\n",
     files: {

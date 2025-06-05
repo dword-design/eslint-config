@@ -208,6 +208,7 @@ export default ({ cwd = '.' } = {}) => {
       settings: {
         'import-x/resolver-next': [
           createTypeScriptImportResolver({
+            extensionAlias: { '.js': ['.js'] }, // Disable auto-guessing of .ts when .js is imported
             project: pathLib.join(cwd, 'tsconfig.json'),
           }),
         ],

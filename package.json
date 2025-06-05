@@ -31,7 +31,7 @@
     "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-typescript": "^4.4.2",
-    "eslint-plugin-import-x": "npm:@dword-design/eslint-plugin-import-x-fork@^0.0.1",
+    "eslint-plugin-import-x": "^4.15.1",
     "eslint-plugin-jsonc": "^2.20.1",
     "eslint-plugin-playwright": "^2.2.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
