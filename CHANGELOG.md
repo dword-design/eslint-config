@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/dword-design/eslint-config/compare/v7.0.0...v7.0.1) (2025-06-05)
+
+
+### Bug Fixes
+
+* cleanup ([bb40940](https://github.com/dword-design/eslint-config/commit/bb40940a08d851e1ba3510c070732abac9966948))
+
 # [7.0.0](https://github.com/dword-design/eslint-config/compare/v6.1.3...v7.0.0) (2025-06-05)
 
 
