@@ -93,9 +93,6 @@ importers:
       endent:
         specifier: npm:@dword-design/endent@^1.4.1
         version: '@dword-design/endent@1.4.1'
-      execa:
-        specifier: ^9.6.0
-        version: 9.6.0
       output-files:
         specifier: ^2.0.32
         version: 2.0.32

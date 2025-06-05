@@ -52,7 +52,6 @@
     "@dword-design/base": "^13.0.1",
     "@playwright/test": "^1.52.0",
     "endent": "npm:@dword-design/endent@^1.4.1",
-    "execa": "^9.6.0",
     "output-files": "^2.0.32",
     "playwright": "^1.52.0"
   },
