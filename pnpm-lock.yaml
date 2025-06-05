@@ -96,9 +96,6 @@ importers:
       output-files:
         specifier: ^2.0.32
         version: 2.0.32
-      playwright:
-        specifier: ^1.52.0
-        version: 1.52.0
 
 packages:
 

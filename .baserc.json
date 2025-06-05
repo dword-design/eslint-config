@@ -1,8 +1,7 @@
 {
   "depcheckConfig": {
     "ignoreMatches": [
-      "eslint-config-prettier",
-      "playwright"
+      "eslint-config-prettier"
     ]
   },
   "name": "@dword-design/node"
