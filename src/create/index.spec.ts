@@ -1,8 +1,8 @@
 import P from 'node:path';
 
 import { expect, test } from '@playwright/test';
-import dedent from 'dedent';
 import packageName from 'depcheck-package-name';
+import endent from 'endent';
 import { ESLint } from 'eslint';
 import { pick } from 'lodash-es';
 import outputFiles from 'output-files';
@@ -12,12 +12,7 @@ import self from '.';
 const tests = {
   'alias: child': {
     code: "import '@/foo';\n",
-    files: {
-      'foo.ts': '',
-      'tsconfig.json': JSON.stringify({
-        compilerOptions: { paths: { '@/*': ['*'] } },
-      }),
-    },
+    files: { 'foo.ts': '' },
     messages: [
       {
         message:
@@ -30,12 +25,7 @@ const tests = {
   'alias: parent': {
     code: "import '@/foo';\n",
     filename: P.join('sub', 'index.ts'),
-    files: {
-      'foo.ts': '',
-      'tsconfig.json': JSON.stringify({
-        compilerOptions: { paths: { '@/*': ['*'] } },
-      }),
-    },
+    files: { 'foo.ts': '' },
   },
   'alias: parent import': {
     code: "import '../foo';\n",
@@ -54,14 +44,14 @@ const tests = {
     code: "export default foo => (foo.bar = 'bar');\n",
   },
   'arrow function block': {
-    code: dedent`
+    code: endent`
       export default foo => {
         console.log(foo);
       };\n
     `,
   },
   'arrow function returning block': {
-    code: dedent`
+    code: endent`
       export default foo => {
         return console.log(foo);
       };\n
@@ -93,14 +83,14 @@ const tests = {
     ],
   },
   'await inside loop': {
-    code: dedent`
+    code: endent`
       for (let i = 0; i < 10; i += 1) {
         await Promise.resolve();
       }\n
     `,
   },
   'blank line: between exports: no': {
-    code: dedent`
+    code: endent`
       export const foo = 1;
       export const bar = 2;\n
     `,
@@ -110,20 +100,20 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       export const foo = 1;
 
       export const bar = 2;\n
     `,
   },
   'blank line: between single-line statements: no': {
-    code: dedent`
+    code: endent`
       console.log('foo');
       console.log('bar');\n
     `,
   },
   'blank line: between single-line statements: yes': {
-    code: dedent`
+    code: endent`
       console.log('foo');
 
       console.log('bar');\n
@@ -134,13 +124,13 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       console.log('foo');
       console.log('bar');\n
     `,
   },
   'blank line: between statement and export: no': {
-    code: dedent`
+    code: endent`
       console.log('foo');
       export const foo = 1;\n
     `,
@@ -150,14 +140,14 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       console.log('foo');
 
       export const foo = 1;\n
     `,
   },
   'blank line: import and statement: no': {
-    code: dedent`
+    code: endent`
       import foo from 'foo';
       console.log(foo);\n
     `,
@@ -175,14 +165,14 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       import foo from 'foo';
 
       console.log(foo);\n
     `,
   },
   'blank line: import and statement: yes': {
-    code: dedent`
+    code: endent`
       import foo from 'foo';
 
       console.log(foo);\n
@@ -197,7 +187,7 @@ const tests = {
     },
   },
   'blank line: import groups with newline': {
-    code: dedent`
+    code: endent`
       import foo from 'foo';
 
       import bar from './bar';
@@ -216,7 +206,7 @@ const tests = {
     },
   },
   'blank line: import groups without newline': {
-    code: dedent`
+    code: endent`
       import foo from 'foo';
       import bar from './bar';
 
@@ -238,7 +228,7 @@ const tests = {
         ruleId: 'simple-import-sort/imports',
       },
     ],
-    output: dedent`
+    output: endent`
       import foo from 'foo';
 
       import bar from './bar';
@@ -248,7 +238,7 @@ const tests = {
     `,
   },
   'blank line: imports with newline': {
-    code: dedent`
+    code: endent`
       import bar from './bar';
 
       import foo from './foo';
@@ -266,7 +256,7 @@ const tests = {
         ruleId: 'simple-import-sort/imports',
       },
     ],
-    output: dedent`
+    output: endent`
       import bar from './bar';
       import foo from './foo';
 
@@ -275,7 +265,7 @@ const tests = {
     `,
   },
   'blank line: imports without newline': {
-    code: dedent`
+    code: endent`
       import bar from './bar';
       import foo from './foo';
 
@@ -288,7 +278,7 @@ const tests = {
     },
   },
   'blank line: multi-line block: after: no': {
-    code: dedent`
+    code: endent`
       const foo = 1;
 
       if (foo) {
@@ -302,7 +292,7 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       const foo = 1;
 
       if (foo) {
@@ -313,7 +303,7 @@ const tests = {
     `,
   },
   'blank line: multi-line block: after: yes': {
-    code: dedent`
+    code: endent`
       const foo = 1;
 
       if (foo) {
@@ -324,7 +314,7 @@ const tests = {
     `,
   },
   'blank line: multi-line block: before: no': {
-    code: dedent`
+    code: endent`
       const foo = true;
       if (foo) {
         console.log('foo');
@@ -336,7 +326,7 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       const foo = true;
 
       if (foo) {
@@ -345,7 +335,7 @@ const tests = {
     `,
   },
   'blank line: multi-line block: before: yes': {
-    code: dedent`
+    code: endent`
       const foo = true;
 
       if (foo) {
@@ -354,7 +344,7 @@ const tests = {
     `,
   },
   'blank line: multi-line const declaration: after: no': {
-    code: dedent`
+    code: endent`
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
@@ -366,7 +356,7 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
@@ -375,7 +365,7 @@ const tests = {
     `,
   },
   'blank line: multi-line const declaration: after: yes': {
-    code: dedent`
+    code: endent`
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
@@ -384,7 +374,7 @@ const tests = {
     `,
   },
   'blank line: multi-line const declaration: before: no': {
-    code: dedent`
+    code: endent`
       console.log('foo');
       const foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
@@ -398,7 +388,7 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       console.log('foo');
 
       const foo = {
@@ -409,7 +399,7 @@ const tests = {
     `,
   },
   'blank line: multi-line const declaration: before: yes': {
-    code: dedent`
+    code: endent`
       console.log('foo');
 
       const foo = {
@@ -420,7 +410,7 @@ const tests = {
     `,
   },
   'blank line: multi-line let declaration: after: no': {
-    code: dedent`
+    code: endent`
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
@@ -433,7 +423,7 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
@@ -443,7 +433,7 @@ const tests = {
     `,
   },
   'blank line: multi-line let declaration: after: yes': {
-    code: dedent`
+    code: endent`
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       };
@@ -453,7 +443,7 @@ const tests = {
     `,
   },
   'blank line: multi-line let declaration: before: no': {
-    code: dedent`
+    code: endent`
       console.log('foo');
       let foo = {
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
@@ -468,7 +458,7 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       console.log('foo');
 
       let foo = {
@@ -480,7 +470,7 @@ const tests = {
     `,
   },
   'blank line: multi-line let declaration: before: yes': {
-    code: dedent`
+    code: endent`
       console.log('foo');
 
       let foo = {
@@ -492,7 +482,7 @@ const tests = {
     `,
   },
   'blank line: multi-line statement: after: no': {
-    code: dedent`
+    code: endent`
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });
@@ -504,7 +494,7 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });
@@ -513,7 +503,7 @@ const tests = {
     `,
   },
   'blank line: multi-line statement: after: yes': {
-    code: dedent`
+    code: endent`
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
       });
@@ -522,7 +512,7 @@ const tests = {
     `,
   },
   'blank line: multi-line statement: before: no': {
-    code: dedent`
+    code: endent`
       console.log('foo');
       console.log({
         foo: 'Aenean eu leo quam. Pellentesque ornare sem. Aenean eu leo quam. Pellentesque ornare sem.',
@@ -534,7 +524,7 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       console.log('foo');
 
       console.log({
@@ -543,7 +533,7 @@ const tests = {
     `,
   },
   'blank line: multi-line statement: before: yes': {
-    code: dedent`
+    code: endent`
       console.log('foo');
 
       console.log({
@@ -552,21 +542,21 @@ const tests = {
     `,
   },
   'blank line: newline between exports': {
-    code: dedent`
+    code: endent`
       export const foo = 1;
 
       export const bar = 2;\n
     `,
   },
   'blank line: newline between statement and export': {
-    code: dedent`
+    code: endent`
       console.log('foo');
 
       export const foo = 1;\n
     `,
   },
   callbacks: {
-    code: dedent`
+    code: endent`
       const foo = () => {};
 
       foo(async error => {
@@ -576,7 +566,7 @@ const tests = {
   },
   'chained arrow functions': { code: 'export default () => () => 1;\n' },
   'comments: with blank line': {
-    code: dedent`
+    code: endent`
       console.log('foo');
 
       // foo
@@ -588,21 +578,21 @@ const tests = {
         ruleId: 'padding-line-between-statements',
       },
     ],
-    output: dedent`
+    output: endent`
       console.log('foo');
       // foo
       console.log('bar');\n
     `,
   },
   'comments: without blank line': {
-    code: dedent`
+    code: endent`
       console.log('foo');
       // foo
       console.log('bar');\n
     `,
   },
   continue: {
-    code: dedent`
+    code: endent`
       for (let i = 0; i < 10; i += 1) {
         if (i > 5) {
           continue;
@@ -621,7 +611,7 @@ const tests = {
         ruleId: 'prettier/prettier',
       },
     ],
-    output: dedent`
+    output: endent`
       export default () =>
         console.log(
           () => (1 + 2 + 3 + 4) * 3 + 5 + 3 + 5 + 56 + 123 + 55_456 + 23_434 + 23_434,
@@ -629,14 +619,14 @@ const tests = {
     `,
   },
   'destructuring: array Promise.all': {
-    code: dedent`
+    code: endent`
       const [foo, bar] = await Promise.all([]);
       console.log(foo);
       console.log(bar);\n
     `,
   },
   'destructuring: array for loop Object.entries': {
-    code: dedent`
+    code: endent`
       for (const [foo, bar] of Object.entries({})) {
         console.log(foo);
         console.log(bar);
@@ -647,66 +637,17 @@ const tests = {
     code: 'export default ({ foo }) => console.log(foo);\n',
   },
   'destructuring: return values': {
-    code: dedent`
+    code: endent`
       const func = () => ({ x: 1, y: 2 });
       const { x, y } = func();
       console.log(x);
       console.log(y);\n
     `,
   },
-  'dev dependency in global-test-hooks.ts: mocha': {
-    code: "import 'foo';\n",
-    filename: 'global-test-hooks.ts',
-    files: {
-      'node_modules/foo': {
-        'index.js': '',
-        'package.json': JSON.stringify({ name: 'foo' }),
-      },
-      'package.json': JSON.stringify({ devDependencies: { foo: '^1.0.0' } }),
-    },
-  },
-  'dev dependency in global-test-hooks.ts: playwright': {
-    code: "import 'foo';\n",
-    filename: 'global-test-hooks.ts',
-    files: {
-      '.baserc.json': JSON.stringify({ testRunner: 'playwright' }),
-      'node_modules/foo': {
-        'index.js': '',
-        'package.json': JSON.stringify({ name: 'foo' }),
-      },
-      'package.json': JSON.stringify({ devDependencies: { foo: '^1.0.0' } }),
-    },
-    messages: [
-      {
-        message:
-          "'foo' should be listed in the project's dependencies, not devDependencies.",
-        ruleId: 'import/no-extraneous-dependencies',
-      },
-    ],
-  },
-  'dev dependency in playwright.config.ts: mocha': {
+  'dev dependency in playwright.config.ts': {
     code: "import 'foo';\n",
     filename: 'playwright.config.ts',
     files: {
-      'node_modules/foo': {
-        'index.js': '',
-        'package.json': JSON.stringify({ name: 'foo' }),
-      },
-      'package.json': JSON.stringify({ devDependencies: { foo: '^1.0.0' } }),
-    },
-    messages: [
-      {
-        message:
-          "'foo' should be listed in the project's dependencies, not devDependencies.",
-        ruleId: 'import/no-extraneous-dependencies',
-      },
-    ],
-  },
-  'dev dependency in playwright.config.ts: playwright': {
-    code: "import 'foo';\n",
-    filename: 'playwright.config.ts',
-    files: {
-      '.baserc.json': JSON.stringify({ testRunner: 'playwright' }),
       'node_modules/foo': {
         'index.js': '',
         'package.json': JSON.stringify({ name: 'foo' }),
@@ -731,7 +672,7 @@ const tests = {
       {
         message:
           "'foo' should be listed in the project's dependencies, not devDependencies.",
-        ruleId: 'import/no-extraneous-dependencies',
+        ruleId: 'import-x/no-extraneous-dependencies',
       },
     ],
   },
@@ -753,7 +694,7 @@ const tests = {
       {
         message:
           "'foo' should be listed in the project's dependencies, not devDependencies.",
-        ruleId: 'import/no-extraneous-dependencies',
+        ruleId: 'import-x/no-extraneous-dependencies',
       },
     ],
   },
@@ -762,7 +703,7 @@ const tests = {
     filename: 'index.spec.ts',
     files: {
       'node_modules/foo/index.js': '',
-      'package.json': dedent`
+      'package.json': endent`
         {
           "devDependencies": {
             "foo": "^1.0.0"
@@ -771,24 +712,27 @@ const tests = {
       `,
     },
   },
-  'empty object pattern > playwright: no': {
-    code: 'export default ({}) => {};\n',
+  'empty object pattern > playwright: yes > test file: yes': {
+    code: endent`
+      import { test as base } from '${packageName`@playwright/test`}';
+
+      const test = base.extend({ _: [({}, use) => use(), { auto: true }] });
+      test('foo', () => {});\n
+    `,
     filename: 'index.spec.ts',
-    messages: [
-      {
-        message: 'Unexpected empty object pattern.',
-        ruleId: 'no-empty-pattern',
-      },
-    ],
+    files: {
+      'package.json': JSON.stringify({
+        devDependencies: { [packageName`@playwright/test`]: '*' },
+      }),
+    },
   },
-  'empty object pattern > playwright: yes > test file: no': {
-    code: dedent`
+  'empty object pattern > test file: no': {
+    code: endent`
       import { test as base } from '${packageName`@playwright/test`}';
 
       export const test = base.extend({ _: [({}, use) => use(), { auto: true }] });\n
     `,
     files: {
-      '.baserc.json': JSON.stringify({ testRunner: 'playwright' }),
       'package.json': JSON.stringify({
         dependencies: { [packageName`@playwright/test`]: '*' },
       }),
@@ -799,21 +743,6 @@ const tests = {
         ruleId: 'no-empty-pattern',
       },
     ],
-  },
-  'empty object pattern > playwright: yes > test file: yes': {
-    code: dedent`
-      import { test as base } from '${packageName`@playwright/test`}';
-
-      const test = base.extend({ _: [({}, use) => use(), { auto: true }] });
-      test('foo', () => {});\n
-    `,
-    filename: 'index.spec.ts',
-    files: {
-      '.baserc.json': JSON.stringify({ testRunner: 'playwright' }),
-      'package.json': JSON.stringify({
-        devDependencies: { [packageName`@playwright/test`]: '*' },
-      }),
-    },
   },
   'esm import without main field': {
     code: "import 'foo';\n",
@@ -834,23 +763,20 @@ const tests = {
     },
   },
   'file extension: alias: existing': {
-    code: "import '@/foo';\n",
+    code: "import '@/foo.ts';\n",
     filename: P.join('sub', 'index.ts'),
     files: { 'foo.ts': '' },
+    messages: [
+      { message: "shouldn't have extension", ruleId: 'import-x/extensions' },
+    ],
   },
   'file extension: alias: missing': {
     code: "import '@/foo';\n",
     filename: P.join('sub', 'index.ts'),
     files: { 'foo.ts': '' },
-    messages: [
-      {
-        message: 'Missing file extension "js" for "@/foo"',
-        ruleId: 'import/extensions',
-      },
-    ],
   },
   'file extension: scoped package: existing': {
-    code: "import '@foo/bar';\n",
+    code: "import '@foo/bar.js';\n",
     files: {
       'node_modules/@foo/bar': {
         'index.js': '',
@@ -861,12 +787,6 @@ const tests = {
         type: 'module',
       }),
     },
-    messages: [
-      {
-        message: "Unable to resolve path to module '@foo/bar'.",
-        ruleId: 'import/no-unresolved',
-      },
-    ],
   },
   'file extension: scoped package: missing': {
     code: "import '@foo/bar';\n",
@@ -882,10 +802,13 @@ const tests = {
     },
   },
   'file extension: subpath: existing': {
-    code: "import './foo';\n",
+    code: "import './foo.ts';\n",
     files: { 'foo.ts': '' },
     messages: [
-      { message: 'extension should be there', ruleId: 'import/extensions' },
+      {
+        message: "extension shouldn't be there",
+        ruleId: 'import-x/extensions',
+      },
     ],
   },
   'file extension: subpath: missing': {
@@ -893,7 +816,7 @@ const tests = {
     files: { 'foo.ts': '' },
   },
   forEach: {
-    code: dedent`
+    code: endent`
       const foo = [];
       foo.forEach(() => {});\n
     `,
@@ -905,7 +828,7 @@ const tests = {
     ],
   },
   'function block': {
-    code: dedent`
+    code: endent`
       export default function () {
         console.log('foo');
       }\n
@@ -918,7 +841,7 @@ const tests = {
     ],
   },
   'function style expression with string literal': {
-    code: dedent`
+    code: endent`
       export default {
         'foo bar': function () {
           console.log(this);
@@ -928,7 +851,7 @@ const tests = {
     messages: [
       { message: 'Expected method shorthand.', ruleId: 'object-shorthand' },
     ],
-    output: dedent`
+    output: endent`
       export default {
         'foo bar'() {
           console.log(this);
@@ -937,7 +860,7 @@ const tests = {
     `,
   },
   'functional in template': {
-    code: dedent`
+    code: endent`
       <template functional>
         <div />
       </template>\n
@@ -952,7 +875,7 @@ const tests = {
   },
   globalThis: { code: 'console.log(globalThis);\n' },
   'import order': {
-    code: dedent`
+    code: endent`
       import foo from 'foo';
       import bar from 'bar';
 
@@ -974,7 +897,7 @@ const tests = {
         ruleId: 'simple-import-sort/imports',
       },
     ],
-    output: dedent`
+    output: endent`
       import bar from 'bar';
       import foo from 'foo';
 
@@ -982,33 +905,21 @@ const tests = {
       console.log(bar);\n
     `,
   },
-  'import order with webpack loader syntax and aliases': {
-    code: dedent`
-      import buyMeACoffeeImageUrl from '!url-loader!@/buymeacoffee.svg';
-      import imageUrl from '@/support-me.jpg';
-
-      console.log(imageUrl);
-      console.log(buyMeACoffeeImageUrl);\n
-    `,
-    eslintConfig: { rules: { 'import/no-webpack-loader-syntax': 'off' } },
-    filename: P.join('sub', 'index.ts'),
-    files: { 'buymeacoffee.svg': '', 'support-me.jpg': '' },
-  },
   'indent: invalid': {
-    code: dedent`
+    code: endent`
       export default () => {
           console.log('foo');
       };\n
     `,
     messages: [{ message: 'Delete `··`', ruleId: 'prettier/prettier' }],
-    output: dedent`
+    output: endent`
       export default () => {
         console.log('foo');
       };\n
     `,
   },
   'indent: valid': {
-    code: dedent`
+    code: endent`
       export default () => {
         console.log('foo');
       };\n
@@ -1016,7 +927,7 @@ const tests = {
   },
   'inline comments': { code: 'export default 1; // foo\n' },
   'json: indent too big': {
-    code: dedent`
+    code: endent`
       {
           "foo": "bar"
       }\n
@@ -1028,14 +939,14 @@ const tests = {
         ruleId: 'jsonc/indent',
       },
     ],
-    output: dedent`
+    output: endent`
       {
         "foo": "bar"
       }\n
     `,
   },
   'json: no indent': {
-    code: dedent`
+    code: endent`
       {
       "foo": "bar"
       }\n
@@ -1047,14 +958,14 @@ const tests = {
         ruleId: 'jsonc/indent',
       },
     ],
-    output: dedent`
+    output: endent`
       {
         "foo": "bar"
       }\n
     `,
   },
   'json: syntax error': {
-    code: dedent`
+    code: endent`
       {
         "foo":
       }\n
@@ -1065,7 +976,7 @@ const tests = {
     ],
   },
   'json: valid': {
-    code: dedent`
+    code: endent`
       {
         "bar": {
           "baz": [
@@ -1078,8 +989,13 @@ const tests = {
     `,
     filename: 'index.json',
   },
+  'loader url with alias': {
+    code: `import '@/buymeacoffee.svg?url';\n`,
+    filename: P.join('sub', 'index.ts'),
+    files: { 'buymeacoffee.svg': '', 'support-me.jpg': '' },
+  },
   'lonely if': {
-    code: dedent`
+    code: endent`
       export default ({ distanceFromTarget = 30 } = {}) =>
         (rect1, rect2) => {
           const center1 = {
@@ -1129,14 +1045,14 @@ const tests = {
     `,
   },
   'missing trailing comma': {
-    code: dedent`
+    code: endent`
       console.log([
         'fooadfa sdfasdfasdf asdfasdfasdfasdf',
         'adfsddfsdfsadfasdf asdfasdf asdfasdf'
       ]);\n
     `,
     messages: [{ message: 'Insert `,`', ruleId: 'prettier/prettier' }],
-    output: dedent`
+    output: endent`
       console.log([
         'fooadfa sdfasdfasdf asdfasdfasdfasdf',
         'adfsddfsdfsadfasdf asdfasdf asdfasdf',
@@ -1144,7 +1060,7 @@ const tests = {
     `,
   },
   'multi-root component': {
-    code: dedent`
+    code: endent`
       <template>
         <div />
         <div />
@@ -1153,13 +1069,13 @@ const tests = {
     filename: 'index.vue',
   },
   'named as default': {
-    code: dedent`
+    code: endent`
       import foo from 'foo';
 
       export default foo + 1;\n
     `,
     files: {
-      'node_modules/foo/index.js': dedent`
+      'node_modules/foo/index.js': endent`
         export const foo = 1;
         export default foo;
       `,
@@ -1171,7 +1087,7 @@ const tests = {
     },
   },
   'named import right order': {
-    code: dedent`
+    code: endent`
       import { bar, foo } from 'foo';
 
       console.log(bar);
@@ -1187,7 +1103,7 @@ const tests = {
     },
   },
   'named import wrong order': {
-    code: dedent`
+    code: endent`
       import { foo, bar } from 'foo';
 
       console.log(foo);
@@ -1207,7 +1123,7 @@ const tests = {
         ruleId: 'simple-import-sort/imports',
       },
     ],
-    output: dedent`
+    output: endent`
       import { bar, foo } from 'foo';
 
       console.log(foo);
@@ -1215,7 +1131,7 @@ const tests = {
     `,
   },
   'negated condition': {
-    code: dedent`
+    code: endent`
       const foo = 1;
 
       if (!foo) {
@@ -1235,27 +1151,27 @@ const tests = {
     code: 'export default foo => (foo === 1 ? 2 : foo === 2 ? 3 : 4);\n',
   },
   'new lower-case': {
-    code: dedent`
+    code: endent`
       const foo = () => {};
 
       export default new foo();\n
     `,
   },
   'nullish coalescing': {
-    code: dedent`
+    code: endent`
       const foo = 0;
       console.log(foo ?? 2);\n
     `,
   },
   'object: multi-line that should be multi-line': {
-    code: dedent`
+    code: endent`
       export default {
         foo: 'Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum.',
       };\n
     `,
   },
   'object: multi-line that should be single-line': {
-    code: dedent`
+    code: endent`
       export default {
         foo: 'bar',
       };\n
@@ -1277,19 +1193,19 @@ const tests = {
         ruleId: 'prettier/prettier',
       },
     ],
-    output: dedent`
+    output: endent`
       export default {
         foo: 'Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum.',
       };\n
     `,
   },
   'object: single-line that should be single-line': {
-    code: dedent`
+    code: endent`
       export default { foo: 'bar' };\n
     `,
   },
   'package.json: unsorted': {
-    code: dedent`
+    code: endent`
       {
         "version": "1.0.0",
         "name": "foo"
@@ -1303,7 +1219,7 @@ const tests = {
         ruleId: 'jsonc/sort-keys',
       },
     ],
-    output: dedent`
+    output: endent`
       {
         "name": "foo",
         "version": "1.0.0"
@@ -1315,31 +1231,15 @@ const tests = {
     filename: 'package.json',
   },
   'param reassign': {
-    code: dedent`
+    code: endent`
       export default foo => {
         foo = 'bar';
         console.log(foo);
       };\n
     `,
   },
-  pathGroupOverrides: {
-    code: "import '#content/server';\n",
-    eslintConfig: {
-      rules: {
-        'import/extensions': [
-          'error',
-          'always',
-          {
-            ignorePackages: true,
-            pathGroupOverrides: [{ action: 'ignore', pattern: '#*/**' }],
-          },
-        ],
-        'import/no-unresolved': ['error', { ignore: ['#content'] }],
-      },
-    },
-  },
   'possible destructuring': {
-    code: dedent`
+    code: endent`
       const bar = { foo: 'test' };
       const foo = bar.foo;
       console.log(foo);\n
@@ -1370,21 +1270,21 @@ const tests = {
   },
   'regex-spaces': { code: 'export default /  /;\n' },
   'restricted import: inside': {
-    code: "import 'puppeteer';\n",
+    code: "import 'resolve-dep';\n",
     files: {
-      'node_modules/puppeteer/index.js': '',
-      'package.json': dedent`
+      'node_modules/resolve-dep/index.js': '',
+      'package.json': endent`
         {
-          "name": "@dword-design/puppeteer",
+          "name": "matchdep",
           "dependencies": {
-            "puppeteer": "^1.0.0"
+            "resolve-dep": "^1.0.0"
           }
         }
       `,
     },
   },
   'restricted import: name': {
-    code: dedent`
+    code: endent`
       import { zipObject } from '@dword-design/functions';
 
       console.log(zipObject);\n
@@ -1406,11 +1306,11 @@ const tests = {
     ],
   },
   'restricted import: outside': {
-    code: "import 'puppeteer';\n",
+    code: "import 'resolve-dep';\n",
     files: {
-      'node_modules/puppeteer/index.js': '',
+      'node_modules/resolve-dep/index.js': '',
       'package.json': JSON.stringify(
-        { dependencies: { puppeteer: '^1.0.0' } },
+        { dependencies: { 'resolve-dep': '^1.0.0' } },
         undefined,
         2,
       ),
@@ -1418,7 +1318,7 @@ const tests = {
     messages: [
       {
         message:
-          "'puppeteer' import is restricted from being used. Does not set no-sandbox. Use '@dword-design/puppeteer' instead",
+          "'resolve-dep' import is restricted from being used. Use 'matchdep' instead",
         ruleId: 'no-restricted-imports',
       },
     ],
@@ -1441,11 +1341,11 @@ const tests = {
   },
   'single export': { code: "export const foo = 'bar';\n" },
   'template literal': {
-    code: dedent`
-      let dedent;
+    code: endent`
+      let endent;
 
       export default () =>
-        dedent\`
+        endent\`
         adsfasdf
       \`;\n
     `,
@@ -1455,42 +1355,14 @@ const tests = {
         ruleId: 'unicorn/template-indent',
       },
     ],
-    output: dedent`
-      let dedent;
+    output: endent`
+      let endent;
 
       export default () =>
-        dedent\`
+        endent\`
           adsfasdf
         \`;\n
     `,
-  },
-  'test: global expect': {
-    code: 'expect(1).toEqual(1);\n',
-    filename: 'index.spec.ts',
-  },
-  'test: imported expect': {
-    code: dedent`
-      import expect from 'expect';
-
-      expect(1).toEqual(1);\n
-    `,
-    filename: 'index.spec.ts',
-    files: {
-      'package.json': dedent`
-        {
-          "devDependencies": {
-            "expect": "^1.0.0"
-          }
-        }\n
-      `,
-    },
-    messages: [
-      {
-        message:
-          "'expect' import is restricted from being used. Use the global 'expect' variable instead",
-        ruleId: 'no-restricted-imports',
-      },
-    ],
   },
   'test: prod dependency': {
     code: "import 'foo';\n",
@@ -1505,12 +1377,12 @@ const tests = {
     },
   },
   'test: restricted import': {
-    code: "import 'puppeteer';\n",
+    code: "import 'resolve-dep';\n",
     filename: 'index.spec.ts',
     files: {
-      'node_modules/puppeteer/index.js': '',
+      'node_modules/resolve-dep/index.js': '',
       'package.json': JSON.stringify(
-        { dependencies: { puppeteer: '^1.0.0' } },
+        { dependencies: { 'resolve-dep': '^1.0.0' } },
         undefined,
         2,
       ),
@@ -1518,13 +1390,13 @@ const tests = {
     messages: [
       {
         message:
-          "'puppeteer' import is restricted from being used. Does not set no-sandbox. Use '@dword-design/puppeteer' instead",
+          "'resolve-dep' import is restricted from being used. Use 'matchdep' instead",
         ruleId: 'no-restricted-imports',
       },
     ],
   },
   typescript: {
-    code: dedent`
+    code: endent`
       const foo: string = 'bar';
 
       export default foo;\n
@@ -1532,13 +1404,13 @@ const tests = {
     filename: 'index.ts',
   },
   'underscore dangle': {
-    code: dedent`
+    code: endent`
       const foo = {};
       console.log(foo._bar);\n
     `,
   },
   'unnamed function': {
-    code: dedent`
+    code: endent`
       console.log(function () {
         console.log(this);
       });\n
@@ -1556,7 +1428,7 @@ const tests = {
     output: 'export default { a: 2, b: 1 };\n',
   },
   'v-html on component': {
-    code: dedent`
+    code: endent`
       <template>
         <foo v-html="html" />
       </template>
@@ -1578,7 +1450,7 @@ const tests = {
     ],
   },
   'v-html on native element': {
-    code: dedent`
+    code: endent`
       <template>
         <span v-html="html" />
       </template>
@@ -1597,7 +1469,7 @@ const tests = {
   },
   valid: { code: 'export default 1;\n' },
   var: {
-    code: dedent`
+    code: endent`
       var foo = 1;
       foo = 2;
       console.log(foo);\n
@@ -1608,14 +1480,14 @@ const tests = {
         ruleId: 'no-var',
       },
     ],
-    output: dedent`
+    output: endent`
       let foo = 1;
       foo = 2;
       console.log(foo);\n
     `,
   },
   'vue: attributes not sorted': {
-    code: dedent`
+    code: endent`
       <template>
         <div class="foo" aria-hidden="true" />
       </template>\n
@@ -1627,14 +1499,14 @@ const tests = {
         ruleId: 'vue/attributes-order',
       },
     ],
-    output: dedent`
+    output: endent`
       <template>
         <div aria-hidden="true" class="foo" />
       </template>\n
     `,
   },
   'vue: component order: invalid': {
-    code: dedent`
+    code: endent`
       <script>
       export default { props: { foo: {} }, data: () => ({ bar: 1 }) };
       </script>\n
@@ -1647,14 +1519,14 @@ const tests = {
         ruleId: 'sort-keys-fix/sort-keys-fix',
       },
     ],
-    output: dedent`
+    output: endent`
       <script>
       export default { data: () => ({ bar: 1 }), props: { foo: {} } };
       </script>\n
     `,
   },
   'vue: component order: valid': {
-    code: dedent`
+    code: endent`
       <script>
       export default { data: () => ({ bar: 1 }), props: { foo: {} } };
       </script>\n
@@ -1662,7 +1534,7 @@ const tests = {
     filename: 'index.vue',
   },
   'vue: index component name': {
-    code: dedent`
+    code: endent`
       <template>
         <div />
       </template>\n
@@ -1670,7 +1542,7 @@ const tests = {
     filename: P.join('src', 'index.vue'),
   },
   'vue: multi-word component name': {
-    code: dedent`
+    code: endent`
       <template>
         <div />
       </template>\n
@@ -1678,7 +1550,7 @@ const tests = {
     filename: 'index.vue',
   },
   'vue: page single-word name': {
-    code: dedent`
+    code: endent`
       <template>
         <div />
       </template>\n
@@ -1686,7 +1558,7 @@ const tests = {
     filename: P.join('pages', 'about.vue'),
   },
   'vue: single-word component name in library': {
-    code: dedent`
+    code: endent`
       <template>
         <div />
       </template>\n
@@ -1694,7 +1566,7 @@ const tests = {
     filename: P.join('src', 'button.vue'),
   },
   'vue: single-word component registered': {
-    code: dedent`
+    code: endent`
       import Vue from 'vue';
 
       Vue.component('Foo', {});\n
@@ -1711,7 +1583,7 @@ const tests = {
     ],
   },
   'vue: valid': {
-    code: dedent`
+    code: endent`
       <template>
         <div aria-hidden="true" class="foo" />
       </template>\n
@@ -1719,7 +1591,7 @@ const tests = {
     filename: 'index.vue',
   },
   'while true': {
-    code: dedent`
+    code: endent`
       while (true) {
         console.log('foo');
       }\n
@@ -1754,21 +1626,14 @@ for (const [name, _testConfig] of Object.entries(tests)) {
     await outputFiles(cwd, {
       'package.json': JSON.stringify({ type: 'module' }),
       'tsconfig.json': JSON.stringify({
-        compilerOptions: {
-          esModuleInterop: true,
-          module: 'ESNext',
-          moduleResolution: 'bundler',
-          outDir: 'dist',
-          paths: { '@/*': ['./*'] },
-          target: 'ESNext',
-        },
+        compilerOptions: { paths: { '@/*': ['*'] } },
       }),
       ...testConfig.files,
       [testConfig.filename]: testConfig.code,
     });
 
     const eslintConfig = {
-      baseConfig: self(),
+      baseConfig: self({ cwd }),
       cwd,
       overrideConfig: testConfig.eslintConfig,
       overrideConfigFile: true,

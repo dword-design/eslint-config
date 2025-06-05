@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import dedent from 'dedent';
+import endent from 'endent';
 import { execaCommand } from 'execa';
 import outputFiles from 'output-files';
 
@@ -9,33 +9,36 @@ test('gitignore', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
 
   await outputFiles(cwd, {
-    '.gitignore': '/index.js',
-    'eslint.config.js': dedent`
+    '.gitignore': '/index.ts',
+    'eslint.config.ts': endent`
       import { defineConfig } from 'eslint/config';
 
-      import self from '../src/index.js';
+      import self from '../../src/index.ts';
 
       export default defineConfig([self]);
     `,
-    'index.js': 'foo',
+    'index.ts': 'foo',
   });
 
-  await execaCommand('eslint --ignore-pattern eslint.config.js .', { cwd });
+  await execaCommand(
+    'eslint --ignore-pattern eslint.config.ts --no-warn-ignored .',
+    { cwd },
+  );
 });
 
 test('works', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
 
   await outputFiles(cwd, {
-    'eslint.config.js': dedent`
+    'eslint.config.ts': endent`
       import { defineConfig } from 'eslint/config';
 
-      import self from '../src/index.js';
+      import self from '../../src/index.ts';
 
       export default defineConfig([self]);
     `,
-    'index.js': 'export default 1;\n',
+    'index.ts': 'export default 1;\n',
   });
 
-  await execaCommand('eslint --ignore-pattern eslint.config.js .', { cwd });
+  await execaCommand('eslint --ignore-pattern eslint.config.ts .', { cwd });
 });

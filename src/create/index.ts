@@ -1,14 +1,13 @@
 import pathLib from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { loadConfigSync } from '@dword-design/base';
-import defu from '@dword-design/defu';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
 import { defineConfig } from 'eslint/config';
 import gitignore from 'eslint-config-flat-gitignore';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import { importX } from 'eslint-plugin-import-x';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import pluginPlaywright from 'eslint-plugin-playwright';
@@ -24,9 +23,8 @@ import tseslint from 'typescript-eslint';
 
 import restrictedImports from './restricted-imports';
 
-export default () => {
-  const packageConfig = loadPkg.sync() || {};
-  const baseConfig = defu(loadConfigSync(), { testRunner: 'mocha' });
+export default ({ cwd = '.' } = {}) => {
+  const packageConfig = loadPkg.sync(cwd) || {};
 
   const eslintRestrictedImports = restrictedImports
     .filter(
@@ -61,9 +59,7 @@ export default () => {
       `plugin:${packageName`@dword-design/eslint-plugin-import-alias`}/recommended`,
     ),
     { files: ['**/*.ts', '**/*.vue'], ...eslintPluginPrettierRecommended },
-    ...(baseConfig.testRunner === 'playwright'
-      ? [pluginPlaywright.configs['flat/recommended']]
-      : []),
+    pluginPlaywright.configs['flat/recommended'],
     ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
     ...compat.plugins(packageName`eslint-plugin-simple-import-sort`),
     ...compat.plugins(packageName`eslint-plugin-sort-keys-fix`),
@@ -72,15 +68,6 @@ export default () => {
       ...eslintPluginUnicorn.configs.recommended,
     },
     ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
-    {
-      files: ['**/*.vue'],
-      languageOptions: {
-        parserOptions: {
-          babelOptions: { rootMode: 'upward-optional' },
-          parser: packageName`@babel/eslint-parser`,
-        },
-      },
-    },
     {
       files: ['**/*.json'],
       rules: { 'jsonc/indent': ['error', 2], 'jsonc/sort-keys': 'error' },
@@ -98,9 +85,6 @@ export default () => {
       files: ['**/*.ts', '**/*.vue'],
       languageOptions: { globals: { ...globals.node, ...globals.browser } },
       rules: {
-        ...(baseConfig.testRunner === 'playwright' && {
-          'playwright/expect-expect': 'off',
-        }),
         '@dword-design/import-alias/prefer-alias': [
           'error',
           { alias: { '@': '.' } },
@@ -108,19 +92,16 @@ export default () => {
         'arrow-body-style': ['error', 'as-needed'],
         'func-names': ['error', 'never'],
         'global-require': 'off',
+        'import-x/extensions': ['error', 'ignorePackages', { ts: 'never' }],
         'import-x/no-extraneous-dependencies': [
           'error',
           {
             devDependencies: [
               '**/*.spec.ts',
-              ...(baseConfig.testRunner === 'playwright'
-                ? [
-                    'fixtures/**',
-                    'global-setup.ts',
-                    'global-teardown.ts',
-                    'playwright.config.ts',
-                  ]
-                : ['global-test-hooks.ts']),
+              'fixtures/**',
+              'global-setup.ts',
+              'global-teardown.ts',
+              'playwright.config.ts',
             ],
           },
         ],
@@ -209,7 +190,7 @@ export default () => {
           {
             tags: Object.keys({
               css: true,
-              dedent: true,
+              endent: true,
               html: true,
               javascript: true,
               sql: true,
@@ -224,52 +205,26 @@ export default () => {
         'vue/prefer-true-attribute-shorthand': 'error',
         'vue/require-default-prop': 'off',
         'vue/require-prop-types': 'off', // Complains about title not being a string if variable is passed
-        ...(baseConfig.testRunner === 'playwright' && {
-          'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
-        }),
       },
-    },
-    {
-      files: ['**/*.spec.ts', '**/*.spec.ts'],
-      ...(baseConfig.testRunner === 'mocha' && {
-        languageOptions: { globals: { expect: 'readonly' } },
-      }),
-      rules: {
-        'no-restricted-imports': [
-          'error',
-          {
-            paths: [
-              ...eslintRestrictedImports,
-              {
-                message: "Use the global 'expect' variable instead",
-                name: 'expect',
-              },
-            ],
-          },
+      settings: {
+        'import-x/resolver-next': [
+          createTypeScriptImportResolver({
+            project: pathLib.join(cwd, 'tsconfig.json'),
+          }),
         ],
       },
     },
     {
-      files: [
-        ...(baseConfig.testRunner === 'playwright' ? ['fixtures/**'] : []),
-        '**/*.spec.ts',
-      ],
+      files: ['**/*.spec.ts'],
       rules: {
-        ...(baseConfig.testRunner === 'playwright' && {
-          'no-empty-pattern': 'off',
-        }),
+        'playwright/expect-expect': 'off',
+        'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
       },
+    },
+    {
+      files: ['fixtures/**', '**/*.spec.ts'],
+      rules: { 'no-empty-pattern': 'off' },
     },
     { files: ['**/*.vue'], rules: { 'vue/multi-word-component-names': 'off' } },
-    {
-      // TODO: Remove this after TypeScript migration
-      files: ['**/*.ts'],
-      rules: {
-        '@typescript-eslint/no-explicit-any': 'off',
-        'import/extensions': 'off',
-        'import/no-extraneous-dependencies': 'off',
-        'import/no-unresolved': 'off',
-      },
-    },
   ]);
 };

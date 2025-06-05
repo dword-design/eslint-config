@@ -59,12 +59,8 @@ export default [
     message: 'Has a memory leak when requiring the same module multiple times.',
     name: 'stealthy-require',
   },
-  {
-    alternative: '@dword-design/puppeteer',
-    message: 'Does not set no-sandbox.',
-    name: 'puppeteer',
-  },
   { alternative: 'matchdep', name: 'resolve-dep' },
+  { alternative: '@dword-design/endent', name: 'dedent' },
   {
     alternative: 'sort-keys',
     message: 'Does not support recursive sorting.',

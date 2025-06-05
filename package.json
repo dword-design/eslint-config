@@ -22,9 +22,6 @@
     "test": "base test"
   },
   "dependencies": {
-    "@babel/eslint-parser": "7.27.1",
-    "@dword-design/base": "^13.0.0",
-    "@dword-design/defu": "^1.0.0",
     "@dword-design/eslint-plugin-import-alias": "^5.1.2",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.28.0",
@@ -34,7 +31,7 @@
     "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-typescript": "^4.4.2",
-    "eslint-plugin-import-x": "^4.15.0",
+    "eslint-plugin-import-x": "npm:@dword-design/eslint-plugin-import-x-fork@^0.0.1",
     "eslint-plugin-jsonc": "^2.20.1",
     "eslint-plugin-playwright": "^2.2.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
@@ -52,8 +49,9 @@
     "typescript-eslint": "^8.33.1"
   },
   "devDependencies": {
+    "@dword-design/base": "^13.0.1",
     "@playwright/test": "^1.52.0",
-    "dedent": "^1.6.0",
+    "endent": "npm:@dword-design/endent@^1.4.1",
     "execa": "^9.6.0",
     "output-files": "^2.0.32",
     "playwright": "^1.52.0"
