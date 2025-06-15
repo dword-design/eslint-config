@@ -1,3 +1,10 @@
+## [7.0.4](https://github.com/dword-design/eslint-config/compare/v7.0.3...v7.0.4) (2025-06-15)
+
+
+### Bug Fixes
+
+* fix typescript in vue ([39836fa](https://github.com/dword-design/eslint-config/commit/39836fafb88f3861c06da78a162853a0edcb6f8f))
+
 ## [7.0.3](https://github.com/dword-design/eslint-config/compare/v7.0.2...v7.0.3) (2025-06-05)
 
 
