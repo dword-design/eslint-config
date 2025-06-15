@@ -1595,6 +1595,18 @@ const tests = {
       },
     ],
   },
+  'vue: typescript': {
+    code: endent`
+      <template>
+        <div>{{ foo }}</div>
+      </template>
+
+      <script setup lang="ts">
+      const foo: string = 'bar';
+      </script>\n
+    `,
+    filename: P.join('src', 'index.vue'),
+  },
   'vue: valid': {
     code: endent`
       <template>

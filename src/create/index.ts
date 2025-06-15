@@ -82,7 +82,10 @@ export default ({ cwd = '.' } = {}) => {
     },
     {
       files: ['**/*.ts', '**/*.vue'],
-      languageOptions: { globals: { ...globals.node, ...globals.browser } },
+      languageOptions: {
+        globals: { ...globals.node, ...globals.browser },
+        parserOptions: { parser: tseslint.parser },
+      },
       rules: {
         '@dword-design/import-alias/prefer-alias': [
           'error',
