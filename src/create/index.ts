@@ -3,7 +3,6 @@ import { fileURLToPath } from 'node:url';
 
 import importAlias from '@dword-design/eslint-plugin-import-alias';
 import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
 import { defineConfig } from 'eslint/config';
@@ -47,7 +46,6 @@ export default ({ cwd = '.' } = {}) => {
   const compat = new FlatCompat({ baseDirectory: __dirname });
   return defineConfig([
     gitignore({ strict: false }),
-    js.configs.recommended,
     tseslint.configs.recommended,
     importX.flatConfigs.recommended,
     importX.flatConfigs.typescript,
