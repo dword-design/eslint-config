@@ -1,3 +1,10 @@
+## [7.0.6](https://github.com/dword-design/eslint-config/compare/v7.0.5...v7.0.6) (2025-06-16)
+
+
+### Bug Fixes
+
+* enable empty files ([ac8d5c0](https://github.com/dword-design/eslint-config/commit/ac8d5c01c9de796cc5361901bcb7cabfbb1c9aa2))
+
 ## [7.0.5](https://github.com/dword-design/eslint-config/compare/v7.0.4...v7.0.5) (2025-06-15)
 
 
