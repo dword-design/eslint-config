@@ -1251,6 +1251,20 @@ const tests = {
       };\n
     `,
   },
+  'playwright component tests empty index file with comment': {
+    code: '// Needs to be there, otherwise Playwright fails\n',
+    filename: P.join('playwright', 'index.ts'),
+    files: {
+      'playwright/index.html': endent`
+        <html lang="en">
+          <body>
+            <div id="root"></div>
+            <script type="module" src="./index.ts"></script>
+          </body>
+        </html>\n
+      `,
+    },
+  },
   'possible destructuring': {
     code: endent`
       const bar = { foo: 'test' };

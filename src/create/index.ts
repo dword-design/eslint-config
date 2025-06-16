@@ -79,6 +79,12 @@ export default ({ cwd = '.' } = {}) => {
       },
     },
     {
+      files: ['**/*.ts'],
+      rules: {
+        'unicorn/no-empty-file': 'off', // TODO: Deactivate comments when it's possible https://github.com/sindresorhus/eslint-plugin-unicorn/pull/2300
+      },
+    },
+    {
       files: ['**/*.ts', '**/*.vue'],
       languageOptions: {
         globals: { ...globals.node, ...globals.browser },
