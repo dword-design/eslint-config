@@ -1,3 +1,11 @@
+## [7.0.7](https://github.com/dword-design/eslint-config/compare/v7.0.6...v7.0.7) (2025-06-22)
+
+
+### Bug Fixes
+
+* disable playwright/no-focused-test ([be50a3d](https://github.com/dword-design/eslint-config/commit/be50a3d7a3aac7cea9414b4bcb5246b234ab2540))
+* update config files ([fff35b5](https://github.com/dword-design/eslint-config/commit/fff35b5699f9026e46c4dc269d6416793e151472))
+
 ## [7.0.6](https://github.com/dword-design/eslint-config/compare/v7.0.5...v7.0.6) (2025-06-16)
 
 
