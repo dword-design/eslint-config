@@ -1391,6 +1391,19 @@ const tests = {
         \`;\n
     `,
   },
+  'test only': {
+    code: endent`
+      import { test } from '${packageName`@playwright/test`}';
+
+      test.only('works', () => {});\n
+    `,
+    filename: 'index.spec.ts',
+    files: {
+      'package.json': JSON.stringify({
+        devDependencies: { [packageName`@playwright/test`]: '*' },
+      }),
+    },
+  },
   'test: prod dependency': {
     code: "import 'foo';\n",
     filename: 'src/index.spec.ts',

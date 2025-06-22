@@ -225,6 +225,7 @@ export default ({ cwd = '.' } = {}) => {
       files: ['**/*.spec.ts'],
       rules: {
         'playwright/expect-expect': 'off',
+        'playwright/no-focused-test': 'off',
         'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
       },
     },
