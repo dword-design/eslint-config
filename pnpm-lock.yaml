@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.11
         version: 1.0.11
       depcheck-package-name:
-        specifier: ^3.0.1
-        version: 3.0.1
+        specifier: ^4.0.0
+        version: 4.0.0
       eslint:
         specifier: ^9.29.0
         version: 9.30.1(jiti@2.4.2)
@@ -1542,6 +1542,10 @@ packages:
   depcheck-package-name@3.0.1:
     resolution: {integrity: sha512-7rR+VPs0wZCOgAyNe4klyXc+93cXl62pQ4akwHcnQQypdqDC18cy3LNLXmgu8geb3on8pgcxOhfbQ66+yLaNoQ==}
     engines: {node: '>=14'}
+
+  depcheck-package-name@4.0.0:
+    resolution: {integrity: sha512-/TtBVQmTZB0fOew8FElr9xsyff+2QTRUW+6lV5HPAKh/QFeoJeBlm7Bon+iIW4v/drfqAdoe91s6KCkQhOa3yw==}
+    engines: {node: '>=20'}
 
   deprecation@2.3.1:
     resolution: {integrity: sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==}
@@ -5828,6 +5832,10 @@ snapshots:
   depcheck-detector-package-name@3.0.4: {}
 
   depcheck-package-name@3.0.1:
+    dependencies:
+      tagged-template-noop: 2.1.1
+
+  depcheck-package-name@4.0.0:
     dependencies:
       tagged-template-noop: 2.1.1
 
