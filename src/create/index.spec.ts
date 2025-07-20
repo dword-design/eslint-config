@@ -97,7 +97,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -121,7 +121,7 @@ const tests = {
     messages: [
       {
         message: 'Unexpected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -137,13 +137,43 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
       console.log('foo');
 
       export const foo = 1;\n
+    `,
+  },
+  'blank line: between types: no': {
+    code: endent`
+      type foo = string;
+      type bar = string;
+
+      export type { foo, bar };\n
+    `,
+    messages: [
+      {
+        message: 'Expected blank line before this statement.',
+        ruleId: '@stylistic/padding-line-between-statements',
+      },
+    ],
+    output: endent`
+      type foo = string;
+
+      type bar = string;
+
+      export type { foo, bar };\n
+    `,
+  },
+  'blank line: between types: yes': {
+    code: endent`
+      type foo = string;
+
+      type bar = string;
+
+      export type { foo, bar };\n
     `,
   },
   'blank line: import and statement: no': {
@@ -162,7 +192,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -289,7 +319,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -323,7 +353,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -353,7 +383,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -385,7 +415,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -420,7 +450,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -455,7 +485,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -491,7 +521,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -521,7 +551,7 @@ const tests = {
     messages: [
       {
         message: 'Expected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`
@@ -575,7 +605,7 @@ const tests = {
     messages: [
       {
         message: 'Unexpected blank line before this statement.',
-        ruleId: 'padding-line-between-statements',
+        ruleId: '@stylistic/padding-line-between-statements',
       },
     ],
     output: endent`

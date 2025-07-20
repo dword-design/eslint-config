@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 import importAlias from '@dword-design/eslint-plugin-import-alias';
 import { FlatCompat } from '@eslint/eslintrc';
+import stylistic from '@stylistic/eslint-plugin';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
 import { defineConfig } from 'eslint/config';
@@ -84,6 +85,7 @@ export default ({ cwd = '.' } = {}) => {
         'unicorn/no-empty-file': 'off', // TODO: Deactivate comments when it's possible https://github.com/sindresorhus/eslint-plugin-unicorn/pull/2300
       },
     },
+    { files: ['**/*.ts', '**/*.vue'], plugins: { '@stylistic': stylistic } },
     {
       files: ['**/*.ts', '**/*.vue'],
       languageOptions: {
@@ -94,6 +96,23 @@ export default ({ cwd = '.' } = {}) => {
         '@dword-design/import-alias/prefer-alias': [
           'error',
           { alias: { '@': '.' } },
+        ],
+        '@stylistic/padding-line-between-statements': [
+          'error',
+          { blankLine: 'never', next: '*', prev: '*' },
+          { blankLine: 'always', next: '*', prev: 'import' },
+          { blankLine: 'any', next: 'import', prev: 'import' },
+          ...Object.keys({
+            'block-like': true,
+            const: true,
+            expression: true,
+            let: true,
+          }).flatMap(name => [
+            { blankLine: 'always', next: `multiline-${name}`, prev: '*' },
+            { blankLine: 'always', next: '*', prev: `multiline-${name}` },
+          ]),
+          { blankLine: 'always', next: 'export', prev: '*' },
+          { blankLine: 'always', next: 'type', prev: '*' },
         ],
         'arrow-body-style': ['error', 'as-needed'],
         'func-names': ['error', 'never'],
@@ -162,22 +181,6 @@ export default ({ cwd = '.' } = {}) => {
           },
         ],
         'object-shorthand': ['error', 'always'],
-        'padding-line-between-statements': [
-          'error',
-          { blankLine: 'never', next: '*', prev: '*' },
-          { blankLine: 'always', next: '*', prev: 'import' },
-          { blankLine: 'any', next: 'import', prev: 'import' },
-          ...Object.keys({
-            'block-like': true,
-            const: true,
-            expression: true,
-            let: true,
-          }).flatMap(name => [
-            { blankLine: 'always', next: `multiline-${name}`, prev: '*' },
-            { blankLine: 'always', next: '*', prev: `multiline-${name}` },
-          ]),
-          { blankLine: 'always', next: 'export', prev: '*' },
-        ],
 
         'prefer-arrow/prefer-arrow-functions': ['error'],
         'prefer-destructuring': 'off',
