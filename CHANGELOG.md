@@ -1,3 +1,16 @@
+# [8.0.0](https://github.com/dword-design/eslint-config/compare/v7.0.7...v8.0.0) (2025-07-20)
+
+
+### Bug Fixes
+
+* blank line for type decls ([0e97fb8](https://github.com/dword-design/eslint-config/commit/0e97fb83df3d3926d34fd0917427464672d89466))
+* upgrades ([#313](https://github.com/dword-design/eslint-config/issues/313)) ([f595364](https://github.com/dword-design/eslint-config/commit/f595364ba807bec21398e57fe7fa69aa8266d71d))
+
+
+### BREAKING CHANGES
+
+* node.js >= 20
+
 ## [7.0.7](https://github.com/dword-design/eslint-config/compare/v7.0.6...v7.0.7) (2025-06-22)
 
 
