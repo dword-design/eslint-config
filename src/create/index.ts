@@ -132,7 +132,7 @@ export default ({ cwd = '.' } = {}) => {
         ],
         'import-x/no-named-as-default': 'off',
         'import-x/no-named-as-default-member': 'off',
-        'linebreak-style': ['error', 'unix'],
+        '@stylistic/linebreak-style': ['error', 'unix'],
         'new-cap': 'off',
         'no-await-in-loop': 'off',
         'no-console': 'off',
