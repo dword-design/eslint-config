@@ -97,6 +97,7 @@ export default ({ cwd = '.' } = {}) => {
           'error',
           { alias: { '@': '.' } },
         ],
+        '@stylistic/linebreak-style': ['error', 'unix'],
         '@stylistic/padding-line-between-statements': [
           'error',
           { blankLine: 'never', next: '*', prev: '*' },
@@ -132,7 +133,6 @@ export default ({ cwd = '.' } = {}) => {
         ],
         'import-x/no-named-as-default': 'off',
         'import-x/no-named-as-default-member': 'off',
-        '@stylistic/linebreak-style': ['error', 'unix'],
         'new-cap': 'off',
         'no-await-in-loop': 'off',
         'no-console': 'off',
