@@ -5,11 +5,20 @@ import packageName from 'depcheck-package-name';
 import endent from 'endent';
 import { ESLint } from 'eslint';
 import { pick } from 'lodash-es';
+import type { Files } from 'output-files';
 import outputFiles from 'output-files';
 
 import self from '.';
 
-const tests = {
+type TestConfig = {
+  code: string;
+  files?: Files;
+  messages?: Array<{ message: string; ruleId: string }>;
+  output?: string;
+  filename?: string;
+};
+
+const tests: Record<string, TestConfig> = {
   'alias: child': {
     code: "import '@/foo';\n",
     files: { 'foo.ts': '' },
@@ -1718,7 +1727,7 @@ for (const [name, _testConfig] of Object.entries(tests)) {
       baseConfig: self({ cwd }),
       cwd,
       overrideConfig: testConfig.eslintConfig,
-      overrideConfigFile: true,
+      overrideConfigFile: true as const,
     };
 
     const eslintToLint = new ESLint(eslintConfig);
