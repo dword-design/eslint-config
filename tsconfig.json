@@ -12,5 +12,8 @@
     },
     "skipLibCheck": true,
     "target": "ESNext"
-  }
+  },
+  "exclude": [
+    "test-results"
+  ]
 }

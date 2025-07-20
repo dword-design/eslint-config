@@ -55,6 +55,7 @@ export default ({ cwd = '.' } = {}) => {
       files: ['**/*.ts', '**/*.vue'],
       ...plugin,
     })),
+    { files: ['**/*.ts', '**/*.vue'], ...stylistic.configs.recommended },
     { files: ['**/*.ts', '**/*.vue'], ...importAlias.configs.recommended },
     { files: ['**/*.ts', '**/*.vue'], ...eslintPluginPrettierRecommended },
     pluginPlaywright.configs['flat/recommended'],
@@ -85,7 +86,6 @@ export default ({ cwd = '.' } = {}) => {
         'unicorn/no-empty-file': 'off', // TODO: Deactivate comments when it's possible https://github.com/sindresorhus/eslint-plugin-unicorn/pull/2300
       },
     },
-    { files: ['**/*.ts', '**/*.vue'], plugins: { '@stylistic': stylistic } },
     {
       files: ['**/*.ts', '**/*.vue'],
       languageOptions: {
@@ -132,7 +132,7 @@ export default ({ cwd = '.' } = {}) => {
         ],
         'import-x/no-named-as-default': 'off',
         'import-x/no-named-as-default-member': 'off',
-        'linebreak-style': ['error', 'unix'],
+        '@stylistic/linebreak-style': ['error', 'unix'],
         'new-cap': 'off',
         'no-await-in-loop': 'off',
         'no-console': 'off',
