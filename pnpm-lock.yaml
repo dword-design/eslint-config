@@ -86,7 +86,7 @@ importers:
     devDependencies:
       '@dword-design/base':
         specifier: ^14.1.2
-        version: 14.1.2(@types/node@24.0.15)(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-core@3.5.17)(esbuild@0.25.8)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))
+        version: 14.1.3(@types/node@24.0.15)(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-core@3.5.17)(esbuild@0.25.8)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))
       '@playwright/test':
         specifier: ^1.53.1
         version: 1.54.1
@@ -274,8 +274,8 @@ packages:
     resolution: {integrity: sha512-xHQRK7/3ARa+Xs8n4M8EW/8buDUclvm8+05JN6cOorkONAj7QgPbn452TY6xhuT8d8R9OUivzNgUHGabgEfwUA==}
     engines: {node: '>=18'}
 
-  '@dword-design/base@14.1.2':
-    resolution: {integrity: sha512-0nkLor0RF/I/MqtjdMm2LevPYTI/87NflY/eP9i/opGzs/9/IG2WPJ2Wt2WcHRZEjn7pEguel2yB8QMThNRtaA==}
+  '@dword-design/base@14.1.3':
+    resolution: {integrity: sha512-ru2e8+uAUHFAQ5PB5W9myaomvMk4ndNuPdhea18t2YaOvGiLT8LZlAwBYrg2LkEHw1Iej4df183YUxLbgZrHzA==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -303,9 +303,9 @@ packages:
   '@dword-design/endent@1.4.7':
     resolution: {integrity: sha512-yK1ivALMq9Eys6O9SgO+jBpRbQBLruFL2FvWMWPcoqiY1hPDHleY02Vir6jN6j7tDiMog3tjVtqKb4eWXdKo1w==}
 
-  '@dword-design/eslint-config@7.0.7':
-    resolution: {integrity: sha512-Se1OTd/dxnVJf/gK/4mestD9uGBOMaIvvHNFeCP3dWqrKEIV+ruDLJEWXFvNwM8S/5gCe2Uk8O+gU3t1og79kQ==}
-    engines: {node: '>=18'}
+  '@dword-design/eslint-config@8.0.0':
+    resolution: {integrity: sha512-f4wfDxxqoagDs4WwASdBo6BzbaJkt0rzCEtnj+RYeOuvpLV2PUpFYGYjMTUL929EdWHtSaAKTO0L5O4J1ri2dA==}
+    engines: {node: '>=20'}
 
   '@dword-design/eslint-plugin-import-alias@6.0.3':
     resolution: {integrity: sha512-nLe1+w36hWGpspZ/gOMQDw4m2/ZP6fzDY7Zns2o+6pQm44REW6TwojV8wAdyDfLoLMGb9hOvVJ8i9tVgSitAzQ==}
@@ -4383,14 +4383,14 @@ snapshots:
       - sass
       - supports-color
 
-  '@dword-design/base@14.1.2(@types/node@24.0.15)(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-core@3.5.17)(esbuild@0.25.8)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))':
+  '@dword-design/base@14.1.3(@types/node@24.0.15)(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-core@3.5.17)(esbuild@0.25.8)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))':
     dependencies:
       '@commitlint/cli': 18.6.1(@types/node@24.0.15)(typescript@5.8.3)
       '@commitlint/config-conventional': 18.6.3
       '@dword-design/base-config-node': 3.0.17(@vue/compiler-core@3.5.17)(esbuild@0.25.8)
       '@dword-design/ci': 4.0.6
       '@dword-design/defu': 1.0.3
-      '@dword-design/eslint-config': 7.0.7(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(jiti@2.4.2)(typescript@5.8.3)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))
+      '@dword-design/eslint-config': 8.0.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(jiti@2.4.2)(typescript@5.8.3)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))
       '@dword-design/personal-data': 2.0.3
       '@semantic-release/changelog': 6.0.3(semantic-release@22.0.12(typescript@5.8.3))
       '@semantic-release/git': 10.0.1(semantic-release@22.0.12(typescript@5.8.3))
@@ -4504,12 +4504,13 @@ snapshots:
       fast-json-parse: 1.0.3
       objectorarray: 1.0.5
 
-  '@dword-design/eslint-config@7.0.7(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(jiti@2.4.2)(typescript@5.8.3)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))':
+  '@dword-design/eslint-config@8.0.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(jiti@2.4.2)(typescript@5.8.3)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))':
     dependencies:
       '@dword-design/eslint-plugin-import-alias': 6.0.3
       '@eslint/eslintrc': 3.3.1
+      '@stylistic/eslint-plugin': 5.2.0(eslint@9.31.0(jiti@2.4.2))
       confusing-browser-globals: 1.0.11
-      depcheck-package-name: 3.0.1
+      depcheck-package-name: 4.0.0
       eslint: 9.31.0(jiti@2.4.2)
       eslint-config-flat-gitignore: 2.1.0(eslint@9.31.0(jiti@2.4.2))
       eslint-config-prettier: 10.1.8(eslint@9.31.0(jiti@2.4.2))
