@@ -85,8 +85,8 @@ importers:
         version: 8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3)
     devDependencies:
       '@dword-design/base':
-        specifier: ^14.1.2
-        version: 14.1.3(@types/node@24.0.15)(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-core@3.5.17)(esbuild@0.25.8)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))
+        specifier: ^15.0.0
+        version: 15.0.0(@types/node@24.0.15)(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-core@3.5.17)(esbuild@0.25.8)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))
       '@playwright/test':
         specifier: ^1.53.1
         version: 1.54.1
@@ -274,8 +274,8 @@ packages:
     resolution: {integrity: sha512-xHQRK7/3ARa+Xs8n4M8EW/8buDUclvm8+05JN6cOorkONAj7QgPbn452TY6xhuT8d8R9OUivzNgUHGabgEfwUA==}
     engines: {node: '>=18'}
 
-  '@dword-design/base@14.1.3':
-    resolution: {integrity: sha512-ru2e8+uAUHFAQ5PB5W9myaomvMk4ndNuPdhea18t2YaOvGiLT8LZlAwBYrg2LkEHw1Iej4df183YUxLbgZrHzA==}
+  '@dword-design/base@15.0.0':
+    resolution: {integrity: sha512-NBGlBAkqgzk74rRw5OfkZuV7RHP6H+nM5voaSppbwLvHDerZ6/D/EifNVn94L2oXtR63xuQdhI4q7rPBitdVGw==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -4383,7 +4383,7 @@ snapshots:
       - sass
       - supports-color
 
-  '@dword-design/base@14.1.3(@types/node@24.0.15)(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-core@3.5.17)(esbuild@0.25.8)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))':
+  '@dword-design/base@15.0.0(@types/node@24.0.15)(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@typescript-eslint/utils@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-core@3.5.17)(esbuild@0.25.8)(vue-eslint-parser@10.2.0(eslint@9.31.0(jiti@2.4.2)))':
     dependencies:
       '@commitlint/cli': 18.6.1(@types/node@24.0.15)(typescript@5.8.3)
       '@commitlint/config-conventional': 18.6.3
