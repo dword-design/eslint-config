@@ -58,7 +58,7 @@
     "typescript-eslint": "^8.34.1"
   },
   "devDependencies": {
-    "@dword-design/base": "^14.1.2",
+    "@dword-design/base": "^15.0.0",
     "@playwright/test": "^1.53.1",
     "endent": "npm:@dword-design/endent@^1.4.1",
     "output-files": "^3.0.0"
