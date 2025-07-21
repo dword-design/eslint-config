@@ -1,3 +1,11 @@
+## [8.0.1](https://github.com/dword-design/eslint-config/compare/v8.0.0...v8.0.1) (2025-07-21)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v15 ([#314](https://github.com/dword-design/eslint-config/issues/314)) ([95bbb40](https://github.com/dword-design/eslint-config/commit/95bbb40948c84d85113bd610d4b2945180db664f))
+* update pnpm to v10.13.1 ([#304](https://github.com/dword-design/eslint-config/issues/304)) ([a8d887d](https://github.com/dword-design/eslint-config/commit/a8d887d745cf997364c4484f288866f1490219da))
+
 # [8.0.0](https://github.com/dword-design/eslint-config/compare/v7.0.7...v8.0.0) (2025-07-20)
 
 
