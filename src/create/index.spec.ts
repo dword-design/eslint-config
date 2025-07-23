@@ -1506,14 +1506,54 @@ const tests: Record<string, TestConfig> = {
     ],
     output: 'export default { a: 2, b: 1 };\n',
   },
+  'useTemplateRef: no': {
+    code: endent`
+      <template>
+        <div ref="foo" />
+      </template>
+
+      <script setup lang="ts">
+      import { ref } from 'vue';
+
+      const foo = ref();
+      </script>\n
+    `,
+    filename: 'index.vue',
+    files: {
+      'package.json': `${JSON.stringify({ dependencies: { vue: '*' } })}\n`,
+    },
+    messages: [
+      {
+        message: "Replace 'ref' with 'useTemplateRef'.",
+        ruleId: 'vue/prefer-use-template-ref',
+      },
+    ],
+  },
+  'useTemplateRef: yes': {
+    code: endent`
+      <template>
+        <div ref="foo" />
+      </template>
+
+      <script setup lang="ts">
+      import { useTemplateRef } from 'vue';
+
+      const foo = useTemplateRef('foo');
+      </script>\n
+    `,
+    filename: 'index.vue',
+    files: {
+      'package.json': `${JSON.stringify({ dependencies: { vue: '*' } })}\n`,
+    },
+  },
   'v-html on component': {
     code: endent`
       <template>
         <foo v-html="html" />
       </template>
 
-      <script>
-      export default { computed: { html: () => '<div>foo</div>' } };
+      <script setup>
+      const html = '<div>foo</div>';
       </script>\n
     `,
     filename: 'index.vue',
@@ -1534,8 +1574,8 @@ const tests: Record<string, TestConfig> = {
         <span v-html="html" />
       </template>
 
-      <script>
-      export default { computed: { html: () => '<div>foo</div>' } };
+      <script setup>
+      const html = '<div>foo</div>';
       </script>\n
     `,
     filename: 'index.vue',
@@ -1584,34 +1624,6 @@ const tests: Record<string, TestConfig> = {
       </template>\n
     `,
   },
-  'vue: component order: invalid': {
-    code: endent`
-      <script>
-      export default { props: { foo: {} }, data: () => ({ bar: 1 }) };
-      </script>\n
-    `,
-    filename: 'index.vue',
-    messages: [
-      {
-        message:
-          "Expected object keys to be in ascending order. 'data' should be before 'props'.",
-        ruleId: 'sort-keys-fix/sort-keys-fix',
-      },
-    ],
-    output: endent`
-      <script>
-      export default { data: () => ({ bar: 1 }), props: { foo: {} } };
-      </script>\n
-    `,
-  },
-  'vue: component order: valid': {
-    code: endent`
-      <script>
-      export default { data: () => ({ bar: 1 }), props: { foo: {} } };
-      </script>\n
-    `,
-    filename: 'index.vue',
-  },
   'vue: index component name': {
     code: endent`
       <template>
@@ -1627,6 +1639,21 @@ const tests: Record<string, TestConfig> = {
       </template>\n
     `,
     filename: 'index.vue',
+  },
+  'vue: options api': {
+    code: endent`
+      <script>
+      export default { data: () => ({ foo: '' }) };
+      </script>\n
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message:
+          'Options API is not allowed in your project. Use `<script setup>` instead.',
+        ruleId: 'vue/component-api-style',
+      },
+    ],
   },
   'vue: page single-word name': {
     code: endent`

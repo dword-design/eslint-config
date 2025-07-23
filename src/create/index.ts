@@ -208,12 +208,6 @@ export default ({ cwd = '.' } = {}) => {
             }),
           },
         ],
-        'vue/attributes-order': ['error', { alphabetical: true }],
-        'vue/no-deprecated-functional-template': 'error',
-        'vue/order-in-components': 'off',
-        'vue/prefer-true-attribute-shorthand': 'error',
-        'vue/require-default-prop': 'off',
-        'vue/require-prop-types': 'off', // Complains about title not being a string if variable is passed
       },
       settings: {
         'import-x/resolver-next': [
@@ -236,6 +230,17 @@ export default ({ cwd = '.' } = {}) => {
       files: ['fixtures/**', '**/*.spec.ts'],
       rules: { 'no-empty-pattern': 'off' },
     },
-    { files: ['**/*.vue'], rules: { 'vue/multi-word-component-names': 'off' } },
+    {
+      files: ['**/*.vue'],
+      rules: {
+        'vue/attributes-order': ['error', { alphabetical: true }],
+        'vue/component-api-style': ['error', ['script-setup']],
+        'vue/multi-word-component-names': 'off',
+        'vue/no-deprecated-functional-template': 'error',
+        'vue/prefer-true-attribute-shorthand': 'error',
+        'vue/prefer-use-template-ref': 'error',
+        'vue/require-default-prop': 'off',
+      },
+    },
   ]);
 };
