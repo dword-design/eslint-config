@@ -1,3 +1,10 @@
+## [8.0.2](https://github.com/dword-design/eslint-config/compare/v8.0.1...v8.0.2) (2025-07-23)
+
+
+### Bug Fixes
+
+* add some rules ([dd574fc](https://github.com/dword-design/eslint-config/commit/dd574fc1408cc4e1107b46652b3e0547924b7956))
+
 ## [8.0.1](https://github.com/dword-design/eslint-config/compare/v8.0.0...v8.0.1) (2025-07-21)
 
 
