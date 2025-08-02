@@ -83,6 +83,9 @@ importers:
       typescript-eslint:
         specifier: ^8.34.1
         version: 8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3)
+      vue-eslint-parser:
+        specifier: ^10.2.0
+        version: 10.2.0(eslint@9.31.0(jiti@2.4.2))
     devDependencies:
       '@dword-design/base':
         specifier: ^15.0.0
