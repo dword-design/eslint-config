@@ -13,7 +13,7 @@ import self from '.';
 type TestConfig = {
   code: string;
   files?: Files;
-  messages?: Array<{ message: string; ruleId: string }>;
+  messages?: Array<{ message: string; ruleId: string | null }>;
   output?: string;
   filename?: string;
 };
