@@ -783,6 +783,10 @@ const tests: Record<string, TestConfig> = {
       },
     ],
   },
+  'error empty in test': {
+    code: 'throw new Error();\n',
+    filename: 'index.spec.ts',
+  },
   'esm import without main field': {
     code: "import 'foo';\n",
     files: {

@@ -224,6 +224,7 @@ export default ({ cwd = '.' } = {}) => {
         'playwright/expect-expect': 'off',
         'playwright/no-focused-test': 'off',
         'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
+        'unicorn/error-message': 'off',
       },
     },
     {
