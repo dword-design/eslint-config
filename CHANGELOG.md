@@ -1,3 +1,10 @@
+## [8.0.4](https://github.com/dword-design/eslint-config/compare/v8.0.3...v8.0.4) (2025-08-07)
+
+
+### Bug Fixes
+
+* empty error in test ([27f76f6](https://github.com/dword-design/eslint-config/commit/27f76f6f4bd208f1472f046b3c0dfedf84042c7b))
+
 ## [8.0.3](https://github.com/dword-design/eslint-config/compare/v8.0.2...v8.0.3) (2025-08-02)
 
 
