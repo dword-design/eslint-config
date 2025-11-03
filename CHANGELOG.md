@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/dword-design/eslint-config/compare/v8.0.4...v8.1.0) (2025-11-03)
+
+
+### Features
+
+* slot name ([3f7fa9d](https://github.com/dword-design/eslint-config/commit/3f7fa9dcdf712595c8da3409224349231caf7e4d))
+
 ## [8.0.4](https://github.com/dword-design/eslint-config/compare/v8.0.3...v8.0.4) (2025-08-07)
 
 
