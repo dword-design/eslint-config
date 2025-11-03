@@ -241,6 +241,7 @@ export default ({ cwd = '.' } = {}) => {
         'vue/prefer-true-attribute-shorthand': 'error',
         'vue/prefer-use-template-ref': 'error',
         'vue/require-default-prop': 'off',
+        'vue/slot-name-casing': 'error',
       },
     },
   ]);
