@@ -1692,6 +1692,30 @@ const tests: Record<string, TestConfig> = {
       },
     ],
   },
+  'vue: slot name: camel case': {
+    code: endent`
+      <template>
+        <div>
+          <slot name="mySlot" />
+        </div>
+      </template>\n
+    `,
+    filename: 'index.vue',
+  },
+  'vue: slot name: non-camel case': {
+    code: endent`
+      <template>
+        <slot name="my-slot" />
+      </template>\n
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'Slot name "my-slot" is not camelCase.',
+        ruleId: 'vue/slot-name-casing',
+      },
+    ],
+  },
   'vue: typescript': {
     code: endent`
       <template>
@@ -1711,27 +1735,6 @@ const tests: Record<string, TestConfig> = {
       </template>\n
     `,
     filename: 'index.vue',
-  },
-  'vue: slot name: camel case': {
-    code: endent`
-      <template>
-        <div>
-          <slot name="mySlot" />
-        </div>
-      </template>\n
-    `,
-    filename: 'index.vue',
-  },
-  'vue: slot name: non-camel case': {
-    code: endent`
-      <template>
-        <slot name="my-slot" />
-      </template>\n
-    `,
-    filename: 'index.vue',
-    messages: [
-      { ruleId: 'vue/slot-name-casing', message: 'Slot name "my-slot" is not camelCase.' },
-    ]
   },
   'while true': {
     code: endent`
