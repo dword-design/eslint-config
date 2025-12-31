@@ -21,8 +21,8 @@ importers:
         specifier: ^1.0.11
         version: 1.0.11
       depcheck-package-name:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^5.0.0
+        version: 5.0.0
       eslint:
         specifier: ^9.29.0
         version: 9.31.0(jiti@2.4.2)
@@ -293,6 +293,7 @@ packages:
   '@dword-design/defu@1.0.3':
     resolution: {integrity: sha512-QEM8a6CPIrMvudnuNDwr3IxWJ0dcMKG9tgxt3zuPk/NmXV0ejk4qxQJ1PfquJwRzu59UsqNpUAACMG485VMIUA==}
     engines: {node: '>=18'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@dword-design/depcheck-parser-sass@4.0.4':
     resolution: {integrity: sha512-liMT6tgQ/YfhNgW6rigOaY0XqfNMMFb+DCwEeLtfBdTJhMUEHwBb8UsChw8uwrxMSQW/YsabfnDsT897pBmBlg==}
@@ -1552,6 +1553,10 @@ packages:
   depcheck-package-name@4.0.0:
     resolution: {integrity: sha512-/TtBVQmTZB0fOew8FElr9xsyff+2QTRUW+6lV5HPAKh/QFeoJeBlm7Bon+iIW4v/drfqAdoe91s6KCkQhOa3yw==}
     engines: {node: '>=20'}
+
+  depcheck-package-name@5.0.0:
+    resolution: {integrity: sha512-TmI3C6OMPmDoqNkv3pTUlSgfi2KoTpckBM98+p3bsCbES9OR7oHYCzgxm0QR6DdKSkrt/mFDNx8CKhCtbWRVag==}
+    engines: {node: '>=22'}
 
   deprecation@2.3.1:
     resolution: {integrity: sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==}
@@ -5856,6 +5861,10 @@ snapshots:
       tagged-template-noop: 2.1.1
 
   depcheck-package-name@4.0.0:
+    dependencies:
+      tagged-template-noop: 2.1.1
+
+  depcheck-package-name@5.0.0:
     dependencies:
       tagged-template-noop: 2.1.1
 
