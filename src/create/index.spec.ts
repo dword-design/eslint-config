@@ -658,20 +658,20 @@ const tests: Record<string, TestConfig> = {
     `,
   },
   'defineEmits with types': {
-    filename: 'index.vue',
     code: endent`
       <script setup lang="ts">
       defineEmits<{ (e: 'foo'): void }>();
       </script>\n
     `,
+    filename: 'index.vue',
   },
   'defineEmits without types': {
-    filename: 'index.vue',
     code: endent`
       <script setup lang="ts">
       defineEmits(['foo']);
       </script>\n
     `,
+    filename: 'index.vue',
     messages: [
       {
         message: 'Use type based declaration instead of runtime declaration.',

@@ -236,13 +236,13 @@ export default ({ cwd = '.' } = {}) => {
       rules: {
         'vue/attributes-order': ['error', { alphabetical: true }],
         'vue/component-api-style': ['error', ['script-setup']],
+        'vue/define-emits-declaration': 'error',
         'vue/multi-word-component-names': 'off',
         'vue/no-deprecated-functional-template': 'error',
         'vue/prefer-true-attribute-shorthand': 'error',
         'vue/prefer-use-template-ref': 'error',
         'vue/require-default-prop': 'off',
         'vue/slot-name-casing': 'error',
-        "vue/define-emits-declaration": 'error',
       },
     },
   ]);
