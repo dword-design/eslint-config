@@ -242,6 +242,7 @@ export default ({ cwd = '.' } = {}) => {
         'vue/prefer-use-template-ref': 'error',
         'vue/require-default-prop': 'off',
         'vue/slot-name-casing': 'error',
+        "vue/define-emits-declaration": 'error',
       },
     },
   ]);

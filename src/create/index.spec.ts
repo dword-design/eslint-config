@@ -657,6 +657,28 @@ const tests: Record<string, TestConfig> = {
         );\n
     `,
   },
+  'defineEmits with types': {
+    filename: 'index.vue',
+    code: endent`
+      <script setup lang="ts">
+      defineEmits<{ (e: 'foo'): void }>();
+      </script>\n
+    `,
+  },
+  'defineEmits without types': {
+    filename: 'index.vue',
+    code: endent`
+      <script setup lang="ts">
+      defineEmits(['foo']);
+      </script>\n
+    `,
+    messages: [
+      {
+        message: 'Use type based declaration instead of runtime declaration.',
+        ruleId: 'vue/define-emits-declaration',
+      },
+    ],
+  },
   'destructuring: array Promise.all': {
     code: endent`
       const [foo, bar] = await Promise.all([]);
