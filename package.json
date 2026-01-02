@@ -59,7 +59,7 @@
     "vue-eslint-parser": "^10.2.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^15.0.0",
+    "@dword-design/base": "^16.0.0",
     "@playwright/test": "^1.53.1",
     "endent": "npm:@dword-design/endent@^1.4.1",
     "output-files": "^3.0.0"
