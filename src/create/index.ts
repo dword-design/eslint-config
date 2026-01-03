@@ -47,7 +47,9 @@ export default ({ cwd = '.' } = {}) => {
   return defineConfig([
     gitignore({ strict: false }),
     tseslint.configs.recommended,
+    // @ts-expect-error https://github.com/un-ts/eslint-plugin-import-x/issues/439
     importX.flatConfigs.recommended,
+    // @ts-expect-error https://github.com/un-ts/eslint-plugin-import-x/issues/439
     importX.flatConfigs.typescript,
     ...pluginVue.configs['flat/recommended'].map(plugin => ({
       files: ['**/*.ts', '**/*.vue'],
