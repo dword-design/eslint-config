@@ -1,3 +1,17 @@
+# [9.0.0](https://github.com/dword-design/eslint-config/compare/v8.1.0...v9.0.0) (2026-01-03)
+
+
+### Bug Fixes
+
+* enforce defineEmits typing style ([e6be832](https://github.com/dword-design/eslint-config/commit/e6be83248bf10c76f54a9783ece70f75af36f9de))
+* update dependency @dword-design/base to v16 ([#319](https://github.com/dword-design/eslint-config/issues/319)) ([e05f059](https://github.com/dword-design/eslint-config/commit/e05f059495cbdcc724db7579293bfd81378202eb))
+* update dependency @dword-design/eslint-plugin-import-alias to v7 ([#321](https://github.com/dword-design/eslint-config/issues/321)) ([23a686e](https://github.com/dword-design/eslint-config/commit/23a686ecb9bb8c379e1e4f6ed5d327e04be48864))
+
+
+### BREAKING CHANGES
+
+* node >= 22
+
 # [8.1.0](https://github.com/dword-design/eslint-config/compare/v8.0.4...v8.1.0) (2025-11-03)
 
 
