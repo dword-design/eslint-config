@@ -21,10 +21,12 @@ import { readPackageSync } from 'read-pkg';
 import { sortOrder as packageJsonSortOrder } from 'sort-package-json';
 import tseslint from 'typescript-eslint';
 
+import getTypeScriptProjectReferences from './get-typescript-project-references';
 import restrictedImports from './restricted-imports';
 
 export default ({ cwd = '.' } = {}) => {
   const packageConfig = readPackageSync({ cwd });
+  const projectPaths = getTypeScriptProjectReferences({ cwd });
 
   const eslintRestrictedImports = restrictedImports
     .filter(
@@ -209,7 +211,7 @@ export default ({ cwd = '.' } = {}) => {
         'import-x/resolver-next': [
           createTypeScriptImportResolver({
             extensionAlias: { '.js': ['.js'] }, // Disable auto-guessing of .ts when .js is imported
-            project: pathLib.join(cwd, 'tsconfig.json'),
+            project: projectPaths,
           }),
         ],
       },

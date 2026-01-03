@@ -1518,6 +1518,24 @@ const tests: Record<string, TestConfig> = {
     `,
     filename: 'index.ts',
   },
+  'typescript project references': {
+    code: "import '@utils/foo';\n",
+    filename: 'server/api/entities.get.ts',
+    files: {
+      '.nuxt/tsconfig.foo.json': JSON.stringify({
+        compilerOptions: {
+          include: ['../server/**/*.ts'],
+          paths: { '@utils/*': ['../utils/*'] },
+        },
+      }),
+      'tsconfig.json': JSON.stringify({
+        files: [],
+        include: ['server/**/*.ts'],
+        references: [{ path: './.nuxt/tsconfig.foo.json' }],
+      }),
+      'utils/foo.ts': 'export default 42;',
+    },
+  },
   'underscore dangle': {
     code: endent`
       const foo = {};
