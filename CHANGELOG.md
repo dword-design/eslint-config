@@ -1,3 +1,10 @@
+## [9.0.1](https://github.com/dword-design/eslint-config/compare/v9.0.0...v9.0.1) (2026-01-03)
+
+
+### Bug Fixes
+
+* fix project references ([76ef09b](https://github.com/dword-design/eslint-config/commit/76ef09b9854a8926526da7fcb2482a644034a998))
+
 # [9.0.0](https://github.com/dword-design/eslint-config/compare/v8.1.0...v9.0.0) (2026-01-03)
 
 
