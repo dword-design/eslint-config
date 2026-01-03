@@ -1,6 +1,4 @@
-/**
- * For some reason eslint-import-resolver-typescript won't load TypeScript project references, so we add them manually.
- */
+// TODO: For some reason eslint-import-resolver-typescript won't load TypeScript project references, so we add them manually.
 
 import ts from 'typescript';
 
