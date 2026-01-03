@@ -8,10 +8,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": {
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-      }
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "main": "dist/index.js",
@@ -31,11 +29,11 @@
     "verify": "base verify"
   },
   "dependencies": {
-    "@dword-design/eslint-plugin-import-alias": "^7.0.0",
+    "@dword-design/eslint-plugin-import-alias": "^8.0.1",
     "@eslint/eslintrc": "^3.3.1",
     "@stylistic/eslint-plugin": "^5.2.0",
     "confusing-browser-globals": "^1.0.11",
-    "depcheck-package-name": "^4.0.0",
+    "depcheck-package-name": "^5.0.0",
     "eslint": "^9.29.0",
     "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-config-prettier": "^10.1.5",
@@ -45,15 +43,14 @@
     "eslint-plugin-playwright": "^2.2.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^5.5.0",
-    "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "eslint-plugin-unicorn": "npm:@dword-design/eslint-plugin-unicorn@^0.0.1",
+    "eslint-plugin-unicorn": "^62.0.0",
     "eslint-plugin-vue": "^10.2.0",
-    "globals": "^16.2.0",
-    "load-pkg": "^4.0.0",
+    "globals": "^17.0.0",
     "lodash-es": "^4.17.21",
     "prettier": "^3.5.3",
+    "read-pkg": "^10.0.0",
     "sort-package-json": "^3.2.1",
     "typescript-eslint": "^8.34.1",
     "vue-eslint-parser": "^10.2.0"
@@ -61,12 +58,13 @@
   "devDependencies": {
     "@dword-design/base": "^16.0.0",
     "@playwright/test": "^1.53.1",
+    "@types/confusing-browser-globals": "^1.0.3",
     "endent": "npm:@dword-design/endent@^1.4.1",
     "output-files": "^3.0.0"
   },
   "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
