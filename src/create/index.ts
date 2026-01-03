@@ -13,19 +13,18 @@ import { importX } from 'eslint-plugin-import-x';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import pluginPlaywright from 'eslint-plugin-playwright';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import pluginPromise from 'eslint-plugin-promise';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import pluginVue from 'eslint-plugin-vue';
 import globals from 'globals';
-import loadPkg from 'load-pkg';
 import { compact, omit, without } from 'lodash-es';
+import { readPackageSync } from 'read-pkg';
 import { sortOrder as packageJsonSortOrder } from 'sort-package-json';
 import tseslint from 'typescript-eslint';
 
 import restrictedImports from './restricted-imports';
 
 export default ({ cwd = '.' } = {}) => {
-  const packageConfig = loadPkg.sync(cwd) || {};
+  const packageConfig = readPackageSync({ cwd });
 
   const eslintRestrictedImports = restrictedImports
     .filter(
@@ -48,9 +47,10 @@ export default ({ cwd = '.' } = {}) => {
   return defineConfig([
     gitignore({ strict: false }),
     tseslint.configs.recommended,
+    // @ts-expect-error https://github.com/un-ts/eslint-plugin-import-x/issues/439
     importX.flatConfigs.recommended,
+    // @ts-expect-error https://github.com/un-ts/eslint-plugin-import-x/issues/439
     importX.flatConfigs.typescript,
-    pluginPromise.configs['flat/recommended'],
     ...pluginVue.configs['flat/recommended'].map(plugin => ({
       files: ['**/*.ts', '**/*.vue'],
       ...plugin,
@@ -93,10 +93,6 @@ export default ({ cwd = '.' } = {}) => {
         parserOptions: { parser: tseslint.parser },
       },
       rules: {
-        '@dword-design/import-alias/prefer-alias': [
-          'error',
-          { alias: { '@': '.' } },
-        ],
         '@stylistic/linebreak-style': ['error', 'unix'],
         '@stylistic/padding-line-between-statements': [
           'error',

@@ -13,7 +13,7 @@ import self from '.';
 type TestConfig = {
   code: string;
   files?: Files;
-  messages?: Array<{ message: string; ruleId: string }>;
+  messages?: Array<{ message: string; ruleId: string | null }>;
   output?: string;
   filename?: string;
 };
@@ -21,7 +21,12 @@ type TestConfig = {
 const tests: Record<string, TestConfig> = {
   'alias: child': {
     code: "import '@/foo';\n",
-    files: { 'foo.ts': '' },
+    files: {
+      'foo.ts': '',
+      'tsconfig.json': JSON.stringify({
+        compilerOptions: { paths: { '@/*': ['./*'] } },
+      }),
+    },
     messages: [
       {
         message:
@@ -39,7 +44,12 @@ const tests: Record<string, TestConfig> = {
   'alias: parent import': {
     code: "import '../foo';\n",
     filename: P.join('sub', 'sub', 'index.ts'),
-    files: { sub: { 'foo.ts': '' } },
+    files: {
+      sub: { 'foo.ts': '' },
+      'tsconfig.json': JSON.stringify({
+        compilerOptions: { paths: { '@/*': ['./*'] } },
+      }),
+    },
     messages: [
       {
         message: "Unexpected parent import '../foo'. Use '@/sub/foo' instead",
@@ -1293,7 +1303,7 @@ const tests: Record<string, TestConfig> = {
     messages: [
       {
         message:
-          "Expected object keys to be in specified order. 'name' should be before 'version'.",
+          "Expected object keys to be in specified order. 'version' should be after 'name'.",
         ruleId: 'jsonc/sort-keys',
       },
     ],
