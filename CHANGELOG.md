@@ -1,3 +1,10 @@
+## [9.0.3](https://github.com/dword-design/eslint-config/compare/v9.0.2...v9.0.3) (2026-01-04)
+
+
+### Bug Fixes
+
+* suppress warning ([a15bd43](https://github.com/dword-design/eslint-config/commit/a15bd4399aeaf1246d5c5ac585d1454ff7f141e6))
+
 ## [9.0.2](https://github.com/dword-design/eslint-config/compare/v9.0.1...v9.0.2) (2026-01-03)
 
 
