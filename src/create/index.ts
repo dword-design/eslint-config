@@ -210,8 +210,10 @@ export default ({ cwd = '.' } = {}) => {
       settings: {
         'import-x/resolver-next': [
           createTypeScriptImportResolver({
-            extensionAlias: { '.js': ['.js'] }, // Disable auto-guessing of .ts when .js is imported
-            project: projectPaths,
+            extensionAlias: { '.js': ['.js'] },
+            noWarnOnMultipleProjects: true,
+            // Disable auto-guessing of .ts when .js is imported
+            project: projectPaths, // TODO: Remove this when we don't need to pass projects anymore
           }),
         ],
       },
