@@ -798,20 +798,6 @@ const tests: Record<string, TestConfig> = {
       `,
     },
   },
-  'empty object pattern > playwright: yes > test file: yes': {
-    code: endent`
-      import { test as base } from '${packageName`@playwright/test`}';
-
-      const test = base.extend({ _: [({}, use) => use(), { auto: true }] });
-      test('foo', () => {});\n
-    `,
-    filename: 'index.spec.ts',
-    files: {
-      'package.json': JSON.stringify({
-        devDependencies: { [packageName`@playwright/test`]: '*' },
-      }),
-    },
-  },
   'empty object pattern > test file: no': {
     code: endent`
       import { test as base } from '${packageName`@playwright/test`}';
@@ -829,6 +815,67 @@ const tests: Record<string, TestConfig> = {
         ruleId: 'no-empty-pattern',
       },
     ],
+  },
+  'empty object pattern > test file: yes': {
+    code: endent`
+      import { test as base } from '${packageName`@playwright/test`}';
+
+      const test = base.extend({ _: [({}, use) => use(), { auto: true }] });
+      test('foo', () => {});\n
+    `,
+    filename: 'index.spec.ts',
+    files: {
+      'package.json': JSON.stringify({
+        devDependencies: { [packageName`@playwright/test`]: '*' },
+      }),
+    },
+  },
+  'empty object type > test file: no': {
+    code: endent`
+      import { test as base } from '${packageName`@playwright/test`}';
+
+      export const test = base.extend<{}, { setup: void }>({
+        setup: [({}, use) => use(), { auto: true, scope: 'worker' }],
+      });\n
+    `,
+    filename: 'index.ts',
+    files: {
+      'package.json': JSON.stringify({
+        dependencies: { [packageName`@playwright/test`]: '*' },
+      }),
+    },
+    messages: [
+      {
+        message: endent`
+          The \`{}\` ("empty object") type allows any non-nullish value, including literals like \`0\` and \`""\`.
+          - If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+          - If you want a type meaning "any object", you probably want \`object\` instead.
+          - If you want a type meaning "any value", you probably want \`unknown\` instead.
+        `,
+        ruleId: '@typescript-eslint/no-empty-object-type',
+      },
+      {
+        message: 'Unexpected empty object pattern.',
+        ruleId: 'no-empty-pattern',
+      },
+    ],
+  },
+  'empty object type > test file: yes': {
+    code: endent`
+      import { test as base } from '${packageName`@playwright/test`}';
+
+      const test = base.extend<{}, { setup: void }>({
+        setup: [({}, use) => use(), { auto: true, scope: 'worker' }],
+      });
+
+      test('foo', () => {});\n
+    `,
+    filename: 'index.spec.ts',
+    files: {
+      'package.json': JSON.stringify({
+        devDependencies: { [packageName`@playwright/test`]: '*' },
+      }),
+    },
   },
   'error empty in test': {
     code: 'throw new Error();\n',

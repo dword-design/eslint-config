@@ -229,7 +229,10 @@ export default ({ cwd = '.' } = {}) => {
     },
     {
       files: ['fixtures/**', '**/*.spec.ts'],
-      rules: { 'no-empty-pattern': 'off' },
+      rules: {
+        '@typescript-eslint/no-empty-object-type': 'off',
+        'no-empty-pattern': 'off',
+      },
     },
     {
       files: ['**/*.vue'],
