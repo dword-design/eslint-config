@@ -1,3 +1,10 @@
+## [9.0.5](https://github.com/dword-design/eslint-config/compare/v9.0.4...v9.0.5) (2026-01-04)
+
+
+### Bug Fixes
+
+* disable empty object type rule for tests and fixtures ([b647dd7](https://github.com/dword-design/eslint-config/commit/b647dd74e4d9f36d2ec1fa52062653d15808a317))
+
 ## [9.0.4](https://github.com/dword-design/eslint-config/compare/v9.0.3...v9.0.4) (2026-01-04)
 
 
