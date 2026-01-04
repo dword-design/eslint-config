@@ -667,10 +667,25 @@ const tests: Record<string, TestConfig> = {
         );\n
     `,
   },
-  'defineEmits with types': {
+  'defineEmits with simple types': {
     code: endent`
       <script setup lang="ts">
       defineEmits<{ (e: 'foo'): void }>();
+      </script>\n
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message:
+          'Use new type literal declaration instead of the old call signature declaration.',
+        ruleId: 'vue/define-emits-declaration',
+      },
+    ],
+  },
+  'defineEmits with type literals': {
+    code: endent`
+      <script setup lang="ts">
+      defineEmits<{ foo: [string] }>();
       </script>\n
     `,
     filename: 'index.vue',

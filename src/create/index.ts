@@ -236,7 +236,7 @@ export default ({ cwd = '.' } = {}) => {
       rules: {
         'vue/attributes-order': ['error', { alphabetical: true }],
         'vue/component-api-style': ['error', ['script-setup']],
-        'vue/define-emits-declaration': 'error',
+        'vue/define-emits-declaration': ['error', 'type-literal'],
         'vue/multi-word-component-names': 'off',
         'vue/no-deprecated-functional-template': 'error',
         'vue/prefer-true-attribute-shorthand': 'error',
