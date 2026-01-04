@@ -1,3 +1,10 @@
+## [9.0.4](https://github.com/dword-design/eslint-config/compare/v9.0.3...v9.0.4) (2026-01-04)
+
+
+### Bug Fixes
+
+* enforce new defineEmits type signature ([b99ee2f](https://github.com/dword-design/eslint-config/commit/b99ee2f831dd9dd2d2b091c4fa62e0bec640662f))
+
 ## [9.0.3](https://github.com/dword-design/eslint-config/compare/v9.0.2...v9.0.3) (2026-01-04)
 
 
