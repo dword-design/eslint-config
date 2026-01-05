@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@dword-design/eslint-plugin-import-alias':
         specifier: ^8.1.2
-        version: 8.1.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+        version: 8.1.3(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@eslint/eslintrc':
         specifier: ^3.3.3
         version: 3.3.3
@@ -86,7 +86,7 @@ importers:
     devDependencies:
       '@dword-design/base':
         specifier: ^16.1.8
-        version: 16.1.8(@types/node@25.0.3)(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-core@3.5.26)(esbuild@0.27.2)(sass@1.97.1)
+        version: 16.1.9(@types/node@25.0.3)(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-core@3.5.26)(esbuild@0.27.2)(sass@1.97.1)
       '@playwright/test':
         specifier: ^1.57.0
         version: 1.57.0
@@ -286,8 +286,8 @@ packages:
     resolution: {integrity: sha512-GuM/kVVgkDhox+9LViPe6+8PkQeM/zgk3WHDQ+tsZPzQz2TL++7GiEFYm8uFqmPf0sJX3jvw3i7AG2b3jNCN0A==}
     engines: {node: '>=22'}
 
-  '@dword-design/base@16.1.8':
-    resolution: {integrity: sha512-iQLRuEv7tNcs44VRh715OU0ZjU9u2ggsH/PP7F7XOrGOKxHYPqFbT64fizKl5wzZ1WFFRuE2nVfRbCzSy/Yciw==}
+  '@dword-design/base@16.1.9':
+    resolution: {integrity: sha512-X3l6Wql/n7Qc5mHsMG+kvI/W6ZEotinfYrgo6aYrgURYQM6TP+jDFmqtUjjZMUSIHkWgj+EaocGZ1SfIRYmb9Q==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -324,12 +324,14 @@ packages:
   '@dword-design/endent@1.4.7':
     resolution: {integrity: sha512-yK1ivALMq9Eys6O9SgO+jBpRbQBLruFL2FvWMWPcoqiY1hPDHleY02Vir6jN6j7tDiMog3tjVtqKb4eWXdKo1w==}
 
-  '@dword-design/eslint-config@9.0.0':
-    resolution: {integrity: sha512-DDGN0ScLtqG1QdRmNfN5ukor67UCFS71acKNDjjj+bA4+GsPGLubLJLSNZzkoMIvWpWdC/X4IU0oFrTeSP1qIw==}
+  '@dword-design/eslint-config@9.0.5':
+    resolution: {integrity: sha512-W3pT4Jzf1uccbHJuxO0gjslsGAzXH3i1U7pnjlxqiw4qh/0rN3pfd9wfMaNYs9e+OuNdB25Su2pw25mgsuIb7A==}
     engines: {node: '>=22'}
+    peerDependencies:
+      typescript: '*'
 
-  '@dword-design/eslint-plugin-import-alias@8.1.2':
-    resolution: {integrity: sha512-QuLg8dwGvu25FFeA1GrmpO26+G9/+Hjteu0C/LzxgdG+nbx+SEqFNKGltGmGxKEbtTpk1S/aIL/SCMvBQBiPkg==}
+  '@dword-design/eslint-plugin-import-alias@8.1.3':
+    resolution: {integrity: sha512-0OV23owRbbp7NTeCEJy6UReiwuqPwOVCwSyZua6vQXJsiuLX5f3jqXTSe7G9eXkRgFRs3L7GuFsMGfdbNWLY5g==}
     engines: {node: '>=22'}
     peerDependencies:
       typescript: '>=5.0.0'
@@ -357,11 +359,11 @@ packages:
   '@dword-design/plugin-name-to-package-name@0.1.2':
     resolution: {integrity: sha512-kATg/RzRkq/Yv0qNJziPqwAzKstBTzuXnowH4MvAMyqW6C7o5HlgZtik3GzO0kBKCBZBoRswBSvo9AHclOTxfg==}
 
-  '@emnapi/core@1.7.1':
-    resolution: {integrity: sha512-o1uhUASyo921r2XtHYOHy7gdkGLge8ghBEQHMWmyJFoXlpU58kIrhhN3w26lpQb6dspetweapMn2CSNwQ8I4wg==}
+  '@emnapi/core@1.8.1':
+    resolution: {integrity: sha512-AvT9QFpxK0Zd8J0jopedNm+w/2fIzvtPKPjqyw9jwvBaReTTqPBk9Hixaz7KbjimP+QNz605/XnjFcDAL2pqBg==}
 
-  '@emnapi/runtime@1.7.1':
-    resolution: {integrity: sha512-PVtJr5CmLwYAU9PZDMITZoR5iAOShYREoR45EyyLrbntV50mdePTgUn4AmOw90Ifcj+x2kRjdzr1HP3RrNiHGA==}
+  '@emnapi/runtime@1.8.1':
+    resolution: {integrity: sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg==}
 
   '@emnapi/wasi-threads@1.1.0':
     resolution: {integrity: sha512-WI0DdZ8xFSbgMjR1sFsKABJ/C5OnRrjT06JXbZKexJGrDuPTzZdDYfFlsgcCXCyf+suG5QU2e/y1Wo2V/OapLQ==}
@@ -4729,7 +4731,7 @@ snapshots:
   '@dword-design/base-config-node@5.0.3(@types/node@25.0.3)(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-core@3.5.26)(esbuild@0.27.2)(sass@1.97.1)':
     dependencies:
       '@babel/core': 7.28.5
-      '@dword-design/base': 16.1.8(@types/node@25.0.3)(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-core@3.5.26)(esbuild@0.27.2)(sass@1.97.1)
+      '@dword-design/base': 16.1.9(@types/node@25.0.3)(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-core@3.5.26)(esbuild@0.27.2)(sass@1.97.1)
       '@dword-design/depcheck-parser-sass': 6.0.3
       babel-plugin-add-import-extension: 1.6.0(@babel/core@7.28.5)
       babel-plugin-module-resolver: 5.0.2
@@ -4758,7 +4760,7 @@ snapshots:
       - sass
       - supports-color
 
-  '@dword-design/base@16.1.8(@types/node@25.0.3)(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-core@3.5.26)(esbuild@0.27.2)(sass@1.97.1)':
+  '@dword-design/base@16.1.9(@types/node@25.0.3)(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-core@3.5.26)(esbuild@0.27.2)(sass@1.97.1)':
     dependencies:
       '@commitlint/cli': 18.6.1(@types/node@25.0.3)(typescript@5.9.3)
       '@commitlint/config-conventional': 18.6.3
@@ -4766,7 +4768,7 @@ snapshots:
       '@dword-design/ci': 5.0.0
       '@dword-design/defu': 1.0.3
       '@dword-design/dotenv-json-extended': 4.0.1
-      '@dword-design/eslint-config': 9.0.0(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(jiti@2.6.1)(typescript@5.9.3)
+      '@dword-design/eslint-config': 9.0.5(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(jiti@2.6.1)(typescript@5.9.3)
       '@dword-design/personal-data': 3.0.0
       '@semantic-release/changelog': 6.0.3(semantic-release@25.0.2(typescript@5.9.3))
       '@semantic-release/git': 10.0.1(semantic-release@25.0.2(typescript@5.9.3))
@@ -4897,9 +4899,9 @@ snapshots:
       fast-json-parse: 1.0.3
       objectorarray: 1.0.5
 
-  '@dword-design/eslint-config@9.0.0(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(jiti@2.6.1)(typescript@5.9.3)':
+  '@dword-design/eslint-config@9.0.5(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(jiti@2.6.1)(typescript@5.9.3)':
     dependencies:
-      '@dword-design/eslint-plugin-import-alias': 8.1.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      '@dword-design/eslint-plugin-import-alias': 8.1.3(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@eslint/eslintrc': 3.3.3
       '@stylistic/eslint-plugin': 5.6.1(eslint@9.39.2(jiti@2.6.1))
       confusing-browser-globals: 1.0.11
@@ -4922,6 +4924,7 @@ snapshots:
       prettier: 3.7.4
       read-pkg: 10.0.0
       sort-package-json: 3.6.0
+      typescript: 5.9.3
       typescript-eslint: 8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       vue-eslint-parser: 10.2.0(eslint@9.39.2(jiti@2.6.1))
     transitivePeerDependencies:
@@ -4933,9 +4936,8 @@ snapshots:
       - eslint-plugin-import
       - jiti
       - supports-color
-      - typescript
 
-  '@dword-design/eslint-plugin-import-alias@8.1.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
+  '@dword-design/eslint-plugin-import-alias@8.1.3(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
       '@babel/core': 7.28.5
       '@dword-design/defaults': 1.1.1
@@ -4976,13 +4978,13 @@ snapshots:
     dependencies:
       is-absolute: 1.0.0
 
-  '@emnapi/core@1.7.1':
+  '@emnapi/core@1.8.1':
     dependencies:
       '@emnapi/wasi-threads': 1.1.0
       tslib: 2.8.1
     optional: true
 
-  '@emnapi/runtime@1.7.1':
+  '@emnapi/runtime@1.8.1':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -5251,8 +5253,8 @@ snapshots:
 
   '@napi-rs/wasm-runtime@0.2.12':
     dependencies:
-      '@emnapi/core': 1.7.1
-      '@emnapi/runtime': 1.7.1
+      '@emnapi/core': 1.8.1
+      '@emnapi/runtime': 1.8.1
       '@tybys/wasm-util': 0.10.1
     optional: true
 
