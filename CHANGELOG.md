@@ -1,3 +1,10 @@
+## [9.0.6](https://github.com/dword-design/eslint-config/compare/v9.0.5...v9.0.6) (2026-01-07)
+
+
+### Bug Fixes
+
+* add base.config.ts to devDependencies ([1cba99f](https://github.com/dword-design/eslint-config/commit/1cba99f8961ecb5b5c6b3612942241f507ee564e))
+
 ## [9.0.5](https://github.com/dword-design/eslint-config/compare/v9.0.4...v9.0.5) (2026-01-04)
 
 
