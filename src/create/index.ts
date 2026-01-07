@@ -122,6 +122,7 @@ export default ({ cwd = '.' } = {}) => {
           {
             devDependencies: [
               '**/*.spec.ts',
+              'base.config.ts',
               'fixtures/**',
               'global-setup.ts',
               'global-teardown.ts',
