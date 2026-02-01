@@ -222,10 +222,11 @@ export default ({ cwd = '.' } = {}) => {
     {
       files: ['**/*.spec.ts'],
       rules: {
+        'playwright/consistent-spacing-between-blocks': 'off',
         'playwright/expect-expect': 'off',
         'playwright/no-focused-test': 'off',
         'playwright/valid-title': ['error', { ignoreTypeOfTestName: true }],
-        'unicorn/error-message': 'off',
+        'unicorn/error-message': 'off', // TODO: Conflicts with @stylistic/padding-line-between-statements
       },
     },
     {
