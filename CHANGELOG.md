@@ -1,3 +1,10 @@
+## [9.0.9](https://github.com/dword-design/eslint-config/compare/v9.0.8...v9.0.9) (2026-02-01)
+
+
+### Bug Fixes
+
+* enforce noopener on target blank ([e122615](https://github.com/dword-design/eslint-config/commit/e1226157cc0a7cc596007e9e5c9fc51858fb1c65))
+
 ## [9.0.8](https://github.com/dword-design/eslint-config/compare/v9.0.7...v9.0.8) (2026-02-01)
 
 
