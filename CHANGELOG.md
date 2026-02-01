@@ -1,3 +1,10 @@
+## [9.0.7](https://github.com/dword-design/eslint-config/compare/v9.0.6...v9.0.7) (2026-02-01)
+
+
+### Bug Fixes
+
+* update dependency lodash-es to v4.17.23 [security] ([#327](https://github.com/dword-design/eslint-config/issues/327)) ([3e477f1](https://github.com/dword-design/eslint-config/commit/3e477f1806c83becfaec4eea9aee9403cec54824))
+
 ## [9.0.6](https://github.com/dword-design/eslint-config/compare/v9.0.5...v9.0.6) (2026-01-07)
 
 
