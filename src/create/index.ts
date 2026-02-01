@@ -244,6 +244,7 @@ export default ({ cwd = '.' } = {}) => {
         'vue/define-emits-declaration': ['error', 'type-literal'],
         'vue/multi-word-component-names': 'off',
         'vue/no-deprecated-functional-template': 'error',
+        'vue/no-template-target-blank': ['error', { allowReferrer: true }],
         'vue/prefer-true-attribute-shorthand': 'error',
         'vue/prefer-use-template-ref': 'error',
         'vue/require-default-prop': 'off',

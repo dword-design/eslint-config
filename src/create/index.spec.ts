@@ -1504,6 +1504,29 @@ const tests: Record<string, TestConfig> = {
     output: 'console.log(globalThis.chrome.action);\n',
   },
   'single export': { code: "export const foo = 'bar';\n" },
+  'target blank > noopener: no': {
+    code: endent`
+      <template>
+        <a href="https://example.com" target="_blank" />
+      </template>\n
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message:
+          'Using target="_blank" without rel="noopener noreferrer" is a security risk.',
+        ruleId: 'vue/no-template-target-blank',
+      },
+    ],
+  },
+  'target blank > noopener: yes': {
+    code: endent`
+      <template>
+        <a href="https://example.com" rel="noopener" target="_blank" />
+      </template>\n
+    `,
+    filename: 'index.vue',
+  },
   'template literal': {
     code: endent`
       let endent;
