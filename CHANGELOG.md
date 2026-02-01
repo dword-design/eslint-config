@@ -1,3 +1,11 @@
+## [9.0.8](https://github.com/dword-design/eslint-config/compare/v9.0.7...v9.0.8) (2026-02-01)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#326](https://github.com/dword-design/eslint-config/issues/326)) ([459f7dd](https://github.com/dword-design/eslint-config/commit/459f7ddad7397b6af3a89f19694a337c80c921da))
+* update pnpm to v10.28.2 ([#316](https://github.com/dword-design/eslint-config/issues/316)) ([5e45d9a](https://github.com/dword-design/eslint-config/commit/5e45d9adf543e176ae81ce553bd26e28df1f02b3))
+
 ## [9.0.7](https://github.com/dword-design/eslint-config/compare/v9.0.6...v9.0.7) (2026-02-01)
 
 
