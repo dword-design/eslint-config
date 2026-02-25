@@ -2,9 +2,9 @@
 
 export default [
   {
-    name: 'nuxt-basic-authentication-module',
-    message: 'Not maintained.',
     alternative: '@kgierke/nuxt-basic-auth',
+    message: 'Not maintained.',
+    name: 'nuxt-basic-authentication-module',
   },
   {
     alternative: 'parse-packagejson-name',
