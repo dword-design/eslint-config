@@ -1,4 +1,11 @@
+// TODO: This should be handled by the deprecated dependencies checker since not all dependencies are imported (e.g. Nuxt modules)
+
 export default [
+  {
+    name: 'nuxt-basic-authentication-module',
+    message: 'Not maintained.',
+    alternative: '@kgierke/nuxt-basic-auth',
+  },
   {
     alternative: 'parse-packagejson-name',
     message: 'Does not work in the browser due to fs dependency in ow.',
