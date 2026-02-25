@@ -1,3 +1,10 @@
+## [9.0.10](https://github.com/dword-design/eslint-config/compare/v9.0.9...v9.0.10) (2026-02-25)
+
+
+### Bug Fixes
+
+* add restricted import ([c173972](https://github.com/dword-design/eslint-config/commit/c17397280b744ff6d2ac5785b4c1b2e11193eac0))
+
 ## [9.0.9](https://github.com/dword-design/eslint-config/compare/v9.0.8...v9.0.9) (2026-02-01)
 
 
