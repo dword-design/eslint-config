@@ -240,6 +240,7 @@ export default ({ cwd = '.' } = {}) => {
         'vue/attributes-order': ['error', { alphabetical: true }],
         'vue/component-api-style': ['error', ['script-setup']],
         'vue/define-emits-declaration': ['error', 'type-literal'],
+        'vue/define-props-declaration': 'error',
         'vue/multi-word-component-names': 'off',
         'vue/no-deprecated-functional-template': 'error',
         'vue/no-template-target-blank': ['error', { allowReferrer: true }],

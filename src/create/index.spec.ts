@@ -1802,6 +1802,36 @@ const tests: Record<string, TestConfig> = {
     `,
     filename: P.join('pages', 'about.vue'),
   },
+  'vue: props with type syntax': {
+    code: endent`
+      <template>
+        <div />
+      </template>
+
+      <script setup lang="ts">
+      defineProps<{ name: string }>();
+      </script>\n
+    `,
+    filename: 'index.vue',
+  },
+  'vue: props without type syntax': {
+    code: endent`
+      <template>
+        <div />
+      </template>
+
+      <script setup lang="ts">
+      defineProps({ name: String });
+      </script>\n
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message: 'Use type-based declaration instead of runtime declaration.',
+        ruleId: 'vue/define-props-declaration',
+      },
+    ],
+  },
   'vue: single-word component name in library': {
     code: endent`
       <template>
