@@ -1,3 +1,10 @@
+## [9.0.12](https://github.com/dword-design/eslint-config/compare/v9.0.11...v9.0.12) (2026-04-14)
+
+
+### Bug Fixes
+
+* enforce type declarations for props ([1eb2c3a](https://github.com/dword-design/eslint-config/commit/1eb2c3a7e2491089167e54891d90a548a4e28b72))
+
 ## [9.0.11](https://github.com/dword-design/eslint-config/compare/v9.0.10...v9.0.11) (2026-03-26)
 
 
