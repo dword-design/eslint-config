@@ -1771,6 +1771,37 @@ const tests: Record<string, TestConfig> = {
     `,
     filename: P.join('src', 'index.vue'),
   },
+  'vue: model with type syntax': {
+    code: endent`
+      <template>
+        <div />
+      </template>
+
+      <script setup lang="ts">
+      defineModel<string>();
+      </script>\n
+    `,
+    filename: 'index.vue',
+  },
+  'vue: model without type syntax': {
+    code: endent`
+      <template>
+        <div />
+      </template>
+
+      <script setup lang="ts">
+      defineModel({ type: String });
+      </script>\n
+    `,
+    filename: 'index.vue',
+    messages: [
+      {
+        message:
+          'defineModel() must use an explicit type parameter, e.g. defineModel<string>().',
+        ruleId: 'no-restricted-syntax',
+      },
+    ],
+  },
   'vue: multi-word component name': {
     code: endent`
       <template>

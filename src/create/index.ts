@@ -237,6 +237,16 @@ export default ({ cwd = '.' } = {}) => {
     {
       files: ['**/*.vue'],
       rules: {
+        'no-restricted-syntax': [
+          // TODO: https://github.com/vuejs/eslint-plugin-vue/issues/3069
+          'error',
+          {
+            message:
+              'defineModel() must use an explicit type parameter, e.g. defineModel<string>().',
+            selector:
+              "CallExpression[callee.name='defineModel']:not([typeArguments]):not([typeParameters])",
+          },
+        ],
         'vue/attributes-order': ['error', { alphabetical: true }],
         'vue/component-api-style': ['error', ['script-setup']],
         'vue/define-emits-declaration': ['error', 'type-literal'],
