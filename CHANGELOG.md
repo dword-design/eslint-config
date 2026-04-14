@@ -1,3 +1,10 @@
+## [9.0.13](https://github.com/dword-design/eslint-config/compare/v9.0.12...v9.0.13) (2026-04-14)
+
+
+### Bug Fixes
+
+* enforce type declaration for defineModel ([c646920](https://github.com/dword-design/eslint-config/commit/c646920e2714701ba5d2a6f110692992bdf8d806))
+
 ## [9.0.12](https://github.com/dword-design/eslint-config/compare/v9.0.11...v9.0.12) (2026-04-14)
 
 
