@@ -1,3 +1,12 @@
+## [9.0.15](https://github.com/dword-design/eslint-config/compare/v9.0.14...v9.0.15) (2026-07-30)
+
+
+### Bug Fixes
+
+* upgrade @types/node ([c5ad2ea](https://github.com/dword-design/eslint-config/commit/c5ad2ea9667434fb1f4b32528da23a31b0af0ea4))
+* upgrade eslint-plugin-simple-import-sort ([45db24a](https://github.com/dword-design/eslint-config/commit/45db24a0a27cfcc34c1e0a429f1acb5da09e6ac5))
+* upgrade sort-package-json ([aff52fa](https://github.com/dword-design/eslint-config/commit/aff52fa6a15a46c9d482f6be92c59f12d664e2d9))
+
 ## [9.0.14](https://github.com/dword-design/eslint-config/compare/v9.0.13...v9.0.14) (2026-07-30)
 
 
