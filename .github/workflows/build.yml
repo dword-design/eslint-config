@@ -48,7 +48,7 @@ jobs:
           if-no-files-found: ignore
           name: Data from tests
           path: test-results/*/**
-      - if: matrix.os == 'ubuntu-latest' && matrix.node == 22
+      - if: matrix.os == 'ubuntu-latest'
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -56,8 +56,6 @@ jobs:
       matrix:
         include:
           - node: 22
-            os: ubuntu-latest
-          - node: 24
             os: ubuntu-latest
           - node: 22
             os: windows-latest
