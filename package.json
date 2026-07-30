@@ -60,7 +60,7 @@
     "@dword-design/base": "^16.2.7",
     "@playwright/test": "^1.62.0",
     "@types/confusing-browser-globals": "^1.0.3",
-    "@types/node": "^25.9.5",
+    "@types/node": "^26.0.0",
     "endent": "npm:@dword-design/endent@^1.4.7",
     "output-files": "^4.0.0"
   },
