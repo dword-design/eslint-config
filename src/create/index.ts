@@ -66,7 +66,7 @@ export default ({ cwd = '.' } = {}) => {
       files: ['**/*.ts', '**/*.vue'],
       ...eslintPluginUnicorn.configs.recommended,
     },
-    ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
+    ...eslintPluginJsonc.configs['recommended-with-jsonc'],
     {
       files: ['**/*.json'],
       rules: { 'jsonc/indent': ['error', 2], 'jsonc/sort-keys': 'error' },
