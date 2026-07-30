@@ -1,8 +1,4 @@
-import pathLib from 'node:path';
-import { fileURLToPath } from 'node:url';
-
 import importAlias from '@dword-design/eslint-plugin-import-alias';
-import { FlatCompat } from '@eslint/eslintrc';
 import stylistic from '@stylistic/eslint-plugin';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
@@ -12,7 +8,10 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import { importX } from 'eslint-plugin-import-x';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import pluginPlaywright from 'eslint-plugin-playwright';
+import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import sortKeysCustomOrder from 'eslint-plugin-sort-keys-custom-order';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import pluginVue from 'eslint-plugin-vue';
 import globals from 'globals';
@@ -30,22 +29,20 @@ export default ({ cwd = '.' } = {}) => {
 
   const eslintRestrictedImports = restrictedImports
     .filter(
-      importDef =>
-        importDef.alternative === undefined ||
-        importDef.alternative !== packageConfig.name,
+      importDefinition =>
+        importDefinition.alternative === undefined ||
+        importDefinition.alternative !== packageConfig.name,
     )
-    .map(importDef => ({
-      ...omit(importDef, ['alternative']),
+    .map(importDefinition => ({
+      ...omit(importDefinition, ['alternative']),
       message: compact([
-        importDef.message,
-        importDef.alternative ? `Use '${importDef.alternative}' instead` : '',
+        importDefinition.message,
+        importDefinition.alternative
+          ? `Use '${importDefinition.alternative}' instead`
+          : '',
       ]).join(' '),
     }));
 
-  // mimic CommonJS variables -- not needed if using CommonJS
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = pathLib.dirname(__filename);
-  const compat = new FlatCompat({ baseDirectory: __dirname });
   return defineConfig([
     gitignore({ strict: false }),
     tseslint.configs.recommended,
@@ -59,9 +56,14 @@ export default ({ cwd = '.' } = {}) => {
     { files: ['**/*.ts', '**/*.vue'], ...importAlias.configs.recommended },
     { files: ['**/*.ts', '**/*.vue'], ...eslintPluginPrettierRecommended },
     pluginPlaywright.configs['flat/recommended'],
-    ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
-    ...compat.plugins(packageName`eslint-plugin-simple-import-sort`),
-    ...compat.plugins(packageName`eslint-plugin-sort-keys-fix`),
+    {
+      plugins: { 'simple-import-sort': simpleImportSort },
+      rules: { 'simple-import-sort/imports': 'error' },
+    },
+    preferArrowFunctions.configs.all,
+    // TODO: https://github.com/hugoattal/eslint-plugin-sort-keys-custom-order/issues/11
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    sortKeysCustomOrder.configs['flat/recommended'] as any,
     {
       files: ['**/*.ts', '**/*.vue'],
       ...eslintPluginUnicorn.configs.recommended,
@@ -177,19 +179,16 @@ export default ({ cwd = '.' } = {}) => {
             trailingComma: 'all',
           },
         ],
-        'object-shorthand': ['error', 'always'],
-
-        'prefer-arrow/prefer-arrow-functions': ['error'],
         'prefer-destructuring': 'off',
         'require-await': 'error',
-        'simple-import-sort/imports': 'error',
-        'sort-keys-fix/sort-keys-fix': 'error',
+        'sort-keys-custom-order/import-object-keys': 'off',
         'unicorn/catch-error-name': 'off',
         'unicorn/consistent-function-scoping': 'off',
         'unicorn/no-anonymous-default-export': 'off',
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-nested-ternary': 'off',
         'unicorn/no-null': 'off',
+        'unicorn/prefer-await': 'off',
         'unicorn/prevent-abbreviations': 'off',
         'unicorn/template-indent': [
           'error',

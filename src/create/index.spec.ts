@@ -12,10 +12,10 @@ import self from '.';
 
 type TestConfig = {
   code: string;
+  filename?: string;
   files?: Files;
   messages?: Array<{ message: string; ruleId: string | null }>;
   output?: string;
-  filename?: string;
 };
 
 const tests: Record<string, TestConfig> = {
@@ -103,7 +103,7 @@ const tests: Record<string, TestConfig> = {
   },
   'await inside loop': {
     code: endent`
-      for (let i = 0; i < 10; i += 1) {
+      for (let index = 0; index < 10; index += 1) {
         await Promise.resolve();
       }\n
     `,
@@ -150,8 +150,8 @@ const tests: Record<string, TestConfig> = {
   },
   'blank line: between statement and export: no': {
     code: endent`
-      console.log('foo');
-      export const foo = 1;\n
+      const foo = 1;
+      export default foo;\n
     `,
     messages: [
       {
@@ -160,9 +160,9 @@ const tests: Record<string, TestConfig> = {
       },
     ],
     output: endent`
-      console.log('foo');
+      const foo = 1;
 
-      export const foo = 1;\n
+      export default foo;\n
     `,
   },
   'blank line: between types: no': {
@@ -170,7 +170,7 @@ const tests: Record<string, TestConfig> = {
       type foo = string;
       type bar = string;
 
-      export type { foo, bar };\n
+      export type { bar, foo };\n
     `,
     messages: [
       {
@@ -183,7 +183,7 @@ const tests: Record<string, TestConfig> = {
 
       type bar = string;
 
-      export type { foo, bar };\n
+      export type { bar, foo };\n
     `,
   },
   'blank line: between types: yes': {
@@ -192,7 +192,7 @@ const tests: Record<string, TestConfig> = {
 
       type bar = string;
 
-      export type { foo, bar };\n
+      export type { bar, foo };\n
     `,
   },
   'blank line: import and statement: no': {
@@ -364,8 +364,8 @@ const tests: Record<string, TestConfig> = {
   },
   'blank line: multi-line block: before: no': {
     code: endent`
-      const foo = true;
-      if (foo) {
+      const isFoo = true;
+      if (isFoo) {
         console.log('foo');
       }\n
     `,
@@ -376,18 +376,18 @@ const tests: Record<string, TestConfig> = {
       },
     ],
     output: endent`
-      const foo = true;
+      const isFoo = true;
 
-      if (foo) {
+      if (isFoo) {
         console.log('foo');
       }\n
     `,
   },
   'blank line: multi-line block: before: yes': {
     code: endent`
-      const foo = true;
+      const isFoo = true;
 
-      if (foo) {
+      if (isFoo) {
         console.log('foo');
       }\n
     `,
@@ -599,14 +599,14 @@ const tests: Record<string, TestConfig> = {
   },
   'blank line: newline between statement and export': {
     code: endent`
-      console.log('foo');
+      const foo = 1;
 
-      export const foo = 1;\n
+      export default foo;\n
     `,
   },
   callbacks: {
     code: endent`
-      const foo = () => {};
+      const foo = (callback: (error: unknown) => void) => callback(new Error('foo'));
 
       foo(async error => {
         await console.log(error);
@@ -642,12 +642,12 @@ const tests: Record<string, TestConfig> = {
   },
   continue: {
     code: endent`
-      for (let i = 0; i < 10; i += 1) {
-        if (i > 5) {
+      for (let index = 0; index < 10; index += 1) {
+        if (index > 5) {
           continue;
         }
 
-        console.log(i);
+        console.log(index);
       }\n
     `,
   },
@@ -670,7 +670,7 @@ const tests: Record<string, TestConfig> = {
   'defineEmits with simple types': {
     code: endent`
       <script setup lang="ts">
-      defineEmits<{ (e: 'foo'): void }>();
+      defineEmits<{ (event: 'foo'): void }>();
       </script>\n
     `,
     filename: 'index.vue',
@@ -704,6 +704,16 @@ const tests: Record<string, TestConfig> = {
       },
     ],
   },
+  'destructuring: array for loop Object.entries': {
+    code: endent`
+      const object = {};
+
+      for (const [foo, bar] of Object.entries(object)) {
+        console.log(foo);
+        console.log(bar);
+      }\n
+    `,
+  },
   'destructuring: array Promise.all': {
     code: endent`
       const [foo, bar] = await Promise.all([]);
@@ -711,21 +721,13 @@ const tests: Record<string, TestConfig> = {
       console.log(bar);\n
     `,
   },
-  'destructuring: array for loop Object.entries': {
-    code: endent`
-      for (const [foo, bar] of Object.entries({})) {
-        console.log(foo);
-        console.log(bar);
-      }\n
-    `,
-  },
   'destructuring: parameter': {
     code: 'export default ({ foo }) => console.log(foo);\n',
   },
   'destructuring: return values': {
     code: endent`
-      const func = () => ({ x: 1, y: 2 });
-      const { x, y } = func();
+      const getCoordinates = () => ({ x: 1, y: 2 });
+      const { x, y } = getCoordinates();
       console.log(x);
       console.log(y);\n
     `,
@@ -973,7 +975,7 @@ const tests: Record<string, TestConfig> = {
     messages: [
       {
         message: 'Use `for…of` instead of `.forEach(…)`.',
-        ruleId: 'unicorn/no-array-for-each',
+        ruleId: 'unicorn/no-for-each',
       },
     ],
   },
@@ -986,9 +988,14 @@ const tests: Record<string, TestConfig> = {
     messages: [
       {
         message: 'Prefer using arrow functions over plain functions',
-        ruleId: 'prefer-arrow/prefer-arrow-functions',
+        ruleId: 'prefer-arrow-functions/prefer-arrow-functions',
       },
     ],
+    output: endent`
+      export default () => {
+        console.log('foo');
+      };\n
+    `,
   },
   'function style expression with string literal': {
     code: endent`
@@ -999,15 +1006,11 @@ const tests: Record<string, TestConfig> = {
       };\n
     `,
     messages: [
-      { message: 'Expected method shorthand.', ruleId: 'object-shorthand' },
+      {
+        message: 'Do not use `this` outside of classes.',
+        ruleId: 'unicorn/no-this-outside-of-class',
+      },
     ],
-    output: endent`
-      export default {
-        'foo bar'() {
-          console.log(this);
-        },
-      };\n
-    `,
   },
   'functional in template': {
     code: endent`
@@ -1627,20 +1630,13 @@ const tests: Record<string, TestConfig> = {
       console.log(foo._bar);\n
     `,
   },
-  'unnamed function': {
-    code: endent`
-      console.log(function () {
-        console.log(this);
-      });\n
-    `,
-  },
   'unsorted object keys': {
     code: 'export default { b: 1, a: 2 };\n',
     messages: [
       {
         message:
-          "Expected object keys to be in ascending order. 'a' should be before 'b'.",
-        ruleId: 'sort-keys-fix/sort-keys-fix',
+          "Expected object keys to be in correct order. 'a' should be before 'b'.",
+        ruleId: 'sort-keys-custom-order/object-keys',
       },
     ],
     output: 'export default { a: 2, b: 1 };\n',
@@ -1960,7 +1956,7 @@ for (const [name, _testConfig] of Object.entries(tests)) {
     ..._testConfig,
   };
 
-  testConfig.output = testConfig.output || testConfig.code;
+  testConfig.output ||= testConfig.code;
 
   test(name, async ({}, testInfo) => {
     const cwd = testInfo.outputPath();
