@@ -1,3 +1,10 @@
+## [9.0.16](https://github.com/dword-design/eslint-config/compare/v9.0.15...v9.0.16) (2026-07-30)
+
+
+### Bug Fixes
+
+* update dependency eslint to v10 ([#329](https://github.com/dword-design/eslint-config/issues/329)) ([67c4154](https://github.com/dword-design/eslint-config/commit/67c41549926747e9a880290a69410256cf4d1ef5))
+
 ## [9.0.15](https://github.com/dword-design/eslint-config/compare/v9.0.14...v9.0.15) (2026-07-30)
 
 
