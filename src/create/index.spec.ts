@@ -103,7 +103,7 @@ const tests: Record<string, TestConfig> = {
   },
   'await inside loop': {
     code: endent`
-      for (let i = 0; i < 10; i += 1) {
+      for (let index = 0; index < 10; index += 1) {
         await Promise.resolve();
       }\n
     `,
@@ -151,7 +151,7 @@ const tests: Record<string, TestConfig> = {
   'blank line: between statement and export: no': {
     code: endent`
       console.log('foo');
-      export const foo = 1;\n
+      export const 1;\n
     `,
     messages: [
       {
@@ -364,8 +364,8 @@ const tests: Record<string, TestConfig> = {
   },
   'blank line: multi-line block: before: no': {
     code: endent`
-      const foo = true;
-      if (foo) {
+      const isFoo = true;
+      if (isFoo) {
         console.log('foo');
       }\n
     `,
@@ -376,18 +376,18 @@ const tests: Record<string, TestConfig> = {
       },
     ],
     output: endent`
-      const foo = true;
+      const isFoo = true;
 
-      if (foo) {
+      if (isFoo) {
         console.log('foo');
       }\n
     `,
   },
   'blank line: multi-line block: before: yes': {
     code: endent`
-      const foo = true;
+      const isFoo = true;
 
-      if (foo) {
+      if (isFoo) {
         console.log('foo');
       }\n
     `,
@@ -601,12 +601,12 @@ const tests: Record<string, TestConfig> = {
     code: endent`
       console.log('foo');
 
-      export const foo = 1;\n
+      export const 1;\n
     `,
   },
   callbacks: {
     code: endent`
-      const foo = () => {};
+      const foo = (callback: (error: unknown) => void) => callback(new Error());
 
       foo(async error => {
         await console.log(error);
@@ -642,12 +642,12 @@ const tests: Record<string, TestConfig> = {
   },
   continue: {
     code: endent`
-      for (let i = 0; i < 10; i += 1) {
-        if (i > 5) {
+      for (let index = 0; index < 10; index += 1) {
+        if (index > 5) {
           continue;
         }
 
-        console.log(i);
+        console.log(index);
       }\n
     `,
   },
@@ -670,7 +670,7 @@ const tests: Record<string, TestConfig> = {
   'defineEmits with simple types': {
     code: endent`
       <script setup lang="ts">
-      defineEmits<{ (e: 'foo'): void }>();
+      defineEmits<{ (event: 'foo'): void }>();
       </script>\n
     `,
     filename: 'index.vue',
@@ -713,7 +713,8 @@ const tests: Record<string, TestConfig> = {
   },
   'destructuring: array for loop Object.entries': {
     code: endent`
-      for (const [foo, bar] of Object.entries({})) {
+      const obj = {};
+      for (const [foo, bar] of Object.entries(obj)) {
         console.log(foo);
         console.log(bar);
       }\n
@@ -724,8 +725,8 @@ const tests: Record<string, TestConfig> = {
   },
   'destructuring: return values': {
     code: endent`
-      const func = () => ({ x: 1, y: 2 });
-      const { x, y } = func();
+      const getCoordinates = () => ({ x: 1, y: 2 });
+      const { x, y } = getCoordinates();
       console.log(x);
       console.log(y);\n
     `,
@@ -973,7 +974,7 @@ const tests: Record<string, TestConfig> = {
     messages: [
       {
         message: 'Use `for…of` instead of `.forEach(…)`.',
-        ruleId: 'unicorn/no-array-for-each',
+        ruleId: 'unicorn/no-for-each',
       },
     ],
   },
@@ -999,7 +1000,7 @@ const tests: Record<string, TestConfig> = {
       };\n
     `,
     messages: [
-      { message: 'Expected method shorthand.', ruleId: 'object-shorthand' },
+      { message: 'Do not use `this` outside of classes.', ruleId: 'unicorn/no-this-outside-of-class' },
     ],
     output: endent`
       export default {
@@ -1627,13 +1628,6 @@ const tests: Record<string, TestConfig> = {
       console.log(foo._bar);\n
     `,
   },
-  'unnamed function': {
-    code: endent`
-      console.log(function () {
-        console.log(this);
-      });\n
-    `,
-  },
   'unsorted object keys': {
     code: 'export default { b: 1, a: 2 };\n',
     messages: [
@@ -1960,7 +1954,7 @@ for (const [name, _testConfig] of Object.entries(tests)) {
     ..._testConfig,
   };
 
-  testConfig.output = testConfig.output || testConfig.code;
+  testConfig.output ||= testConfig.code;
 
   test(name, async ({}, testInfo) => {
     const cwd = testInfo.outputPath();

@@ -30,15 +30,17 @@ export default ({ cwd = '.' } = {}) => {
 
   const eslintRestrictedImports = restrictedImports
     .filter(
-      importDef =>
-        importDef.alternative === undefined ||
-        importDef.alternative !== packageConfig.name,
+      importDefinition =>
+        importDefinition.alternative === undefined ||
+        importDefinition.alternative !== packageConfig.name,
     )
-    .map(importDef => ({
-      ...omit(importDef, ['alternative']),
+    .map(importDefinition => ({
+      ...omit(importDefinition, ['alternative']),
       message: compact([
-        importDef.message,
-        importDef.alternative ? `Use '${importDef.alternative}' instead` : '',
+        importDefinition.message,
+        importDefinition.alternative
+          ? `Use '${importDefinition.alternative}' instead`
+          : '',
       ]).join(' '),
     }));
 
@@ -177,8 +179,6 @@ export default ({ cwd = '.' } = {}) => {
             trailingComma: 'all',
           },
         ],
-        'object-shorthand': ['error', 'always'],
-
         'prefer-arrow/prefer-arrow-functions': ['error'],
         'prefer-destructuring': 'off',
         'require-await': 'error',
@@ -191,6 +191,7 @@ export default ({ cwd = '.' } = {}) => {
         'unicorn/no-nested-ternary': 'off',
         'unicorn/no-null': 'off',
         'unicorn/prevent-abbreviations': 'off',
+        'unicorn/prefer-await': 'off',
         'unicorn/template-indent': [
           'error',
           {
