@@ -52,7 +52,7 @@
     "lodash-es": "^4.18.1",
     "prettier": "^3.9.6",
     "read-pkg": "^10.1.0",
-    "sort-package-json": "^3.7.1",
+    "sort-package-json": "^4.0.0",
     "typescript-eslint": "^8.65.0",
     "vue-eslint-parser": "^10.4.1"
   },
