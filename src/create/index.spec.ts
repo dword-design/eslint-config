@@ -12,10 +12,10 @@ import self from '.';
 
 type TestConfig = {
   code: string;
+  filename?: string;
   files?: Files;
   messages?: Array<{ message: string; ruleId: string | null }>;
   output?: string;
-  filename?: string;
 };
 
 const tests: Record<string, TestConfig> = {
@@ -704,13 +704,6 @@ const tests: Record<string, TestConfig> = {
       },
     ],
   },
-  'destructuring: array Promise.all': {
-    code: endent`
-      const [foo, bar] = await Promise.all([]);
-      console.log(foo);
-      console.log(bar);\n
-    `,
-  },
   'destructuring: array for loop Object.entries': {
     code: endent`
       const object = {};
@@ -719,6 +712,13 @@ const tests: Record<string, TestConfig> = {
         console.log(foo);
         console.log(bar);
       }\n
+    `,
+  },
+  'destructuring: array Promise.all': {
+    code: endent`
+      const [foo, bar] = await Promise.all([]);
+      console.log(foo);
+      console.log(bar);\n
     `,
   },
   'destructuring: parameter': {
@@ -1001,7 +1001,10 @@ const tests: Record<string, TestConfig> = {
       };\n
     `,
     messages: [
-      { message: 'Do not use `this` outside of classes.', ruleId: 'unicorn/no-this-outside-of-class' },
+      {
+        message: 'Do not use `this` outside of classes.',
+        ruleId: 'unicorn/no-this-outside-of-class',
+      },
     ],
   },
   'functional in template': {

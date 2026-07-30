@@ -56,12 +56,6 @@ importers:
       eslint-plugin-sort-keys-custom-order:
         specifier: ^3.0.3
         version: 3.0.3(@typescript-eslint/utils@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(eslint@10.8.0(jiti@2.7.0))
-      eslint-plugin-sort-keys-fix:
-        specifier: ^1.1.2
-        version: 1.1.2
-      eslint-plugin-sort-keys-plus:
-        specifier: ^1.5.0
-        version: 1.5.0
       eslint-plugin-unicorn:
         specifier: ^72.0.0
         version: 72.0.0(eslint@10.8.0(jiti@2.7.0))
@@ -2181,10 +2175,6 @@ packages:
   eslint-plugin-sort-keys-fix@1.1.2:
     resolution: {integrity: sha512-DNPHFGCA0/hZIsfODbeLZqaGY/+q3vgtshF85r+YWDNCQ2apd9PNs/zL6ttKm0nD1IFwvxyg3YOTI7FHl4unrw==}
     engines: {node: '>=0.10.0'}
-
-  eslint-plugin-sort-keys-plus@1.5.0:
-    resolution: {integrity: sha512-lQlIhJqVTFlvmlZOY0UDJ9mEtvgs+xtn9LG8GnA/rLqSoydCuIYJx/CI40RH3M/EasFB21TeYz6SrOm29OhgXA==}
-    engines: {node: '>=14'}
 
   eslint-plugin-unicorn@62.0.0:
     resolution: {integrity: sha512-HIlIkGLkvf29YEiS/ImuDZQbP12gWyx5i3C6XrRxMvVdqMroCI9qoVYCoIl17ChN+U89pn9sVwLxhIWj5nEc7g==}
@@ -7068,12 +7058,6 @@ snapshots:
       esutils: 2.0.3
       natural-compare: 1.4.0
       requireindex: 1.2.0
-
-  eslint-plugin-sort-keys-plus@1.5.0:
-    dependencies:
-      escape-string-regexp: 4.0.0
-      esquery: 1.7.0
-      natural-compare: 1.4.0
 
   eslint-plugin-unicorn@62.0.0(eslint@9.39.5(jiti@2.7.0)):
     dependencies:

@@ -13,6 +13,8 @@ import { importX } from 'eslint-plugin-import-x';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import pluginPlaywright from 'eslint-plugin-playwright';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import sortKeysCustomOrder from 'eslint-plugin-sort-keys-custom-order';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import pluginVue from 'eslint-plugin-vue';
 import globals from 'globals';
@@ -20,7 +22,6 @@ import { compact, omit, without } from 'lodash-es';
 import { readPackageSync } from 'read-pkg';
 import { sortOrder as packageJsonSortOrder } from 'sort-package-json';
 import tseslint from 'typescript-eslint';
-import sortKeysCustomOrder from "eslint-plugin-sort-keys-custom-order";
 
 import getTypeScriptProjectReferences from './get-typescript-project-references';
 import restrictedImports from './restricted-imports';
@@ -62,9 +63,14 @@ export default ({ cwd = '.' } = {}) => {
     { files: ['**/*.ts', '**/*.vue'], ...importAlias.configs.recommended },
     { files: ['**/*.ts', '**/*.vue'], ...eslintPluginPrettierRecommended },
     pluginPlaywright.configs['flat/recommended'],
+    {
+      plugins: { 'simple-import-sort': simpleImportSort },
+      rules: { 'simple-import-sort/imports': 'error' },
+    },
     ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
-    ...compat.plugins(packageName`eslint-plugin-simple-import-sort`),
-    sortKeysCustomOrder.configs["flat/recommended"],
+    // TODO: https://github.com/hugoattal/eslint-plugin-sort-keys-custom-order/issues/11
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    sortKeysCustomOrder.configs['flat/recommended'] as any,
     {
       files: ['**/*.ts', '**/*.vue'],
       ...eslintPluginUnicorn.configs.recommended,
@@ -183,7 +189,6 @@ export default ({ cwd = '.' } = {}) => {
         'prefer-arrow/prefer-arrow-functions': ['error'],
         'prefer-destructuring': 'off',
         'require-await': 'error',
-        'simple-import-sort/imports': 'error',
         'sort-keys-custom-order/import-object-keys': 'off',
         'unicorn/catch-error-name': 'off',
         'unicorn/consistent-function-scoping': 'off',
@@ -191,8 +196,8 @@ export default ({ cwd = '.' } = {}) => {
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-nested-ternary': 'off',
         'unicorn/no-null': 'off',
-        'unicorn/prevent-abbreviations': 'off',
         'unicorn/prefer-await': 'off',
+        'unicorn/prevent-abbreviations': 'off',
         'unicorn/template-indent': [
           'error',
           {
