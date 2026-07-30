@@ -11,9 +11,6 @@ importers:
       '@dword-design/eslint-plugin-import-alias':
         specifier: ^8.1.8
         version: 8.1.8(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3)
-      '@eslint/eslintrc':
-        specifier: ^3.3.6
-        version: 3.3.6
       '@stylistic/eslint-plugin':
         specifier: ^5.10.0
         version: 5.10.0(eslint@10.8.0(jiti@2.7.0))
@@ -44,9 +41,9 @@ importers:
       eslint-plugin-playwright:
         specifier: ^2.11.0
         version: 2.11.0(eslint@10.8.0(jiti@2.7.0))
-      eslint-plugin-prefer-arrow:
-        specifier: ^1.2.3
-        version: 1.2.3(eslint@10.8.0(jiti@2.7.0))
+      eslint-plugin-prefer-arrow-functions:
+        specifier: ^3.10.1
+        version: 3.10.1(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3)
       eslint-plugin-prettier:
         specifier: ^5.5.6
         version: 5.5.6(eslint-config-prettier@10.1.8(eslint@10.8.0(jiti@2.7.0)))(eslint@10.8.0(jiti@2.7.0))(prettier@3.9.6)
@@ -2141,6 +2138,12 @@ packages:
     engines: {node: '>=16.9.0'}
     peerDependencies:
       eslint: '>=8.40.0'
+
+  eslint-plugin-prefer-arrow-functions@3.10.1:
+    resolution: {integrity: sha512-wutwnNG0S/wqNhqryS7ee2yX01dkvgFMDvdaXcdEfSGcxz37FRfJUCD0YL2Jur0ANCKocgplF7n6GBPhe+DNNg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24.0.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
 
   eslint-plugin-prefer-arrow@1.2.3:
     resolution: {integrity: sha512-J9I5PKCOJretVuiZRGvPQxCbllxGAV/viI20JO3LYblAodofBxyMnZAJ+WGeClHgANnSJberTNoFWWjrWKBuXQ==}
@@ -7013,9 +7016,14 @@ snapshots:
       eslint: 9.39.5(jiti@2.7.0)
       globals: 17.8.0
 
-  eslint-plugin-prefer-arrow@1.2.3(eslint@10.8.0(jiti@2.7.0)):
+  eslint-plugin-prefer-arrow-functions@3.10.1(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3):
     dependencies:
+      '@typescript-eslint/types': 8.65.0
+      '@typescript-eslint/utils': 8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3)
       eslint: 10.8.0(jiti@2.7.0)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   eslint-plugin-prefer-arrow@1.2.3(eslint@9.39.5(jiti@2.7.0)):
     dependencies:

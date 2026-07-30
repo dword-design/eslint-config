@@ -988,9 +988,14 @@ const tests: Record<string, TestConfig> = {
     messages: [
       {
         message: 'Prefer using arrow functions over plain functions',
-        ruleId: 'prefer-arrow/prefer-arrow-functions',
+        ruleId: 'prefer-arrow-functions/prefer-arrow-functions',
       },
     ],
+    output: endent`
+      export default () => {
+        console.log('foo');
+      };\n
+    `,
   },
   'function style expression with string literal': {
     code: endent`

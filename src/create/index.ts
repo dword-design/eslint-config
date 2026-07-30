@@ -1,8 +1,4 @@
-import pathLib from 'node:path';
-import { fileURLToPath } from 'node:url';
-
 import importAlias from '@dword-design/eslint-plugin-import-alias';
-import { FlatCompat } from '@eslint/eslintrc';
 import stylistic from '@stylistic/eslint-plugin';
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import packageName from 'depcheck-package-name';
@@ -12,6 +8,7 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import { importX } from 'eslint-plugin-import-x';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import pluginPlaywright from 'eslint-plugin-playwright';
+import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sortKeysCustomOrder from 'eslint-plugin-sort-keys-custom-order';
@@ -46,10 +43,6 @@ export default ({ cwd = '.' } = {}) => {
       ]).join(' '),
     }));
 
-  // mimic CommonJS variables -- not needed if using CommonJS
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = pathLib.dirname(__filename);
-  const compat = new FlatCompat({ baseDirectory: __dirname });
   return defineConfig([
     gitignore({ strict: false }),
     tseslint.configs.recommended,
@@ -67,7 +60,7 @@ export default ({ cwd = '.' } = {}) => {
       plugins: { 'simple-import-sort': simpleImportSort },
       rules: { 'simple-import-sort/imports': 'error' },
     },
-    ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
+    preferArrowFunctions.configs.all,
     // TODO: https://github.com/hugoattal/eslint-plugin-sort-keys-custom-order/issues/11
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sortKeysCustomOrder.configs['flat/recommended'] as any,
@@ -186,7 +179,6 @@ export default ({ cwd = '.' } = {}) => {
             trailingComma: 'all',
           },
         ],
-        'prefer-arrow/prefer-arrow-functions': ['error'],
         'prefer-destructuring': 'off',
         'require-await': 'error',
         'sort-keys-custom-order/import-object-keys': 'off',
