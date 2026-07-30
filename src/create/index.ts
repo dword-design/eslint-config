@@ -20,6 +20,7 @@ import { compact, omit, without } from 'lodash-es';
 import { readPackageSync } from 'read-pkg';
 import { sortOrder as packageJsonSortOrder } from 'sort-package-json';
 import tseslint from 'typescript-eslint';
+import sortKeysCustomOrder from "eslint-plugin-sort-keys-custom-order";
 
 import getTypeScriptProjectReferences from './get-typescript-project-references';
 import restrictedImports from './restricted-imports';
@@ -63,7 +64,7 @@ export default ({ cwd = '.' } = {}) => {
     pluginPlaywright.configs['flat/recommended'],
     ...compat.plugins(packageName`eslint-plugin-prefer-arrow`),
     ...compat.plugins(packageName`eslint-plugin-simple-import-sort`),
-    ...compat.plugins(packageName`eslint-plugin-sort-keys-fix`),
+    sortKeysCustomOrder.configs["flat/recommended"],
     {
       files: ['**/*.ts', '**/*.vue'],
       ...eslintPluginUnicorn.configs.recommended,
@@ -183,7 +184,7 @@ export default ({ cwd = '.' } = {}) => {
         'prefer-destructuring': 'off',
         'require-await': 'error',
         'simple-import-sort/imports': 'error',
-        'sort-keys-fix/sort-keys-fix': 'error',
+        'sort-keys-custom-order/import-object-keys': 'off',
         'unicorn/catch-error-name': 'off',
         'unicorn/consistent-function-scoping': 'off',
         'unicorn/no-anonymous-default-export': 'off',

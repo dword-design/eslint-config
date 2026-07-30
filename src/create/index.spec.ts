@@ -150,8 +150,8 @@ const tests: Record<string, TestConfig> = {
   },
   'blank line: between statement and export: no': {
     code: endent`
-      console.log('foo');
-      export const 1;\n
+      const foo = 1;
+      export default foo;\n
     `,
     messages: [
       {
@@ -160,9 +160,9 @@ const tests: Record<string, TestConfig> = {
       },
     ],
     output: endent`
-      console.log('foo');
+      const foo = 1;
 
-      export const foo = 1;\n
+      export default foo;\n
     `,
   },
   'blank line: between types: no': {
@@ -170,7 +170,7 @@ const tests: Record<string, TestConfig> = {
       type foo = string;
       type bar = string;
 
-      export type { foo, bar };\n
+      export type { bar, foo };\n
     `,
     messages: [
       {
@@ -183,7 +183,7 @@ const tests: Record<string, TestConfig> = {
 
       type bar = string;
 
-      export type { foo, bar };\n
+      export type { bar, foo };\n
     `,
   },
   'blank line: between types: yes': {
@@ -192,7 +192,7 @@ const tests: Record<string, TestConfig> = {
 
       type bar = string;
 
-      export type { foo, bar };\n
+      export type { bar, foo };\n
     `,
   },
   'blank line: import and statement: no': {
@@ -599,14 +599,14 @@ const tests: Record<string, TestConfig> = {
   },
   'blank line: newline between statement and export': {
     code: endent`
-      console.log('foo');
+      const foo = 1;
 
-      export const 1;\n
+      export default foo;\n
     `,
   },
   callbacks: {
     code: endent`
-      const foo = (callback: (error: unknown) => void) => callback(new Error());
+      const foo = (callback: (error: unknown) => void) => callback(new Error('foo'));
 
       foo(async error => {
         await console.log(error);
@@ -713,8 +713,9 @@ const tests: Record<string, TestConfig> = {
   },
   'destructuring: array for loop Object.entries': {
     code: endent`
-      const obj = {};
-      for (const [foo, bar] of Object.entries(obj)) {
+      const object = {};
+
+      for (const [foo, bar] of Object.entries(object)) {
         console.log(foo);
         console.log(bar);
       }\n
@@ -1002,13 +1003,6 @@ const tests: Record<string, TestConfig> = {
     messages: [
       { message: 'Do not use `this` outside of classes.', ruleId: 'unicorn/no-this-outside-of-class' },
     ],
-    output: endent`
-      export default {
-        'foo bar'() {
-          console.log(this);
-        },
-      };\n
-    `,
   },
   'functional in template': {
     code: endent`
@@ -1633,8 +1627,8 @@ const tests: Record<string, TestConfig> = {
     messages: [
       {
         message:
-          "Expected object keys to be in ascending order. 'a' should be before 'b'.",
-        ruleId: 'sort-keys-fix/sort-keys-fix',
+          "Expected object keys to be in correct order. 'a' should be before 'b'.",
+        ruleId: 'sort-keys-custom-order/object-keys',
       },
     ],
     output: 'export default { a: 2, b: 1 };\n',
