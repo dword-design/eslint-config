@@ -188,6 +188,7 @@ export default ({ cwd = '.' } = {}) => {
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-nested-ternary': 'off',
         'unicorn/no-null': 'off',
+        'unicorn/prefer-array-flat-map': 'off',
         'unicorn/prefer-await': 'off',
         'unicorn/prevent-abbreviations': 'off',
         'unicorn/template-indent': [

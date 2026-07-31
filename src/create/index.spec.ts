@@ -967,6 +967,9 @@ const tests: Record<string, TestConfig> = {
     code: "import './foo';\n",
     files: { 'foo.ts': '' },
   },
+  'filter and flatMap': {
+    code: 'export default [1, 2].filter(foo => foo > 1).flatMap(foo => [foo, foo + 1]);\n',
+  },
   forEach: {
     code: endent`
       const foo = [];
