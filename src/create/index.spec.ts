@@ -1970,7 +1970,7 @@ const tests: Record<string, TestConfig> = {
   },
 };
 
-test.afterEach(() => clearCaches());
+test.afterEach(() => clearCaches()); // Otherwise the project services (for typed linting) won't be disposed after the tests and the RAM will increase a lot and tests will slow down after a while
 
 for (const [name, _testConfig] of Object.entries(tests)) {
   const testConfig = {
