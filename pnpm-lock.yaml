@@ -93,6 +93,9 @@ importers:
       '@types/node':
         specifier: ^26.1.2
         version: 26.1.2
+      '@typescript-eslint/parser':
+        specifier: ^8.65.0
+        version: 8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3)
       endent:
         specifier: npm:@dword-design/endent@^1.4.7
         version: '@dword-design/endent@1.4.7'

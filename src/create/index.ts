@@ -45,14 +45,14 @@ export default ({ cwd = '.' } = {}) => {
 
   return defineConfig([
     gitignore({ strict: false }),
-    tseslint.configs.recommended,
+    tseslint.configs.recommended, // TODO: Try out tseslint.configs.recommendedTypeChecked and tseslint.configs.strictTypeChecked
     importX.flatConfigs.recommended,
     importX.flatConfigs.typescript,
     ...pluginVue.configs['flat/recommended'].map(plugin => ({
       files: ['**/*.ts', '**/*.vue'],
       ...plugin,
     })),
-    { files: ['**/*.ts', '**/*.vue'], ...stylistic.configs.recommended },
+    { files: ['**/*.ts', '**/*.vue'], ...stylistic.configs.recommended }, // TODO: There is also tseslint.configs.stylisticTypeCheckedOnly, can we also use that?
     { files: ['**/*.ts', '**/*.vue'], ...importAlias.configs.recommended },
     { files: ['**/*.ts', '**/*.vue'], ...eslintPluginPrettierRecommended },
     pluginPlaywright.configs['flat/recommended'],
@@ -92,7 +92,11 @@ export default ({ cwd = '.' } = {}) => {
       files: ['**/*.ts', '**/*.vue'],
       languageOptions: {
         globals: { ...globals.node, ...globals.browser },
-        parserOptions: { parser: tseslint.parser, projectService: true },
+        parserOptions: {
+          extraFileExtensions: ['.vue'],
+          parser: tseslint.parser, // TODO: This is only set for eslint-plugin-vue. https://github.com/vuejs/eslint-plugin-vue/issues/2634
+          projectService: true,
+        },
       },
       rules: {
         '@stylistic/linebreak-style': ['error', 'unix'],

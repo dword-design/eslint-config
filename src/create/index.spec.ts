@@ -1,9 +1,10 @@
 import P from 'node:path';
 
 import { expect, test } from '@playwright/test';
+import { clearCaches } from '@typescript-eslint/parser';
 import packageName from 'depcheck-package-name';
 import endent from 'endent';
-import { ESLint } from 'eslint';
+import { Linter } from 'eslint';
 import { pick } from 'lodash-es';
 import type { Files } from 'output-files';
 import outputFiles from 'output-files';
@@ -1969,10 +1970,11 @@ const tests: Record<string, TestConfig> = {
   },
 };
 
+test.afterEach(() => clearCaches());
+
 for (const [name, _testConfig] of Object.entries(tests)) {
   const testConfig = {
     cwd: '.',
-    eslintConfig: {},
     filename: 'index.ts',
     messages: [],
     ..._testConfig,
@@ -1982,6 +1984,7 @@ for (const [name, _testConfig] of Object.entries(tests)) {
 
   test(name, async ({}, testInfo) => {
     const cwd = testInfo.outputPath();
+    const linter = new Linter({ configType: 'flat', cwd });
 
     await outputFiles(cwd, {
       'package.json': JSON.stringify({ type: 'module' }),
@@ -1992,31 +1995,20 @@ for (const [name, _testConfig] of Object.entries(tests)) {
       [testConfig.filename]: testConfig.code,
     });
 
-    const eslintConfig = {
-      baseConfig: self({ cwd }),
-      cwd,
-      overrideConfig: testConfig.eslintConfig,
-      overrideConfigFile: true as const,
-    };
+    const config = self({ cwd });
 
-    const eslintToLint = new ESLint(eslintConfig);
-    const eslintToFix = new ESLint({ ...eslintConfig, fix: true });
-
-    const lintResult = await eslintToLint.lintText(testConfig.code, {
-      filePath: testConfig.filename,
+    const lintResult = linter.verify(testConfig.code, config, {
+      filename: P.join(cwd, testConfig.filename),
     });
 
-    const lintedMessages = lintResult
-      .flatMap(_ => _.messages)
-      .map(_ => pick(_, ['message', 'ruleId']));
-
+    const lintedMessages = lintResult.map(_ => pick(_, ['message', 'ruleId']));
     expect(lintedMessages).toEqual(testConfig.messages);
 
-    const outputResult = await eslintToFix.lintText(testConfig.code, {
-      filePath: testConfig.filename,
+    const outputResult = linter.verifyAndFix(testConfig.code, config, {
+      filename: P.join(cwd, testConfig.filename),
     });
 
-    const lintedOutput = outputResult.map(_ => _.output).join('\n');
+    const lintedOutput = outputResult.output;
     expect(lintedOutput || testConfig.code).toEqual(testConfig.output);
   });
 }

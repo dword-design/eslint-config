@@ -60,6 +60,7 @@
     "@playwright/test": "^1.62.0",
     "@types/confusing-browser-globals": "^1.0.3",
     "@types/node": "^26.1.2",
+    "@typescript-eslint/parser": "^8.65.0",
     "endent": "npm:@dword-design/endent@^1.4.7",
     "output-files": "^4.0.0"
   },
