@@ -1,3 +1,10 @@
+## [9.0.17](https://github.com/dword-design/eslint-config/compare/v9.0.16...v9.0.17) (2026-07-31)
+
+
+### Bug Fixes
+
+* disable unicorn/prefer-array-flat-map ([be94ec9](https://github.com/dword-design/eslint-config/commit/be94ec953fac69b67e082753e08c342aaba2d9b8))
+
 ## [9.0.16](https://github.com/dword-design/eslint-config/compare/v9.0.15...v9.0.16) (2026-07-30)
 
 
