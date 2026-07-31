@@ -58,6 +58,25 @@ const tests: Record<string, TestConfig> = {
     ],
     output: "import '@/sub/foo';\n",
   },
+  'array sort: no strings': {
+    code: 'export default [1, 2].toSorted();\n',
+    messages: [
+      {
+        message: "Require 'compare' argument.",
+        ruleId: '@typescript-eslint/require-array-sort-compare',
+      },
+    ],
+  },
+  'array sort: strings': { code: "export default ['1', '2'].toSorted();\n" },
+  'array sort: unknown': {
+    code: "export default ['1' as unknown, '2' as unknown].toSorted();\n",
+    messages: [
+      {
+        message: "Require 'compare' argument.",
+        ruleId: '@typescript-eslint/require-array-sort-compare',
+      },
+    ],
+  },
   'arrow function': { code: "export default () => console.log('foo');\n" },
   'arrow function assignment': {
     code: "export default foo => (foo.bar = 'bar');\n",

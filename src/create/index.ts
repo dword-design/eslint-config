@@ -92,7 +92,7 @@ export default ({ cwd = '.' } = {}) => {
       files: ['**/*.ts', '**/*.vue'],
       languageOptions: {
         globals: { ...globals.node, ...globals.browser },
-        parserOptions: { parser: tseslint.parser },
+        parserOptions: { parser: tseslint.parser, projectService: true },
       },
       rules: {
         '@stylistic/linebreak-style': ['error', 'unix'],
@@ -113,6 +113,7 @@ export default ({ cwd = '.' } = {}) => {
           { blankLine: 'always', next: 'export', prev: '*' },
           { blankLine: 'always', next: 'type', prev: '*' },
         ],
+        '@typescript-eslint/require-array-sort-compare': 'error',
         'arrow-body-style': ['error', 'as-needed'],
         'func-names': ['error', 'never'],
         'global-require': 'off',
@@ -169,7 +170,6 @@ export default ({ cwd = '.' } = {}) => {
         'no-return-assign': 'off',
         'no-template-curly-in-string': 'off',
         'no-underscore-dangle': 'off',
-        'no-var': 'error',
         [`${packageName`prettier`}/prettier`]: [
           'error',
           {
@@ -179,6 +179,7 @@ export default ({ cwd = '.' } = {}) => {
             trailingComma: 'all',
           },
         ],
+        'no-var': 'error',
         'prefer-destructuring': 'off',
         'require-await': 'error',
         'sort-keys-custom-order/import-object-keys': 'off',
@@ -191,6 +192,7 @@ export default ({ cwd = '.' } = {}) => {
         'unicorn/prefer-array-flat-map': 'off',
         'unicorn/prefer-await': 'off',
         'unicorn/prevent-abbreviations': 'off',
+        'unicorn/require-array-sort-compare': 'off',
         'unicorn/template-indent': [
           'error',
           {
