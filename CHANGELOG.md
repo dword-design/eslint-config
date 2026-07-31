@@ -1,3 +1,11 @@
+## [9.0.18](https://github.com/dword-design/eslint-config/compare/v9.0.17...v9.0.18) (2026-07-31)
+
+
+### Bug Fixes
+
+* fix string sorting rules ([e63a882](https://github.com/dword-design/eslint-config/commit/e63a882e5faff2217cf67ff13d09a5f892ecf2fb))
+* foo ([80baad7](https://github.com/dword-design/eslint-config/commit/80baad77a0c92a7b118669d0e015bc27f729eaea))
+
 ## [9.0.17](https://github.com/dword-design/eslint-config/compare/v9.0.16...v9.0.17) (2026-07-31)
 
 
