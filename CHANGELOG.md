@@ -1,3 +1,10 @@
+## [9.0.20](https://github.com/dword-design/eslint-config/compare/v9.0.19...v9.0.20) (2026-08-01)
+
+
+### Bug Fixes
+
+* allow dev name ([3edba28](https://github.com/dword-design/eslint-config/commit/3edba284148f26d488c132cb9c04ccd646e29d2a))
+
 ## [9.0.19](https://github.com/dword-design/eslint-config/compare/v9.0.18...v9.0.19) (2026-08-01)
 
 
