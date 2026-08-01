@@ -189,6 +189,10 @@ export default ({ cwd = '.' } = {}) => {
         'sort-keys-custom-order/import-object-keys': 'off',
         'unicorn/catch-error-name': 'off',
         'unicorn/consistent-function-scoping': 'off',
+        'unicorn/name-replacements': [
+          'error',
+          { replacements: { dev: false } },
+        ],
         'unicorn/no-anonymous-default-export': 'off',
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-nested-ternary': 'off',

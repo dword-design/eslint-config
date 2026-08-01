@@ -1244,6 +1244,7 @@ const tests: Record<string, TestConfig> = {
     `,
     filename: 'index.vue',
   },
+  'name: dev': { code: '', filename: 'dev.ts' },
   'named as default': {
     code: endent`
       import foo from 'foo';
