@@ -1621,6 +1621,9 @@ const tests: Record<string, TestConfig> = {
       },
     ],
   },
+  'to array via concat': {
+    code: 'export default (foo: number | number[]) => [].concat(foo);\n',
+  },
   typescript: {
     code: endent`
       const foo: string = 'bar';

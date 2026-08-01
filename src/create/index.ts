@@ -195,6 +195,7 @@ export default ({ cwd = '.' } = {}) => {
         'unicorn/no-null': 'off',
         'unicorn/prefer-array-flat-map': 'off',
         'unicorn/prefer-await': 'off',
+        'unicorn/prefer-spread': 'off', // TODO: Reports on [].concat(foo)
         'unicorn/prevent-abbreviations': 'off',
         'unicorn/require-array-sort-compare': 'off',
         'unicorn/template-indent': [
