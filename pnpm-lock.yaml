@@ -51,8 +51,8 @@ importers:
         specifier: ^14.0.0
         version: 14.0.0(eslint@10.13.0(jiti@2.7.0))
       eslint-plugin-sort-keys-custom-order:
-        specifier: ^3.0.3
-        version: 3.1.2(@typescript-eslint/utils@8.72.0(eslint@10.13.0(jiti@2.7.0))(typescript@5.9.3))(eslint@10.13.0(jiti@2.7.0))
+        specifier: ^4.0.0
+        version: 4.3.0(@typescript-eslint/utils@8.72.0(eslint@10.13.0(jiti@2.7.0))(typescript@5.9.3))(eslint@10.13.0(jiti@2.7.0))
       eslint-plugin-unicorn:
         specifier: ^72.0.0
         version: 72.0.0(eslint@10.13.0(jiti@2.7.0))
@@ -2180,6 +2180,12 @@ packages:
 
   eslint-plugin-sort-keys-custom-order@3.1.2:
     resolution: {integrity: sha512-033nG2a+9bujRSi1BZWi+OMdcXxGJDZQXXOWvVP1UzkR1r4oAw61rYFt1gVOHYKtr0LeBUiMLmm3C85wKlME5g==}
+    peerDependencies:
+      '@typescript-eslint/utils': ^8.0.0
+      eslint: ^10.0.0
+
+  eslint-plugin-sort-keys-custom-order@4.3.0:
+    resolution: {integrity: sha512-GwfmmNbs0aUuXJ7mIGPlGyVQXX9eQN3G/4qgqaLXiI1PH2TLPBWUwXENgOeWxgfExGhw2gJPza1WOPP2flJekg==}
     peerDependencies:
       '@typescript-eslint/utils': ^8.0.0
       eslint: ^10.0.0
@@ -6908,6 +6914,11 @@ snapshots:
       eslint: 10.13.0(jiti@2.7.0)
 
   eslint-plugin-sort-keys-custom-order@3.1.2(@typescript-eslint/utils@8.72.0(eslint@10.13.0(jiti@2.7.0))(typescript@5.9.3))(eslint@10.13.0(jiti@2.7.0)):
+    dependencies:
+      '@typescript-eslint/utils': 8.72.0(eslint@10.13.0(jiti@2.7.0))(typescript@5.9.3)
+      eslint: 10.13.0(jiti@2.7.0)
+
+  eslint-plugin-sort-keys-custom-order@4.3.0(@typescript-eslint/utils@8.72.0(eslint@10.13.0(jiti@2.7.0))(typescript@5.9.3))(eslint@10.13.0(jiti@2.7.0)):
     dependencies:
       '@typescript-eslint/utils': 8.72.0(eslint@10.13.0(jiti@2.7.0))(typescript@5.9.3)
       eslint: 10.13.0(jiti@2.7.0)
